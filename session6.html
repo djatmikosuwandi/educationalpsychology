@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cognitive Learning Theory in Instructional Design</title>
+  <title>Cognitive Learning Theory in Educational Technology | Teori Belajar Kognitif</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Inter -->
@@ -52,6 +52,15 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #64748b;
     }
+
+    /* Bilingual Toggle CSS Visibility */
+    body.lang-en .i18n-id {
+      display: none !important;
+    }
+    body.lang-id .i18n-en {
+      display: none !important;
+    }
+
     .pulse-subtle {
       animation: pulseSubtle 3s infinite ease-in-out;
     }
@@ -61,7 +70,7 @@
     }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200 antialiased selection:bg-indigo-500 selection:text-white">
+<body class="lang-en bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200 antialiased selection:bg-indigo-500 selection:text-white">
 
   <!-- Top Reading Progress Bar -->
   <div id="scrollProgressBar" class="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 z-50 transition-all duration-150" style="width: 0%"></div>
@@ -69,28 +78,58 @@
   <!-- Navigation Bar -->
   <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo & Context -->
       <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-500/20">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-500/20 shrink-0">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
           </svg>
         </div>
         <div>
-          <span class="text-xs uppercase tracking-wider font-semibold text-indigo-600 dark:text-indigo-400 block">EdTech Psychology</span>
-          <span class="text-sm font-bold text-slate-900 dark:text-white hidden sm:inline">Cognitive Learning Theory</span>
+          <span class="text-xs uppercase tracking-wider font-semibold text-indigo-600 dark:text-indigo-400 block">
+            <span class="i18n-en">EdTech Psychology</span>
+            <span class="i18n-id">Psikologi Tekpen</span>
+          </span>
+          <span class="text-sm font-bold text-slate-900 dark:text-white hidden sm:inline">
+            <span class="i18n-en">Cognitive Learning Theory</span>
+            <span class="i18n-id">Teori Belajar Kognitif</span>
+          </span>
         </div>
       </div>
 
-      <!-- Quick Section Jump & Controls -->
+      <!-- Quick Nav Links, Language Toggle & Theme Button -->
       <div class="flex items-center space-x-2 sm:space-x-3">
         <nav class="hidden md:flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-300">
-          <a href="#clo" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Outcomes</a>
-          <a href="#paradigm" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Shift</a>
-          <a href="#architecture" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Memory</a>
-          <a href="#clt" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Cognitive Load</a>
-          <a href="#matrix" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">EdTech Matrix</a>
-          <a href="#casestudy" class="px-2.5 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 font-semibold hover:bg-indigo-100 transition">Audit Lab</a>
+          <a href="#clo" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="i18n-en">Outcomes</span><span class="i18n-id">Capaian</span>
+          </a>
+          <a href="#paradigm" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="i18n-en">Shift</span><span class="i18n-id">Pergeseran</span>
+          </a>
+          <a href="#architecture" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="i18n-en">Memory</span><span class="i18n-id">Memori</span>
+          </a>
+          <a href="#clt" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="i18n-en">Cognitive Load</span><span class="i18n-id">Beban Kognitif</span>
+          </a>
+          <a href="#matrix" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="i18n-en">Matrix</span><span class="i18n-id">Matriks</span>
+          </a>
+          <a href="#casestudy" class="px-2.5 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 font-semibold hover:bg-indigo-100 transition">
+            <span class="i18n-en">Audit Lab</span><span class="i18n-id">Lab Audit</span>
+          </a>
         </nav>
+
+        <!-- Language Switcher (EN / ID) -->
+        <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold">
+          <button id="btnLangEn" onclick="switchLanguage('en')" class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white shadow-sm transition">
+            EN
+          </button>
+          <button id="btnLangId" onclick="switchLanguage('id')" class="px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+            ID
+          </button>
+        </div>
 
         <!-- Theme Toggle -->
         <button id="themeToggleBtn" aria-label="Toggle dark mode" class="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
@@ -103,7 +142,8 @@
         </button>
 
         <a href="#quickquiz" class="text-xs bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-3.5 py-2 rounded-xl shadow-sm transition flex items-center space-x-1.5">
-          <span>Test Knowledge</span>
+          <span class="i18n-en">Quiz</span>
+          <span class="i18n-id">Kuis</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
       </div>
@@ -116,32 +156,53 @@
       <div class="max-w-4xl">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-100/80 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-xs font-semibold mb-6 border border-indigo-200 dark:border-indigo-800">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-          Educational Psychology & Instructional Design Module
+          <span class="i18n-en">Educational Psychology & Instructional Design Module</span>
+          <span class="i18n-id">Modul Perkuliahan Psikologi Pendidikan & Desain Instruksional</span>
         </div>
+
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-          Understanding <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-300">Cognitive Learning Theory</span> in Educational Technology
+          <span class="i18n-en">Understanding <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-300">Cognitive Learning Theory</span> in Educational Technology</span>
+          <span class="i18n-id">Memahami <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-300">Teori Belajar Kognitif</span> dalam Teknologi Pendidikan</span>
         </h1>
+
         <p class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-          Explore human mental architecture, manage working memory capacity, and engineer high-impact digital learning environments based on Cognitive Load Theory and Multimedia Learning Principles.
+          <span class="i18n-en">Explore human mental architecture, manage working memory capacity, and engineer high-impact digital learning environments based on Cognitive Load Theory and Multimedia Learning Principles.</span>
+          <span class="i18n-id">Eksplorasi arsitektur mental manusia, kelola keterbatasan memori kerja, dan rancang lingkungan pembelajaran digital berdaya guna tinggi berbasis Teori Beban Kognitif dan Prinsip Multimedia.</span>
         </p>
 
         <!-- Course Meta Badges -->
         <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs sm:text-sm">
           <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <span class="text-slate-400 dark:text-slate-500 block text-xs">Course</span>
-            <span class="font-bold text-slate-800 dark:text-slate-200">Educational Psychology</span>
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">
+              <span class="i18n-en">Course</span><span class="i18n-id">Mata Kuliah</span>
+            </span>
+            <span class="font-bold text-slate-800 dark:text-slate-200">
+              <span class="i18n-en">Educational Psychology</span><span class="i18n-id">Psikologi Pendidikan</span>
+            </span>
           </div>
           <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <span class="text-slate-400 dark:text-slate-500 block text-xs">Program</span>
-            <span class="font-bold text-slate-800 dark:text-slate-200">Educational Technology</span>
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">
+              <span class="i18n-en">Program</span><span class="i18n-id">Program Studi</span>
+            </span>
+            <span class="font-bold text-slate-800 dark:text-slate-200">
+              <span class="i18n-en">Educational Technology</span><span class="i18n-id">Teknologi Pendidikan</span>
+            </span>
           </div>
           <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <span class="text-slate-400 dark:text-slate-500 block text-xs">Workload</span>
-            <span class="font-bold text-slate-800 dark:text-slate-200">3 Credits (150 Mins)</span>
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">
+              <span class="i18n-en">Workload</span><span class="i18n-id">Beban / SKS</span>
+            </span>
+            <span class="font-bold text-slate-800 dark:text-slate-200">
+              <span class="i18n-en">3 Credits (150 Mins)</span><span class="i18n-id">3 SKS (150 Menit)</span>
+            </span>
           </div>
           <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <span class="text-slate-400 dark:text-slate-500 block text-xs">Target Format</span>
-            <span class="font-bold text-indigo-600 dark:text-indigo-400">Interactive Lecture & Lab</span>
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">
+              <span class="i18n-en">Format</span><span class="i18n-id">Format Target</span>
+            </span>
+            <span class="font-bold text-indigo-600 dark:text-indigo-400">
+              <span class="i18n-en">Interactive Lecture & Lab</span><span class="i18n-id">Kuliah Interaktif & Lab</span>
+            </span>
           </div>
         </div>
       </div>
@@ -155,24 +216,45 @@
       <!-- Table of Contents / Sticky Rail (3 cols) -->
       <aside class="hidden lg:block lg:col-span-3">
         <div class="sticky top-24 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Module Outline</h2>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <span class="i18n-en">Module Outline</span>
+            <span class="i18n-id">Daftar Isi Modul</span>
+          </h2>
           <nav class="space-y-1 text-sm font-medium text-slate-600 dark:text-slate-400" id="tocNav">
-            <a href="#clo" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">1. Learning Outcomes</a>
-            <a href="#paradigm" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">2. From Behavior to Mind</a>
-            <a href="#architecture" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">3. Cognitive Architecture</a>
-            <a href="#wm-test" class="block px-3 py-2 rounded-xl pl-6 text-xs text-indigo-600 dark:text-indigo-400 hover:underline">↳ Working Memory Lab</a>
-            <a href="#clt" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">4. CLT & Mayer's CTML</a>
-            <a href="#clt-simulator" class="block px-3 py-2 rounded-xl pl-6 text-xs text-indigo-600 dark:text-indigo-400 hover:underline">↳ Cognitive Load Simulator</a>
-            <a href="#schema" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">5. Piaget & Ausubel</a>
-            <a href="#metacognition" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">6. Metacognition & SRL</a>
-            <a href="#matrix" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">7. EdTech Integration Matrix</a>
-            <a href="#casestudy" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-indigo-600 dark:text-indigo-400 font-semibold transition">8. Cognitive Audit Lab</a>
-            <a href="#quickquiz" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">9. Formative Assessment</a>
+            <a href="#clo" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+              <span class="i18n-en">1. Learning Outcomes</span><span class="i18n-id">1. Capaian Pembelajaran</span>
+            </a>
+            <a href="#paradigm" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+              <span class="i18n-en">2. Behavior to Mind</span><span class="i18n-id">2. Perilaku ke Proses Mental</span>
+            </a>
+            <a href="#architecture" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+              <span class="i18n-en">3. Cognitive Architecture</span><span class="i18n-id">3. Arsitektur Kognitif</span>
+            </a>
+            <a href="#wm-test" class="block px-3 py-2 rounded-xl pl-6 text-xs text-indigo-600 dark:text-indigo-400 hover:underline">
+              <span class="i18n-en">↳ Working Memory Lab</span><span class="i18n-id">↳ Eksperimen Memori Kerja</span>
+            </a>
+            <a href="#clt" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+              <span class="i18n-en">4. CLT & Mayer's CTML</span><span class="i18n-id">4. Teori Beban & Prinsip Mayer</span>
+            </a>
+            <a href="#clt-simulator" class="block px-3 py-2 rounded-xl pl-6 text-xs text-indigo-600 dark:text-indigo-400 hover:underline">
+              <span class="i18n-en">↳ Cognitive Load Simulator</span><span class="i18n-id">↳ Simulator Beban Kognitif</span>
+            </a>
+            <a href="#schema" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+              <span class="i18n-en">5. Piaget & Ausubel</span><span class="i18n-id">5. Skema Piaget & Ausubel</span>
+            </a>
+            <a href="#metacognition" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+              <span class="i18n-en">6. Metacognition & SRL</span><span class="i18n-id">6. Metakognisi & Regulasi Diri</span>
+            </a>
+            <a href="#matrix" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+              <span class="i18n-en">7. EdTech Matrix</span><span class="i18n-id">7. Matriks Integrasi Tekpen</span>
+            </a>
+            <a href="#casestudy" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-indigo-600 dark:text-indigo-400 font-semibold transition">
+              <span class="i18n-en">8. Cognitive Audit Lab</span><span class="i18n-id">8. Lab Audit Kognitif</span>
+            </a>
+            <a href="#quickquiz" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+              <span class="i18n-en">9. Formative Assessment</span><span class="i18n-id">9. Asesmen Formatif</span>
+            </a>
           </nav>
-          <div class="pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500">
-            <span>Faculty Team: </span>
-            <span class="font-semibold text-slate-700 dark:text-slate-300">Educational Technology</span>
-          </div>
         </div>
       </aside>
 
@@ -183,38 +265,66 @@
         <section id="clo" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
           <div class="flex items-center space-x-3 mb-6">
             <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">01</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Course Learning Outcomes (CLO)</h2>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+              <span class="i18n-en">Course Learning Outcomes (CLO)</span>
+              <span class="i18n-id">Capaian Pembelajaran Mata Kuliah (CPMK)</span>
+            </h2>
           </div>
           <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">
-            Upon successfully analyzing this module and completing the associated lab activities, students are expected to achieve four core competencies:
+            <span class="i18n-en">Upon successfully analyzing this module and completing the associated lab activities, students are expected to achieve four core competencies:</span>
+            <span class="i18n-id">Setelah mempelajari modul dan menyelesaikan aktivitas laboratorium ini, mahasiswa diharapkan menguasai empat kompetensi utama:</span>
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
               <span class="w-6 h-6 rounded-lg bg-indigo-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
               <div>
-                <h3 class="font-bold text-sm text-slate-900 dark:text-white">Analyze Historical Shift</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Examine the transition from behavioral models to cognitive psychology, underscoring active student agency.</p>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">
+                  <span class="i18n-en">Analyze Historical Shift</span>
+                  <span class="i18n-id">Menganalisis Pergeseran Paradigma</span>
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                  <span class="i18n-en">Examine the transition from behavioral models to cognitive psychology, underscoring active student agency.</span>
+                  <span class="i18n-id">Menelaah transisi dari pengkondisian perilaku menuju psikologi kognitif yang memosisikan siswa sebagai pemroses informasi aktif.</span>
+                </p>
               </div>
             </div>
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
               <span class="w-6 h-6 rounded-lg bg-purple-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
               <div>
-                <h3 class="font-bold text-sm text-slate-900 dark:text-white">Examine Cognitive Architecture</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Deconstruct the Atkinson-Shiffrin and Baddeley models alongside John Sweller's Cognitive Load Theory.</p>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">
+                  <span class="i18n-en">Examine Cognitive Architecture</span>
+                  <span class="i18n-id">Menelaah Arsitektur Kognitif</span>
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                  <span class="i18n-en">Deconstruct the Atkinson-Shiffrin and Baddeley models alongside John Sweller's Cognitive Load Theory.</span>
+                  <span class="i18n-id">Membedah model memori Atkinson-Shiffrin dan Baddeley serta Teori Beban Kognitif (CLT) John Sweller.</span>
+                </p>
               </div>
             </div>
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
               <span class="w-6 h-6 rounded-lg bg-blue-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
               <div>
-                <h3 class="font-bold text-sm text-slate-900 dark:text-white">Evaluate Digital Learning Products</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Audit LMS layouts, multimedia lessons, and educational apps utilizing Richard Mayer's CTML principles.</p>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">
+                  <span class="i18n-en">Evaluate Digital Learning Products</span>
+                  <span class="i18n-id">Mengevaluasi Produk Belajar Digital</span>
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                  <span class="i18n-en">Audit LMS layouts, multimedia lessons, and educational apps utilizing Richard Mayer's CTML principles.</span>
+                  <span class="i18n-id">Mengaudit antarmuka LMS, media multimedia, dan aplikasi pembelajaran menggunakan prinsip CTML Richard Mayer.</span>
+                </p>
               </div>
             </div>
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
               <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</span>
               <div>
-                <h3 class="font-bold text-sm text-slate-900 dark:text-white">Design Cognitive Interventions</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Engineer instructional flows that protect limited working memory and accelerate long-term schema formation.</p>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">
+                  <span class="i18n-en">Design Cognitive Interventions</span>
+                  <span class="i18n-id">Merancang Intervensi Desain Kognitif</span>
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                  <span class="i18n-en">Engineer instructional flows that protect limited working memory and accelerate long-term schema formation.</span>
+                  <span class="i18n-id">Merekayasa alur instruksional yang melindungi memori kerja terbatas dan mempercepat integrasi skema jangka panjang.</span>
+                </p>
               </div>
             </div>
           </div>
@@ -225,17 +335,30 @@
           <div class="flex items-center space-x-3 mb-6">
             <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">02</span>
             <div>
-              <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Evolution of Learning Science</span>
-              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">From Observable Behavior to Internal Mental Processes</h2>
+              <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">
+                <span class="i18n-en">Evolution of Learning Science</span>
+                <span class="i18n-id">Evolusi Ilmu Pembelajaran</span>
+              </span>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                <span class="i18n-en">From Observable Behavior to Internal Mental Processes</span>
+                <span class="i18n-id">Dari Perilaku yang Teramati Menuju Proses Mental Internal</span>
+              </h2>
             </div>
           </div>
 
           <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 text-sm leading-relaxed space-y-4">
-            <p>
+            <p class="i18n-en">
               During the early 20th century, psychology was dominated by <strong>Behaviorism</strong> (represented by Watson, Skinner, and Thorndike). Behaviorists focused exclusively on outward, directly measurable actions. Learning was defined strictly as an observable change in behavior resulting from environmental stimulus-response associations (<span class="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">S &rarr; R</span>) and external reinforcers. The internal workings of the mind—such as attention, thoughts, mental images, and reasoning—were intentionally set aside because scientists lacked the tools to observe them directly.
             </p>
-            <p>
+            <p class="i18n-id">
+              Pada paruh awal abad ke-20, psikologi didominasi oleh <strong>Behaviorisme</strong> (tokoh: Watson, Skinner, dan Thorndike). Aliran ini berfokus semata-mata pada tindakan lahiriah yang terukur secara langsung. Belajar didefinisikan secara ketat sebagai perubahan perilaku teramati akibat asosiasi stimulus-respons lingkungan (<span class="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">S &rarr; R</span>) dan penguatan eksternal. Dinamika internal pikiran manusia—seperti perhatian, penalaran, dan pemrosesan ide—sengaja diabaikan karena saat itu ilmuwan belum memiliki instrumen ilmiah untuk mengukurnya.
+            </p>
+
+            <p class="i18n-en">
               The <strong>Cognitive Revolution</strong> of the 1950s and 1960s (championed by Jean Piaget, Jerome Bruner, Noam Chomsky, and George Miller) established that treating learners as passive responders ignored what is most essential: <em>how the mind actually structures knowledge</em>. Learners are <strong>active information processors</strong> who attend to, interpret, synthesize, and store knowledge into rich mental schemas.
+            </p>
+            <p class="i18n-id">
+              <strong>Revolusi Kognitif</strong> pada era 1950-an dan 1960-an (dipelopori Jean Piaget, Jerome Bruner, Noam Chomsky, dan George Miller) membuktikan bahwa memandang pembelajar hanya sebagai penerima pasif mengabaikan hal paling fundamental: <em>bagaimana pikiran manusia mengorganisasikan pengetahuan</em>. Pembelajar adalah <strong>pemroses informasi aktif</strong> yang menyeleksi perhatian, menginterpretasikan makna, serta mengintegrasikan data baru ke dalam jejaring skema mental.
             </p>
           </div>
 
@@ -244,34 +367,62 @@
             <div class="p-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40">
               <div class="flex items-center space-x-2 text-amber-800 dark:text-amber-400 font-bold text-sm mb-3">
                 <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-                <span>Behavioral Model (Conditioning)</span>
+                <span>
+                  <span class="i18n-en">Behavioral Model (Conditioning)</span>
+                  <span class="i18n-id">Model Behavioristik (Pengkondisian)</span>
+                </span>
               </div>
               <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-amber-200/60 dark:border-amber-900/30 text-xs font-mono text-center text-slate-700 dark:text-slate-300 space-y-2">
-                <div class="p-2 bg-amber-100/60 dark:bg-amber-950/50 rounded-lg">Environmental Stimulus (S)</div>
+                <div class="p-2 bg-amber-100/60 dark:bg-amber-950/50 rounded-lg">
+                  <span class="i18n-en">Environmental Stimulus (S)</span>
+                  <span class="i18n-id">Stimulus Lingkungan (S)</span>
+                </div>
                 <div class="text-amber-500 font-bold">&darr;</div>
-                <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-400 italic">Internal thoughts bypassed / unobserved</div>
+                <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-400 italic">
+                  <span class="i18n-en">Internal thoughts unobserved / bypassed</span>
+                  <span class="i18n-id">Proses mental internal tidak diamati</span>
+                </div>
                 <div class="text-amber-500 font-bold">&darr;</div>
-                <div class="p-2 bg-amber-100/60 dark:bg-amber-950/50 rounded-lg">Observable Response (R)</div>
+                <div class="p-2 bg-amber-100/60 dark:bg-amber-950/50 rounded-lg">
+                  <span class="i18n-en">Observable Response (R)</span>
+                  <span class="i18n-id">Respons Teramati (R)</span>
+                </div>
               </div>
               <p class="text-xs text-amber-900 dark:text-amber-300/80 mt-3 leading-relaxed">
-                <strong>EdTech Application:</strong> Drill-and-practice quizzes, flashcards, repetitive gamified streaks, and visual badge rewards.
+                <strong><span class="i18n-en">EdTech Practice:</span><span class="i18n-id">Penerapan Tekpen:</span></strong>
+                <span class="i18n-en">Drill-and-practice quizzes, repetitive flashcards, gamified streaks, and visual badge rewards.</span>
+                <span class="i18n-id">Kuis drill berulang, latihan hafalan cepat, deretan streak belajar, dan sistem lencana hadiah visual.</span>
               </p>
             </div>
 
             <div class="p-5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/20 border border-indigo-200 dark:border-indigo-900/40">
               <div class="flex items-center space-x-2 text-indigo-800 dark:text-indigo-400 font-bold text-sm mb-3">
                 <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
-                <span>Cognitive Model (Information Processing)</span>
+                <span>
+                  <span class="i18n-en">Cognitive Model (Information Processing)</span>
+                  <span class="i18n-id">Model Kognitif (Pemrosesan Informasi)</span>
+                </span>
               </div>
               <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-indigo-200/60 dark:border-indigo-900/30 text-xs font-mono text-center text-slate-700 dark:text-slate-300 space-y-2">
-                <div class="p-2 bg-indigo-100/60 dark:bg-indigo-950/50 rounded-lg">Environmental Input (Multimedia)</div>
+                <div class="p-2 bg-indigo-100/60 dark:bg-indigo-950/50 rounded-lg">
+                  <span class="i18n-en">Environmental Input (Multimedia)</span>
+                  <span class="i18n-id">Input Lingkungan (Multimedia)</span>
+                </div>
                 <div class="text-indigo-500 font-bold">&darr;</div>
-                <div class="p-2 bg-indigo-200/60 dark:bg-indigo-900/50 rounded-lg font-semibold text-indigo-900 dark:text-indigo-200">Perception & Working Memory &hArr; Long-Term Memory</div>
+                <div class="p-2 bg-indigo-200/60 dark:bg-indigo-900/50 rounded-lg font-semibold text-indigo-900 dark:text-indigo-200">
+                  <span class="i18n-en">Perception & WM &hArr; Long-Term Memory</span>
+                  <span class="i18n-id">Persepsi & Memori Kerja &hArr; Memori Jangka Panjang</span>
+                </div>
                 <div class="text-indigo-500 font-bold">&darr;</div>
-                <div class="p-2 bg-emerald-100/60 dark:bg-emerald-950/50 rounded-lg text-emerald-800 dark:text-emerald-300 font-semibold">Active Schema & Meaning Construction</div>
+                <div class="p-2 bg-emerald-100/60 dark:bg-emerald-950/50 rounded-lg text-emerald-800 dark:text-emerald-300 font-semibold">
+                  <span class="i18n-en">Active Schema Construction</span>
+                  <span class="i18n-id">Konstruksi Skema & Makna Aktif</span>
+                </div>
               </div>
               <p class="text-xs text-indigo-900 dark:text-indigo-300/80 mt-3 leading-relaxed">
-                <strong>EdTech Application:</strong> Structured scaffolding, concept maps, simulations, advance organizers, and cognitive load minimization.
+                <strong><span class="i18n-en">EdTech Practice:</span><span class="i18n-id">Penerapan Tekpen:</span></strong>
+                <span class="i18n-en">Structured scaffolding, concept maps, simulations, advance organizers, and cognitive load minimization.</span>
+                <span class="i18n-id">Scaffolding bertahap, peta konsep interaktif, simulasi digital, advance organizer, dan reduksi beban kognitif antarmuka.</span>
               </p>
             </div>
           </div>
@@ -283,58 +434,113 @@
             <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">03</span>
             <div>
               <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Atkinson-Shiffrin & Baddeley</span>
-              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Human Cognitive Architecture</h2>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                <span class="i18n-en">Human Cognitive Architecture</span>
+                <span class="i18n-id">Arsitektur Kognitif Manusia</span>
+              </h2>
             </div>
           </div>
 
           <p class="text-sm text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-            The Information Processing Model views human cognition as a coordinated tri-partite system: sensory buffers, limited working memory, and vast long-term memory, governed by metacognitive control.
+            <span class="i18n-en">The Information Processing Model views human cognition as a coordinated tri-partite system: sensory buffers, limited working memory, and vast long-term memory, governed by metacognitive control.</span>
+            <span class="i18n-id">Model Pemrosesan Informasi mengonseptualisasikan kognisi manusia sebagai sistem tiga lapis yang saling terhubung: register sensorik, memori kerja berkapasitas terbatas, dan memori jangka panjang permanen yang dipandu oleh kontrol metakognitif.</span>
           </p>
 
-          <!-- The Tri-Partite Memory Interactive Diagram -->
+          <!-- Tri-Partite Memory Cards -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <!-- Sensory Memory -->
+            <!-- Sensory Register -->
             <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 relative">
               <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Phase 1</span>
-              <h3 class="text-base font-bold text-slate-900 dark:text-white mt-1">Sensory Register</h3>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mt-1">
+                <span class="i18n-en">Sensory Register</span><span class="i18n-id">Register Sensorik</span>
+              </h3>
               <div class="mt-4 space-y-2 text-xs text-slate-600 dark:text-slate-400">
-                <p><strong>Duration:</strong> 0.5s (Iconic/Visual) to 3s (Echoic/Auditory).</p>
-                <p><strong>Capacity:</strong> Extremely large, but traces vanish instantly without conscious focus.</p>
-                <p><strong>Gateway:</strong> <span class="text-indigo-600 dark:text-indigo-400 font-semibold">Selective Attention</span> filters out 99% of environmental noise.</p>
+                <p>
+                  <strong><span class="i18n-en">Duration:</span><span class="i18n-id">Durasi:</span></strong>
+                  <span class="i18n-en">0.5s (Visual Iconic) to 3s (Auditory Echoic).</span>
+                  <span class="i18n-id">0,5 detik (Ikonik Visual) hingga 3 detik (Gema Auditori).</span>
+                </p>
+                <p>
+                  <strong><span class="i18n-en">Capacity:</span><span class="i18n-id">Kapasitas:</span></strong>
+                  <span class="i18n-en">Extremely large, but traces decay immediately without deliberate focus.</span>
+                  <span class="i18n-id">Sangat luas, namun jejak sensorik lenyap seketika tanpa perhatian sadar.</span>
+                </p>
+                <p>
+                  <strong><span class="i18n-en">Gateway:</span><span class="i18n-id">Gerbang:</span></strong>
+                  <span class="text-indigo-600 dark:text-indigo-400 font-semibold">
+                    <span class="i18n-en">Selective Attention</span><span class="i18n-id">Atensi Selektif</span>
+                  </span>
+                  <span class="i18n-en">filters out 99% of environmental noise.</span>
+                  <span class="i18n-id">menyaring 99% gangguan lingkungan.</span>
+                </p>
               </div>
               <div class="mt-4 p-2.5 rounded-xl bg-white dark:bg-slate-900 text-xs text-slate-500 border border-slate-200 dark:border-slate-800">
-                <strong>EdTech Tip:</strong> Use visual cueing (arrows, high contrast) in video tutorials to capture instantaneous attention.
+                <strong><span class="i18n-en">EdTech Tip:</span><span class="i18n-id">Tip Tekpen:</span></strong>
+                <span class="i18n-en">Use visual cueing (arrows, high-contrast highlights) to capture instantaneous focus.</span>
+                <span class="i18n-id">Gunakan visual cueing (panah penunjuk, kontras tajam) untuk mengunci atensi seketika.</span>
               </div>
             </div>
 
             <!-- Working Memory -->
             <div class="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/30 border-2 border-indigo-500/40 relative">
               <div class="absolute -top-3 right-4 px-2.5 py-0.5 bg-indigo-600 text-white text-[10px] font-bold rounded-full uppercase tracking-wider">
-                Critical Bottleneck
+                <span class="i18n-en">Critical Bottleneck</span><span class="i18n-id">Titik Kritis</span>
               </div>
               <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Phase 2</span>
-              <h3 class="text-base font-bold text-slate-900 dark:text-white mt-1">Working Memory (WM)</h3>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mt-1">
+                <span class="i18n-en">Working Memory (WM)</span><span class="i18n-id">Memori Kerja (WM)</span>
+              </h3>
               <div class="mt-4 space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                <p><strong>Duration:</strong> 15 &ndash; 30 seconds without active rehearsal.</p>
-                <p><strong>Capacity:</strong> Miller ($7 \pm 2$) or Cowan's modern benchmark of <strong>$4 \pm 1$ novel units</strong>.</p>
-                <p><strong>Baddeley's Model:</strong> Phonological Loop, Visuospatial Sketchpad, Central Executive, Episodic Buffer.</p>
+                <p>
+                  <strong><span class="i18n-en">Duration:</span><span class="i18n-id">Durasi:</span></strong>
+                  <span class="i18n-en">15 &ndash; 30 seconds without active rehearsal.</span>
+                  <span class="i18n-id">15 &ndash; 30 detik tanpa pengulangan aktif.</span>
+                </p>
+                <p>
+                  <strong><span class="i18n-en">Capacity:</span><span class="i18n-id">Kapasitas:</span></strong>
+                  <span class="i18n-en">Miller ($7 \pm 2$) or Cowan's modern benchmark of <strong>$4 \pm 1$ novel units</strong>.</span>
+                  <span class="i18n-id">Miller ($7 \pm 2$) atau tolok ukur Cowan terkini: <strong>$4 \pm 1$ unit informasi baru</strong>.</span>
+                </p>
+                <p>
+                  <strong><span class="i18n-en">Subsystems:</span><span class="i18n-id">Subsistem:</span></strong>
+                  <span class="i18n-en">Phonological Loop, Visuospatial Sketchpad, Central Executive, Episodic Buffer.</span>
+                  <span class="i18n-id">Phonological Loop, Visuospatial Sketchpad, Central Executive, Episodic Buffer.</span>
+                </p>
               </div>
               <div class="mt-4 p-2.5 rounded-xl bg-white dark:bg-slate-900 text-xs text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900/50">
-                <strong>EdTech Rule:</strong> Avoid split-attention. Never force learners to read dense subtitles while watching animations.
+                <strong><span class="i18n-en">EdTech Rule:</span><span class="i18n-id">Prinsip Tekpen:</span></strong>
+                <span class="i18n-en">Avoid split-attention. Never force learners to read dense subtitles while watching complex animations.</span>
+                <span class="i18n-id">Hindari pemisahan atensi. Jangan paksa siswa membaca teks subtitle padat saat menyimak animasi visual.</span>
               </div>
             </div>
 
             <!-- Long-Term Memory -->
             <div class="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-300 dark:border-emerald-800/60 relative">
               <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Phase 3</span>
-              <h3 class="text-base font-bold text-slate-900 dark:text-white mt-1">Long-Term Memory (LTM)</h3>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mt-1">
+                <span class="i18n-en">Long-Term Memory (LTM)</span><span class="i18n-id">Memori Jangka Panjang (LTM)</span>
+              </h3>
               <div class="mt-4 space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                <p><strong>Duration:</strong> Lifetime storage.</p>
-                <p><strong>Capacity:</strong> Virtually infinite.</p>
-                <p><strong>Structure:</strong> Organized into hierarchical <strong>Schemas</strong>. Schemas compress thousands of facts into a single manageable unit.</p>
+                <p>
+                  <strong><span class="i18n-en">Duration:</span><span class="i18n-id">Durasi:</span></strong>
+                  <span class="i18n-en">Permanent lifetime storage.</span>
+                  <span class="i18n-id">Penyimpanan permanen seumur hidup.</span>
+                </p>
+                <p>
+                  <strong><span class="i18n-en">Capacity:</span><span class="i18n-id">Kapasitas:</span></strong>
+                  <span class="i18n-en">Virtually infinite.</span>
+                  <span class="i18n-id">Secara praktis tak terbatas.</span>
+                </p>
+                <p>
+                  <strong><span class="i18n-en">Structure:</span><span class="i18n-id">Struktur:</span></strong>
+                  <span class="i18n-en">Organized into hierarchical <strong>Schemas</strong> that compress thousands of facts into a single manageable unit.</span>
+                  <span class="i18n-id">Tersusun dalam <strong>Skema</strong> hierarkis yang mengompresi ribuan fakta menjadi satu unit mental praktis.</span>
+                </p>
               </div>
               <div class="mt-4 p-2.5 rounded-xl bg-white dark:bg-slate-900 text-xs text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/50">
-                <strong>EdTech Tip:</strong> Use retrieval practice (quizzes, reflective pause points) to reinforce neural schema retrieval paths.
+                <strong><span class="i18n-en">EdTech Tip:</span><span class="i18n-id">Tip Tekpen:</span></strong>
+                <span class="i18n-en">Use retrieval practice (embedded quizzes, reflective pause points) to reinforce neural schema paths.</span>
+                <span class="i18n-id">Terapkan latihan pemanggilan (kuis terjeda, refleksi) guna memperkuat jejak pemanggilan skema.</span>
               </div>
             </div>
           </div>
@@ -343,33 +549,48 @@
           <div id="wm-test" class="mt-8 p-6 rounded-2xl bg-slate-900 text-white shadow-xl relative overflow-hidden">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-4">
               <div>
-                <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Interactive Cognitive Lab</span>
-                <h4 class="text-lg font-bold">Experience Working Memory Limits: The Chunking Experiment</h4>
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">
+                  <span class="i18n-en">Interactive Cognitive Lab</span>
+                  <span class="i18n-id">Laboratorium Kognitif Interaktif</span>
+                </span>
+                <h4 class="text-lg font-bold">
+                  <span class="i18n-en">Experience Working Memory Limits: The Chunking Experiment</span>
+                  <span class="i18n-id">Eksperimen Batas Memori Kerja & Teknik Chunking</span>
+                </h4>
               </div>
               <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Miller ($7\pm2$) vs Cowan ($4\pm1$)</span>
             </div>
 
             <p class="text-xs text-slate-300 mb-6">
-              Test your own working memory. Look at the numbers or words for 3 seconds, then try to recall them. Notice how chunking into meaningful schemas immediately doubles your retention.
+              <span class="i18n-en">Test your working memory span. Memorize the digits during the 3-second flash, then recall them. Notice how chunking into schemas immediately increases retention.</span>
+              <span class="i18n-id">Uji rentang memori kerja Anda. Ingat angka yang muncul selama 3 detik, lalu ketikkan kembali. Rasakan bagaimana teknik pengelompokan (chunking) melipatgandakan daya simpan mental Anda.</span>
             </p>
 
             <div id="memoryTestContainer" class="text-center py-6">
               <!-- Default state -->
               <div id="wmInitialState" class="space-y-4">
-                <p class="text-sm text-slate-400">Choose an experiment mode to test your digit span:</p>
+                <p class="text-sm text-slate-400">
+                  <span class="i18n-en">Choose an experiment mode to test your digit span:</span>
+                  <span class="i18n-id">Pilih mode eksperimen untuk menguji rentang digit Anda:</span>
+                </p>
                 <div class="flex flex-wrap justify-center gap-3">
                   <button onclick="startWmTest('unchunked')" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-medium text-xs text-white shadow-md transition">
-                    Test 1: Unchunked Stream (9 Random Digits)
+                    <span class="i18n-en">Test 1: Unchunked Stream (9 Random Digits)</span>
+                    <span class="i18n-id">Uji 1: Deret Acak Tanpa Pola (9 Digit)</span>
                   </button>
                   <button onclick="startWmTest('chunked')" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-medium text-xs text-white shadow-md transition">
-                    Test 2: Schema / Chunked Pattern (3 Blocks)
+                    <span class="i18n-en">Test 2: Schema / Chunked Pattern (3 Blocks)</span>
+                    <span class="i18n-id">Uji 2: Pola Skema / Chunked (3 Blok)</span>
                   </button>
                 </div>
               </div>
 
               <!-- Presentation State -->
               <div id="wmDisplayState" class="hidden">
-                <span class="text-xs text-slate-400 uppercase tracking-widest block mb-2">Memorize this sequence</span>
+                <span class="text-xs text-slate-400 uppercase tracking-widest block mb-2">
+                  <span class="i18n-en">Memorize this sequence</span>
+                  <span class="i18n-id">Ingat urutan angka berikut</span>
+                </span>
                 <div id="wmNumbersToMemorize" class="text-3xl sm:text-4xl font-mono font-extrabold text-amber-400 tracking-widest my-4">
                   ---
                 </div>
@@ -380,10 +601,14 @@
 
               <!-- Input State -->
               <div id="wmInputState" class="hidden space-y-4 max-w-sm mx-auto">
-                <span class="text-xs text-slate-300 block">Type the sequence from memory (digits only):</span>
+                <span class="text-xs text-slate-300 block">
+                  <span class="i18n-en">Type the sequence from memory (digits only):</span>
+                  <span class="i18n-id">Ketikkan urutan angka dari ingatan Anda:</span>
+                </span>
                 <input type="text" id="wmUserAnswer" maxlength="12" class="w-full text-center text-xl font-mono tracking-widest px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 <button onclick="checkWmAnswer()" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold transition">
-                  Submit to Working Memory Audit
+                  <span class="i18n-en">Submit to Working Memory Audit</span>
+                  <span class="i18n-id">Periksa Daya Ingat Kerja</span>
                 </button>
               </div>
 
@@ -392,7 +617,8 @@
                 <div id="wmResultHeading" class="font-bold text-sm"></div>
                 <p id="wmResultFeedback" class="text-xs text-slate-300 leading-relaxed"></p>
                 <button onclick="resetWmTest()" class="text-xs text-indigo-400 hover:text-indigo-300 font-semibold underline mt-2">
-                  Try another variation &rarr;
+                  <span class="i18n-en">Try another variation &rarr;</span>
+                  <span class="i18n-id">Coba variasi pengujian lain &rarr;</span>
                 </button>
               </div>
             </div>
@@ -405,57 +631,85 @@
             <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">04</span>
             <div>
               <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Sweller (1988) & Mayer (2020)</span>
-              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Cognitive Load Theory & Multimedia Principles</h2>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                <span class="i18n-en">Cognitive Load Theory & Multimedia Principles</span>
+                <span class="i18n-id">Teori Beban Kognitif & Prinsip Multimedia</span>
+              </h2>
             </div>
           </div>
 
           <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 text-sm leading-relaxed space-y-3">
-            <p>
+            <p class="i18n-en">
               John Sweller established that because working memory has hard structural limits, instructional design must manage how mental capacity is occupied. Total cognitive load is defined by the formula:
             </p>
+            <p class="i18n-id">
+              John Sweller merumuskan bahwa karena memori kerja memiliki batas kapasitas yang kaku, desain instruksional wajib mengelola alokasi beban mental pembelajar. Total beban kognitif dirumuskan dalam persamaan:
+            </p>
+            
             <div class="my-4 p-4 rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900 text-center font-mono text-base sm:text-lg font-bold text-indigo-900 dark:text-indigo-300">
               CL<sub>Total</sub> = CL<sub>Intrinsic</sub> + CL<sub>Extraneous</sub> + CL<sub>Germane</sub> &le; Capacity<sub>WM</sub>
             </div>
           </div>
 
-          <!-- The Three Loads Explained -->
+          <!-- The Three Loads Cards -->
           <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
               <div class="flex items-center space-x-2 font-bold text-slate-800 dark:text-slate-200 mb-2">
                 <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-                <span>Intrinsic Load (IL)</span>
+                <span>
+                  <span class="i18n-en">Intrinsic Load (IL)</span>
+                  <span class="i18n-id">Beban Intrinsik (IL)</span>
+                </span>
               </div>
               <p class="text-slate-600 dark:text-slate-400">
-                <strong>Origin:</strong> Inherent difficulty of the subject matter and element interactivity.
+                <strong><span class="i18n-en">Origin:</span><span class="i18n-id">Asal:</span></strong>
+                <span class="i18n-en">Inherent difficulty of the subject matter and element interactivity.</span>
+                <span class="i18n-id">Kompleksitas inheren materi ajar dan tingkat interaktivitas elemen.</span>
               </p>
               <p class="text-slate-500 mt-2">
-                <strong>Instructional Strategy:</strong> Manage through <em>segmenting</em> (pacing) and sequencing simple-to-complex.
+                <strong><span class="i18n-en">Strategy:</span><span class="i18n-id">Strategi:</span></strong>
+                <span class="i18n-en">Manage through <em>segmenting</em> (pacing) and simple-to-complex sequencing.</span>
+                <span class="i18n-id">Kelola melalui <em>segmenting</em> (pemenggalan langkah) dan sekuens sederhana ke kompleks.</span>
               </p>
             </div>
 
             <div class="p-4 rounded-2xl bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/40">
               <div class="flex items-center space-x-2 font-bold text-rose-700 dark:text-rose-400 mb-2">
                 <span class="w-3 h-3 rounded-full bg-rose-500"></span>
-                <span>Extraneous Load (EL)</span>
+                <span>
+                  <span class="i18n-en">Extraneous Load (EL)</span>
+                  <span class="i18n-id">Beban Ekstraneus (EL)</span>
+                </span>
               </div>
               <p class="text-rose-900/80 dark:text-rose-300/80">
-                <strong>Origin:</strong> Poor interface layouts, decorative visuals, redundant text, and chaotic navigation.
+                <strong><span class="i18n-en">Origin:</span><span class="i18n-id">Asal:</span></strong>
+                <span class="i18n-en">Poor interface layouts, decorative visuals, redundant text, and chaotic navigation.</span>
+                <span class="i18n-id">Tata letak antarmuka yang semrawut, hiasan visual nirfaedah, teks berulang, dan navigasi membingungkan.</span>
               </p>
               <p class="text-rose-700 dark:text-rose-400 mt-2 font-semibold">
-                <strong>Instructional Strategy:</strong> <u>Aggressively eliminate</u>. Every ounce of EL steals space from schema building.
+                <strong><span class="i18n-en">Strategy:</span><span class="i18n-id">Strategi:</span></strong>
+                <span class="i18n-en"><u>Aggressively eliminate</u>. EL wastes working memory and halts schema building.</span>
+                <span class="i18n-id"><u>Eliminasi agresif</u>. Beban ekstraneus menyita ruang pembentukan skema mental.</span>
               </p>
             </div>
 
             <div class="p-4 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40">
               <div class="flex items-center space-x-2 font-bold text-emerald-700 dark:text-emerald-400 mb-2">
                 <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                <span>Germane Load (GL)</span>
+                <span>
+                  <span class="i18n-en">Germane Load (GL)</span>
+                  <span class="i18n-id">Beban German (GL)</span>
+                </span>
               </div>
               <p class="text-emerald-900/80 dark:text-emerald-300/80">
-                <strong>Origin:</strong> Productive mental work dedicated to processing and integrating new knowledge into schemas.
+                <strong><span class="i18n-en">Origin:</span><span class="i18n-id">Asal:</span></strong>
+                <span class="i18n-en">Productive mental work dedicated to processing and integrating new knowledge into schemas.</span>
+                <span class="i18n-id">Upaya mental produktif yang didedikasikan untuk mengintegrasikan pengetahuan baru ke skema memori.</span>
               </p>
               <p class="text-emerald-600 dark:text-emerald-400 mt-2">
-                <strong>Instructional Strategy:</strong> Foster through worked examples, self-explanation prompts, and analogy mapping.
+                <strong><span class="i18n-en">Strategy:</span><span class="i18n-id">Strategi:</span></strong>
+                <span class="i18n-en">Foster through worked examples, self-explanation prompts, and analogy mapping.</span>
+                <span class="i18n-id">Fasilitasi dengan worked examples, pertanyaan elaborasi mandiri, dan jembatan analogi.</span>
               </p>
             </div>
           </div>
@@ -464,8 +718,14 @@
           <div id="clt-simulator" class="mt-8 p-6 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700">
             <div class="flex items-center justify-between mb-4">
               <div>
-                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Working Memory Overload Simulator</h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Adjust the instructional parameters to see if the learner enters Cognitive Overload:</p>
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white">
+                  <span class="i18n-en">Working Memory Overload Simulator</span>
+                  <span class="i18n-id">Simulator Overload Beban Memori Kerja</span>
+                </h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">
+                  <span class="i18n-en">Adjust the instructional parameters to see if the learner enters Cognitive Overload:</span>
+                  <span class="i18n-id">Atur parameter beban instruksional untuk menguji apakah siswa mengalami Cognitive Overload:</span>
+                </p>
               </div>
               <span id="overloadBadge" class="text-xs px-3 py-1 rounded-full font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
                 Optimal Learning
@@ -476,37 +736,57 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-4">
               <div>
                 <div class="flex justify-between text-xs font-semibold mb-1">
-                  <span class="text-blue-600 dark:text-blue-400">Intrinsic Load (Concept Difficulty)</span>
+                  <span class="text-blue-600 dark:text-blue-400">
+                    <span class="i18n-en">Intrinsic Load (Difficulty)</span>
+                    <span class="i18n-id">Beban Intrinsik (Materi)</span>
+                  </span>
                   <span id="valIntrinsic">3 / 5</span>
                 </div>
                 <input type="range" id="inputIntrinsic" min="1" max="5" value="3" class="w-full h-2 bg-slate-300 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600">
-                <span class="text-[11px] text-slate-400 block mt-1">Topic element complexity</span>
+                <span class="text-[11px] text-slate-400 block mt-1">
+                  <span class="i18n-en">Topic complexity</span><span class="i18n-id">Tingkat kerumitan topik</span>
+                </span>
               </div>
 
               <div>
                 <div class="flex justify-between text-xs font-semibold mb-1">
-                  <span class="text-rose-600 dark:text-rose-400">Extraneous Load (Bad Design)</span>
+                  <span class="text-rose-600 dark:text-rose-400">
+                    <span class="i18n-en">Extraneous Load (Bad UI)</span>
+                    <span class="i18n-id">Beban Ekstraneus (UI Buruk)</span>
+                  </span>
                   <span id="valExtraneous">2 / 5</span>
                 </div>
                 <input type="range" id="inputExtraneous" min="0" max="5" value="2" class="w-full h-2 bg-slate-300 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-rose-600">
-                <span class="text-[11px] text-slate-400 block mt-1">Cluttered UI, distracting music</span>
+                <span class="text-[11px] text-slate-400 block mt-1">
+                  <span class="i18n-en">Cluttered layout, distraction</span><span class="i18n-id">UI semrawut & distraksi</span>
+                </span>
               </div>
 
               <div>
                 <div class="flex justify-between text-xs font-semibold mb-1">
-                  <span class="text-emerald-600 dark:text-emerald-400">Germane Load (Active Reflection)</span>
+                  <span class="text-emerald-600 dark:text-emerald-400">
+                    <span class="i18n-en">Germane Load (Reflection)</span>
+                    <span class="i18n-id">Beban German (Refleksi)</span>
+                  </span>
                   <span id="valGermane">3 / 5</span>
                 </div>
                 <input type="range" id="inputGermane" min="1" max="5" value="3" class="w-full h-2 bg-slate-300 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-600">
-                <span class="text-[11px] text-slate-400 block mt-1">Schema building activities</span>
+                <span class="text-[11px] text-slate-400 block mt-1">
+                  <span class="i18n-en">Active schema integration</span><span class="i18n-id">Aktivitas pemaknaan skema</span>
+                </span>
               </div>
             </div>
 
             <!-- Capacity Meter Bar -->
             <div class="mt-6 space-y-2">
               <div class="flex justify-between text-xs font-mono font-semibold">
-                <span>Working Memory Load: <strong id="totalLoadDisplay" class="text-sm font-bold text-slate-900 dark:text-white">8</strong> / 10 Units</span>
-                <span class="text-slate-400">Limit: 10 Units</span>
+                <span>
+                  <span class="i18n-en">Working Memory Load:</span><span class="i18n-id">Beban Memori Kerja:</span>
+                  <strong id="totalLoadDisplay" class="text-sm font-bold text-slate-900 dark:text-white">8</strong> / 10 Units
+                </span>
+                <span class="text-slate-400">
+                  <span class="i18n-en">Limit: 10 Units</span><span class="i18n-id">Batas: 10 Unit</span>
+                </span>
               </div>
               <div class="w-full h-6 bg-slate-200 dark:bg-slate-700 rounded-xl overflow-hidden flex relative">
                 <div id="barIntrinsic" style="width: 30%" class="h-full bg-blue-500 transition-all duration-200" title="Intrinsic Load"></div>
@@ -516,7 +796,7 @@
                 <div class="absolute right-0 top-0 bottom-0 w-0.5 bg-red-600 shadow"></div>
               </div>
               <p id="simulatorDiagnosis" class="text-xs text-slate-600 dark:text-slate-300 pt-1">
-                &bull; Status: Total demand is within working memory capacity. Learners can actively build schemas.
+                <!-- Injected via JavaScript based on language and sliders -->
               </p>
             </div>
           </div>
@@ -524,7 +804,8 @@
           <!-- Mayer's CTML Principles Tabs -->
           <div class="mt-10">
             <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider text-xs mb-3">
-              Mayer's Cognitive Theory of Multimedia Learning (CTML)
+              <span class="i18n-en">Mayer's Cognitive Theory of Multimedia Learning (CTML)</span>
+              <span class="i18n-id">Prinsip Teori Kognitif Pembelajaran Multimedia (CTML) Mayer</span>
             </h4>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
               <button onclick="switchCtmlTab('modality')" id="tabBtn-modality" class="ctml-tab active py-2 px-3 text-xs font-semibold rounded-xl bg-indigo-600 text-white transition">
@@ -543,7 +824,7 @@
 
             <!-- CTML Cards -->
             <div id="ctmlContent" class="p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 leading-relaxed min-h-[140px]">
-              <!-- Dynamic JS content injected here -->
+              <!-- Dynamic JS content injected here according to active language -->
             </div>
           </div>
         </section>
@@ -554,55 +835,79 @@
             <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">05</span>
             <div>
               <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Piaget & Ausubel</span>
-              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Schema Theory & Meaningful Learning</h2>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                <span class="i18n-en">Schema Theory & Meaningful Learning</span>
+                <span class="i18n-id">Teori Skema & Pembelajaran Bermakna</span>
+              </h2>
             </div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Piaget's Cycle -->
             <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60">
-              <h3 class="font-bold text-sm text-slate-900 dark:text-white mb-2 flex items-center space-x-2">
-                <span>Jean Piaget: Cognitive Adaptation Cycle</span>
+              <h3 class="font-bold text-sm text-slate-900 dark:text-white mb-2">
+                <span class="i18n-en">Jean Piaget: Cognitive Adaptation Cycle</span>
+                <span class="i18n-id">Jean Piaget: Siklus Adaptasi Kognitif</span>
               </h3>
               <p class="text-xs text-slate-600 dark:text-slate-400 mb-4">
-                Learning occurs when students cycle through mental balance and productive cognitive conflict:
+                <span class="i18n-en">Learning occurs when learners navigate through balance and productive cognitive conflict:</span>
+                <span class="i18n-id">Pembelajaran terjadi saat mahasiswa menavigasi keseimbangan dan konflik kognitif produktif:</span>
               </p>
               <div class="space-y-2.5 text-xs">
                 <div class="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                  <span class="font-bold text-indigo-600 dark:text-indigo-400">1. Assimilation:</span> Incorporating new observations into existing schemas without altering the baseline structure.
+                  <span class="font-bold text-indigo-600 dark:text-indigo-400">1. Assimilation / Asimilasi:</span>
+                  <span class="i18n-en">Incorporating new observations into existing schemas without altering baseline structure.</span>
+                  <span class="i18n-id">Mengintegrasikan informasi baru ke skema lama tanpa mengubah struktur mental dasar.</span>
                 </div>
                 <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/50">
-                  <span class="font-bold text-amber-700 dark:text-amber-400">2. Cognitive Disequilibrium:</span> When new information conflicts with existing beliefs, creating curiosity and cognitive tension.
+                  <span class="font-bold text-amber-700 dark:text-amber-400">2. Cognitive Disequilibrium:</span>
+                  <span class="i18n-en">When new facts clash with prior beliefs, triggering intellectual tension and inquiry.</span>
+                  <span class="i18n-id">Saat fakta baru bertentangan dengan keyakinan lama, memicu rasa ingin tahu dan penyelidikan mendalam.</span>
                 </div>
                 <div class="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                  <span class="font-bold text-emerald-600 dark:text-emerald-400">3. Accommodation:</span> Restructuring the schema or engineering a new one to fit novel data.
+                  <span class="font-bold text-emerald-600 dark:text-emerald-400">3. Accommodation / Akomodasi:</span>
+                  <span class="i18n-en">Restructuring existing schemas or creating new mental models to fit novel data.</span>
+                  <span class="i18n-id">Merestrukturisasi skema lama atau membangun skema baru agar sesuai dengan data baru.</span>
                 </div>
                 <div class="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                  <span class="font-bold text-purple-600 dark:text-purple-400">4. Equilibration:</span> Reaching a higher, more sophisticated level of cognitive stability.
+                  <span class="font-bold text-purple-600 dark:text-purple-400">4. Equilibration / Ekuilibrasi:</span>
+                  <span class="i18n-en">Restoring higher-level conceptual stability and deeper understanding.</span>
+                  <span class="i18n-id">Memulihkan kestabilan konseptual pada tingkat pemahaman yang lebih tinggi.</span>
                 </div>
               </div>
             </div>
 
             <!-- Ausubel's Meaningful Learning -->
             <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60">
-              <h3 class="font-bold text-sm text-slate-900 dark:text-white mb-2 flex items-center space-x-2">
-                <span>David Ausubel: Meaningful Learning</span>
+              <h3 class="font-bold text-sm text-slate-900 dark:text-white mb-2">
+                <span class="i18n-en">David Ausubel: Meaningful Learning</span>
+                <span class="i18n-id">David Ausubel: Pembelajaran Bermakna</span>
               </h3>
               <p class="text-xs text-slate-600 dark:text-slate-400 mb-4">
-                The most important single factor influencing learning is what the student already knows (<strong>prior knowledge</strong>).
+                <span class="i18n-en">The single most important factor influencing learning is what the student already knows (<strong>prior knowledge</strong>).</span>
+                <span class="i18n-id">Faktor tunggal terpenting yang memengaruhi pembelajaran adalah apa yang telah diketahui siswa (<strong>pengetahuan awal</strong>).</span>
               </p>
               <div class="space-y-3 text-xs">
                 <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/40 text-slate-700 dark:text-slate-300">
-                  <strong class="text-rose-700 dark:text-rose-400 block mb-1">Rote Memorization:</strong>
-                  Facts are memorized verbatim without linking to pre-existing anchors. Result: rapid decay and zero transfer ability.
+                  <strong class="text-rose-700 dark:text-rose-400 block mb-1">
+                    <span class="i18n-en">Rote Memorization:</span><span class="i18n-id">Hafalan Mekanis (Rote Learning):</span>
+                  </strong>
+                  <span class="i18n-en">Facts memorized word-for-word without linking to pre-existing anchors. Result: rapid decay and zero transfer.</span>
+                  <span class="i18n-id">Fakta dihafal harfiah tanpa dikaitkan ke jangkar kognitif yang ada. Akibatnya: cepat terlupakan dan sulit ditransfer.</span>
                 </div>
                 <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40 text-slate-700 dark:text-slate-300">
-                  <strong class="text-emerald-700 dark:text-emerald-400 block mb-1">Meaningful Learning (Subsumption):</strong>
-                  New facts bind deliberately to existing cognitive nodes (subsumers), enabling lifelong retention and creative problem-solving.
+                  <strong class="text-emerald-700 dark:text-emerald-400 block mb-1">
+                    <span class="i18n-en">Meaningful Learning (Subsumption):</span><span class="i18n-id">Belajar Bermakna (Subsumpsi):</span>
+                  </strong>
+                  <span class="i18n-en">New facts deliberately bind to existing cognitive anchors (subsumers), enabling lifelong retention.</span>
+                  <span class="i18n-id">Fakta baru ditautkan secara sengaja ke struktur kognitif awal (subsumer), mewujudkan ingatan jangka panjang.</span>
                 </div>
                 <div class="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/40 text-slate-700 dark:text-slate-300">
-                  <strong class="text-indigo-700 dark:text-indigo-400 block mb-1">Advance Organizers:</strong>
-                  High-level introductory frameworks presented before new material to act as mental bridges between what learners know and what they must grasp.
+                  <strong class="text-indigo-700 dark:text-indigo-400 block mb-1">
+                    <span class="i18n-en">Advance Organizers:</span><span class="i18n-id">Advance Organizer:</span>
+                  </strong>
+                  <span class="i18n-en">Introductory frameworks presented prior to new material to act as mental bridges between what learners know and what they must grasp.</span>
+                  <span class="i18n-id">Kerangka pembuka di awal sesi yang menjembatani pengetahuan yang telah dikuasai dengan materi baru yang abstrak.</span>
                 </div>
               </div>
             </div>
@@ -615,43 +920,56 @@
             <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">06</span>
             <div>
               <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Flavell (1979) & Zimmerman (2002)</span>
-              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Metacognition & Self-Regulated Learning (SRL)</h2>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                <span class="i18n-en">Metacognition & Self-Regulated Learning (SRL)</span>
+                <span class="i18n-id">Metakognisi & Regulasi Diri (SRL)</span>
+              </h2>
             </div>
           </div>
 
           <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-            Metacognition is commonly defined as <em>"thinking about one's own thinking"</em>—the conscious monitoring and regulation of one's own cognitive processes. In digital online learning, where external physical supervision is reduced, student mastery hinges upon the <strong>Self-Regulated Learning (SRL) Cycle</strong>:
+            <span class="i18n-en">Metacognition is commonly defined as <em>"thinking about one's own thinking"</em>—the conscious monitoring and regulation of one's own cognitive processes. In online learning, student mastery hinges upon the <strong>Self-Regulated Learning (SRL) Cycle</strong>:</span>
+            <span class="i18n-id">Metakognisi didefinisikan sebagai <em>"memikirkan proses berpikir sendiri"</em>—pemantauan dan regulasi sadar atas pemrosesan kognitif mandiri. Dalam perkuliahan daring, keberhasilan belajar sangat bertumpu pada <strong>Siklus Regulasi Diri (SRL)</strong>:</span>
           </p>
 
-          <!-- Zimmerman's SRL Cycle Interactive Cards -->
+          <!-- Zimmerman's SRL Cycle Cards -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="p-5 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/50">
               <div class="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-xs mb-3">1</div>
-              <h4 class="font-bold text-sm text-slate-900 dark:text-white">Forethought & Planning</h4>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white">
+                <span class="i18n-en">Forethought & Planning</span>
+                <span class="i18n-id">Fase Perencanaan (Forethought)</span>
+              </h4>
               <ul class="mt-2 space-y-1 text-xs text-slate-600 dark:text-slate-300 list-disc list-inside">
-                <li>Goal setting & milestone mapping.</li>
-                <li>Strategy selection (e.g., self-quizzing vs skimming).</li>
-                <li>Self-efficacy & motivation assessment.</li>
+                <li><span class="i18n-en">Goal setting & milestone mapping.</span><span class="i18n-id">Penetapan target & pembagian waktu.</span></li>
+                <li><span class="i18n-en">Selecting cognitive study strategies.</span><span class="i18n-id">Pemilihan strategi kognitif belajar.</span></li>
+                <li><span class="i18n-en">Self-efficacy & motivation check.</span><span class="i18n-id">Kalibrasi efikasi diri & motivasi.</span></li>
               </ul>
             </div>
 
             <div class="p-5 rounded-2xl bg-purple-50/50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-900/50">
               <div class="w-7 h-7 rounded-lg bg-purple-600 text-white flex items-center justify-center font-bold text-xs mb-3">2</div>
-              <h4 class="font-bold text-sm text-slate-900 dark:text-white">Performance Control</h4>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white">
+                <span class="i18n-en">Performance Control</span>
+                <span class="i18n-id">Kontrol Kinerja (Performance)</span>
+              </h4>
               <ul class="mt-2 space-y-1 text-xs text-slate-600 dark:text-slate-300 list-disc list-inside">
-                <li>Attention focusing & digital distraction shielding.</li>
-                <li>Self-instruction and step-by-step checkpointing.</li>
-                <li>Active elaborative note-taking.</li>
+                <li><span class="i18n-en">Attention focusing & noise shielding.</span><span class="i18n-id">Fokus atensi & isolasi distraksi gawai.</span></li>
+                <li><span class="i18n-en">Self-instruction and checkpointing.</span><span class="i18n-id">Instruksi diri & pos evaluasi bertahap.</span></li>
+                <li><span class="i18n-en">Active elaborative note-taking.</span><span class="i18n-id">Pencatatan elaboratif aktif.</span></li>
               </ul>
             </div>
 
             <div class="p-5 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50">
               <div class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs mb-3">3</div>
-              <h4 class="font-bold text-sm text-slate-900 dark:text-white">Self-Reflection</h4>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white">
+                <span class="i18n-en">Self-Reflection</span>
+                <span class="i18n-id">Refleksi Diri (Self-Reflection)</span>
+              </h4>
               <ul class="mt-2 space-y-1 text-xs text-slate-600 dark:text-slate-300 list-disc list-inside">
-                <li>Self-evaluation against rubric standards.</li>
-                <li>Attribution of errors to effort vs strategy.</li>
-                <li>Adapting study habits for subsequent modules.</li>
+                <li><span class="i18n-en">Self-evaluation against rubric standards.</span><span class="i18n-id">Evaluasi hasil terhadap rubrik capaian.</span></li>
+                <li><span class="i18n-en">Attribution to effort and strategy.</span><span class="i18n-id">Atribusi hasil pada upaya & metode.</span></li>
+                <li><span class="i18n-en">Adapting strategies for future units.</span><span class="i18n-id">Penyesuaian strategi di bab berikutnya.</span></li>
               </ul>
             </div>
           </div>
@@ -662,18 +980,27 @@
           <div class="flex items-center space-x-3 mb-6">
             <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">07</span>
             <div>
-              <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Theory Into Practice</span>
-              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Educational Technology Integration Matrix</h2>
+              <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">
+                <span class="i18n-en">Theory Into Practice</span>
+                <span class="i18n-id">Penerapan Teori ke Praktik</span>
+              </span>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                <span class="i18n-en">Educational Technology Integration Matrix</span>
+                <span class="i18n-id">Matriks Integrasi Teknologi Pendidikan</span>
+              </h2>
             </div>
           </div>
 
           <!-- Live Filter Bar -->
           <div class="flex items-center justify-between mb-4">
-            <span class="text-xs text-slate-500">Filter design principles:</span>
+            <span class="text-xs text-slate-500">
+              <span class="i18n-en">Filter principles:</span>
+              <span class="i18n-id">Filter prinsip:</span>
+            </span>
             <div class="flex gap-2">
               <button onclick="filterMatrix('all')" class="matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-indigo-600 text-white">All</button>
-              <button onclick="filterMatrix('clt')" class="matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Load Theory</button>
-              <button onclick="filterMatrix('schema')" class="matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Schema/Piaget</button>
+              <button onclick="filterMatrix('clt')" class="matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">CLT</button>
+              <button onclick="filterMatrix('schema')" class="matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Schema</button>
               <button onclick="filterMatrix('meta')" class="matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Metacognition</button>
             </div>
           </div>
@@ -683,42 +1010,87 @@
             <table class="w-full text-left text-xs">
               <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-700">
                 <tr>
-                  <th class="p-3.5">Cognitive Principle</th>
-                  <th class="p-3.5">Cognitive Phenomenon</th>
-                  <th class="p-3.5 text-rose-600 dark:text-rose-400">Common EdTech Flaw</th>
-                  <th class="p-3.5 text-emerald-600 dark:text-emerald-400">Instructional Solution</th>
+                  <th class="p-3.5"><span class="i18n-en">Cognitive Principle</span><span class="i18n-id">Prinsip Kognitif</span></th>
+                  <th class="p-3.5"><span class="i18n-en">Phenomenon</span><span class="i18n-id">Fenomena Kognitif</span></th>
+                  <th class="p-3.5 text-rose-600 dark:text-rose-400"><span class="i18n-en">Common EdTech Flaw</span><span class="i18n-id">Kesalahan Desain Tekpen</span></th>
+                  <th class="p-3.5 text-emerald-600 dark:text-emerald-400"><span class="i18n-en">Instructional Solution</span><span class="i18n-id">Solusi Teknologi Instruksional</span></th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
                 <tr class="matrix-row clt hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
                   <td class="p-3.5 font-bold text-slate-900 dark:text-white">Dual Channels (Baddeley)</td>
-                  <td class="p-3.5">Processing bottlenecks across auditory and visual channels.</td>
-                  <td class="p-3.5 text-rose-500 font-medium">Instructor reading dense on-screen slide text aloud during webinars.</td>
-                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">Use minimal visual diagrams on slides while providing spoken narration.</td>
+                  <td class="p-3.5">
+                    <span class="i18n-en">Bottlenecks across auditory and visual channels.</span>
+                    <span class="i18n-id">Hambatan kapasitas kanal auditori dan visual simultan.</span>
+                  </td>
+                  <td class="p-3.5 text-rose-500 font-medium">
+                    <span class="i18n-en">Lecturer reading dense on-screen slide text aloud.</span>
+                    <span class="i18n-id">Dosen membaca teks slide yang padat kata-per-kata.</span>
+                  </td>
+                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">
+                    <span class="i18n-en">Use concise visual diagrams with spoken voice narration.</span>
+                    <span class="i18n-id">Gunakan diagram visual minimalis didampingi penjelasan lisan.</span>
+                  </td>
                 </tr>
                 <tr class="matrix-row clt hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
                   <td class="p-3.5 font-bold text-slate-900 dark:text-white">Sweller's CLT</td>
-                  <td class="p-3.5">Extraneous cognitive overload from interface noise.</td>
-                  <td class="p-3.5 text-rose-500 font-medium">LMS screens with multiple sidebars, animated ads, and nested menus.</td>
-                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">Apply progressive disclosure; reveal advanced settings only on demand.</td>
+                  <td class="p-3.5">
+                    <span class="i18n-en">Extraneous overload from messy interface layout.</span>
+                    <span class="i18n-id">Beban ekstraneus akibat antarmuka yang semrawut.</span>
+                  </td>
+                  <td class="p-3.5 text-rose-500 font-medium">
+                    <span class="i18n-en">LMS pages packed with multi-nested menus and sidebars.</span>
+                    <span class="i18n-id">LMS dipenuhi menu bertingkat, banner berkedip, dan sidebar ganda.</span>
+                  </td>
+                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">
+                    <span class="i18n-en">Apply progressive disclosure; reveal tools only on demand.</span>
+                    <span class="i18n-id">Terapkan progressive disclosure; tampilkan alat hanya saat dibutuhkan.</span>
+                  </td>
                 </tr>
                 <tr class="matrix-row schema hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
                   <td class="p-3.5 font-bold text-slate-900 dark:text-white">Ausubel's Subsumption</td>
-                  <td class="p-3.5">Absence of anchoring mental nodes for abstract facts.</td>
-                  <td class="p-3.5 text-rose-500 font-medium">Teaching programming syntax or math formulas without real-world context.</td>
-                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">Open lessons with visual advance organizers and everyday analogies.</td>
+                  <td class="p-3.5">
+                    <span class="i18n-en">Lack of anchoring nodes for abstract concepts.</span>
+                    <span class="i18n-id">Ketiadaan jangkar kognitif untuk konsep abstrak.</span>
+                  </td>
+                  <td class="p-3.5 text-rose-500 font-medium">
+                    <span class="i18n-en">Teaching code syntax or formulas without context.</span>
+                    <span class="i18n-id">Mengajar sintaks kode atau rumus tanpa analogi dunia nyata.</span>
+                  </td>
+                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">
+                    <span class="i18n-en">Open units with advance organizers and everyday analogies.</span>
+                    <span class="i18n-id">Buka modul dengan advance organizer dan analogi kontekstual.</span>
+                  </td>
                 </tr>
                 <tr class="matrix-row schema hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
                   <td class="p-3.5 font-bold text-slate-900 dark:text-white">Piaget's Disequilibrium</td>
-                  <td class="p-3.5">Passive compliance with zero intrinsic curiosity.</td>
-                  <td class="p-3.5 text-rose-500 font-medium">Delivering long, monotonic lecture videos with no pause questions.</td>
-                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">Start with paradoxes, counter-intuitive data sets, or anomaly puzzles.</td>
+                  <td class="p-3.5">
+                    <span class="i18n-en">Passive complacency with zero intrinsic curiosity.</span>
+                    <span class="i18n-id">Keterpanaan pasif tanpa stimulasi rasa ingin tahu.</span>
+                  </td>
+                  <td class="p-3.5 text-rose-500 font-medium">
+                    <span class="i18n-en">Monotonic video recordings with no interactive pauses.</span>
+                    <span class="i18n-id">Video rekaman panjang tanpa jeda pertanyaan berpikir.</span>
+                  </td>
+                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">
+                    <span class="i18n-en">Present paradoxes, surprising counter-intuitive data sets.</span>
+                    <span class="i18n-id">Awali dengan paradoks ilmiah atau data anomali yang mengejutkan.</span>
+                  </td>
                 </tr>
                 <tr class="matrix-row meta hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
                   <td class="p-3.5 font-bold text-slate-900 dark:text-white">Flavell's Metacognition</td>
-                  <td class="p-3.5">Illusion of competence (feeling knowledgeable by simply watching).</td>
-                  <td class="p-3.5 text-rose-500 font-medium">Students speed-watching videos without testing their comprehension.</td>
-                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">Embed mandatory interactive check-in questions directly in the timeline.</td>
+                  <td class="p-3.5">
+                    <span class="i18n-en">Illusion of competence (feeling learned by skimming).</span>
+                    <span class="i18n-id">Ilusi kompetensi (merasa paham hanya karena menonton).</span>
+                  </td>
+                  <td class="p-3.5 text-rose-500 font-medium">
+                    <span class="i18n-en">Speed-watching video lessons without comprehension tests.</span>
+                    <span class="i18n-id">Menonton video pada kecepatan 2x tanpa menguji pemahaman.</span>
+                  </td>
+                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">
+                    <span class="i18n-en">Embed mandatory retrieval checkpoints directly in the timeline.</span>
+                    <span class="i18n-id">Sisipkan pos kuis formatif wajib langsung di lini masa video.</span>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -731,33 +1103,49 @@
             <div class="flex items-center space-x-3">
               <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-600 text-white font-bold text-sm">08</span>
               <div>
-                <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Student Project Lab</span>
-                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Cognitive Audit Worksheet: Online Tutoring App</h2>
+                <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">
+                  <span class="i18n-en">Student Project Lab</span>
+                  <span class="i18n-id">Laboratorium Proyek Mahasiswa</span>
+                </span>
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                  <span class="i18n-en">Cognitive Audit Worksheet: Online Tutoring App</span>
+                  <span class="i18n-id">Lembar Kerja Audit Kognitif: Aplikasi Bimbingan Daring</span>
+                </h2>
               </div>
             </div>
             <span class="hidden sm:inline-flex px-3 py-1 bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold rounded-full">
-              Graded Lab Case
+              <span class="i18n-en">Graded Lab Case</span>
+              <span class="i18n-id">Kasus Praktikum</span>
             </span>
           </div>
 
           <!-- Scenario Box -->
           <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 mb-6">
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-2">Audit Scenario: "High School Physics - Newton's Laws"</h4>
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-2">
+              <span class="i18n-en">Audit Scenario: "High School Physics - Newton's Laws"</span>
+              <span class="i18n-id">Skenario Audit: "Fisika SMA - Hukum Gerak Newton"</span>
+            </h4>
             <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed italic border-l-4 border-indigo-500 pl-3">
-              "The online tutoring screen displays a live physics simulation. The interface is split into four crowded panes: a webcam feed of the tutor reciting mathematical formulas, a continuous scrolling ticker of textbook definitions running along the bottom, an animated vector diagram moving swiftly in the center, and an active social chat populated with animated emoji stickers on the right. Fast-paced instrumental EDM music plays continuously in the background."
+              <span class="i18n-en">"The online tutoring screen displays a live physics simulation. The interface is split into four crowded panes: a webcam feed of the tutor reciting mathematical formulas, a continuous scrolling ticker of textbook definitions running along the bottom, an animated vector diagram moving swiftly in the center, and an active social chat populated with animated emoji stickers on the right. Fast-paced instrumental EDM music plays continuously in the background."</span>
+              <span class="i18n-id">"Layar bimbingan online menampilkan simulasi fisika interaktif. Antarmuka terbagi menjadi empat jendela padat: siaran kamera tutor melafalkan rumus matematis, teks berjalan di bagian bawah yang memuat definisi buku teks, diagram vektor animasi yang bergerak cepat di tengah, dan obrolan obrolan langsung bertabur stiker animasi di sisi kanan. Musik instrumen EDM berkecepatan tinggi diputar tanpa henti sebagai latar belakang."</span>
             </p>
           </div>
 
           <!-- Interactive Visual Simulation: Bad vs Optimized UI -->
           <div class="mb-8">
             <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Live Interface Preview:</span>
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">
+                <span class="i18n-en">Live Interface Preview:</span>
+                <span class="i18n-id">Pratinjau Antarmuka Aplikasi:</span>
+              </span>
               <div class="inline-flex p-1 rounded-xl bg-slate-200 dark:bg-slate-800">
                 <button onclick="setInterfaceDemo('cluttered')" id="btnViewCluttered" class="px-3 py-1 rounded-lg text-xs font-bold bg-rose-600 text-white transition">
-                  Current Cluttered Layout (Overloaded)
+                  <span class="i18n-en">Cluttered Layout (Overloaded)</span>
+                  <span class="i18n-id">Desain Semrawut (Overload)</span>
                 </button>
                 <button onclick="setInterfaceDemo('optimized')" id="btnViewOptimized" class="px-3 py-1 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-white transition">
-                  Optimized Cognitive Redesign
+                  <span class="i18n-en">Optimized Redesign</span>
+                  <span class="i18n-id">Desain Bersih Teroptimasi</span>
                 </button>
               </div>
             </div>
@@ -768,30 +1156,40 @@
               <div id="viewCluttered" class="space-y-3">
                 <div class="flex items-center justify-between border-b border-rose-900/60 pb-2">
                   <span class="text-xs font-mono text-rose-400 font-bold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span> High Extraneous Cognitive Load Detected
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                    <span class="i18n-en">High Extraneous Cognitive Load Detected</span>
+                    <span class="i18n-id">Terdeteksi Beban Kognitif Ekstraneus Sangat Tinggi</span>
                   </span>
-                  <span class="text-[10px] bg-rose-950 text-rose-300 px-2 py-0.5 rounded border border-rose-800">Music Playing: Upbeat EDM &bull; 130 BPM</span>
+                  <span class="text-[10px] bg-rose-950 text-rose-300 px-2 py-0.5 rounded border border-rose-800">
+                    <span class="i18n-en">Audio: Upbeat EDM &bull; 130 BPM</span>
+                    <span class="i18n-id">Audio Latar: EDM Cepat &bull; 130 BPM</span>
+                  </span>
                 </div>
                 <div class="grid grid-cols-12 gap-2 text-center text-xs">
-                  <!-- Vector animation -->
                   <div class="col-span-6 p-4 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-center items-center">
                     <span class="text-indigo-400 font-mono font-bold">F = m &times; a</span>
-                    <div class="mt-2 text-[10px] text-slate-400 animate-bounce">Vector Diagram Moving Fast &rarr;</div>
+                    <div class="mt-2 text-[10px] text-slate-400 animate-bounce">
+                      <span class="i18n-en">Vector Diagram Moving Fast &rarr;</span>
+                      <span class="i18n-id">Diagram Vektor Bergerak Cepat &rarr;</span>
+                    </div>
                   </div>
-                  <!-- Webcam -->
                   <div class="col-span-3 p-3 rounded-xl bg-slate-900 border border-slate-800 flex flex-col justify-center items-center">
                     <span class="text-2xl mb-1">👨‍🏫</span>
-                    <span class="text-[10px] text-slate-400">Tutor Talking Fast</span>
+                    <span class="text-[10px] text-slate-400">
+                      <span class="i18n-en">Tutor Talking Fast</span>
+                      <span class="i18n-id">Tutor Bicara Cepat</span>
+                    </span>
                   </div>
-                  <!-- Social stickers -->
                   <div class="col-span-3 p-2 rounded-xl bg-slate-900 border border-slate-800 overflow-hidden text-[10px] text-slate-400">
                     <div class="text-amber-400 font-bold mb-1">Live Chat</div>
                     <div class="animate-pulse">🔥 😂 🎉 🚀</div>
                   </div>
                 </div>
-                <!-- Scrolling text ticker -->
                 <div class="p-2 rounded bg-rose-950/60 border border-rose-800 text-[10px] font-mono text-rose-300 overflow-hidden whitespace-nowrap">
-                  <span class="inline-block animate-pulse">&larr; DEFINITION: Newton's First Law dictates that an object at rest stays at rest unless acted upon by an external net force... &larr;</span>
+                  <span class="inline-block animate-pulse">
+                    <span class="i18n-en">&larr; DEFINITION: Newton's First Law dictates that an object at rest stays at rest unless acted upon by an external net force... &larr;</span>
+                    <span class="i18n-id">&larr; DEFINISI: Hukum I Newton menyatakan benda diam akan tetap diam kecuali jika bekerja gaya luar netto... &larr;</span>
+                  </span>
                 </div>
               </div>
 
@@ -799,27 +1197,44 @@
               <div id="viewOptimized" class="hidden space-y-3">
                 <div class="flex items-center justify-between border-b border-emerald-900/60 pb-2">
                   <span class="text-xs font-mono text-emerald-400 font-bold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Mayer-Compliant Clean Architecture
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span class="i18n-en">Mayer-Compliant Clean Architecture</span>
+                    <span class="i18n-id">Arsitektur Bersih Sesuai Prinsip Mayer</span>
                   </span>
-                  <span class="text-[10px] bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-800">Background Noise: Muted &bull; Focused Modality</span>
+                  <span class="text-[10px] bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-800">
+                    <span class="i18n-en">Noise: Muted &bull; Focused Modality</span>
+                    <span class="i18n-id">Distraksi: Hening &bull; Fokus Modalitas</span>
+                  </span>
                 </div>
                 <div class="grid grid-cols-12 gap-3 text-xs">
                   <div class="col-span-8 p-6 rounded-xl bg-slate-900 border border-emerald-500/40 flex flex-col items-center justify-center">
-                    <div class="text-base font-bold text-white mb-2">Newton's First Law: Inertia</div>
+                    <div class="text-base font-bold text-white mb-2">
+                      <span class="i18n-en">Newton's First Law: Inertia</span>
+                      <span class="i18n-id">Hukum I Newton: Kelembaman (Inersia)</span>
+                    </div>
                     <div class="flex items-center gap-4 text-emerald-400 font-mono">
                       <div class="p-2 rounded bg-slate-800 border border-slate-700">Mass (m) = 5kg</div>
                       <span>&rarr;</span>
                       <div class="p-2 rounded bg-slate-800 border border-slate-700">Net Force = 0N (Constant Velocity)</div>
                     </div>
-                    <span class="text-[11px] text-slate-400 mt-3 text-center">Spoken narration synchronizes with the highlighted force vectors (Modality Principle).</span>
+                    <span class="text-[11px] text-slate-400 mt-3 text-center">
+                      <span class="i18n-en">Spoken narration synchronizes with highlighted force vectors (Modality Principle).</span>
+                      <span class="i18n-id">Narasi lisan disinkronkan langsung dengan visualisasi vektor gaya (Prinsip Modalitas).</span>
+                    </span>
                   </div>
                   <div class="col-span-4 p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col justify-between">
                     <div>
-                      <span class="text-[11px] font-bold text-indigo-400 uppercase tracking-wider block mb-2">Concept Scaffolding</span>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">Integrated key labels positioned immediately alongside the diagram components (Split-Attention eliminated).</p>
+                      <span class="text-[11px] font-bold text-indigo-400 uppercase tracking-wider block mb-2">
+                        <span class="i18n-en">Scaffolding</span><span class="i18n-id">Scaffolding</span>
+                      </span>
+                      <p class="text-[10px] text-slate-400 leading-relaxed">
+                        <span class="i18n-en">Integrated labels positioned adjacent to diagram components (Split-Attention eliminated).</span>
+                        <span class="i18n-id">Label keterangan diletakkan langsung berdampingan dengan komponen diagram (Split-Attention tereliminasi).</span>
+                      </p>
                     </div>
                     <button class="w-full py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-[11px] transition">
-                      Pause & Reflect
+                      <span class="i18n-en">Pause & Reflect</span>
+                      <span class="i18n-id">Jeda Berpikir</span>
                     </button>
                   </div>
                 </div>
@@ -827,29 +1242,39 @@
             </div>
           </div>
 
-          <!-- Student Response Tasks & Model Answers Accordion -->
+          <!-- Student Response Tasks & Model Rubrics -->
           <div class="space-y-4">
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white">Student Audit Worksheet Tasks</h4>
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white">
+              <span class="i18n-en">Student Audit Worksheet Tasks</span>
+              <span class="i18n-id">Tugas Lembar Kerja Audit Mahasiswa</span>
+            </h4>
 
             <!-- Task 1 -->
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-3">
               <div class="flex items-start justify-between">
                 <div>
-                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Question 1 &bull; Cognitive Load Analysis</span>
+                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">
+                    <span class="i18n-en">Question 1 &bull; Cognitive Load Analysis</span>
+                    <span class="i18n-id">Pertanyaan 1 &bull; Analisis Beban Kognitif</span>
+                  </span>
                   <p class="text-xs font-semibold text-slate-800 dark:text-slate-200 mt-1">
-                    Identify 3 specific sources of Extraneous Load in the default interface and explain the impact on the visuospatial sketchpad.
+                    <span class="i18n-en">Identify 3 specific sources of Extraneous Load in the default interface and explain the impact on the visuospatial sketchpad.</span>
+                    <span class="i18n-id">Identifikasi 3 sumber Beban Ekstraneus pada antarmuka bawaan dan jelaskan dampaknya terhadap visuospatial sketchpad.</span>
                   </p>
                 </div>
                 <button onclick="toggleExemplar('ans1')" class="text-xs text-indigo-600 dark:text-indigo-400 font-bold hover:underline shrink-0 ml-2">
-                  Show Rubric Key &darr;
+                  <span class="i18n-en">Rubric Key &darr;</span>
+                  <span class="i18n-id">Kunci Rubrik &darr;</span>
                 </button>
               </div>
-              <textarea placeholder="Type your student analysis here..." class="w-full text-xs p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
+              <textarea placeholder="Type your analysis here / Tuliskan analisis Anda di sini..." class="w-full text-xs p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
               <div id="ans1" class="hidden p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-900 text-xs text-indigo-900 dark:text-indigo-200 space-y-1">
-                <strong>Model Solution / Rubric Standard:</strong>
+                <strong><span class="i18n-en">Model Solution:</span><span class="i18n-id">Kunci Solusi Standar:</span></strong>
                 <ul class="list-disc list-inside space-y-0.5 mt-1 text-[11px]">
-                  <li><strong>Three Sources:</strong> (1) Continuous EDM background music violates Coherence Principle; (2) Scrolling bottom ticker competes for visual saccades; (3) Animated stickers in social chat distract selective attention.</li>
-                  <li><strong>Visuospatial impact:</strong> When reading the scrolling ticker while tracking vector animation, the visuospatial sketchpad experiences bottleneck collision, causing cognitive overload.</li>
+                  <li class="i18n-en"><strong>3 Sources:</strong> (1) Continuous EDM music violates Coherence Principle; (2) Scrolling ticker forces eye saccades; (3) Live chat emojis distract selective attention.</li>
+                  <li class="i18n-id"><strong>3 Sumber:</strong> (1) Musik latar EDM cepat melanggar Prinsip Koherensi; (2) Teks berjalan memecah perhatian mata; (3) Stiker chat animasi mengalihkan atensi selektif.</li>
+                  <li class="i18n-en"><strong>Visuospatial impact:</strong> Reading moving text while tracking vectors causes bottleneck collisions in the visual scratchpad.</li>
+                  <li class="i18n-id"><strong>Dampak visuospatial:</strong> Membaca teks bergerak sambil melacak diagram animasi menimbulkan tumbukan beban pada kanal visual seketika.</li>
                 </ul>
               </div>
             </div>
@@ -858,22 +1283,30 @@
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-3">
               <div class="flex items-start justify-between">
                 <div>
-                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Question 2 &bull; Instructional Redesign</span>
+                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">
+                    <span class="i18n-en">Question 2 &bull; Instructional Redesign</span>
+                    <span class="i18n-id">Pertanyaan 2 &bull; Redesain Instruksional</span>
+                  </span>
                   <p class="text-xs font-semibold text-slate-800 dark:text-slate-200 mt-1">
-                    Propose 2 interface redesigns based on Mayer's Principles and apply Visual Cueing (Signalling).
+                    <span class="i18n-en">Propose 2 interface redesigns based on Mayer's Principles and apply Visual Cueing (Signalling).</span>
+                    <span class="i18n-id">Rumuskan 2 rekomendasi redesain antarmuka berdasarkan Prinsip Multimedia Mayer dan terapkan Visual Cueing (Signalling).</span>
                   </p>
                 </div>
                 <button onclick="toggleExemplar('ans2')" class="text-xs text-indigo-600 dark:text-indigo-400 font-bold hover:underline shrink-0 ml-2">
-                  Show Rubric Key &darr;
+                  <span class="i18n-en">Rubric Key &darr;</span>
+                  <span class="i18n-id">Kunci Rubrik &darr;</span>
                 </button>
               </div>
-              <textarea placeholder="Type your redesign proposal here..." class="w-full text-xs p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
+              <textarea placeholder="Type your redesign proposal here / Tuliskan proposal redesain Anda..." class="w-full text-xs p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
               <div id="ans2" class="hidden p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-900 text-xs text-indigo-900 dark:text-indigo-200 space-y-1">
-                <strong>Model Solution / Rubric Standard:</strong>
+                <strong><span class="i18n-en">Model Solution:</span><span class="i18n-id">Kunci Solusi Standar:</span></strong>
                 <ul class="list-disc list-inside space-y-0.5 mt-1 text-[11px]">
-                  <li><strong>Redesign 1 (Modality Principle):</strong> Remove the scrolling text ticker; explain vectors using clear verbal narration synchronized to the motion.</li>
-                  <li><strong>Redesign 2 (Coherence Principle):</strong> Mute the EDM background music completely and collapse animated chat during instruction.</li>
-                  <li><strong>Signalling:</strong> Highlight the active force vector in bold yellow when the narrator discusses mass and acceleration.</li>
+                  <li class="i18n-en"><strong>Modality:</strong> Remove scrolling bottom text ticker; use synchronized verbal voice narration instead.</li>
+                  <li class="i18n-id"><strong>Modalitas:</strong> Hapus teks berjalan di bawah; gantikan dengan narasi audio lisan yang tersinkronisasi.</li>
+                  <li class="i18n-en"><strong>Coherence:</strong> Mute background music completely and collapse animated chat during instruction.</li>
+                  <li class="i18n-id"><strong>Koherensi:</strong> Senyapkan musik latar dan sembunyikan obrolan stiker selama materi inti disampaikan.</li>
+                  <li class="i18n-en"><strong>Signalling:</strong> Highlight force vectors in bright yellow when spoken narration mentions net force.</li>
+                  <li class="i18n-id"><strong>Signalling:</strong> Sorot vektor gaya dengan warna kuning terang tepat saat narator menyebutkan gaya netto.</li>
                 </ul>
               </div>
             </div>
@@ -882,20 +1315,28 @@
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-3">
               <div class="flex items-start justify-between">
                 <div>
-                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Question 3 &bull; Advance Organizer Construction</span>
+                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">
+                    <span class="i18n-en">Question 3 &bull; Advance Organizer Construction</span>
+                    <span class="i18n-id">Pertanyaan 3 &bull; Pembuatan Advance Organizer</span>
+                  </span>
                   <p class="text-xs font-semibold text-slate-800 dark:text-slate-200 mt-1">
-                    Draft a short introductory analogy (Advance Organizer) explaining Newton's First Law (Inertia) to facilitate Meaningful Learning.
+                    <span class="i18n-en">Draft a short introductory analogy (Advance Organizer) explaining Newton's First Law (Inertia) to facilitate Meaningful Learning.</span>
+                    <span class="i18n-id">Susun paragraf analogi pembuka (Advance Organizer) tentang Hukum I Newton (Inersia) untuk memfasilitasi Pembelajaran Bermakna.</span>
                   </p>
                 </div>
                 <button onclick="toggleExemplar('ans3')" class="text-xs text-indigo-600 dark:text-indigo-400 font-bold hover:underline shrink-0 ml-2">
-                  Show Rubric Key &darr;
+                  <span class="i18n-en">Rubric Key &darr;</span>
+                  <span class="i18n-id">Kunci Rubrik &darr;</span>
                 </button>
               </div>
-              <textarea placeholder="Draft your advance organizer analogy here..." class="w-full text-xs p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
+              <textarea placeholder="Draft your advance organizer here / Susun advance organizer Anda..." class="w-full text-xs p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
               <div id="ans3" class="hidden p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-900 text-xs text-indigo-900 dark:text-indigo-200 space-y-1">
-                <strong>Exemplar Advance Organizer:</strong>
-                <p class="text-[11px] leading-relaxed italic">
-                  "Think of riding a city bus standing in the aisle. When the bus driver suddenly slams on the brakes, your feet stop with the floor, but your upper body lurches forward. Your body didn't get pushed by an invisible hand; it simply wanted to keep doing what it was already doing—moving forward. That resistance to changing state is what physicists call Inertia."
+                <strong><span class="i18n-en">Exemplar Analogy:</span><span class="i18n-id">Contoh Analogi Ideal:</span></strong>
+                <p class="text-[11px] leading-relaxed italic i18n-en">
+                  "Think of riding a city bus standing in the aisle. When the bus driver suddenly slams on the brakes, your feet stop with the floor, but your upper body lurches forward. Your body was not pushed by an invisible hand; it simply wanted to continue doing what it was already doing—moving forward. That natural resistance to changing motion state is what physicists call Inertia."
+                </p>
+                <p class="text-[11px] leading-relaxed italic i18n-id">
+                  "Bayangkan Anda sedang berdiri di lorong bus kota yang sedang melaju kencang. Saat sopir tiba-tiba menginjak rem, kaki Anda berhenti bersama lantai bus, namun tubuh bagian atas Anda terdorong ke depan. Tubuh Anda tidak didorong oleh tangan gaib; tubuh Anda hanya ingin terus melakukan apa yang sedang dilakukannya—yaitu bergerak maju. Kecenderungan alami untuk mempertahankan keadaan gerak inilah yang disebut para fisikawan sebagai Inersia."
                 </p>
               </div>
             </div>
@@ -908,8 +1349,14 @@
             <div class="flex items-center space-x-3">
               <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">09</span>
               <div>
-                <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Formative Check</span>
-                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Quick Mastery Assessment</h2>
+                <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">
+                  <span class="i18n-en">Formative Check</span>
+                  <span class="i18n-id">Uji Pemahaman Formatif</span>
+                </span>
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                  <span class="i18n-en">Quick Mastery Assessment</span>
+                  <span class="i18n-id">Kuis Penguasaan Konsep Cepat</span>
+                </h2>
               </div>
             </div>
             <div id="quizScoreBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
@@ -921,20 +1368,21 @@
             <!-- Quiz Item 1 -->
             <div class="quiz-item p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80" data-answered="false">
               <p class="text-xs font-bold text-slate-900 dark:text-white mb-3">
-                1. Which cognitive load component is exclusively determined by the inherent element complexity of the subject matter?
+                <span class="i18n-en">1. Which cognitive load component is exclusively determined by the inherent element complexity of the subject matter?</span>
+                <span class="i18n-id">1. Jenis beban kognitif apa yang semata-mata ditentukan oleh tingkat kerumitan inheren dari materi yang dipelajari?</span>
               </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                 <button onclick="handleQuizAnswer(this, 1, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  A. Extraneous Cognitive Load
+                  <span class="i18n-en">A. Extraneous Cognitive Load</span><span class="i18n-id">A. Beban Kognitif Ekstraneus</span>
                 </button>
                 <button onclick="handleQuizAnswer(this, 1, true)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  B. Intrinsic Cognitive Load
+                  <span class="i18n-en">B. Intrinsic Cognitive Load</span><span class="i18n-id">B. Beban Kognitif Intrinsik</span>
                 </button>
                 <button onclick="handleQuizAnswer(this, 1, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  C. Germane Cognitive Load
+                  <span class="i18n-en">C. Germane Cognitive Load</span><span class="i18n-id">C. Beban Kognitif German</span>
                 </button>
                 <button onclick="handleQuizAnswer(this, 1, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  D. Sensory Register Load
+                  <span class="i18n-en">D. Sensory Register Load</span><span class="i18n-id">D. Beban Register Sensorik</span>
                 </button>
               </div>
               <div class="quiz-feedback hidden mt-3 p-2.5 rounded-lg text-xs"></div>
@@ -943,20 +1391,25 @@
             <!-- Quiz Item 2 -->
             <div class="quiz-item p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80" data-answered="false">
               <p class="text-xs font-bold text-slate-900 dark:text-white mb-3">
-                2. According to Mayer's Redundancy Principle, what should instructional designers avoid?
+                <span class="i18n-en">2. According to Mayer's Redundancy Principle, what should instructional designers avoid?</span>
+                <span class="i18n-id">2. Menurut Prinsip Redundansi (Redundancy Principle) Mayer, apa yang harus dihindari oleh desainer pembelajaran?</span>
               </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                 <button onclick="handleQuizAnswer(this, 2, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  A. Using diagrams with spoken audio narration
+                  <span class="i18n-en">A. Using diagrams with spoken audio narration</span>
+                  <span class="i18n-id">A. Menggunakan diagram visual dengan narasi suara</span>
                 </button>
                 <button onclick="handleQuizAnswer(this, 2, true)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  B. Presenting animation, spoken narration, AND identical on-screen text all at once
+                  <span class="i18n-en">B. Presenting animation, spoken narration, AND identical on-screen text all at once</span>
+                  <span class="i18n-id">B. Menampilkan animasi, narasi audio, DAN teks layar identik secara bersamaan</span>
                 </button>
                 <button onclick="handleQuizAnswer(this, 2, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  C. Breaking complex lectures into short segmented clips
+                  <span class="i18n-en">C. Breaking complex lectures into short segmented clips</span>
+                  <span class="i18n-id">C. Memenggal video kuliah panjang menjadi klip-klip pendek</span>
                 </button>
                 <button onclick="handleQuizAnswer(this, 2, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  D. Embedding advance organizers before introducing formulas
+                  <span class="i18n-en">D. Embedding advance organizers before introducing formulas</span>
+                  <span class="i18n-id">D. Menampilkan advance organizer sebelum memperkenalkan rumus</span>
                 </button>
               </div>
               <div class="quiz-feedback hidden mt-3 p-2.5 rounded-lg text-xs"></div>
@@ -965,20 +1418,21 @@
             <!-- Quiz Item 3 -->
             <div class="quiz-item p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80" data-answered="false">
               <p class="text-xs font-bold text-slate-900 dark:text-white mb-3">
-                3. What cognitive state occurs in Piaget's framework when an online learner encounters contradictory evidence that clashes with their current schema?
+                <span class="i18n-en">3. What cognitive state occurs in Piaget's framework when an online learner encounters contradictory evidence that clashes with their current schema?</span>
+                <span class="i18n-id">3. Kondisi kognitif apa yang terjadi dalam teori Piaget ketika pembelajar menemui fakta baru yang bertolak belakang dengan skema yang telah dimilikinya?</span>
               </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                 <button onclick="handleQuizAnswer(this, 3, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  A. Assimilation Equilibrium
+                  <span class="i18n-en">A. Assimilation Equilibrium</span><span class="i18n-id">A. Ekuilibrium Asimilasi</span>
                 </button>
                 <button onclick="handleQuizAnswer(this, 3, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  B. Working Memory Attrition
+                  <span class="i18n-en">B. Working Memory Attrition</span><span class="i18n-id">B. Atribusi Memori Kerja</span>
                 </button>
                 <button onclick="handleQuizAnswer(this, 3, true)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  C. Cognitive Disequilibrium
+                  <span class="i18n-en">C. Cognitive Disequilibrium</span><span class="i18n-id">C. Disonansi / Disekuilibrium Kognitif</span>
                 </button>
                 <button onclick="handleQuizAnswer(this, 3, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
-                  D. Extraneous Subsumption
+                  <span class="i18n-en">D. Extraneous Subsumption</span><span class="i18n-id">D. Subsumpsi Ekstraneus</span>
                 </button>
               </div>
               <div class="quiz-feedback hidden mt-3 p-2.5 rounded-lg text-xs"></div>
@@ -988,7 +1442,10 @@
 
         <!-- SECTION 10: Academic References -->
         <section id="references" class="p-6 sm:p-8 rounded-3xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-3">
-          <h3 class="font-bold text-sm text-slate-800 dark:text-slate-200 uppercase tracking-wider">References & Foundational Literature</h3>
+          <h3 class="font-bold text-sm text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+            <span class="i18n-en">References & Foundational Literature</span>
+            <span class="i18n-id">Referensi & Literatur Utama</span>
+          </h3>
           <ul class="space-y-1.5 list-disc list-inside">
             <li>Atkinson, R. C., & Shiffrin, R. M. (1968). Human memory: A proposed system and its control processes. <em>Psychology of Learning and Motivation</em>, 2, 89-195.</li>
             <li>Ausubel, D. P. (1968). <em>Educational Psychology: A Cognitive View</em>. Holt, Rinehart & Winston.</li>
@@ -1008,7 +1465,38 @@
   <!-- Sticky Toast Notification (No alert() used!) -->
   <div id="toastNotification" class="fixed bottom-6 right-6 transform translate-y-32 opacity-0 transition-all duration-300 z-50 p-4 rounded-2xl shadow-xl flex items-center space-x-3 text-xs font-semibold max-w-sm"></div>
 
+  <!-- Client-side Logic: i18n, Theme, Labs & Simulations -->
   <script>
+    let currentLang = 'en';
+
+    // Set and switch language seamlessly
+    function switchLanguage(lang) {
+      currentLang = lang;
+      document.body.classList.remove('lang-en', 'lang-id');
+      document.body.classList.add(`lang-${lang}`);
+
+      const btnEn = document.getElementById('btnLangEn');
+      const btnId = document.getElementById('btnLangId');
+
+      if (lang === 'en') {
+        btnEn.className = 'px-2.5 py-1 rounded-lg bg-indigo-600 text-white shadow-sm transition';
+        btnId.className = 'px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition';
+        showToast('Language switched to English', 'info');
+      } else {
+        btnId.className = 'px-2.5 py-1 rounded-lg bg-indigo-600 text-white shadow-sm transition';
+        btnEn.className = 'px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition';
+        showToast('Bahasa dialihkan ke Bahasa Indonesia', 'info');
+      }
+
+      localStorage.setItem('preferredLang', lang);
+
+      // Re-render language-dependent components
+      updateCltSimulator();
+      if (typeof activeCtmlKey !== 'undefined') {
+        switchCtmlTab(activeCtmlKey);
+      }
+    }
+
     // Theme Toggle Logic
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     themeToggleBtn.addEventListener('click', () => {
@@ -1045,7 +1533,7 @@
       setTimeout(() => {
         toast.classList.remove('translate-y-0', 'opacity-100');
         toast.classList.add('translate-y-32', 'opacity-0');
-      }, 3500);
+      }, 3200);
     }
 
     // Working Memory Interactive Experiment
@@ -1061,20 +1549,14 @@
       document.getElementById('wmResultState').classList.add('hidden');
 
       if (mode === 'unchunked') {
-        // Random 9 digits with no spacing (Miller overload)
         const digits = Array.from({length: 9}, () => Math.floor(Math.random() * 10)).join('');
         wmTargetSequence = digits;
         document.getElementById('wmNumbersToMemorize').textContent = digits;
       } else {
-        // 9 digits grouped into 3 familiar chunk blocks
-        const block1 = '198';
-        const block2 = '420';
-        const block3 = '26';
         wmTargetSequence = '19842026';
         document.getElementById('wmNumbersToMemorize').textContent = '1984 - 2026';
       }
 
-      // Reset timer bar animation
       const bar = document.getElementById('wmTimerBar');
       bar.style.transition = 'none';
       bar.style.width = '100%';
@@ -1104,16 +1586,22 @@
 
       if (isCorrect) {
         heading.className = 'font-bold text-sm text-emerald-400';
-        heading.textContent = '🎉 Accurate Recall!';
+        heading.textContent = currentLang === 'en' ? '🎉 Accurate Recall!' : '🎉 Ingatan Tepat Sempurna!';
         feedback.textContent = wmCurrentMode === 'unchunked' 
-          ? `Impressive! You successfully held 9 unchunked units in working memory, near the ceiling of Miller's 7 ± 2 limit.`
-          : `Notice how grouping the digits into meaningful chunks (1984 and 2026) required only 2 working memory slots instead of 8 separate items! That is the power of schema construction.`;
-        showToast('Sequence memorized successfully!', 'success');
+          ? (currentLang === 'en' 
+              ? `Impressive! You held 9 unchunked units in working memory, near the ceiling of Miller's 7 ± 2 limit.` 
+              : `Luar biasa! Anda berhasil mempertahankan 9 unit terpisah di memori kerja, mendekati batas maksimal Miller 7 ± 2.`)
+          : (currentLang === 'en' 
+              ? `Notice how grouping the digits into meaningful chunks (1984 and 2026) required only 2 working memory slots instead of 8 separate items! That is the power of schema construction.` 
+              : `Perhatikan bagaimana mengelompokkan angka menjadi unit bermakna (1984 dan 2026) hanya memakan 2 slot memori kerja alih-alih 8 angka terpisah! Itulah kekuatan pembentukan skema.`);
+        showToast(currentLang === 'en' ? 'Sequence memorized successfully!' : 'Angka berhasil diingat dengan tepat!', 'success');
       } else {
         heading.className = 'font-bold text-sm text-rose-400';
-        heading.textContent = 'Cognitive Bottleneck Reached';
-        feedback.textContent = `You entered "${userVal}" (Correct was: "${cleanTarget}"). In unfamiliar or unchunked streams, working memory decays in just 15-30 seconds or drops to Nelson Cowan's 4 ± 1 unit boundary. Chunking is necessary to bypass this bottleneck.`;
-        showToast('Memory limit demonstrated!', 'error');
+        heading.textContent = currentLang === 'en' ? 'Cognitive Bottleneck Reached' : 'Batas Kapasitas Memori Kerja Terlampaui';
+        feedback.textContent = currentLang === 'en'
+          ? `You entered "${userVal}" (Correct: "${cleanTarget}"). In unfamiliar or unchunked streams, working memory decays in 15-30 seconds or drops to Nelson Cowan's 4 ± 1 unit boundary. Chunking is essential to bypass this bottleneck.`
+          : `Anda mengetik "${userVal}" (Jawaban benar: "${cleanTarget}"). Pada data tanpa pola skema, memori kerja memudar dalam 15-30 detik atau jatuh ke batas Nelson Cowan 4 ± 1 unit. Teknik chunking mutlak dibutuhkan untuk mengatasi hambatan ini.`;
+        showToast(currentLang === 'en' ? 'Memory limit demonstrated!' : 'Batas memori kerja terbukti!', 'error');
       }
     }
 
@@ -1139,7 +1627,6 @@
       const total = iVal + eVal + gVal;
       document.getElementById('totalLoadDisplay').textContent = total;
 
-      // Recalculate percentage widths for 10 units maximum
       const iPct = (iVal / 10) * 100;
       const ePct = (eVal / 10) * 100;
       const gPct = (gVal / 10) * 100;
@@ -1153,49 +1640,85 @@
 
       if (total > 10) {
         badge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 animate-pulse';
-        badge.textContent = '⚠️ Cognitive Overload!';
-        diag.innerHTML = `<span class="text-rose-600 dark:text-rose-400 font-bold">&bull; Overload:</span> Total load (${total}/10) exceeds Working Memory capacity! High extraneous clutter leaves zero mental bandwidth for germane schema integration. Learning breaks down.`;
+        badge.textContent = currentLang === 'en' ? '⚠️ Cognitive Overload!' : '⚠️ Kelebihan Beban Kognitif!';
+        diag.innerHTML = currentLang === 'en'
+          ? `<span class="text-rose-600 dark:text-rose-400 font-bold">&bull; Overload:</span> Total load (${total}/10) exceeds Working Memory capacity! High extraneous clutter leaves zero mental bandwidth for germane schema integration. Learning breaks down.`
+          : `<span class="text-rose-600 dark:text-rose-400 font-bold">&bull; Overload:</span> Total beban (${total}/10) melampaui batas kapasitas memori kerja! Beban ekstraneus yang tinggi menghabiskan kuota mental untuk membentuk skema (beban german). Pembelajaran terhenti.`;
       } else if (total >= 7) {
         badge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300';
-        badge.textContent = 'Optimal Engagement';
-        diag.innerHTML = `<span class="text-indigo-600 dark:text-indigo-400 font-bold">&bull; Optimal:</span> Demands are challenging yet within limits. Extraneous load is sufficiently low to allow active schema construction.`;
+        badge.textContent = currentLang === 'en' ? 'Optimal Engagement' : 'Kondisi Optimal';
+        diag.innerHTML = currentLang === 'en'
+          ? `<span class="text-indigo-600 dark:text-indigo-400 font-bold">&bull; Optimal:</span> Demands are challenging yet within limits. Extraneous load is sufficiently low to allow active schema construction.`
+          : `<span class="text-indigo-600 dark:text-indigo-400 font-bold">&bull; Optimal:</span> Tantangan belajar berada dalam batas aman. Beban ekstraneus cukup rendah sehingga energi mental dialokasikan maksimal untuk konstruksi skema.`;
       } else {
         badge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-300';
-        badge.textContent = 'Under-Demanding';
-        diag.innerHTML = `<span class="text-slate-600 dark:text-slate-400 font-bold">&bull; Low Demand:</span> Working memory has surplus capacity. Consider introducing deeper problem-solving scaffolds.`;
+        badge.textContent = currentLang === 'en' ? 'Under-Demanding' : 'Beban Rendah';
+        diag.innerHTML = currentLang === 'en'
+          ? `<span class="text-slate-600 dark:text-slate-400 font-bold">&bull; Low Demand:</span> Working memory has surplus capacity. Consider introducing deeper problem-solving scaffolds.`
+          : `<span class="text-slate-600 dark:text-slate-400 font-bold">&bull; Beban Rendah:</span> Memori kerja memiliki ruang sisa yang besar. Pertimbangkan untuk memberi tantangan pemecahan masalah yang lebih mendalam.`;
       }
     }
 
     [inputIntrinsic, inputExtraneous, inputGermane].forEach(input => {
       input.addEventListener('input', updateCltSimulator);
     });
-    updateCltSimulator();
 
-    // Mayer CTML Tabs Logic
+    // Mayer CTML Tabs Logic (Bilingual Data)
     const ctmlData = {
       modality: {
-        title: "1. Modality Principle",
-        desc: "People learn more deeply from graphics and spoken narration than from graphics and on-screen written text.",
-        implication: "When explaining a diagram or code execution, use your voice rather than cluttering the screen with paragraphs of text. This engages both the auditory phonological loop and visuospatial sketchpad in parallel."
+        en: {
+          title: "1. Modality Principle",
+          desc: "People learn more deeply from graphics and spoken narration than from graphics and on-screen written text.",
+          implication: "When explaining a diagram or code execution, use your voice rather than cluttering the screen with paragraphs of text. This engages both the auditory phonological loop and visuospatial sketchpad in parallel."
+        },
+        id: {
+          title: "1. Prinsip Modalitas (Modality Principle)",
+          desc: "Siswa belajar jauh lebih mendalam melalui grafik yang dipadukan narasi lisan dibanding grafik dengan teks tertulis di layar.",
+          implication: "Saat menjelaskan diagram atau simulasi, gunakan suara lisan daripada memenuhi layar dengan teks bacaan panjang. Hal ini memanfaatkan phonological loop (suara) dan visuospatial sketchpad (gambar) secara seimbang tanpa saling bertabrakan."
+        }
       },
       redundancy: {
-        title: "2. Redundancy Principle",
-        desc: "People learn better from graphics and narration than from graphics, narration, AND identical on-screen text.",
-        implication: "Reading on-screen subtitles that match the spoken audio word-for-word splits visual attention and forces the eyes to waste capacity reading instead of studying the illustration."
+        en: {
+          title: "2. Redundancy Principle",
+          desc: "People learn better from graphics and narration than from graphics, narration, AND identical on-screen text.",
+          implication: "Reading on-screen subtitles that match the spoken audio word-for-word splits visual attention and forces the eyes to waste capacity reading instead of studying the illustration."
+        },
+        id: {
+          title: "2. Prinsip Redundansi (Redundancy Principle)",
+          desc: "Siswa belajar lebih baik dari kombinasi grafik dan narasi audio, dibanding grafik, narasi audio, DAN teks layar identik secara bersamaan.",
+          implication: "Membaca teks di layar yang sama persis dengan audio yang didengar memecah atensi visual dan memaksa mata membuang kuota memori kerja hanya untuk membaca teks alih-alih mengamati diagram inti."
+        }
       },
       split: {
-        title: "3. Split-Attention Principle",
-        desc: "Do not separate text descriptions from the graphic elements they describe.",
-        implication: "Instead of putting an illustration at the top and a numbered legend table 200 pixels below it, place the text labels directly next to each vector or component."
+        en: {
+          title: "3. Split-Attention Principle",
+          desc: "Do not separate text descriptions from the graphic elements they describe.",
+          implication: "Instead of putting an illustration at the top and a numbered legend table 200 pixels below it, place the text labels directly next to each vector or component."
+        },
+        id: {
+          title: "3. Prinsip Pemisahan Atensi (Split-Attention Principle)",
+          desc: "Jangan memisahkan letak teks penjelasan dari elemen gambar atau diagram yang sedang dijelaskan.",
+          implication: "Alih-alih menaruh diagram di atas dan tabel legenda nomor di bawah, tempelkan label keterangan tepat berdampingan dengan komponen visual agar mata siswa tidak bolak-balik mencari rujukan."
+        }
       },
       coherence: {
-        title: "4. Coherence Principle",
-        desc: "Exclude all extraneous words, pictures, background tunes, and decorative visuals that do not advance the objective.",
-        implication: "No upbeat EDM background music in instructional screencasts; no animated dancing memes in physics lecture slides. Decorative clutter consumes precious working memory."
+        en: {
+          title: "4. Coherence Principle",
+          desc: "Exclude all extraneous words, pictures, background tunes, and decorative visuals that do not advance the objective.",
+          implication: "No upbeat EDM background music in instructional screencasts; no animated dancing memes in physics lecture slides. Decorative clutter consumes precious working memory."
+        },
+        id: {
+          title: "4. Prinsip Koherensi (Coherence Principle)",
+          desc: "Keluarkan semua kata, gambar, musik latar, dan hiasan visual yang tidak mendukung langsung tujuan instruksional.",
+          implication: "Hindari menyisipkan musik EDM kencang di video pembelajaran; jangan gunakan stiker atau meme bergerak yang tidak relevan di slide presentasi karena hiasan tersebut menghabiskan memori kerja siswa."
+        }
       }
     };
 
+    let activeCtmlKey = 'modality';
+
     function switchCtmlTab(key) {
+      activeCtmlKey = key;
       document.querySelectorAll('.ctml-tab').forEach(b => {
         b.className = 'ctml-tab py-2 px-3 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition';
       });
@@ -1204,17 +1727,16 @@
         activeBtn.className = 'ctml-tab active py-2 px-3 text-xs font-semibold rounded-xl bg-indigo-600 text-white transition';
       }
 
-      const item = ctmlData[key];
+      const item = ctmlData[key][currentLang];
       const container = document.getElementById('ctmlContent');
       container.innerHTML = `
         <h5 class="font-bold text-sm text-slate-900 dark:text-white mb-1">${item.title}</h5>
         <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-2">${item.desc}</p>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-700/60 pt-2">
-          <strong>EdTech Implementation:</strong> ${item.implication}
+          <strong>${currentLang === 'en' ? 'EdTech Implementation:' : 'Implementasi Tekpen:'}</strong> ${item.implication}
         </p>
       `;
     }
-    switchCtmlTab('modality');
 
     // Matrix Filter Function
     function filterMatrix(category) {
@@ -1247,14 +1769,14 @@
         viewport.className = 'p-4 rounded-2xl bg-slate-950 border-2 border-rose-500 text-white transition-all duration-300 min-h-[260px]';
         btnC.className = 'px-3 py-1 rounded-lg text-xs font-bold bg-rose-600 text-white transition';
         btnO.className = 'px-3 py-1 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-white transition';
-        showToast('Switched to Overloaded Cluttered View', 'info');
+        showToast(currentLang === 'en' ? 'Switched to Cluttered Overloaded View' : 'Tampilan Desain Semrawut (Overload)', 'info');
       } else {
         clutteredView.classList.add('hidden');
         optimizedView.classList.remove('hidden');
         viewport.className = 'p-4 rounded-2xl bg-slate-950 border-2 border-emerald-500 text-white transition-all duration-300 min-h-[260px]';
         btnO.className = 'px-3 py-1 rounded-lg text-xs font-bold bg-emerald-600 text-white transition';
         btnC.className = 'px-3 py-1 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-white transition';
-        showToast('Switched to Optimized Cognitive Layout', 'success');
+        showToast(currentLang === 'en' ? 'Switched to Optimized Cognitive Layout' : 'Tampilan Desain Bersih Teroptimasi', 'success');
       }
     }
 
@@ -1270,11 +1792,10 @@
 
     // Formative Quiz Logic
     let quizScore = 0;
-    const answeredQuestions = new Set();
 
     function handleQuizAnswer(button, qIndex, isCorrect) {
       const parentCard = button.closest('.quiz-item');
-      if (parentCard.dataset.answered === 'true') return; // Prevent multiple attempts
+      if (parentCard.dataset.answered === 'true') return;
 
       parentCard.dataset.answered = 'true';
       const feedbackBox = parentCard.querySelector('.quiz-feedback');
@@ -1289,19 +1810,29 @@
         button.classList.remove('opacity-60');
         button.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600');
         feedbackBox.className = 'quiz-feedback mt-3 p-3 rounded-xl text-xs bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 block';
-        feedbackBox.innerHTML = `<strong>Correct!</strong> Your cognitive evaluation matches educational psychology research.`;
+        feedbackBox.innerHTML = currentLang === 'en'
+          ? `<strong>Correct!</strong> Your cognitive evaluation matches educational psychology research.`
+          : `<strong>Tepat Sekali!</strong> Analisis kognitif Anda selaras dengan riset psikologi pendidikan terkini.`;
         quizScore++;
-        showToast('Correct answer!', 'success');
+        showToast(currentLang === 'en' ? 'Correct answer!' : 'Jawaban benar!', 'success');
       } else {
         button.classList.remove('opacity-60');
         button.classList.add('bg-rose-500', 'text-white', 'border-rose-600');
         feedbackBox.className = 'quiz-feedback mt-3 p-3 rounded-xl text-xs bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 text-rose-800 dark:text-rose-300 block';
-        feedbackBox.innerHTML = `<strong>Incorrect.</strong> Review Sweller's and Mayer's theoretical principles above to reinforce this concept.`;
-        showToast('Review the theoretical module section.', 'error');
+        feedbackBox.innerHTML = currentLang === 'en'
+          ? `<strong>Incorrect.</strong> Review Sweller's and Mayer's theoretical principles above to reinforce this concept.`
+          : `<strong>Kurang Tepat.</strong> Pelajari kembali prinsip Sweller dan Mayer pada bagian modul di atas untuk memperkuat pemahaman.`;
+        showToast(currentLang === 'en' ? 'Review the module section.' : 'Pelajari kembali bagian modul terkait.', 'error');
       }
 
       document.getElementById('quizScoreBadge').textContent = `Score: ${quizScore} / 3`;
     }
+
+    // Initialize preferred language from localStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferredLang') || 'en';
+      switchLanguage(savedLang);
+    });
   </script>
 </body>
 </html>
