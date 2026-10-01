@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cognitive Learning Theory in Instructional Design</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbar and animations */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94a3b8;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
+    .pulse-subtle {
+      animation: pulseSubtle 3s infinite ease-in-out;
+    }
+    @keyframes pulseSubtle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200 antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Top Reading Progress Bar -->
+  <div id="scrollProgressBar" class="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 z-50 transition-all duration-150" style="width: 0%"></div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-500/20">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="text-xs uppercase tracking-wider font-semibold text-indigo-600 dark:text-indigo-400 block">EdTech Psychology</span>
+          <span class="text-sm font-bold text-slate-900 dark:text-white hidden sm:inline">Cognitive Learning Theory</span>
+        </div>
+      </div>
+
+      <!-- Quick Section Jump & Controls -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <nav class="hidden md:flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-300">
+          <a href="#clo" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Outcomes</a>
+          <a href="#paradigm" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Shift</a>
+          <a href="#architecture" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Memory</a>
+          <a href="#clt" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">Cognitive Load</a>
+          <a href="#matrix" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">EdTech Matrix</a>
+          <a href="#casestudy" class="px-2.5 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 font-semibold hover:bg-indigo-100 transition">Audit Lab</a>
+        </nav>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggleBtn" aria-label="Toggle dark mode" class="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg id="moonIcon" class="w-5 h-5 block dark:hidden text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <a href="#quickquiz" class="text-xs bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-3.5 py-2 rounded-xl shadow-sm transition flex items-center space-x-1.5">
+          <span>Test Knowledge</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden pt-12 pb-16 border-b border-slate-200 dark:border-slate-800 bg-gradient-to-b from-indigo-50/50 via-white to-transparent dark:from-slate-900/50 dark:via-slate-950 dark:to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-100/80 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-xs font-semibold mb-6 border border-indigo-200 dark:border-indigo-800">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          Educational Psychology & Instructional Design Module
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+          Understanding <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-300">Cognitive Learning Theory</span> in Educational Technology
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+          Explore human mental architecture, manage working memory capacity, and engineer high-impact digital learning environments based on Cognitive Load Theory and Multimedia Learning Principles.
+        </p>
+
+        <!-- Course Meta Badges -->
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs sm:text-sm">
+          <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">Course</span>
+            <span class="font-bold text-slate-800 dark:text-slate-200">Educational Psychology</span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">Program</span>
+            <span class="font-bold text-slate-800 dark:text-slate-200">Educational Technology</span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">Workload</span>
+            <span class="font-bold text-slate-800 dark:text-slate-200">3 Credits (150 Mins)</span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">Target Format</span>
+            <span class="font-bold text-indigo-600 dark:text-indigo-400">Interactive Lecture & Lab</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Table of Contents / Sticky Rail (3 cols) -->
+      <aside class="hidden lg:block lg:col-span-3">
+        <div class="sticky top-24 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Module Outline</h2>
+          <nav class="space-y-1 text-sm font-medium text-slate-600 dark:text-slate-400" id="tocNav">
+            <a href="#clo" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">1. Learning Outcomes</a>
+            <a href="#paradigm" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">2. From Behavior to Mind</a>
+            <a href="#architecture" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">3. Cognitive Architecture</a>
+            <a href="#wm-test" class="block px-3 py-2 rounded-xl pl-6 text-xs text-indigo-600 dark:text-indigo-400 hover:underline">↳ Working Memory Lab</a>
+            <a href="#clt" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">4. CLT & Mayer's CTML</a>
+            <a href="#clt-simulator" class="block px-3 py-2 rounded-xl pl-6 text-xs text-indigo-600 dark:text-indigo-400 hover:underline">↳ Cognitive Load Simulator</a>
+            <a href="#schema" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">5. Piaget & Ausubel</a>
+            <a href="#metacognition" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">6. Metacognition & SRL</a>
+            <a href="#matrix" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">7. EdTech Integration Matrix</a>
+            <a href="#casestudy" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-indigo-600 dark:text-indigo-400 font-semibold transition">8. Cognitive Audit Lab</a>
+            <a href="#quickquiz" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">9. Formative Assessment</a>
+          </nav>
+          <div class="pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500">
+            <span>Faculty Team: </span>
+            <span class="font-semibold text-slate-700 dark:text-slate-300">Educational Technology</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Body Articles (9 cols) -->
+      <div class="lg:col-span-9 space-y-12">
+
+        <!-- SECTION 1: Course Learning Outcomes (CLO) -->
+        <section id="clo" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">01</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Course Learning Outcomes (CLO)</h2>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">
+            Upon successfully analyzing this module and completing the associated lab activities, students are expected to achieve four core competencies:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
+              <span class="w-6 h-6 rounded-lg bg-indigo-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+              <div>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">Analyze Historical Shift</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Examine the transition from behavioral models to cognitive psychology, underscoring active student agency.</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
+              <span class="w-6 h-6 rounded-lg bg-purple-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+              <div>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">Examine Cognitive Architecture</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Deconstruct the Atkinson-Shiffrin and Baddeley models alongside John Sweller's Cognitive Load Theory.</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
+              <span class="w-6 h-6 rounded-lg bg-blue-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+              <div>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">Evaluate Digital Learning Products</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Audit LMS layouts, multimedia lessons, and educational apps utilizing Richard Mayer's CTML principles.</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
+              <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</span>
+              <div>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">Design Cognitive Interventions</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Engineer instructional flows that protect limited working memory and accelerate long-term schema formation.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: Behavioral vs Cognitive Shift -->
+        <section id="paradigm" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">02</span>
+            <div>
+              <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Evolution of Learning Science</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">From Observable Behavior to Internal Mental Processes</h2>
+            </div>
+          </div>
+
+          <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 text-sm leading-relaxed space-y-4">
+            <p>
+              During the early 20th century, psychology was dominated by <strong>Behaviorism</strong> (represented by Watson, Skinner, and Thorndike). Behaviorists focused exclusively on outward, directly measurable actions. Learning was defined strictly as an observable change in behavior resulting from environmental stimulus-response associations (<span class="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">S &rarr; R</span>) and external reinforcers. The internal workings of the mind—such as attention, thoughts, mental images, and reasoning—were intentionally set aside because scientists lacked the tools to observe them directly.
+            </p>
+            <p>
+              The <strong>Cognitive Revolution</strong> of the 1950s and 1960s (championed by Jean Piaget, Jerome Bruner, Noam Chomsky, and George Miller) established that treating learners as passive responders ignored what is most essential: <em>how the mind actually structures knowledge</em>. Learners are <strong>active information processors</strong> who attend to, interpret, synthesize, and store knowledge into rich mental schemas.
+            </p>
+          </div>
+
+          <!-- Comparative Visualization -->
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40">
+              <div class="flex items-center space-x-2 text-amber-800 dark:text-amber-400 font-bold text-sm mb-3">
+                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                <span>Behavioral Model (Conditioning)</span>
+              </div>
+              <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-amber-200/60 dark:border-amber-900/30 text-xs font-mono text-center text-slate-700 dark:text-slate-300 space-y-2">
+                <div class="p-2 bg-amber-100/60 dark:bg-amber-950/50 rounded-lg">Environmental Stimulus (S)</div>
+                <div class="text-amber-500 font-bold">&darr;</div>
+                <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-400 italic">Internal thoughts bypassed / unobserved</div>
+                <div class="text-amber-500 font-bold">&darr;</div>
+                <div class="p-2 bg-amber-100/60 dark:bg-amber-950/50 rounded-lg">Observable Response (R)</div>
+              </div>
+              <p class="text-xs text-amber-900 dark:text-amber-300/80 mt-3 leading-relaxed">
+                <strong>EdTech Application:</strong> Drill-and-practice quizzes, flashcards, repetitive gamified streaks, and visual badge rewards.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/20 border border-indigo-200 dark:border-indigo-900/40">
+              <div class="flex items-center space-x-2 text-indigo-800 dark:text-indigo-400 font-bold text-sm mb-3">
+                <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                <span>Cognitive Model (Information Processing)</span>
+              </div>
+              <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-indigo-200/60 dark:border-indigo-900/30 text-xs font-mono text-center text-slate-700 dark:text-slate-300 space-y-2">
+                <div class="p-2 bg-indigo-100/60 dark:bg-indigo-950/50 rounded-lg">Environmental Input (Multimedia)</div>
+                <div class="text-indigo-500 font-bold">&darr;</div>
+                <div class="p-2 bg-indigo-200/60 dark:bg-indigo-900/50 rounded-lg font-semibold text-indigo-900 dark:text-indigo-200">Perception & Working Memory &hArr; Long-Term Memory</div>
+                <div class="text-indigo-500 font-bold">&darr;</div>
+                <div class="p-2 bg-emerald-100/60 dark:bg-emerald-950/50 rounded-lg text-emerald-800 dark:text-emerald-300 font-semibold">Active Schema & Meaning Construction</div>
+              </div>
+              <p class="text-xs text-indigo-900 dark:text-indigo-300/80 mt-3 leading-relaxed">
+                <strong>EdTech Application:</strong> Structured scaffolding, concept maps, simulations, advance organizers, and cognitive load minimization.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: Human Cognitive Architecture -->
+        <section id="architecture" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">03</span>
+            <div>
+              <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Atkinson-Shiffrin & Baddeley</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Human Cognitive Architecture</h2>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+            The Information Processing Model views human cognition as a coordinated tri-partite system: sensory buffers, limited working memory, and vast long-term memory, governed by metacognitive control.
+          </p>
+
+          <!-- The Tri-Partite Memory Interactive Diagram -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Sensory Memory -->
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 relative">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Phase 1</span>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mt-1">Sensory Register</h3>
+              <div class="mt-4 space-y-2 text-xs text-slate-600 dark:text-slate-400">
+                <p><strong>Duration:</strong> 0.5s (Iconic/Visual) to 3s (Echoic/Auditory).</p>
+                <p><strong>Capacity:</strong> Extremely large, but traces vanish instantly without conscious focus.</p>
+                <p><strong>Gateway:</strong> <span class="text-indigo-600 dark:text-indigo-400 font-semibold">Selective Attention</span> filters out 99% of environmental noise.</p>
+              </div>
+              <div class="mt-4 p-2.5 rounded-xl bg-white dark:bg-slate-900 text-xs text-slate-500 border border-slate-200 dark:border-slate-800">
+                <strong>EdTech Tip:</strong> Use visual cueing (arrows, high contrast) in video tutorials to capture instantaneous attention.
+              </div>
+            </div>
+
+            <!-- Working Memory -->
+            <div class="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/30 border-2 border-indigo-500/40 relative">
+              <div class="absolute -top-3 right-4 px-2.5 py-0.5 bg-indigo-600 text-white text-[10px] font-bold rounded-full uppercase tracking-wider">
+                Critical Bottleneck
+              </div>
+              <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Phase 2</span>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mt-1">Working Memory (WM)</h3>
+              <div class="mt-4 space-y-2 text-xs text-slate-600 dark:text-slate-300">
+                <p><strong>Duration:</strong> 15 &ndash; 30 seconds without active rehearsal.</p>
+                <p><strong>Capacity:</strong> Miller ($7 \pm 2$) or Cowan's modern benchmark of <strong>$4 \pm 1$ novel units</strong>.</p>
+                <p><strong>Baddeley's Model:</strong> Phonological Loop, Visuospatial Sketchpad, Central Executive, Episodic Buffer.</p>
+              </div>
+              <div class="mt-4 p-2.5 rounded-xl bg-white dark:bg-slate-900 text-xs text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900/50">
+                <strong>EdTech Rule:</strong> Avoid split-attention. Never force learners to read dense subtitles while watching animations.
+              </div>
+            </div>
+
+            <!-- Long-Term Memory -->
+            <div class="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-300 dark:border-emerald-800/60 relative">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Phase 3</span>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mt-1">Long-Term Memory (LTM)</h3>
+              <div class="mt-4 space-y-2 text-xs text-slate-600 dark:text-slate-300">
+                <p><strong>Duration:</strong> Lifetime storage.</p>
+                <p><strong>Capacity:</strong> Virtually infinite.</p>
+                <p><strong>Structure:</strong> Organized into hierarchical <strong>Schemas</strong>. Schemas compress thousands of facts into a single manageable unit.</p>
+              </div>
+              <div class="mt-4 p-2.5 rounded-xl bg-white dark:bg-slate-900 text-xs text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/50">
+                <strong>EdTech Tip:</strong> Use retrieval practice (quizzes, reflective pause points) to reinforce neural schema retrieval paths.
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Widget: Working Memory & Chunking Lab -->
+          <div id="wm-test" class="mt-8 p-6 rounded-2xl bg-slate-900 text-white shadow-xl relative overflow-hidden">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-4">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Interactive Cognitive Lab</span>
+                <h4 class="text-lg font-bold">Experience Working Memory Limits: The Chunking Experiment</h4>
+              </div>
+              <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">Miller ($7\pm2$) vs Cowan ($4\pm1$)</span>
+            </div>
+
+            <p class="text-xs text-slate-300 mb-6">
+              Test your own working memory. Look at the numbers or words for 3 seconds, then try to recall them. Notice how chunking into meaningful schemas immediately doubles your retention.
+            </p>
+
+            <div id="memoryTestContainer" class="text-center py-6">
+              <!-- Default state -->
+              <div id="wmInitialState" class="space-y-4">
+                <p class="text-sm text-slate-400">Choose an experiment mode to test your digit span:</p>
+                <div class="flex flex-wrap justify-center gap-3">
+                  <button onclick="startWmTest('unchunked')" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-medium text-xs text-white shadow-md transition">
+                    Test 1: Unchunked Stream (9 Random Digits)
+                  </button>
+                  <button onclick="startWmTest('chunked')" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-medium text-xs text-white shadow-md transition">
+                    Test 2: Schema / Chunked Pattern (3 Blocks)
+                  </button>
+                </div>
+              </div>
+
+              <!-- Presentation State -->
+              <div id="wmDisplayState" class="hidden">
+                <span class="text-xs text-slate-400 uppercase tracking-widest block mb-2">Memorize this sequence</span>
+                <div id="wmNumbersToMemorize" class="text-3xl sm:text-4xl font-mono font-extrabold text-amber-400 tracking-widest my-4">
+                  ---
+                </div>
+                <div class="w-48 h-1.5 bg-slate-800 rounded-full mx-auto overflow-hidden">
+                  <div id="wmTimerBar" class="h-full bg-amber-400 transition-all duration-3000 ease-linear" style="width: 100%"></div>
+                </div>
+              </div>
+
+              <!-- Input State -->
+              <div id="wmInputState" class="hidden space-y-4 max-w-sm mx-auto">
+                <span class="text-xs text-slate-300 block">Type the sequence from memory (digits only):</span>
+                <input type="text" id="wmUserAnswer" maxlength="12" class="w-full text-center text-xl font-mono tracking-widest px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <button onclick="checkWmAnswer()" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold transition">
+                  Submit to Working Memory Audit
+                </button>
+              </div>
+
+              <!-- Result State -->
+              <div id="wmResultState" class="hidden space-y-3 max-w-md mx-auto p-4 rounded-xl bg-slate-800 border border-slate-700 text-left">
+                <div id="wmResultHeading" class="font-bold text-sm"></div>
+                <p id="wmResultFeedback" class="text-xs text-slate-300 leading-relaxed"></p>
+                <button onclick="resetWmTest()" class="text-xs text-indigo-400 hover:text-indigo-300 font-semibold underline mt-2">
+                  Try another variation &rarr;
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: Cognitive Load Theory & Mayer's CTML -->
+        <section id="clt" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">04</span>
+            <div>
+              <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Sweller (1988) & Mayer (2020)</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Cognitive Load Theory & Multimedia Principles</h2>
+            </div>
+          </div>
+
+          <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 text-sm leading-relaxed space-y-3">
+            <p>
+              John Sweller established that because working memory has hard structural limits, instructional design must manage how mental capacity is occupied. Total cognitive load is defined by the formula:
+            </p>
+            <div class="my-4 p-4 rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900 text-center font-mono text-base sm:text-lg font-bold text-indigo-900 dark:text-indigo-300">
+              CL<sub>Total</sub> = CL<sub>Intrinsic</sub> + CL<sub>Extraneous</sub> + CL<sub>Germane</sub> &le; Capacity<sub>WM</sub>
+            </div>
+          </div>
+
+          <!-- The Three Loads Explained -->
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+              <div class="flex items-center space-x-2 font-bold text-slate-800 dark:text-slate-200 mb-2">
+                <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                <span>Intrinsic Load (IL)</span>
+              </div>
+              <p class="text-slate-600 dark:text-slate-400">
+                <strong>Origin:</strong> Inherent difficulty of the subject matter and element interactivity.
+              </p>
+              <p class="text-slate-500 mt-2">
+                <strong>Instructional Strategy:</strong> Manage through <em>segmenting</em> (pacing) and sequencing simple-to-complex.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/40">
+              <div class="flex items-center space-x-2 font-bold text-rose-700 dark:text-rose-400 mb-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                <span>Extraneous Load (EL)</span>
+              </div>
+              <p class="text-rose-900/80 dark:text-rose-300/80">
+                <strong>Origin:</strong> Poor interface layouts, decorative visuals, redundant text, and chaotic navigation.
+              </p>
+              <p class="text-rose-700 dark:text-rose-400 mt-2 font-semibold">
+                <strong>Instructional Strategy:</strong> <u>Aggressively eliminate</u>. Every ounce of EL steals space from schema building.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40">
+              <div class="flex items-center space-x-2 font-bold text-emerald-700 dark:text-emerald-400 mb-2">
+                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                <span>Germane Load (GL)</span>
+              </div>
+              <p class="text-emerald-900/80 dark:text-emerald-300/80">
+                <strong>Origin:</strong> Productive mental work dedicated to processing and integrating new knowledge into schemas.
+              </p>
+              <p class="text-emerald-600 dark:text-emerald-400 mt-2">
+                <strong>Instructional Strategy:</strong> Foster through worked examples, self-explanation prompts, and analogy mapping.
+              </p>
+            </div>
+          </div>
+
+          <!-- Interactive Cognitive Load Simulator -->
+          <div id="clt-simulator" class="mt-8 p-6 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Working Memory Overload Simulator</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Adjust the instructional parameters to see if the learner enters Cognitive Overload:</p>
+              </div>
+              <span id="overloadBadge" class="text-xs px-3 py-1 rounded-full font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                Optimal Learning
+              </span>
+            </div>
+
+            <!-- Sliders -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-4">
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-blue-600 dark:text-blue-400">Intrinsic Load (Concept Difficulty)</span>
+                  <span id="valIntrinsic">3 / 5</span>
+                </div>
+                <input type="range" id="inputIntrinsic" min="1" max="5" value="3" class="w-full h-2 bg-slate-300 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                <span class="text-[11px] text-slate-400 block mt-1">Topic element complexity</span>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-rose-600 dark:text-rose-400">Extraneous Load (Bad Design)</span>
+                  <span id="valExtraneous">2 / 5</span>
+                </div>
+                <input type="range" id="inputExtraneous" min="0" max="5" value="2" class="w-full h-2 bg-slate-300 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-rose-600">
+                <span class="text-[11px] text-slate-400 block mt-1">Cluttered UI, distracting music</span>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-emerald-600 dark:text-emerald-400">Germane Load (Active Reflection)</span>
+                  <span id="valGermane">3 / 5</span>
+                </div>
+                <input type="range" id="inputGermane" min="1" max="5" value="3" class="w-full h-2 bg-slate-300 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-600">
+                <span class="text-[11px] text-slate-400 block mt-1">Schema building activities</span>
+              </div>
+            </div>
+
+            <!-- Capacity Meter Bar -->
+            <div class="mt-6 space-y-2">
+              <div class="flex justify-between text-xs font-mono font-semibold">
+                <span>Working Memory Load: <strong id="totalLoadDisplay" class="text-sm font-bold text-slate-900 dark:text-white">8</strong> / 10 Units</span>
+                <span class="text-slate-400">Limit: 10 Units</span>
+              </div>
+              <div class="w-full h-6 bg-slate-200 dark:bg-slate-700 rounded-xl overflow-hidden flex relative">
+                <div id="barIntrinsic" style="width: 30%" class="h-full bg-blue-500 transition-all duration-200" title="Intrinsic Load"></div>
+                <div id="barExtraneous" style="width: 20%" class="h-full bg-rose-500 transition-all duration-200" title="Extraneous Load"></div>
+                <div id="barGermane" style="width: 30%" class="h-full bg-emerald-500 transition-all duration-200" title="Germane Load"></div>
+                <!-- Threshold line at 100% -->
+                <div class="absolute right-0 top-0 bottom-0 w-0.5 bg-red-600 shadow"></div>
+              </div>
+              <p id="simulatorDiagnosis" class="text-xs text-slate-600 dark:text-slate-300 pt-1">
+                &bull; Status: Total demand is within working memory capacity. Learners can actively build schemas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Mayer's CTML Principles Tabs -->
+          <div class="mt-10">
+            <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider text-xs mb-3">
+              Mayer's Cognitive Theory of Multimedia Learning (CTML)
+            </h4>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
+              <button onclick="switchCtmlTab('modality')" id="tabBtn-modality" class="ctml-tab active py-2 px-3 text-xs font-semibold rounded-xl bg-indigo-600 text-white transition">
+                1. Modality
+              </button>
+              <button onclick="switchCtmlTab('redundancy')" id="tabBtn-redundancy" class="ctml-tab py-2 px-3 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">
+                2. Redundancy
+              </button>
+              <button onclick="switchCtmlTab('split')" id="tabBtn-split" class="ctml-tab py-2 px-3 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">
+                3. Split-Attention
+              </button>
+              <button onclick="switchCtmlTab('coherence')" id="tabBtn-coherence" class="ctml-tab py-2 px-3 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">
+                4. Coherence
+              </button>
+            </div>
+
+            <!-- CTML Cards -->
+            <div id="ctmlContent" class="p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 leading-relaxed min-h-[140px]">
+              <!-- Dynamic JS content injected here -->
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: Schema, Piaget & Ausubel -->
+        <section id="schema" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">05</span>
+            <div>
+              <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Piaget & Ausubel</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Schema Theory & Meaningful Learning</h2>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Piaget's Cycle -->
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60">
+              <h3 class="font-bold text-sm text-slate-900 dark:text-white mb-2 flex items-center space-x-2">
+                <span>Jean Piaget: Cognitive Adaptation Cycle</span>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mb-4">
+                Learning occurs when students cycle through mental balance and productive cognitive conflict:
+              </p>
+              <div class="space-y-2.5 text-xs">
+                <div class="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <span class="font-bold text-indigo-600 dark:text-indigo-400">1. Assimilation:</span> Incorporating new observations into existing schemas without altering the baseline structure.
+                </div>
+                <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/50">
+                  <span class="font-bold text-amber-700 dark:text-amber-400">2. Cognitive Disequilibrium:</span> When new information conflicts with existing beliefs, creating curiosity and cognitive tension.
+                </div>
+                <div class="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <span class="font-bold text-emerald-600 dark:text-emerald-400">3. Accommodation:</span> Restructuring the schema or engineering a new one to fit novel data.
+                </div>
+                <div class="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <span class="font-bold text-purple-600 dark:text-purple-400">4. Equilibration:</span> Reaching a higher, more sophisticated level of cognitive stability.
+                </div>
+              </div>
+            </div>
+
+            <!-- Ausubel's Meaningful Learning -->
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60">
+              <h3 class="font-bold text-sm text-slate-900 dark:text-white mb-2 flex items-center space-x-2">
+                <span>David Ausubel: Meaningful Learning</span>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mb-4">
+                The most important single factor influencing learning is what the student already knows (<strong>prior knowledge</strong>).
+              </p>
+              <div class="space-y-3 text-xs">
+                <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/40 text-slate-700 dark:text-slate-300">
+                  <strong class="text-rose-700 dark:text-rose-400 block mb-1">Rote Memorization:</strong>
+                  Facts are memorized verbatim without linking to pre-existing anchors. Result: rapid decay and zero transfer ability.
+                </div>
+                <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40 text-slate-700 dark:text-slate-300">
+                  <strong class="text-emerald-700 dark:text-emerald-400 block mb-1">Meaningful Learning (Subsumption):</strong>
+                  New facts bind deliberately to existing cognitive nodes (subsumers), enabling lifelong retention and creative problem-solving.
+                </div>
+                <div class="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/40 text-slate-700 dark:text-slate-300">
+                  <strong class="text-indigo-700 dark:text-indigo-400 block mb-1">Advance Organizers:</strong>
+                  High-level introductory frameworks presented before new material to act as mental bridges between what learners know and what they must grasp.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 6: Metacognition & SRL -->
+        <section id="metacognition" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">06</span>
+            <div>
+              <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Flavell (1979) & Zimmerman (2002)</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Metacognition & Self-Regulated Learning (SRL)</h2>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+            Metacognition is commonly defined as <em>"thinking about one's own thinking"</em>—the conscious monitoring and regulation of one's own cognitive processes. In digital online learning, where external physical supervision is reduced, student mastery hinges upon the <strong>Self-Regulated Learning (SRL) Cycle</strong>:
+          </p>
+
+          <!-- Zimmerman's SRL Cycle Interactive Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-5 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/50">
+              <div class="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-xs mb-3">1</div>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white">Forethought & Planning</h4>
+              <ul class="mt-2 space-y-1 text-xs text-slate-600 dark:text-slate-300 list-disc list-inside">
+                <li>Goal setting & milestone mapping.</li>
+                <li>Strategy selection (e.g., self-quizzing vs skimming).</li>
+                <li>Self-efficacy & motivation assessment.</li>
+              </ul>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-purple-50/50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-900/50">
+              <div class="w-7 h-7 rounded-lg bg-purple-600 text-white flex items-center justify-center font-bold text-xs mb-3">2</div>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white">Performance Control</h4>
+              <ul class="mt-2 space-y-1 text-xs text-slate-600 dark:text-slate-300 list-disc list-inside">
+                <li>Attention focusing & digital distraction shielding.</li>
+                <li>Self-instruction and step-by-step checkpointing.</li>
+                <li>Active elaborative note-taking.</li>
+              </ul>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50">
+              <div class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs mb-3">3</div>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white">Self-Reflection</h4>
+              <ul class="mt-2 space-y-1 text-xs text-slate-600 dark:text-slate-300 list-disc list-inside">
+                <li>Self-evaluation against rubric standards.</li>
+                <li>Attribution of errors to effort vs strategy.</li>
+                <li>Adapting study habits for subsequent modules.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 7: Integration Matrix -->
+        <section id="matrix" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">07</span>
+            <div>
+              <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Theory Into Practice</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Educational Technology Integration Matrix</h2>
+            </div>
+          </div>
+
+          <!-- Live Filter Bar -->
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs text-slate-500">Filter design principles:</span>
+            <div class="flex gap-2">
+              <button onclick="filterMatrix('all')" class="matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-indigo-600 text-white">All</button>
+              <button onclick="filterMatrix('clt')" class="matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Load Theory</button>
+              <button onclick="filterMatrix('schema')" class="matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Schema/Piaget</button>
+              <button onclick="filterMatrix('meta')" class="matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Metacognition</button>
+            </div>
+          </div>
+
+          <!-- Responsive Table -->
+          <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-700">
+                <tr>
+                  <th class="p-3.5">Cognitive Principle</th>
+                  <th class="p-3.5">Cognitive Phenomenon</th>
+                  <th class="p-3.5 text-rose-600 dark:text-rose-400">Common EdTech Flaw</th>
+                  <th class="p-3.5 text-emerald-600 dark:text-emerald-400">Instructional Solution</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
+                <tr class="matrix-row clt hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                  <td class="p-3.5 font-bold text-slate-900 dark:text-white">Dual Channels (Baddeley)</td>
+                  <td class="p-3.5">Processing bottlenecks across auditory and visual channels.</td>
+                  <td class="p-3.5 text-rose-500 font-medium">Instructor reading dense on-screen slide text aloud during webinars.</td>
+                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">Use minimal visual diagrams on slides while providing spoken narration.</td>
+                </tr>
+                <tr class="matrix-row clt hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                  <td class="p-3.5 font-bold text-slate-900 dark:text-white">Sweller's CLT</td>
+                  <td class="p-3.5">Extraneous cognitive overload from interface noise.</td>
+                  <td class="p-3.5 text-rose-500 font-medium">LMS screens with multiple sidebars, animated ads, and nested menus.</td>
+                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">Apply progressive disclosure; reveal advanced settings only on demand.</td>
+                </tr>
+                <tr class="matrix-row schema hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                  <td class="p-3.5 font-bold text-slate-900 dark:text-white">Ausubel's Subsumption</td>
+                  <td class="p-3.5">Absence of anchoring mental nodes for abstract facts.</td>
+                  <td class="p-3.5 text-rose-500 font-medium">Teaching programming syntax or math formulas without real-world context.</td>
+                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">Open lessons with visual advance organizers and everyday analogies.</td>
+                </tr>
+                <tr class="matrix-row schema hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                  <td class="p-3.5 font-bold text-slate-900 dark:text-white">Piaget's Disequilibrium</td>
+                  <td class="p-3.5">Passive compliance with zero intrinsic curiosity.</td>
+                  <td class="p-3.5 text-rose-500 font-medium">Delivering long, monotonic lecture videos with no pause questions.</td>
+                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">Start with paradoxes, counter-intuitive data sets, or anomaly puzzles.</td>
+                </tr>
+                <tr class="matrix-row meta hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                  <td class="p-3.5 font-bold text-slate-900 dark:text-white">Flavell's Metacognition</td>
+                  <td class="p-3.5">Illusion of competence (feeling knowledgeable by simply watching).</td>
+                  <td class="p-3.5 text-rose-500 font-medium">Students speed-watching videos without testing their comprehension.</td>
+                  <td class="p-3.5 text-emerald-600 dark:text-emerald-400">Embed mandatory interactive check-in questions directly in the timeline.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 8: Cognitive Evaluation Case Study -->
+        <section id="casestudy" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border-2 border-indigo-500/40 shadow-xl scroll-mt-20">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-600 text-white font-bold text-sm">08</span>
+              <div>
+                <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Student Project Lab</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Cognitive Audit Worksheet: Online Tutoring App</h2>
+              </div>
+            </div>
+            <span class="hidden sm:inline-flex px-3 py-1 bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold rounded-full">
+              Graded Lab Case
+            </span>
+          </div>
+
+          <!-- Scenario Box -->
+          <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 mb-6">
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-2">Audit Scenario: "High School Physics - Newton's Laws"</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed italic border-l-4 border-indigo-500 pl-3">
+              "The online tutoring screen displays a live physics simulation. The interface is split into four crowded panes: a webcam feed of the tutor reciting mathematical formulas, a continuous scrolling ticker of textbook definitions running along the bottom, an animated vector diagram moving swiftly in the center, and an active social chat populated with animated emoji stickers on the right. Fast-paced instrumental EDM music plays continuously in the background."
+            </p>
+          </div>
+
+          <!-- Interactive Visual Simulation: Bad vs Optimized UI -->
+          <div class="mb-8">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Live Interface Preview:</span>
+              <div class="inline-flex p-1 rounded-xl bg-slate-200 dark:bg-slate-800">
+                <button onclick="setInterfaceDemo('cluttered')" id="btnViewCluttered" class="px-3 py-1 rounded-lg text-xs font-bold bg-rose-600 text-white transition">
+                  Current Cluttered Layout (Overloaded)
+                </button>
+                <button onclick="setInterfaceDemo('optimized')" id="btnViewOptimized" class="px-3 py-1 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-white transition">
+                  Optimized Cognitive Redesign
+                </button>
+              </div>
+            </div>
+
+            <!-- Visual Mockup Container -->
+            <div id="mockupViewport" class="p-4 rounded-2xl bg-slate-950 border-2 border-rose-500 text-white transition-all duration-300 min-h-[260px]">
+              <!-- Cluttered view -->
+              <div id="viewCluttered" class="space-y-3">
+                <div class="flex items-center justify-between border-b border-rose-900/60 pb-2">
+                  <span class="text-xs font-mono text-rose-400 font-bold flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span> High Extraneous Cognitive Load Detected
+                  </span>
+                  <span class="text-[10px] bg-rose-950 text-rose-300 px-2 py-0.5 rounded border border-rose-800">Music Playing: Upbeat EDM &bull; 130 BPM</span>
+                </div>
+                <div class="grid grid-cols-12 gap-2 text-center text-xs">
+                  <!-- Vector animation -->
+                  <div class="col-span-6 p-4 rounded-xl bg-slate-800/80 border border-slate-700 flex flex-col justify-center items-center">
+                    <span class="text-indigo-400 font-mono font-bold">F = m &times; a</span>
+                    <div class="mt-2 text-[10px] text-slate-400 animate-bounce">Vector Diagram Moving Fast &rarr;</div>
+                  </div>
+                  <!-- Webcam -->
+                  <div class="col-span-3 p-3 rounded-xl bg-slate-900 border border-slate-800 flex flex-col justify-center items-center">
+                    <span class="text-2xl mb-1">👨‍🏫</span>
+                    <span class="text-[10px] text-slate-400">Tutor Talking Fast</span>
+                  </div>
+                  <!-- Social stickers -->
+                  <div class="col-span-3 p-2 rounded-xl bg-slate-900 border border-slate-800 overflow-hidden text-[10px] text-slate-400">
+                    <div class="text-amber-400 font-bold mb-1">Live Chat</div>
+                    <div class="animate-pulse">🔥 😂 🎉 🚀</div>
+                  </div>
+                </div>
+                <!-- Scrolling text ticker -->
+                <div class="p-2 rounded bg-rose-950/60 border border-rose-800 text-[10px] font-mono text-rose-300 overflow-hidden whitespace-nowrap">
+                  <span class="inline-block animate-pulse">&larr; DEFINITION: Newton's First Law dictates that an object at rest stays at rest unless acted upon by an external net force... &larr;</span>
+                </div>
+              </div>
+
+              <!-- Optimized view -->
+              <div id="viewOptimized" class="hidden space-y-3">
+                <div class="flex items-center justify-between border-b border-emerald-900/60 pb-2">
+                  <span class="text-xs font-mono text-emerald-400 font-bold flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Mayer-Compliant Clean Architecture
+                  </span>
+                  <span class="text-[10px] bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-800">Background Noise: Muted &bull; Focused Modality</span>
+                </div>
+                <div class="grid grid-cols-12 gap-3 text-xs">
+                  <div class="col-span-8 p-6 rounded-xl bg-slate-900 border border-emerald-500/40 flex flex-col items-center justify-center">
+                    <div class="text-base font-bold text-white mb-2">Newton's First Law: Inertia</div>
+                    <div class="flex items-center gap-4 text-emerald-400 font-mono">
+                      <div class="p-2 rounded bg-slate-800 border border-slate-700">Mass (m) = 5kg</div>
+                      <span>&rarr;</span>
+                      <div class="p-2 rounded bg-slate-800 border border-slate-700">Net Force = 0N (Constant Velocity)</div>
+                    </div>
+                    <span class="text-[11px] text-slate-400 mt-3 text-center">Spoken narration synchronizes with the highlighted force vectors (Modality Principle).</span>
+                  </div>
+                  <div class="col-span-4 p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col justify-between">
+                    <div>
+                      <span class="text-[11px] font-bold text-indigo-400 uppercase tracking-wider block mb-2">Concept Scaffolding</span>
+                      <p class="text-[10px] text-slate-400 leading-relaxed">Integrated key labels positioned immediately alongside the diagram components (Split-Attention eliminated).</p>
+                    </div>
+                    <button class="w-full py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-[11px] transition">
+                      Pause & Reflect
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Student Response Tasks & Model Answers Accordion -->
+          <div class="space-y-4">
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white">Student Audit Worksheet Tasks</h4>
+
+            <!-- Task 1 -->
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-3">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Question 1 &bull; Cognitive Load Analysis</span>
+                  <p class="text-xs font-semibold text-slate-800 dark:text-slate-200 mt-1">
+                    Identify 3 specific sources of Extraneous Load in the default interface and explain the impact on the visuospatial sketchpad.
+                  </p>
+                </div>
+                <button onclick="toggleExemplar('ans1')" class="text-xs text-indigo-600 dark:text-indigo-400 font-bold hover:underline shrink-0 ml-2">
+                  Show Rubric Key &darr;
+                </button>
+              </div>
+              <textarea placeholder="Type your student analysis here..." class="w-full text-xs p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
+              <div id="ans1" class="hidden p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-900 text-xs text-indigo-900 dark:text-indigo-200 space-y-1">
+                <strong>Model Solution / Rubric Standard:</strong>
+                <ul class="list-disc list-inside space-y-0.5 mt-1 text-[11px]">
+                  <li><strong>Three Sources:</strong> (1) Continuous EDM background music violates Coherence Principle; (2) Scrolling bottom ticker competes for visual saccades; (3) Animated stickers in social chat distract selective attention.</li>
+                  <li><strong>Visuospatial impact:</strong> When reading the scrolling ticker while tracking vector animation, the visuospatial sketchpad experiences bottleneck collision, causing cognitive overload.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Task 2 -->
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-3">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Question 2 &bull; Instructional Redesign</span>
+                  <p class="text-xs font-semibold text-slate-800 dark:text-slate-200 mt-1">
+                    Propose 2 interface redesigns based on Mayer's Principles and apply Visual Cueing (Signalling).
+                  </p>
+                </div>
+                <button onclick="toggleExemplar('ans2')" class="text-xs text-indigo-600 dark:text-indigo-400 font-bold hover:underline shrink-0 ml-2">
+                  Show Rubric Key &darr;
+                </button>
+              </div>
+              <textarea placeholder="Type your redesign proposal here..." class="w-full text-xs p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
+              <div id="ans2" class="hidden p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-900 text-xs text-indigo-900 dark:text-indigo-200 space-y-1">
+                <strong>Model Solution / Rubric Standard:</strong>
+                <ul class="list-disc list-inside space-y-0.5 mt-1 text-[11px]">
+                  <li><strong>Redesign 1 (Modality Principle):</strong> Remove the scrolling text ticker; explain vectors using clear verbal narration synchronized to the motion.</li>
+                  <li><strong>Redesign 2 (Coherence Principle):</strong> Mute the EDM background music completely and collapse animated chat during instruction.</li>
+                  <li><strong>Signalling:</strong> Highlight the active force vector in bold yellow when the narrator discusses mass and acceleration.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Task 3 -->
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-3">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase">Question 3 &bull; Advance Organizer Construction</span>
+                  <p class="text-xs font-semibold text-slate-800 dark:text-slate-200 mt-1">
+                    Draft a short introductory analogy (Advance Organizer) explaining Newton's First Law (Inertia) to facilitate Meaningful Learning.
+                  </p>
+                </div>
+                <button onclick="toggleExemplar('ans3')" class="text-xs text-indigo-600 dark:text-indigo-400 font-bold hover:underline shrink-0 ml-2">
+                  Show Rubric Key &darr;
+                </button>
+              </div>
+              <textarea placeholder="Draft your advance organizer analogy here..." class="w-full text-xs p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" rows="3"></textarea>
+              <div id="ans3" class="hidden p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-900 text-xs text-indigo-900 dark:text-indigo-200 space-y-1">
+                <strong>Exemplar Advance Organizer:</strong>
+                <p class="text-[11px] leading-relaxed italic">
+                  "Think of riding a city bus standing in the aisle. When the bus driver suddenly slams on the brakes, your feet stop with the floor, but your upper body lurches forward. Your body didn't get pushed by an invisible hand; it simply wanted to keep doing what it was already doing—moving forward. That resistance to changing state is what physicists call Inertia."
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 9: Formative Self-Assessment Quiz -->
+        <section id="quickquiz" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-bold text-sm">09</span>
+              <div>
+                <span class="text-xs font-semibold uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">Formative Check</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Quick Mastery Assessment</h2>
+              </div>
+            </div>
+            <div id="quizScoreBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+              Score: 0 / 3
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Quiz Item 1 -->
+            <div class="quiz-item p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80" data-answered="false">
+              <p class="text-xs font-bold text-slate-900 dark:text-white mb-3">
+                1. Which cognitive load component is exclusively determined by the inherent element complexity of the subject matter?
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <button onclick="handleQuizAnswer(this, 1, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  A. Extraneous Cognitive Load
+                </button>
+                <button onclick="handleQuizAnswer(this, 1, true)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  B. Intrinsic Cognitive Load
+                </button>
+                <button onclick="handleQuizAnswer(this, 1, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  C. Germane Cognitive Load
+                </button>
+                <button onclick="handleQuizAnswer(this, 1, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  D. Sensory Register Load
+                </button>
+              </div>
+              <div class="quiz-feedback hidden mt-3 p-2.5 rounded-lg text-xs"></div>
+            </div>
+
+            <!-- Quiz Item 2 -->
+            <div class="quiz-item p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80" data-answered="false">
+              <p class="text-xs font-bold text-slate-900 dark:text-white mb-3">
+                2. According to Mayer's Redundancy Principle, what should instructional designers avoid?
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <button onclick="handleQuizAnswer(this, 2, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  A. Using diagrams with spoken audio narration
+                </button>
+                <button onclick="handleQuizAnswer(this, 2, true)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  B. Presenting animation, spoken narration, AND identical on-screen text all at once
+                </button>
+                <button onclick="handleQuizAnswer(this, 2, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  C. Breaking complex lectures into short segmented clips
+                </button>
+                <button onclick="handleQuizAnswer(this, 2, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  D. Embedding advance organizers before introducing formulas
+                </button>
+              </div>
+              <div class="quiz-feedback hidden mt-3 p-2.5 rounded-lg text-xs"></div>
+            </div>
+
+            <!-- Quiz Item 3 -->
+            <div class="quiz-item p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80" data-answered="false">
+              <p class="text-xs font-bold text-slate-900 dark:text-white mb-3">
+                3. What cognitive state occurs in Piaget's framework when an online learner encounters contradictory evidence that clashes with their current schema?
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <button onclick="handleQuizAnswer(this, 3, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  A. Assimilation Equilibrium
+                </button>
+                <button onclick="handleQuizAnswer(this, 3, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  B. Working Memory Attrition
+                </button>
+                <button onclick="handleQuizAnswer(this, 3, true)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  C. Cognitive Disequilibrium
+                </button>
+                <button onclick="handleQuizAnswer(this, 3, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-indigo-50 dark:hover:bg-slate-800 transition">
+                  D. Extraneous Subsumption
+                </button>
+              </div>
+              <div class="quiz-feedback hidden mt-3 p-2.5 rounded-lg text-xs"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 10: Academic References -->
+        <section id="references" class="p-6 sm:p-8 rounded-3xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-3">
+          <h3 class="font-bold text-sm text-slate-800 dark:text-slate-200 uppercase tracking-wider">References & Foundational Literature</h3>
+          <ul class="space-y-1.5 list-disc list-inside">
+            <li>Atkinson, R. C., & Shiffrin, R. M. (1968). Human memory: A proposed system and its control processes. <em>Psychology of Learning and Motivation</em>, 2, 89-195.</li>
+            <li>Ausubel, D. P. (1968). <em>Educational Psychology: A Cognitive View</em>. Holt, Rinehart & Winston.</li>
+            <li>Baddeley, A. (2000). The episodic buffer: A new component of working memory? <em>Trends in Cognitive Sciences</em>, 4(11), 417-423.</li>
+            <li>Cowan, N. (2001). The magical number 4 in short-term memory: A reconsideration of mental storage capacity. <em>Behavioral and Brain Sciences</em>, 24(1), 87-114.</li>
+            <li>Mayer, R. E. (2020). <em>Designing Multimedia Instruction: The Cambridge Handbook of Multimedia Learning</em> (3rd ed.). Cambridge University Press.</li>
+            <li>Miller, G. A. (1956). The magical number seven, plus or minus two: Some limits on our capacity for processing information. <em>Psychological Review</em>, 63(2), 81-97.</li>
+            <li>Sweller, J., Ayres, P., & Kalyuga, S. (2011). <em>Cognitive Load Theory</em>. Springer Science & Business Media.</li>
+            <li>Zimmerman, B. J. (2002). Becoming a self-regulated learner: An overview. <em>Theory Into Practice</em>, 41(2), 64-70.</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Sticky Toast Notification (No alert() used!) -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 transform translate-y-32 opacity-0 transition-all duration-300 z-50 p-4 rounded-2xl shadow-xl flex items-center space-x-3 text-xs font-semibold max-w-sm"></div>
+
+  <script>
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    themeToggleBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgressBar').style.width = scrolled + '%';
+    });
+
+    // Custom Toast Notification Function (Strictly avoids alert())
+    function showToast(message, type = 'info') {
+      const toast = document.getElementById('toastNotification');
+      toast.className = `fixed bottom-6 right-6 transform transition-all duration-300 z-50 p-4 rounded-2xl shadow-xl flex items-center space-x-3 text-xs font-semibold max-w-sm ${
+        type === 'success' ? 'bg-emerald-600 text-white' : 
+        type === 'error' ? 'bg-rose-600 text-white' : 
+        'bg-slate-900 dark:bg-white text-white dark:text-slate-900'
+      }`;
+      toast.textContent = message;
+      toast.classList.remove('translate-y-32', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-32', 'opacity-0');
+      }, 3500);
+    }
+
+    // Working Memory Interactive Experiment
+    let wmCurrentMode = '';
+    let wmTargetSequence = '';
+    let wmTimerId = null;
+
+    function startWmTest(mode) {
+      wmCurrentMode = mode;
+      document.getElementById('wmInitialState').classList.add('hidden');
+      document.getElementById('wmDisplayState').classList.remove('hidden');
+      document.getElementById('wmInputState').classList.add('hidden');
+      document.getElementById('wmResultState').classList.add('hidden');
+
+      if (mode === 'unchunked') {
+        // Random 9 digits with no spacing (Miller overload)
+        const digits = Array.from({length: 9}, () => Math.floor(Math.random() * 10)).join('');
+        wmTargetSequence = digits;
+        document.getElementById('wmNumbersToMemorize').textContent = digits;
+      } else {
+        // 9 digits grouped into 3 familiar chunk blocks
+        const block1 = '198';
+        const block2 = '420';
+        const block3 = '26';
+        wmTargetSequence = '19842026';
+        document.getElementById('wmNumbersToMemorize').textContent = '1984 - 2026';
+      }
+
+      // Reset timer bar animation
+      const bar = document.getElementById('wmTimerBar');
+      bar.style.transition = 'none';
+      bar.style.width = '100%';
+      setTimeout(() => {
+        bar.style.transition = 'width 3s linear';
+        bar.style.width = '0%';
+      }, 50);
+
+      clearTimeout(wmTimerId);
+      wmTimerId = setTimeout(() => {
+        document.getElementById('wmDisplayState').classList.add('hidden');
+        document.getElementById('wmInputState').classList.remove('hidden');
+        document.getElementById('wmUserAnswer').value = '';
+        document.getElementById('wmUserAnswer').focus();
+      }, 3050);
+    }
+
+    function checkWmAnswer() {
+      const userVal = document.getElementById('wmUserAnswer').value.trim().replace(/[-\s]/g, '');
+      const cleanTarget = wmTargetSequence.replace(/[-\s]/g, '');
+      document.getElementById('wmInputState').classList.add('hidden');
+      document.getElementById('wmResultState').classList.remove('hidden');
+
+      const isCorrect = userVal === cleanTarget;
+      const heading = document.getElementById('wmResultHeading');
+      const feedback = document.getElementById('wmResultFeedback');
+
+      if (isCorrect) {
+        heading.className = 'font-bold text-sm text-emerald-400';
+        heading.textContent = '🎉 Accurate Recall!';
+        feedback.textContent = wmCurrentMode === 'unchunked' 
+          ? `Impressive! You successfully held 9 unchunked units in working memory, near the ceiling of Miller's 7 ± 2 limit.`
+          : `Notice how grouping the digits into meaningful chunks (1984 and 2026) required only 2 working memory slots instead of 8 separate items! That is the power of schema construction.`;
+        showToast('Sequence memorized successfully!', 'success');
+      } else {
+        heading.className = 'font-bold text-sm text-rose-400';
+        heading.textContent = 'Cognitive Bottleneck Reached';
+        feedback.textContent = `You entered "${userVal}" (Correct was: "${cleanTarget}"). In unfamiliar or unchunked streams, working memory decays in just 15-30 seconds or drops to Nelson Cowan's 4 ± 1 unit boundary. Chunking is necessary to bypass this bottleneck.`;
+        showToast('Memory limit demonstrated!', 'error');
+      }
+    }
+
+    function resetWmTest() {
+      document.getElementById('wmResultState').classList.add('hidden');
+      document.getElementById('wmInitialState').classList.remove('hidden');
+    }
+
+    // Cognitive Load Theory Simulator Calculations
+    const inputIntrinsic = document.getElementById('inputIntrinsic');
+    const inputExtraneous = document.getElementById('inputExtraneous');
+    const inputGermane = document.getElementById('inputGermane');
+
+    function updateCltSimulator() {
+      const iVal = parseInt(inputIntrinsic.value, 10);
+      const eVal = parseInt(inputExtraneous.value, 10);
+      const gVal = parseInt(inputGermane.value, 10);
+
+      document.getElementById('valIntrinsic').textContent = `${iVal} / 5`;
+      document.getElementById('valExtraneous').textContent = `${eVal} / 5`;
+      document.getElementById('valGermane').textContent = `${gVal} / 5`;
+
+      const total = iVal + eVal + gVal;
+      document.getElementById('totalLoadDisplay').textContent = total;
+
+      // Recalculate percentage widths for 10 units maximum
+      const iPct = (iVal / 10) * 100;
+      const ePct = (eVal / 10) * 100;
+      const gPct = (gVal / 10) * 100;
+
+      document.getElementById('barIntrinsic').style.width = iPct + '%';
+      document.getElementById('barExtraneous').style.width = ePct + '%';
+      document.getElementById('barGermane').style.width = gPct + '%';
+
+      const badge = document.getElementById('overloadBadge');
+      const diag = document.getElementById('simulatorDiagnosis');
+
+      if (total > 10) {
+        badge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 animate-pulse';
+        badge.textContent = '⚠️ Cognitive Overload!';
+        diag.innerHTML = `<span class="text-rose-600 dark:text-rose-400 font-bold">&bull; Overload:</span> Total load (${total}/10) exceeds Working Memory capacity! High extraneous clutter leaves zero mental bandwidth for germane schema integration. Learning breaks down.`;
+      } else if (total >= 7) {
+        badge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300';
+        badge.textContent = 'Optimal Engagement';
+        diag.innerHTML = `<span class="text-indigo-600 dark:text-indigo-400 font-bold">&bull; Optimal:</span> Demands are challenging yet within limits. Extraneous load is sufficiently low to allow active schema construction.`;
+      } else {
+        badge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-300';
+        badge.textContent = 'Under-Demanding';
+        diag.innerHTML = `<span class="text-slate-600 dark:text-slate-400 font-bold">&bull; Low Demand:</span> Working memory has surplus capacity. Consider introducing deeper problem-solving scaffolds.`;
+      }
+    }
+
+    [inputIntrinsic, inputExtraneous, inputGermane].forEach(input => {
+      input.addEventListener('input', updateCltSimulator);
+    });
+    updateCltSimulator();
+
+    // Mayer CTML Tabs Logic
+    const ctmlData = {
+      modality: {
+        title: "1. Modality Principle",
+        desc: "People learn more deeply from graphics and spoken narration than from graphics and on-screen written text.",
+        implication: "When explaining a diagram or code execution, use your voice rather than cluttering the screen with paragraphs of text. This engages both the auditory phonological loop and visuospatial sketchpad in parallel."
+      },
+      redundancy: {
+        title: "2. Redundancy Principle",
+        desc: "People learn better from graphics and narration than from graphics, narration, AND identical on-screen text.",
+        implication: "Reading on-screen subtitles that match the spoken audio word-for-word splits visual attention and forces the eyes to waste capacity reading instead of studying the illustration."
+      },
+      split: {
+        title: "3. Split-Attention Principle",
+        desc: "Do not separate text descriptions from the graphic elements they describe.",
+        implication: "Instead of putting an illustration at the top and a numbered legend table 200 pixels below it, place the text labels directly next to each vector or component."
+      },
+      coherence: {
+        title: "4. Coherence Principle",
+        desc: "Exclude all extraneous words, pictures, background tunes, and decorative visuals that do not advance the objective.",
+        implication: "No upbeat EDM background music in instructional screencasts; no animated dancing memes in physics lecture slides. Decorative clutter consumes precious working memory."
+      }
+    };
+
+    function switchCtmlTab(key) {
+      document.querySelectorAll('.ctml-tab').forEach(b => {
+        b.className = 'ctml-tab py-2 px-3 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition';
+      });
+      const activeBtn = document.getElementById(`tabBtn-${key}`);
+      if (activeBtn) {
+        activeBtn.className = 'ctml-tab active py-2 px-3 text-xs font-semibold rounded-xl bg-indigo-600 text-white transition';
+      }
+
+      const item = ctmlData[key];
+      const container = document.getElementById('ctmlContent');
+      container.innerHTML = `
+        <h5 class="font-bold text-sm text-slate-900 dark:text-white mb-1">${item.title}</h5>
+        <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-2">${item.desc}</p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-700/60 pt-2">
+          <strong>EdTech Implementation:</strong> ${item.implication}
+        </p>
+      `;
+    }
+    switchCtmlTab('modality');
+
+    // Matrix Filter Function
+    function filterMatrix(category) {
+      document.querySelectorAll('.matrix-filter').forEach(btn => {
+        btn.className = 'matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400';
+      });
+      event.target.className = 'matrix-filter px-3 py-1 rounded-lg text-xs font-medium bg-indigo-600 text-white';
+
+      const rows = document.querySelectorAll('.matrix-row');
+      rows.forEach(r => {
+        if (category === 'all' || r.classList.contains(category)) {
+          r.classList.remove('hidden');
+        } else {
+          r.classList.add('hidden');
+        }
+      });
+    }
+
+    // Interface Mockup Toggle (Cluttered vs Optimized)
+    function setInterfaceDemo(type) {
+      const clutteredView = document.getElementById('viewCluttered');
+      const optimizedView = document.getElementById('viewOptimized');
+      const viewport = document.getElementById('mockupViewport');
+      const btnC = document.getElementById('btnViewCluttered');
+      const btnO = document.getElementById('btnViewOptimized');
+
+      if (type === 'cluttered') {
+        clutteredView.classList.remove('hidden');
+        optimizedView.classList.add('hidden');
+        viewport.className = 'p-4 rounded-2xl bg-slate-950 border-2 border-rose-500 text-white transition-all duration-300 min-h-[260px]';
+        btnC.className = 'px-3 py-1 rounded-lg text-xs font-bold bg-rose-600 text-white transition';
+        btnO.className = 'px-3 py-1 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-white transition';
+        showToast('Switched to Overloaded Cluttered View', 'info');
+      } else {
+        clutteredView.classList.add('hidden');
+        optimizedView.classList.remove('hidden');
+        viewport.className = 'p-4 rounded-2xl bg-slate-950 border-2 border-emerald-500 text-white transition-all duration-300 min-h-[260px]';
+        btnO.className = 'px-3 py-1 rounded-lg text-xs font-bold bg-emerald-600 text-white transition';
+        btnC.className = 'px-3 py-1 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-white transition';
+        showToast('Switched to Optimized Cognitive Layout', 'success');
+      }
+    }
+
+    // Toggle Exemplar Rubric Answers
+    function toggleExemplar(id) {
+      const el = document.getElementById(id);
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    }
+
+    // Formative Quiz Logic
+    let quizScore = 0;
+    const answeredQuestions = new Set();
+
+    function handleQuizAnswer(button, qIndex, isCorrect) {
+      const parentCard = button.closest('.quiz-item');
+      if (parentCard.dataset.answered === 'true') return; // Prevent multiple attempts
+
+      parentCard.dataset.answered = 'true';
+      const feedbackBox = parentCard.querySelector('.quiz-feedback');
+      const options = parentCard.querySelectorAll('.quiz-opt');
+
+      options.forEach(opt => {
+        opt.disabled = true;
+        opt.classList.add('opacity-60', 'cursor-not-allowed');
+      });
+
+      if (isCorrect) {
+        button.classList.remove('opacity-60');
+        button.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600');
+        feedbackBox.className = 'quiz-feedback mt-3 p-3 rounded-xl text-xs bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 block';
+        feedbackBox.innerHTML = `<strong>Correct!</strong> Your cognitive evaluation matches educational psychology research.`;
+        quizScore++;
+        showToast('Correct answer!', 'success');
+      } else {
+        button.classList.remove('opacity-60');
+        button.classList.add('bg-rose-500', 'text-white', 'border-rose-600');
+        feedbackBox.className = 'quiz-feedback mt-3 p-3 rounded-xl text-xs bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 text-rose-800 dark:text-rose-300 block';
+        feedbackBox.innerHTML = `<strong>Incorrect.</strong> Review Sweller's and Mayer's theoretical principles above to reinforce this concept.`;
+        showToast('Review the theoretical module section.', 'error');
+      }
+
+      document.getElementById('quizScoreBadge').textContent = `Score: ${quizScore} / 3`;
+    }
+  </script>
+</body>
+</html>
