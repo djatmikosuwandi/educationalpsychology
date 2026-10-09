@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humanistic Learning Theory in Educational Technology | Teori Belajar Humanistik</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Tailwind Theme Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            rosebrand: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              800: '#9f1239',
+              900: '#881337',
+            },
+            warmbrand: {
+              50: '#fdf4ff',
+              100: '#fae8ff',
+              500: '#d946ef',
+              600: '#c026d3',
+              700: '#a21caf',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom sleek scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Strict Bilingual Display Control */
+    body.lang-en .i18n-id {
+      display: none !important;
+    }
+    body.lang-id .i18n-en {
+      display: none !important;
+    }
+
+    /* Soft gentle pulse animation */
+    @keyframes gentlePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.92; transform: scale(1.01); }
+    }
+    .animate-gentle {
+      animation: gentlePulse 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="lang-en bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200 antialiased selection:bg-rose-500 selection:text-white">
+
+  <!-- Top Reading Progress Indicator -->
+  <div id="scrollProgressBar" class="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-rose-500 via-amber-500 to-teal-400 z-50 transition-all duration-150" style="width: 0%"></div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo & Academic Context -->
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 via-pink-600 to-amber-500 flex items-center justify-center text-white font-bold shadow-md shadow-rose-500/20 shrink-0">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="text-[11px] uppercase tracking-wider font-bold text-rose-600 dark:text-rose-400 block">
+            <span class="i18n-en">Educational Psychology • EdTech</span>
+            <span class="i18n-id">Psikologi Pendidikan • Tekpen</span>
+          </span>
+          <span class="text-sm font-extrabold text-slate-900 dark:text-white hidden sm:inline">
+            <span class="i18n-en">Humanistic Learning Theory</span>
+            <span class="i18n-id">Teori Pembelajaran Humanistik</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Nav Links, Language Toggle & Theme Button -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <nav class="hidden lg:flex items-center space-x-1 text-xs font-semibold text-slate-600 dark:text-slate-300">
+          <a href="#outcomes" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="i18n-en">Outcomes</span><span class="i18n-id">Capaian</span>
+          </a>
+          <a href="#essence" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="i18n-en">Essence</span><span class="i18n-id">Hakikat</span>
+          </a>
+          <a href="#theorists" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="i18n-en">Key Theorists</span><span class="i18n-id">Tokoh Utama</span>
+          </a>
+          <a href="#supporting" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="i18n-en">Supporting Theories</span><span class="i18n-id">Teori Pendukung</span>
+          </a>
+          <a href="#edtech-matrix" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="i18n-en">EdTech Matrix</span><span class="i18n-id">Matriks Tekpen</span>
+          </a>
+          <a href="#casestudies" class="px-2.5 py-1.5 rounded-lg bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 font-bold hover:bg-rose-100 transition">
+            <span class="i18n-en">Case Study Lab</span><span class="i18n-id">Lab Studi Kasus</span>
+          </a>
+        </nav>
+
+        <!-- Language Switcher (EN / ID) -->
+        <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold">
+          <button id="btnLangEn" onclick="switchLanguage('en')" class="px-2.5 py-1 rounded-lg bg-rose-600 text-white shadow-sm transition" title="English">
+            EN
+          </button>
+          <button id="btnLangId" onclick="switchLanguage('id')" class="px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition" title="Bahasa Indonesia">
+            ID
+          </button>
+        </div>
+
+        <!-- Dark / Light Mode Toggle Button -->
+        <button id="themeToggleBtn" aria-label="Toggle dark mode" class="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg id="moonIcon" class="w-5 h-5 block dark:hidden text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <a href="#quickquiz" class="text-xs bg-rose-600 hover:bg-rose-700 text-white font-semibold px-3.5 py-2 rounded-xl shadow-sm transition flex items-center space-x-1.5">
+          <span class="i18n-en">Quick Quiz</span>
+          <span class="i18n-id">Kuis Cepat</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden pt-12 pb-16 border-b border-slate-200 dark:border-slate-800 bg-gradient-to-b from-rose-50/60 via-white to-transparent dark:from-rose-950/20 dark:via-slate-950 dark:to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-100/90 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300 text-xs font-bold mb-6 border border-rose-200 dark:border-rose-800">
+          <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+          <span class="i18n-en">Humanistic Psychology & Instructional Technology Module</span>
+          <span class="i18n-id">Modul Perkuliahan Psikologi Humanistik & Teknologi Pendidikan</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
+          <span class="i18n-en">Humanizing Learning: <span class="bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-pink-600 to-amber-600 dark:from-rose-400 dark:via-pink-300 dark:to-amber-300">Humanistic Learning Theory</span> & Student-Centered EdTech</span>
+          <span class="i18n-id">Memanusiakan Pembelajaran: <span class="bg-clip-text text-transparent bg-gradient-to-r from-rose-600 via-pink-600 to-amber-600 dark:from-rose-400 dark:via-pink-300 dark:to-amber-300">Teori Belajar Humanistik</span> & Desain Teknologi Pendidikan</span>
+        </h1>
+
+        <p class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+          <span class="i18n-en">Explore humanistic foundations (Maslow, Rogers, Combs), integrate complementary theories (SDT, Constructivism, Positive Psychology), and architect empathetic, student-centered digital learning environments that empower self-actualization and personal meaning.</span>
+          <span class="i18n-id">Pelajari hakikat teori belajar humanistik (Maslow, Rogers, Combs), integrasikan teori pendukung (SDT, Konstruktivisme, Psikologi Positif), dan rancang teknologi pendidikan yang empatik, berpusat pada siswa, serta mengutamakan aktualisasi diri dan pemaknaan personal.</span>
+        </p>
+
+        <!-- Course Meta Badges -->
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs sm:text-sm">
+          <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">
+              <span class="i18n-en">Course</span><span class="i18n-id">Mata Kuliah</span>
+            </span>
+            <span class="font-bold text-slate-800 dark:text-slate-200">
+              <span class="i18n-en">Educational Psychology</span><span class="i18n-id">Psikologi Pendidikan</span>
+            </span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">
+              <span class="i18n-en">Program</span><span class="i18n-id">Program Studi</span>
+            </span>
+            <span class="font-bold text-slate-800 dark:text-slate-200">
+              <span class="i18n-en">Educational Technology</span><span class="i18n-id">Teknologi Pendidikan</span>
+            </span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">
+              <span class="i18n-en">Workload</span><span class="i18n-id">Beban / SKS</span>
+            </span>
+            <span class="font-bold text-slate-800 dark:text-slate-200">
+              <span class="i18n-en">3 Credits (150 Mins)</span><span class="i18n-id">3 SKS (150 Menit)</span>
+            </span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-slate-400 dark:text-slate-500 block text-xs">
+              <span class="i18n-en">Core Focus</span><span class="i18n-id">Fokus Utama</span>
+            </span>
+            <span class="font-bold text-rose-600 dark:text-rose-400">
+              <span class="i18n-en">Humanization & Holistic</span><span class="i18n-id">Humanisasi & Holistik</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Grid Layout -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Sticky Navigation Sidebar (3 cols) -->
+      <aside class="hidden lg:block lg:col-span-3">
+        <div class="sticky top-24 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <span class="i18n-en">Module Outline</span>
+            <span class="i18n-id">Daftar Isi Modul</span>
+          </h2>
+          <nav class="space-y-1 text-xs font-semibold text-slate-600 dark:text-slate-400">
+            <a href="#outcomes" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-rose-600 dark:hover:text-rose-400 transition">
+              <span class="i18n-en">1. Course Outcomes (CPMK)</span><span class="i18n-id">1. Capaian Belajar (CPMK)</span>
+            </a>
+            <a href="#essence" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-rose-600 dark:hover:text-rose-400 transition">
+              <span class="i18n-en">2. Essence of Humanism</span><span class="i18n-id">2. Hakikat Teori Humanistik</span>
+            </a>
+            <a href="#paradigm-comparison" class="block px-3 py-2 rounded-xl pl-6 text-[11px] text-rose-600 dark:text-rose-400 hover:underline">
+              <span class="i18n-en">↳ Paradigm Contrast Matrix</span><span class="i18n-id">↳ Komparasi 3 Paradigma</span>
+            </a>
+            <a href="#theorists" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-rose-600 dark:hover:text-rose-400 transition">
+              <span class="i18n-en">3. Key Theorists</span><span class="i18n-id">3. Tokoh & Prinsip Inti</span>
+            </a>
+            <a href="#maslow-lab" class="block px-3 py-2 rounded-xl pl-6 text-[11px] text-rose-600 dark:text-rose-400 hover:underline">
+              <span class="i18n-en">↳ Maslow Interactive Pyramid</span><span class="i18n-id">↳ Piramida Kebutuhan Maslow</span>
+            </a>
+            <a href="#rogers-lab" class="block px-3 py-2 rounded-xl pl-6 text-[11px] text-rose-600 dark:text-rose-400 hover:underline">
+              <span class="i18n-en">↳ Rogers Climate Auditor</span><span class="i18n-id">↳ Audit Iklim Belajar Rogers</span>
+            </a>
+            <a href="#supporting" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-rose-600 dark:hover:text-rose-400 transition">
+              <span class="i18n-en">4. Supporting Theories</span><span class="i18n-id">4. Teori Pendukung (SDT, Vygotsky, PERMA)</span>
+            </a>
+            <a href="#edtech-matrix" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-rose-600 dark:hover:text-rose-400 transition">
+              <span class="i18n-en">5. EdTech Integration Matrix</span><span class="i18n-id">5. Matriks Integrasi Tekpen</span>
+            </a>
+            <a href="#casestudies" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-rose-600 dark:text-rose-400 font-bold transition">
+              <span class="i18n-en">6. Interactive Case Study Lab (3 Groups)</span><span class="i18n-id">6. Lab Studi Kasus (3 Kelompok)</span>
+            </a>
+            <a href="#quickquiz" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-rose-600 dark:hover:text-rose-400 transition">
+              <span class="i18n-en">7. Formative Assessment</span><span class="i18n-id">7. Kuis Formatif Mandiri</span>
+            </a>
+            <a href="#references" class="block px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-400">
+              <span class="i18n-en">8. Academic References</span><span class="i18n-id">8. Referensi Akademik</span>
+            </a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content Area (9 cols) -->
+      <div class="lg:col-span-9 space-y-12">
+
+        <!-- SECTION 1: Course Learning Outcomes (CPMK) -->
+        <section id="outcomes" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 font-bold text-sm">01</span>
+            <div>
+              <span class="text-[11px] font-bold uppercase text-rose-600 dark:text-rose-400 tracking-wider">
+                <span class="i18n-en">Pedagogical Competencies</span>
+                <span class="i18n-id">Kompetensi Pedagogis</span>
+              </span>
+              <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                <span class="i18n-en">Course Learning Outcomes (CPMK)</span>
+                <span class="i18n-id">Capaian Pembelajaran Mata Kuliah (CPMK)</span>
+              </h2>
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+            <span class="i18n-en">Students will be able to analyze the principles of humanistic psychology, compare contributions of key figures, integrate complementary theories, and design practical EdTech applications and case resolutions that humanize learners through student-centered, holistic approaches.</span>
+            <span class="i18n-id">Mahasiswa mampu menganalisis prinsip-prinsip psikologi humanistik, mengomparasikan kontribusi para tokoh utamanya, mengintegrasikan teori pendukung yang relevan, serta merancang aplikasi praktis dan resolusi studi kasus berbasis Teknologi Pendidikan yang memanusiakan pembelajar (student-centered & holistic).</span>
+          </p>
+
+          <!-- 4 Competency Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
+              <span class="w-6 h-6 rounded-lg bg-rose-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+              <div>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">
+                  <span class="i18n-en">Analyze Humanistic Foundations</span>
+                  <span class="i18n-id">Analisis Fondasi Humanistik</span>
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                  <span class="i18n-en">Examine the humanization paradigm, affective integration, and the vital role of psychological safety.</span>
+                  <span class="i18n-id">Menganalisis prinsip pemanusiaan manusia, integrasi afektif, kehendak bebas, dan iklim yang tidak mengancam.</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
+              <span class="w-6 h-6 rounded-lg bg-amber-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+              <div>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">
+                  <span class="i18n-en">Compare Key Theorists</span>
+                  <span class="i18n-id">Komparasi Kontribusi Tokoh</span>
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                  <span class="i18n-en">Differentiate Abraham Maslow's needs hierarchy, Carl Rogers' person-centered facilitation, and Arthur Combs' personal meaning.</span>
+                  <span class="i18n-id">Membandingkan hierarki kebutuhan Maslow, fasilitasi person-centered Rogers, dan persepsi makna personal Combs.</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
+              <span class="w-6 h-6 rounded-lg bg-teal-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+              <div>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">
+                  <span class="i18n-en">Synthesize Supporting Theories</span>
+                  <span class="i18n-id">Sintesis Teori Pendukung</span>
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                  <span class="i18n-en">Connect Self-Determination Theory (Autonomy/Competence/Relatedness), Social Constructivism, and the PERMA model.</span>
+                  <span class="i18n-id">Menghubungkan Self-Determination Theory (otonomi/kompetensi/keterikatan), Konstruktivisme Sosial, dan model kesejahteraan PERMA.</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex items-start space-x-3">
+              <span class="w-6 h-6 rounded-lg bg-purple-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</span>
+              <div>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">
+                  <span class="i18n-en">Architect Empathetic EdTech</span>
+                  <span class="i18n-id">Rancang EdTech yang Empatik</span>
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                  <span class="i18n-en">Redesign digital learning systems, flexible assessments (UDL), and AI tools to prevent alienation and empower student agency.</span>
+                  <span class="i18n-id">Merancang ulang platform e-learning, asesmen fleksibel UDL, dan teknologi AI agar mencegah alienasi serta memberdayakan siswa.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: Essence of Humanistic Learning Theory -->
+        <section id="essence" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 font-bold text-sm">02</span>
+            <div>
+              <span class="text-[11px] font-bold uppercase text-rose-600 dark:text-rose-400 tracking-wider">
+                <span class="i18n-en">Theoretical Essence</span>
+                <span class="i18n-id">Hakikat Teori</span>
+              </span>
+              <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                <span class="i18n-en">The Essence of Humanistic Learning Theory</span>
+                <span class="i18n-id">Hakikat Teori Pembelajaran Humanistik</span>
+              </h2>
+            </div>
+          </div>
+
+          <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed space-y-4">
+            <p class="i18n-en">
+              Unlike <strong>Behaviorism</strong> (which views learning as measurable behavioral change shaped by stimulus-response conditioning) and <strong>Cognitivism</strong> (which treats the learner as an information-processing system similar to a computer), <strong>Humanistic Learning Theory</strong> conceptualizes learning as a process of <em>humanizing the human being</em> (<span class="italic font-medium text-rose-600 dark:text-rose-400">humanisasi</span>).
+            </p>
+            <p class="i18n-id">
+              Berbeda dengan <strong>Behaviorisme</strong> (yang memandang belajar sebagai perubahan perilaku terukur akibat stimulus-respons) dan <strong>Kognitivisme</strong> (yang memproses informasi seperti komputer), <strong>Teori Pembelajaran Humanistik</strong> memandang belajar sebagai proses <em>memanusiakan manusia</em> (<span class="italic font-medium text-rose-600 dark:text-rose-400">humanisasi</span>).
+            </p>
+
+            <!-- 3 Core Tenets Highlight Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+              <div class="p-4 rounded-2xl bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200/80 dark:border-rose-900/40">
+                <div class="w-8 h-8 rounded-lg bg-rose-600 text-white flex items-center justify-center font-bold text-xs mb-3">🌱</div>
+                <h4 class="font-bold text-xs sm:text-sm text-rose-950 dark:text-rose-200 mb-1">
+                  <span class="i18n-en">Self-Actualization</span>
+                  <span class="i18n-id">Aktualisasi Diri</span>
+                </h4>
+                <p class="text-xs text-rose-900/80 dark:text-rose-300/80 leading-relaxed">
+                  <span class="i18n-en">Learning is deemed successful when the student deeply understands both their surrounding world and their unique self-potential.</span>
+                  <span class="i18n-id">Belajar dianggap berhasil apabila siswa memahami lingkungannya dan dirinya sendiri secara optimal.</span>
+                </p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-900/40">
+                <div class="w-8 h-8 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold text-xs mb-3">❤️</div>
+                <h4 class="font-bold text-xs sm:text-sm text-amber-950 dark:text-amber-200 mb-1">
+                  <span class="i18n-en">Holistic Integration</span>
+                  <span class="i18n-id">Integrasi Holistik</span>
+                </h4>
+                <p class="text-xs text-amber-900/80 dark:text-amber-300/80 leading-relaxed">
+                  <span class="i18n-en">Education harmonizes cognitive capability with affective elements, emotions, core values, and human free will.</span>
+                  <span class="i18n-id">Pembelajaran tidak hanya kognitif, melainkan menyatukan aspek afektif, emosi, nilai, dan kehendak bebas (free will).</span>
+                </p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-teal-50/70 dark:bg-teal-950/20 border border-teal-200/80 dark:border-teal-900/40">
+                <div class="w-8 h-8 rounded-lg bg-teal-600 text-white flex items-center justify-center font-bold text-xs mb-3">🤝</div>
+                <h4 class="font-bold text-xs sm:text-sm text-teal-950 dark:text-teal-200 mb-1">
+                  <span class="i18n-en">Empathetic Facilitator</span>
+                  <span class="i18n-id">Fasilitator Empatik</span>
+                </h4>
+                <p class="text-xs text-teal-900/80 dark:text-teal-300/80 leading-relaxed">
+                  <span class="i18n-en">Educators serve as facilitators cultivating a safe, empathetic, non-threatening climate for optimal growth.</span>
+                  <span class="i18n-id">Pendidik bertindak sebagai fasilitator yang menciptakan iklim aman, empati, dan tidak mengancam (non-threatening).</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paradigm Contrast Matrix -->
+          <div id="paradigm-comparison" class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800">
+            <h3 class="font-extrabold text-sm text-slate-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              <span class="i18n-en">Comparative Spectrum: 3 Core Learning Paradigms</span>
+              <span class="i18n-id">Spektrum Komparasi: Tiga Paradigma Pembelajaran</span>
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+              <!-- Behaviorism Card -->
+              <div class="p-4 rounded-2xl bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">Behaviorism</span>
+                  <span class="px-2 py-0.5 rounded-md bg-slate-200 dark:bg-slate-700 text-[10px] font-mono">Watson, Skinner</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-400 mb-2">
+                  <strong><span class="i18n-en">Learner Metaphor:</span><span class="i18n-id">Metafora Pembelajar:</span></strong>
+                  <span class="i18n-en">Reactive responder conditioned by external stimuli.</span>
+                  <span class="i18n-id">Organisme pasif yang dikondisikan oleh rangsangan luar.</span>
+                </p>
+                <p class="text-slate-600 dark:text-slate-400 mb-2">
+                  <strong><span class="i18n-en">Core Focus:</span><span class="i18n-id">Fokus Inti:</span></strong>
+                  <span class="i18n-en">Measurable behavior change, drills, external reinforcement.</span>
+                  <span class="i18n-id">Perubahan perilaku terukur, drill berulang, reward eksternal.</span>
+                </p>
+                <div class="p-2 rounded-xl bg-white dark:bg-slate-900 text-slate-500 text-[11px] border border-slate-200 dark:border-slate-800">
+                  <span class="i18n-en"><strong>EdTech:</strong> Proctoring tracking, streak badges, flashcard drill apps.</span>
+                  <span class="i18n-id"><strong>Tekpen:</strong> Software pengawas, lencana streak kuis, aplikasi hafalan repetitif.</span>
+                </div>
+              </div>
+
+              <!-- Cognitivism Card -->
+              <div class="p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-200/80 dark:border-indigo-900/40">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-bold text-indigo-900 dark:text-indigo-200 text-sm">Cognitivism</span>
+                  <span class="px-2 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-900/50 text-[10px] font-mono text-indigo-700 dark:text-indigo-300">Miller, Sweller</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300 mb-2">
+                  <strong><span class="i18n-en">Learner Metaphor:</span><span class="i18n-id">Metafora Pembelajar:</span></strong>
+                  <span class="i18n-en">Information processor organizing mental schemas.</span>
+                  <span class="i18n-id">Pemroses informasi aktif pengembang struktur kognitif.</span>
+                </p>
+                <p class="text-slate-600 dark:text-slate-300 mb-2">
+                  <strong><span class="i18n-en">Core Focus:</span><span class="i18n-id">Fokus Inti:</span></strong>
+                  <span class="i18n-en">Working memory capacity, cognitive load reduction, encoding.</span>
+                  <span class="i18n-id">Kapasitas memori kerja, efisiensi beban kognitif, skema ingatan.</span>
+                </p>
+                <div class="p-2 rounded-xl bg-white dark:bg-slate-900 text-indigo-700 dark:text-indigo-300 text-[11px] border border-indigo-200 dark:border-indigo-900/50">
+                  <span class="i18n-en"><strong>EdTech:</strong> Clean UI, Mayer's multimedia design, chunked microlearning.</span>
+                  <span class="i18n-id"><strong>Tekpen:</strong> Desain multimedia Mayer, segmentasi materi, reduksi beban antarmuka.</span>
+                </div>
+              </div>
+
+              <!-- Humanism Card (Spotlight) -->
+              <div class="p-4 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border-2 border-rose-500/60 shadow-sm">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-black text-rose-950 dark:text-rose-100 text-sm">Humanism</span>
+                  <span class="px-2 py-0.5 rounded-md bg-rose-200 dark:bg-rose-900/60 text-[10px] font-mono text-rose-800 dark:text-rose-200 font-bold">Maslow, Rogers, Combs</span>
+                </div>
+                <p class="text-slate-700 dark:text-slate-200 mb-2">
+                  <strong><span class="i18n-en">Learner Metaphor:</span><span class="i18n-id">Metafora Pembelajar:</span></strong>
+                  <span class="i18n-en">Autonomous whole person pursuing self-actualization.</span>
+                  <span class="i18n-id">Manusia seutuhnya berkehendak bebas menuju aktualisasi diri.</span>
+                </p>
+                <p class="text-slate-700 dark:text-slate-200 mb-2">
+                  <strong><span class="i18n-en">Core Focus:</span><span class="i18n-id">Fokus Inti:</span></strong>
+                  <span class="i18n-en">Affective climate, personal meaning, psychological safety, choice.</span>
+                  <span class="i18n-id">Iklim afektif, pemaknaan personal, keamanan emosional, otonomi.</span>
+                </p>
+                <div class="p-2 rounded-xl bg-white dark:bg-slate-900 text-rose-700 dark:text-rose-300 text-[11px] border border-rose-200 dark:border-rose-900/50 font-medium">
+                  <span class="i18n-en"><strong>EdTech:</strong> UDL choice, supportive empathetic feedback, community social LMS.</span>
+                  <span class="i18n-id"><strong>Tekpen:</strong> Opsi asesmen UDL, umpan balik konstruktif-empatik, komunitas belajar.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: Key Theorists & Core Principles -->
+        <section id="theorists" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 font-bold text-sm">03</span>
+            <div>
+              <span class="text-[11px] font-bold uppercase text-rose-600 dark:text-rose-400 tracking-wider">
+                <span class="i18n-en">Pioneering Theorists</span>
+                <span class="i18n-id">Tokoh Utama & Pemikiran</span>
+              </span>
+              <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                <span class="i18n-en">Key Figures & Core Humanistic Principles</span>
+                <span class="i18n-id">Tokoh Utama & Prinsip Inti Teori Humanistik</span>
+              </h2>
+            </div>
+          </div>
+
+          <!-- THEORIST 1: Abraham Maslow -->
+          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 mb-8">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-700 pb-4 mb-4">
+              <div>
+                <span class="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-mono text-[10px] font-bold">1908 – 1970</span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-1">
+                  Abraham Maslow: <span class="text-rose-600 dark:text-rose-400">Hierarchy of Needs & Self-Actualization</span>
+                </h3>
+              </div>
+              <span class="text-xs font-semibold text-slate-500">
+                <span class="i18n-en">Deficiency Needs vs. Growth Needs</span>
+                <span class="i18n-id">Kebutuhan Dasar vs. Pertumbuhan</span>
+              </span>
+            </div>
+
+            <div class="prose dark:prose-invert max-w-none text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-3 mb-6">
+              <p class="i18n-en">
+                Maslow asserted that learners cannot attain optimal cognitive performance or reach <strong>growth needs</strong> (intellectual curiosity, self-actualization) if their fundamental <strong>deficiency needs</strong> (physiological sustenance, emotional safety, belongingness, and esteem) remain unfulfilled.
+              </p>
+              <p class="i18n-id">
+                Maslow menegaskan bahwa seseorang tidak dapat mencapai fungsi kognitif/pembelajaran optimal (kebutuhan pertumbuhan / <em>growth needs</em>) jika kebutuhan dasar (<em>deficiency needs</em>) seperti rasa aman, pangan, dan keterikatan sosial belum terpenuhi.
+              </p>
+              <div class="p-3 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 text-amber-900 dark:text-amber-200">
+                <strong><span class="i18n-en">Instructional & EdTech Implication:</span><span class="i18n-id">Implikasi Instruksional & Tekpen:</span></strong>
+                <span class="i18n-en"> Before demanding intensive academic tasks, digital learning spaces must guarantee physical comfort, zero intimidation, and an authentic sense of belonging.</span>
+                <span class="i18n-id"> Sebelum memberikan materi akademik yang berat, pendidik dan lingkungan digital wajib memastikan kebutuhan fisiologis, keamanan emosional, dan rasa diterima (sense of belonging) siswa terpenuhi.</span>
+              </div>
+            </div>
+
+            <!-- Interactive Maslow Digital Learning Pyramid Widget -->
+            <div id="maslow-lab" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                  <span class="i18n-en">Interactive Pyramid Explorer</span>
+                  <span class="i18n-id">Eksplorasi Interaktif Piramida Maslow</span>
+                </span>
+                <span class="text-[10px] text-slate-400">
+                  <span class="i18n-en">Click a tier to inspect EdTech implications</span>
+                  <span class="i18n-id">Klik tingkatan untuk melihat implikasi Tekpen</span>
+                </span>
+              </div>
+
+              <!-- Pyramid Level Selector Buttons -->
+              <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 mb-4">
+                <button onclick="inspectMaslowTier('actualization')" id="btnMaslow-actualization" class="maslow-btn py-2 px-2.5 rounded-xl text-xs font-semibold bg-rose-600 text-white transition text-center shadow-sm">
+                  5. <span class="i18n-en">Self-Actualization</span><span class="i18n-id">Aktualisasi Diri</span>
+                </button>
+                <button onclick="inspectMaslowTier('esteem')" id="btnMaslow-esteem" class="maslow-btn py-2 px-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition text-center">
+                  4. <span class="i18n-en">Esteem</span><span class="i18n-id">Penghargaan</span>
+                </button>
+                <button onclick="inspectMaslowTier('belonging')" id="btnMaslow-belonging" class="maslow-btn py-2 px-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition text-center">
+                  3. <span class="i18n-en">Belonging</span><span class="i18n-id">Kasih Sayang & Sosial</span>
+                </button>
+                <button onclick="inspectMaslowTier('safety')" id="btnMaslow-safety" class="maslow-btn py-2 px-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition text-center">
+                  2. <span class="i18n-en">Psychological Safety</span><span class="i18n-id">Rasa Aman</span>
+                </button>
+                <button onclick="inspectMaslowTier('physiological')" id="btnMaslow-physiological" class="maslow-btn py-2 px-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition text-center">
+                  1. <span class="i18n-en">Physiological</span><span class="i18n-id">Fisiologis</span>
+                </button>
+              </div>
+
+              <!-- Dynamic Detail Box for Selected Tier -->
+              <div id="maslowDetailBox" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs transition-all">
+                <!-- Dynamically populated via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- THEORIST 2: Carl Rogers -->
+          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 mb-8">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-700 pb-4 mb-4">
+              <div>
+                <span class="px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 font-mono text-[10px] font-bold">1902 – 1987</span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-1">
+                  Carl Rogers: <span class="text-rose-600 dark:text-rose-400">Person-Centered & Experiential Learning</span>
+                </h3>
+              </div>
+              <span class="text-xs font-semibold text-slate-500">
+                <span class="i18n-en">Unconditional Positive Regard</span>
+                <span class="i18n-id">Penerimaan Tanpa Syarat</span>
+              </span>
+            </div>
+
+            <div class="prose dark:prose-invert max-w-none text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-3 mb-6">
+              <p class="i18n-en">
+                Rogers proposed that every human possesses an innate curiosity and drive to learn. <strong>Significant learning</strong> takes place when content is personally relevant, tied to students' self-chosen goals, and integrates both emotional feeling and experiential action.
+              </p>
+              <p class="i18n-id">
+                Rogers meyakini bahwa manusia memiliki dorongan alami untuk belajar (<em>desire to learn</em>). Belajar yang bermakna (<em>significant learning</em>) terjadi ketika materi relevan dengan tujuan personal siswa, serta melibatkan perasaan dan tindakan langsung (<em>experiential</em>).
+              </p>
+
+              <!-- 3 Core Facilitator Attitudes according to Rogers -->
+              <h4 class="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200 pt-2">
+                <span class="i18n-en">The 3 Facilitator Core Conditions (Rogers):</span>
+                <span class="i18n-id">Tiga Sikap Fasilitator Utama (Rogers):</span>
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+                <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <span class="font-bold text-rose-600 dark:text-rose-400 block mb-1">1. Genuineness / Realness</span>
+                  <span class="i18n-en">Authenticity. The educator sheds authoritarian masks and engages openly and honestly.</span>
+                  <span class="i18n-id">Tampil apa adanya dan jujur tanpa kepalsuan figur kekuasaan kaku.</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <span class="font-bold text-rose-600 dark:text-rose-400 block mb-1">2. Prizing & Trust</span>
+                  <span class="i18n-en">Unconditional Positive Regard. Valuing every learner as a person of intrinsic worth.</span>
+                  <span class="i18n-id">Menerima dan mempercayai potensi siswa tanpa syarat apa pun.</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <span class="font-bold text-rose-600 dark:text-rose-400 block mb-1">3. Empathetic Understanding</span>
+                  <span class="i18n-en">Seeing the educational experience through the student's eyes without premature judgment.</span>
+                  <span class="i18n-id">Empati mendalam terhadap cara pandang siswa tanpa menghakimi.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Rogers Facilitator Climate Auditor -->
+            <div id="rogers-lab" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-4">
+                <div>
+                  <h4 class="font-bold text-xs uppercase tracking-wider text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="i18n-en">Rogers Classroom Climate Audit</span>
+                    <span class="i18n-id">Audit Iklim Kelas Rogers: Fasilitasi Empatik</span>
+                  </h4>
+                  <p class="text-[11px] text-slate-500">
+                    <span class="i18n-en">Rate your online course policies to calculate student Psychological Openness</span>
+                    <span class="i18n-id">Nilai kebijakan kelas daring Anda untuk menghitung Indeks Keterbukaan Psikologis Siswa</span>
+                  </p>
+                </div>
+                <span id="rogersScoreBadge" class="text-xs px-3 py-1 rounded-full font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                  High Safety (85%)
+                </span>
+              </div>
+
+              <!-- Sliders -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-3 text-xs">
+                <div>
+                  <div class="flex justify-between font-semibold mb-1">
+                    <span class="text-slate-700 dark:text-slate-300">
+                      <span class="i18n-en">Genuineness</span><span class="i18n-id">Keaslian / Kejujuran</span>
+                    </span>
+                    <span id="valGenuineness" class="font-mono text-rose-600">4 / 5</span>
+                  </div>
+                  <input type="range" id="sliderGenuineness" min="1" max="5" value="4" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-rose-600">
+                  <span class="text-[10px] text-slate-400 block mt-1">
+                    <span class="i18n-en">Authentic instructor voice</span><span class="i18n-id">Keterbukaan dosen/guru</span>
+                  </span>
+                </div>
+
+                <div>
+                  <div class="flex justify-between font-semibold mb-1">
+                    <span class="text-slate-700 dark:text-slate-300">
+                      <span class="i18n-en">Acceptance & Trust</span><span class="i18n-id">Penerimaan & Kepercayaan</span>
+                    </span>
+                    <span id="valTrust" class="font-mono text-rose-600">4 / 5</span>
+                  </div>
+                  <input type="range" id="sliderTrust" min="1" max="5" value="4" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-rose-600">
+                  <span class="text-[10px] text-slate-400 block mt-1">
+                    <span class="i18n-en">No punitive surveillance</span><span class="i18n-id">Tiada sanksi menghakimi</span>
+                  </span>
+                </div>
+
+                <div>
+                  <div class="flex justify-between font-semibold mb-1">
+                    <span class="text-slate-700 dark:text-slate-300">
+                      <span class="i18n-en">Empathic Understanding</span><span class="i18n-id">Pemahaman Empatik</span>
+                    </span>
+                    <span id="valEmpathy" class="font-mono text-rose-600">5 / 5</span>
+                  </div>
+                  <input type="range" id="sliderEmpathy" min="1" max="5" value="5" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-rose-600">
+                  <span class="text-[10px] text-slate-400 block mt-1">
+                    <span class="i18n-en">Listening to student struggle</span><span class="i18n-id">Memahami kendala siswa</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Output Diagnostic -->
+              <div id="rogersFeedback" class="mt-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- THEORIST 3: Arthur Combs -->
+          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-700 pb-4 mb-4">
+              <div>
+                <span class="px-2.5 py-0.5 rounded-full bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 font-mono text-[10px] font-bold">1912 – 1999</span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-1">
+                  Arthur Combs: <span class="text-teal-600 dark:text-teal-400">Perception & Meaningful Meaning</span>
+                </h3>
+              </div>
+              <span class="text-xs font-semibold text-slate-500">
+                <span class="i18n-en">The Phenomenological Field</span>
+                <span class="i18n-id">Medan Fenomenologis & Makna Pribadi</span>
+              </span>
+            </div>
+
+            <div class="prose dark:prose-invert max-w-none text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-3">
+              <p class="i18n-en">
+                Arthur Combs established that an individual's behavior is the direct outcome of how they <strong>perceive</strong> themselves and their world at that precise instant (the <em>phenomenological field</em>). Learning does not truly happen when teachers simply dispense facts; real learning occurs when students discover <strong>personal meaning</strong>: <em>"Why does this knowledge matter to my life?"</em>
+              </p>
+              <p class="i18n-id">
+                Arthur Combs menekankan bahwa perilaku seseorang merupakan hasil langsung dari bagaimana ia <strong>mempersepsikan</strong> diri dan dunianya pada saat itu (<em>phenomenological field</em>). Belajar bukan sekadar menerima transfer materi baku; belajar sejati terjadi jika materi memiliki <strong>makna personal</strong> (<em>personal meaning</em>): <em>"Mengapa materi ini penting bagi hidup saya?"</em>
+              </p>
+              <div class="p-3 rounded-xl bg-teal-50 dark:bg-teal-950/30 border border-teal-200 dark:border-teal-900 text-teal-900 dark:text-teal-200">
+                <strong><span class="i18n-en">Instructional Rule:</span><span class="i18n-id">Prinsip Desain:</span></strong>
+                <span class="i18n-en"> Never push curriculum without guiding learners to anchor it to their personal life questions, career aspirations, or immediate communal dilemmas.</span>
+                <span class="i18n-id"> Pendidik tidak boleh memaksakan materi tanpa membantu siswa menemukan relevansi personal antara topik pembelajaran dengan realitas kehidupannya.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: Supporting / Complementary Theories -->
+        <section id="supporting" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 font-bold text-sm">04</span>
+            <div>
+              <span class="text-[11px] font-bold uppercase text-rose-600 dark:text-rose-400 tracking-wider">
+                <span class="i18n-en">Complementary Frameworks</span>
+                <span class="i18n-id">Teori Pendukung Komplementer</span>
+              </span>
+              <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                <span class="i18n-en">Supporting Theories in Modern Instructional Design</span>
+                <span class="i18n-id">Teori Pendukung dalam Desain Instruksional Modern</span>
+              </h2>
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+            <span class="i18n-en">To substantiate and translate humanistic philosophy into concrete empirical EdTech interventions, three contemporary theories provide essential scaffolding:</span>
+            <span class="i18n-id">Untuk memperkuat dan melengkapi filosofi humanistik ke dalam aplikasi teknologi modern, terdapat tiga teori pendukung utama yang saling melengkapi:</span>
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- SDT Card -->
+            <div class="p-5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/40 relative">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Deci & Ryan (2000)</span>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white mt-1">
+                <span class="i18n-en">Self-Determination Theory (SDT)</span>
+                <span class="i18n-id">Self-Determination Theory (SDT)</span>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 mb-3">
+                <span class="i18n-en">Provides empirical validation for learner ownership through three basic psychological needs:</span>
+                <span class="i18n-id">Memberikan landasan empiris bagi konsep kepemilikan belajar melalui 3 kebutuhan psikologis dasar:</span>
+              </p>
+              <ul class="space-y-2 text-xs text-slate-700 dark:text-slate-300">
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-indigo-500 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">A</span>
+                  <span><strong>Autonomy:</strong> <span class="i18n-en">Sense of volition and choice over learning pathways.</span><span class="i18n-id">Kendali atas pilihan dan kebebasan arah belajar mandiri.</span></span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-indigo-500 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">C</span>
+                  <span><strong>Competence:</strong> <span class="i18n-en">Feeling capable through progressive mastery scaffolding.</span><span class="i18n-id">Rasa mampu menguasai keterampilan melalui tantangan terukur.</span></span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-indigo-500 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">R</span>
+                  <span><strong>Relatedness:</strong> <span class="i18n-en">Genuine interpersonal connection in learning communities.</span><span class="i18n-id">Keterikatan hangat dan relasi saling mendukung dengan sesama.</span></span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Constructivism Card -->
+            <div class="p-5 rounded-2xl bg-teal-50/60 dark:bg-teal-950/30 border border-teal-200 dark:border-teal-900/40 relative">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Vygotsky & Bruner</span>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white mt-1">
+                <span class="i18n-en">Social Constructivism</span>
+                <span class="i18n-id">Konstruktivisme Sosial</span>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 mb-3">
+                <span class="i18n-en">Supplies the epistemological mechanism: knowledge is constructed actively through social dialogues and scaffolding.</span>
+                <span class="i18n-id">Menyediakan mekanisme epistemologis: pengetahuan dibangun secara aktif dan kolaboratif, bukan dihafalkan pasif.</span>
+              </p>
+              <div class="p-3 rounded-xl bg-white dark:bg-slate-900 text-xs text-slate-600 dark:text-slate-400 border border-teal-200 dark:border-teal-900/50">
+                <strong><span class="i18n-en">Synthesis:</span><span class="i18n-id">Sintesis:</span></strong>
+                <span class="i18n-en"> While humanism guarantees emotional safety and affirmation, constructivism powers active inquiry and peer collaboration.</span>
+                <span class="i18n-id"> Jika humanisme menjamin rasa aman dan empati, konstruktivisme menyediakan instrumen inkuiri dan kolaborasi teman sebaya.</span>
+              </div>
+            </div>
+
+            <!-- Positive Psychology Card -->
+            <div class="p-5 rounded-2xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 relative">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Martin Seligman</span>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white mt-1">
+                <span class="i18n-en">Positive Psychology (PERMA)</span>
+                <span class="i18n-id">Psikologi Positif (PERMA)</span>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 mb-3">
+                <span class="i18n-en">Focuses on well-being, character strengths, and emotional resilience as bedrock for academic endurance.</span>
+                <span class="i18n-id">Berfokus pada kesejahteraan emosional (well-being), ketahanan diri, dan kekuatan karakter siswa.</span>
+              </p>
+              <div class="p-3 rounded-xl bg-white dark:bg-slate-900 text-xs text-slate-600 dark:text-slate-400 border border-amber-200 dark:border-amber-900/50">
+                <strong><span class="i18n-en">The PERMA Pillars:</span><span class="i18n-id">Pilar PERMA:</span></strong>
+                <span class="i18n-en"> <strong>P</strong>ositive Emotion, <strong>E</strong>ngagement, <strong>R</strong>elationships, <strong>M</strong>eaning, <strong>A</strong>ccomplishment.</span>
+                <span class="i18n-id"> Emosi Positif, Keterlibatan (Flow), Relasi Sehat, Kebermaknaan, dan Pencapaian Otentik.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: EdTech Relevance & Implication Matrix -->
+        <section id="edtech-matrix" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 font-bold text-sm">05</span>
+            <div>
+              <span class="text-[11px] font-bold uppercase text-rose-600 dark:text-rose-400 tracking-wider">
+                <span class="i18n-en">EdTech Solutions</span>
+                <span class="i18n-id">Implementasi Teknologi Pendidikan</span>
+              </span>
+              <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                <span class="i18n-en">Humanistic Principles in EdTech: Diagnosis & Solutions</span>
+                <span class="i18n-id">Prinsip Humanistik & Solusi Teknologi Pendidikan</span>
+              </h2>
+            </div>
+          </div>
+
+          <!-- Interactive Category Filter -->
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <span class="text-xs text-slate-500 font-medium">
+              <span class="i18n-en">Filter by Humanistic Dimension:</span>
+              <span class="i18n-id">Filter berdasarkan Dimensi Humanistik:</span>
+            </span>
+            <div class="flex flex-wrap gap-1.5">
+              <button onclick="filterEdTechMatrix('all')" class="matrix-btn px-3 py-1 rounded-lg text-xs font-bold bg-rose-600 text-white transition">All</button>
+              <button onclick="filterEdTechMatrix('safety')" class="matrix-btn px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 transition">Safety & Belonging</button>
+              <button onclick="filterEdTechMatrix('autonomy')" class="matrix-btn px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 transition">Autonomy & UDL</button>
+              <button onclick="filterEdTechMatrix('meaning')" class="matrix-btn px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 transition">Personal Meaning</button>
+              <button onclick="filterEdTechMatrix('regard')" class="matrix-btn px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 transition">Positive Regard</button>
+            </div>
+          </div>
+
+          <!-- Responsive Comparison Matrix Table -->
+          <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 uppercase tracking-wider font-bold border-b border-slate-200 dark:border-slate-700">
+                <tr>
+                  <th class="p-3.5"><span class="i18n-en">Humanistic Principle</span><span class="i18n-id">Prinsip Humanistik & Teori</span></th>
+                  <th class="p-3.5 text-rose-600 dark:text-rose-400"><span class="i18n-en">Digital Pathology / Problem</span><span class="i18n-id">Masalah Penggunaan Teknologi</span></th>
+                  <th class="p-3.5 text-emerald-600 dark:text-emerald-400"><span class="i18n-en">Humanizing EdTech Solution</span><span class="i18n-id">Solusi Aplikasi Teknologi Pendidikan</span></th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
+                
+                <!-- Row 1: Safety & Belonging -->
+                <tr class="edtech-row safety hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                  <td class="p-3.5 font-bold text-slate-900 dark:text-white">
+                    <span class="i18n-en">Safety & Belonging (Maslow)</span>
+                    <span class="i18n-id">Rasa Aman & Belonging (Maslow)</span>
+                  </td>
+                  <td class="p-3.5 text-rose-600 dark:text-rose-400 font-medium">
+                    <span class="i18n-en">Online learning triggers cold isolation, Zoom fatigue, and fear of surveillance cameras.</span>
+                    <span class="i18n-id">Pembelajaran daring membuat siswa terisolasi (Zoom fatigue & isolasi sosial).</span>
+                  </td>
+                  <td class="p-3.5 text-emerald-700 dark:text-emerald-300">
+                    <span class="i18n-en">Build Social LMS learning communities, daily emotional check-in polls, and non-academic peer appreciation boards.</span>
+                    <span class="i18n-id">Membangun komunitas belajar via Social LMS, sesi check-in emosional harian, dan forum apresiasi non-akademik.</span>
+                  </td>
+                </tr>
+
+                <!-- Row 2: Autonomy & Choice -->
+                <tr class="edtech-row autonomy hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                  <td class="p-3.5 font-bold text-slate-900 dark:text-white">
+                    <span class="i18n-en">Autonomy & Choice (SDT / Rogers)</span>
+                    <span class="i18n-id">Autonomy & Pilihan (SDT / Rogers)</span>
+                  </td>
+                  <td class="p-3.5 text-rose-600 dark:text-rose-400 font-medium">
+                    <span class="i18n-en">Rigid one-size-fits-all curriculum with mandatory identical output formats (e.g. all submit code).</span>
+                    <span class="i18n-id">Kurikulum seragam yang kaku (one-size-fits-all) tanpa kebebasan memilih media ekspresi.</span>
+                  </td>
+                  <td class="p-3.5 text-emerald-700 dark:text-emerald-300">
+                    <span class="i18n-en">Universal Design for Learning (UDL) & Differentiated Learning Paths: choice of submission (essay, podcast, video, or web).</span>
+                    <span class="i18n-id">Universal Design for Learning (UDL) & Jalur Belajar Berdiferensiasi: opsi pilihan tugas (esai, podcast, animasi, situs).</span>
+                  </td>
+                </tr>
+
+                <!-- Row 3: Personal Meaning -->
+                <tr class="edtech-row meaning hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                  <td class="p-3.5 font-bold text-slate-900 dark:text-white">
+                    <span class="i18n-en">Personal Meaning (Combs)</span>
+                    <span class="i18n-id">Makna Personal (Arthur Combs)</span>
+                  </td>
+                  <td class="p-3.5 text-rose-600 dark:text-rose-400 font-medium">
+                    <span class="i18n-en">Abstract theoretical materials detached from students' real-life aspirations or community dilemmas.</span>
+                    <span class="i18n-id">Materi abstrak tanpa relevansi nyata dengan kehidupan sehari-hari siswa.</span>
+                  </td>
+                  <td class="p-3.5 text-emerald-700 dark:text-emerald-300">
+                    <span class="i18n-en">Authentic Project-Based Learning (PBL) anchoring tasks to local community issues and personal passions.</span>
+                    <span class="i18n-id">Project-Based Learning otentik yang memfokuskan masalah pada isu nyata komunitas siswa sendiri.</span>
+                  </td>
+                </tr>
+
+                <!-- Row 4: Unconditional Positive Regard -->
+                <tr class="edtech-row regard hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                  <td class="p-3.5 font-bold text-slate-900 dark:text-white">
+                    <span class="i18n-en">Unconditional Positive Regard (Rogers)</span>
+                    <span class="i18n-id">Unconditional Positive Regard (Rogers)</span>
+                  </td>
+                  <td class="p-3.5 text-rose-600 dark:text-rose-400 font-medium">
+                    <span class="i18n-en">Cold, punitive, judgmental red-ink automated grade deductions in learning management systems.</span>
+                    <span class="i18n-id">Umpan balik yang menghakimi dan dingin semata-mata angka nilai di sistem LMS.</span>
+                  </td>
+                  <td class="p-3.5 text-emerald-700 dark:text-emerald-300">
+                    <span class="i18n-en">Compassionate & Process-Oriented Feedback: formative guidance praising effort, growth mindset, and strategy calibration.</span>
+                    <span class="i18n-id">Constructive & Compassionate Automated Feedback: desain umpan balik yang suportif dan fokus pada proses serta usaha.</span>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 6: Interactive Case Study Lab (3 Groups) -->
+        <section id="casestudies" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border-2 border-rose-500/50 shadow-xl scroll-mt-20">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-rose-600 text-white font-bold text-sm">06</span>
+              <div>
+                <span class="text-[11px] font-bold uppercase text-rose-600 dark:text-rose-400 tracking-wider">
+                  <span class="i18n-en">Collaborative Practicum Lab</span>
+                  <span class="i18n-id">Praktikum Studi Kasus Kolaboratif</span>
+                </span>
+                <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                  <span class="i18n-en">Interactive Case Study Lab: 3 Authentic Dilemmas</span>
+                  <span class="i18n-id">Lab Diskusi Studi Kasus: 3 Kelompok Praktikum</span>
+                </h2>
+              </div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 font-bold text-xs">
+              <span class="i18n-en">3 Group Workspaces</span><span class="i18n-id">3 Ruang Kerja Kelompok</span>
+            </span>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+            <span class="i18n-en">Select a group workspace below. Read the real-world EdTech dilemma, formulate your humanistic redesign recommendations in the student workspace, and compare your analysis against the exemplar faculty rubric.</span>
+            <span class="i18n-id">Pilih ruang kerja kelompok di bawah ini. Analisis studi kasus nyata teknologi pendidikan, rumuskan rekomendasi desain humanistik Anda pada lembar kerja, dan cocokkan dengan kunci rubrik model dosen.</span>
+          </p>
+
+          <!-- Group Workspace Tabs -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-6">
+            <button onclick="switchCaseGroup(1)" id="btnCaseGroup1" class="case-group-btn py-3 px-4 rounded-2xl text-xs font-bold bg-rose-600 text-white shadow-md transition flex items-center justify-center gap-2">
+              <span>📋</span>
+              <span class="i18n-en">Group 1: E-Learning Demotivation</span>
+              <span class="i18n-id">Kelompok 1: Demotivasi E-Learning</span>
+            </button>
+            <button onclick="switchCaseGroup(2)" id="btnCaseGroup2" class="case-group-btn py-3 px-4 rounded-2xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition flex items-center justify-center gap-2">
+              <span>🎨</span>
+              <span class="i18n-en">Group 2: Assessment Freedom</span>
+              <span class="i18n-id">Kelompok 2: Fleksibilitas Asesmen</span>
+            </button>
+            <button onclick="switchCaseGroup(3)" id="btnCaseGroup3" class="case-group-btn py-3 px-4 rounded-2xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition flex items-center justify-center gap-2">
+              <span>🤖</span>
+              <span class="i18n-en">Group 3: AI Tutoring Alienation</span>
+              <span class="i18n-id">Kelompok 3: Alienasi Belajar Berbasis AI</span>
+            </button>
+          </div>
+
+          <!-- CASE CONTAINER 1 -->
+          <div id="caseBox1" class="case-box space-y-5">
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">
+                  <span class="i18n-en">Group 1 Dilemma • Maslow & SDT Lens</span>
+                  <span class="i18n-id">Kasus Kelompok 1 • Sudut Pandang Maslow & SDT</span>
+                </span>
+                <span class="text-[10px] bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 px-2.5 py-0.5 rounded-full font-bold">Surveillance & Anxiety</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">
+                <span class="i18n-en">Case Scenario: The High School Math E-Learning Surveillance Crisis</span>
+                <span class="i18n-id">Skenario Kasus: Dilema Demotivasi di Kelas E-Learning Matematika SMA</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic border-l-4 border-rose-500 pl-3">
+                <span class="i18n-en">"A high school launched a full e-learning platform for Mathematics. The school implemented an aggressive automated surveillance and proctoring system that continuously tracks student webcam eye movements and imposes automated grade penalties whenever response times lag. After two months, student participation plummeted, 40% of learners reported severe anxiety, and exam performance dropped drastically."</span>
+                <span class="i18n-id">"Sebuah SMA meluncurkan platform e-learning penuh untuk mata kuliah Matematika. Sekolah menerapkan sistem pelacakan otomatis (surveillance/proctoring software) yang sangat ketat yang memantau setiap gerak-gerik siswa di depan kamera, serta memberikan penalti otomatis berupa pengurangan nilai jika waktu respons siswa lambat. Setelah 2 bulan, tingkat partisipasi melonjak turun, 40% siswa melaporkan kecemasan hebat, dan hasil ujian justru merosot tajam."</span>
+              </p>
+            </div>
+
+            <!-- Questions & Workspaces for Group 1 -->
+            <div class="space-y-4">
+              <!-- Q1 -->
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="flex items-start justify-between">
+                  <h4 class="font-bold text-xs text-slate-900 dark:text-white">
+                    <span class="i18n-en">Question 1: Deconstruct the problem using Maslow's Hierarchy and Self-Determination Theory (Deci & Ryan). Which needs were violated?</span>
+                    <span class="i18n-id">Pertanyaan 1: Bedah permasalahan di atas menggunakan sudut pandang Hierarki Maslow dan Self-Determination Theory (Deci & Ryan)! Kebutuhan apa yang terlanggar?</span>
+                  </h4>
+                  <button onclick="toggleCaseRubric('rubric1_1')" class="text-xs text-rose-600 dark:text-rose-400 font-bold hover:underline shrink-0 ml-2">
+                    <span class="i18n-en">Model Rubric &darr;</span><span class="i18n-id">Kunci Rubrik &darr;</span>
+                  </button>
+                </div>
+                <textarea id="textResponse1_1" placeholder="Type your group's psychological analysis here / Tuliskan analisis kelompok Anda di sini..." class="w-full text-xs p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500" rows="3"></textarea>
+                <div id="rubric1_1" class="hidden p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-900 text-xs text-rose-900 dark:text-rose-200 space-y-1">
+                  <strong><span class="i18n-en">Exemplar Rubric Key:</span><span class="i18n-id">Kunci Solusi Model Dosen:</span></strong>
+                  <ul class="list-disc list-inside space-y-1 text-[11px] leading-relaxed">
+                    <li><strong>Maslow Violation:</strong> Destroys <em>Psychological Safety</em> (Level 2). When students feel monitored and penalized, their brain operates in fight-or-flight panic; deficiency needs are unmet, making higher cognitive math problem-solving physiologically impossible.</li>
+                    <li><strong>SDT Violations:</strong> (1) <em>Autonomy</em> is destroyed by robotic surveillance; (2) <em>Competence</em> is crippled by speed penalties that mistake fast clicking for mathematical mastery; (3) <em>Relatedness</em> becomes cold fear between student and institution.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Q2 -->
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="flex items-start justify-between">
+                  <h4 class="font-bold text-xs text-slate-900 dark:text-white">
+                    <span class="i18n-en">Question 2: As an EdTech specialist, how would you redesign this e-learning experience to cultivate psychological safety and autonomy?</span>
+                    <span class="i18n-id">Pertanyaan 2: Sebagai pengembang Teknologi Pendidikan, bagaimana Anda merancang ulang (redesign) pengalaman e-learning dan asesmen agar menciptakan rasa aman dan otonomi?</span>
+                  </h4>
+                  <button onclick="toggleCaseRubric('rubric1_2')" class="text-xs text-rose-600 dark:text-rose-400 font-bold hover:underline shrink-0 ml-2">
+                    <span class="i18n-en">Model Rubric &darr;</span><span class="i18n-id">Kunci Rubrik &darr;</span>
+                  </button>
+                </div>
+                <textarea id="textResponse1_2" placeholder="Formulate your EdTech redesign proposal here / Rumuskan proposal redesain teknologi Anda di sini..." class="w-full text-xs p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500" rows="3"></textarea>
+                <div id="rubric1_2" class="hidden p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-900 text-xs text-rose-900 dark:text-rose-200 space-y-1">
+                  <strong><span class="i18n-en">Exemplar Rubric Key:</span><span class="i18n-id">Kunci Solusi Model Dosen:</span></strong>
+                  <ul class="list-disc list-inside space-y-1 text-[11px] leading-relaxed">
+                    <li><strong>Abolish Intrusive Proctoring:</strong> Replace facial tracking with authentic, untimed open-book performance tasks or asynchronous math explanation videos (Flip/video voice notes).</li>
+                    <li><strong>Formative Sandbox:</strong> Allow unlimited practice attempts without penalty to encourage positive risk-taking and error-driven learning.</li>
+                    <li><strong>Self-Paced Navigation:</strong> Permit students to set their own study milestones and choose between problem-solving tracks (Scaffolded vs. Advanced).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CASE CONTAINER 2 -->
+          <div id="caseBox2" class="case-box hidden space-y-5">
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+                  <span class="i18n-en">Group 2 Dilemma • Rogers & UDL Lens</span>
+                  <span class="i18n-id">Kasus Kelompok 2 • Sudut Pandang Rogers & UDL</span>
+                </span>
+                <span class="text-[10px] bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 px-2.5 py-0.5 rounded-full font-bold">Standardization vs. Freedom</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">
+                <span class="i18n-en">Case Scenario: Assessment Flexibility vs. Rigid Graduation Standards</span>
+                <span class="i18n-id">Skenario Kasus: Fleksibilitas Asesmen & Kebebasan Belajar pada Desain Media Pembelajaran</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic border-l-4 border-amber-500 pl-3">
+                <span class="i18n-en">"A lecturer in Educational Technology seeks to apply Carl Rogers' Person-Centered Learning in the 'Instructional Media Design' course. However, department policy strictly mandates that every student must submit a hand-coded HTML/CSS website at term end as a standard graduation requirement. Non-coding students suffer extreme stress, feeling their unique creative talents—such as instructional storytelling, manual illustration, or educational podcasting—are completely discarded."</span>
+                <span class="i18n-id">"Seorang dosen di Program Studi Teknologi Pendidikan ingin menerapkan prinsip Person-Centered Learning ala Carl Rogers pada mata kuliah 'Desain Media Pembelajaran'. Namun, pihak program studi memiliki aturan ketat bahwa seluruh mahasiswa harus menyerahkan portofolio berupa situs web HTML/CSS pada akhir semester sebagai syarat kelulusan baku. Sebagian mahasiswa yang tidak memiliki Latar Belakang Koding mengalami stres berat dan merasa potensi kreatifnya (seperti menulis naskah, menggambar manual, podcast, atau membuat animasi) terabaikan."</span>
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <!-- Q1 -->
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="flex items-start justify-between">
+                  <h4 class="font-bold text-xs text-slate-900 dark:text-white">
+                    <span class="i18n-en">Question 1: Analyze the conflict between Carl Rogers' learning freedom and rigid institutional technical requirements.</span>
+                    <span class="i18n-id">Pertanyaan 1: Analisis benturan antara kebebasan belajar Carl Rogers dengan pembatasan teknis institusional yang kaku!</span>
+                  </h4>
+                  <button onclick="toggleCaseRubric('rubric2_1')" class="text-xs text-amber-600 dark:text-amber-400 font-bold hover:underline shrink-0 ml-2">
+                    <span class="i18n-en">Model Rubric &darr;</span><span class="i18n-id">Kunci Rubrik &darr;</span>
+                  </button>
+                </div>
+                <textarea id="textResponse2_1" placeholder="Type your analysis here / Tuliskan analisis Anda di sini..." class="w-full text-xs p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500" rows="3"></textarea>
+                <div id="rubric2_1" class="hidden p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-900 text-xs text-amber-900 dark:text-amber-200 space-y-1">
+                  <strong><span class="i18n-en">Exemplar Rubric Key:</span><span class="i18n-id">Kunci Solusi Model Dosen:</span></strong>
+                  <ul class="list-disc list-inside space-y-1 text-[11px] leading-relaxed">
+                    <li><strong>Institutional Flaw:</strong> Confuses <em>Medium</em> with <em>Mastery</em>. The core instructional competency is "designing effective instructional media", not becoming a frontend web developer.</li>
+                    <li><strong>Rogers Violation:</strong> Replaces <em>Unconditional Positive Regard</em> with conditional judgment ("You only pass if you code"). This suppresses the "Fully Functioning Person" who excels in visual, auditory, or literary modalities.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Q2 -->
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="flex items-start justify-between">
+                  <h4 class="font-bold text-xs text-slate-900 dark:text-white">
+                    <span class="i18n-en">Question 2: Propose an assessment redesign based on Universal Design for Learning (UDL) that preserves standards while honoring learner self-actualization.</span>
+                    <span class="i18n-id">Pertanyaan 2: Rancang solusi asesmen berbasis Universal Design for Learning (UDL) agar standar capaian lulusan tercapai tanpa mengorbankan aktualisasi diri mahasiswa!</span>
+                  </h4>
+                  <button onclick="toggleCaseRubric('rubric2_2')" class="text-xs text-amber-600 dark:text-amber-400 font-bold hover:underline shrink-0 ml-2">
+                    <span class="i18n-en">Model Rubric &darr;</span><span class="i18n-id">Kunci Rubrik &darr;</span>
+                  </button>
+                </div>
+                <textarea id="textResponse2_2" placeholder="Formulate your UDL proposal here / Tuliskan proposal solusi UDL di sini..." class="w-full text-xs p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500" rows="3"></textarea>
+                <div id="rubric2_2" class="hidden p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-900 text-xs text-amber-900 dark:text-amber-200 space-y-1">
+                  <strong><span class="i18n-en">Exemplar Rubric Key:</span><span class="i18n-id">Kunci Solusi Model Dosen:</span></strong>
+                  <ul class="list-disc list-inside space-y-1 text-[11px] leading-relaxed">
+                    <li><strong>Universal Design for Learning (UDL - Multiple Means of Expression):</strong> Standardize the <em>Instructional Rubric</em> (needs analysis, target user empathy, instructional clarity, feedback loops) rather than the delivery vehicle.</li>
+                    <li><strong>Menu of Formats:</strong> Permit students to submit their final media as: (A) Interactive Website; (B) Animated Explainer Video; (C) Educational Podcast Series; or (D) Interactive Digital Graphic Novel.</li>
+                    <li><strong>Interdisciplinary Synergy:</strong> Encourage collaborative team pairings between strong technical coders and strong content artists.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CASE CONTAINER 3 -->
+          <div id="caseBox3" class="case-box hidden space-y-5">
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider">
+                  <span class="i18n-en">Group 3 Dilemma • Combs & Positive Psychology Lens</span>
+                  <span class="i18n-id">Kasus Kelompok 3 • Sudut Pandang Combs & Psikologi Positif</span>
+                </span>
+                <span class="text-[10px] bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 px-2.5 py-0.5 rounded-full font-bold">AI Automation vs. Human Empathy</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">
+                <span class="i18n-en">Case Scenario: Algorithmic Alienation in Adaptive AI Tutoring</span>
+                <span class="i18n-id">Skenario Kasus: Alienasi Pembelajaran Berbasis AI Otomatis di SMP</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic border-l-4 border-teal-500 pl-3">
+                <span class="i18n-en">"A newly deployed Adaptive AI Tutoring platform is introduced in a middle school. The algorithmic AI automatically selects modules, administers quizzes, and assigns grades with zero teacher intervention. While standardized test scores showed a minor statistical increase, teachers discovered that students became utterly passive, refused peer discussions, lost empathy toward classmates, and viewed learning merely as 'checking off algorithmic checkboxes on a screen' devoid of personal meaning."</span>
+                <span class="i18n-id">"Sebuah platform Adaptive AI Tutoring baru diterapkan di sebuah SMP. AI tersebut secara otomatis menentukan modul, memberikan kuis, dan memberi nilai tanpa campur tangan guru. Meskipun secara kognitif skor ujian terstandardisasi siswa meningkat sedikit, guru menemukan bahwa siswa menjadi pasif, enggan berdiskusi, kehilangan empati antar sesama, dan menganggap belajar sekadar 'menyelesaikan centang tugas di layar' tanpa makna personal."</span>
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <!-- Q1 -->
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="flex items-start justify-between">
+                  <h4 class="font-bold text-xs text-slate-900 dark:text-white">
+                    <span class="i18n-en">Question 1: Evaluate this phenomenon through Arthur Combs (Personal Meaning) and Positive Psychology. Why do higher test scores fail to reflect genuine learning?</span>
+                    <span class="i18n-id">Pertanyaan 1: Evaluasi fenomena di atas menggunakan teori Arthur Combs (Makna Personal) dan Psikologi Positif! Mengapa kenaikan nilai tes belum mencerminkan belajar sejati?</span>
+                  </h4>
+                  <button onclick="toggleCaseRubric('rubric3_1')" class="text-xs text-teal-600 dark:text-teal-400 font-bold hover:underline shrink-0 ml-2">
+                    <span class="i18n-en">Model Rubric &darr;</span><span class="i18n-id">Kunci Rubrik &darr;</span>
+                  </button>
+                </div>
+                <textarea id="textResponse3_1" placeholder="Type your evaluation here / Tuliskan evaluasi Anda di sini..." class="w-full text-xs p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500" rows="3"></textarea>
+                <div id="rubric3_1" class="hidden p-3.5 rounded-xl bg-teal-50 dark:bg-teal-950/50 border border-teal-200 dark:border-teal-900 text-xs text-teal-900 dark:text-teal-200 space-y-1">
+                  <strong><span class="i18n-en">Exemplar Rubric Key:</span><span class="i18n-id">Kunci Solusi Model Dosen:</span></strong>
+                  <ul class="list-disc list-inside space-y-1 text-[11px] leading-relaxed">
+                    <li><strong>Combs' Diagnostic:</strong> Higher test scores indicate mechanical rote efficiency, not internal schema internalization. The facts exist outside the student's <em>phenomenological field</em> without any personal significance.</li>
+                    <li><strong>Positive Psychology (PERMA) Collapse:</strong> Zero <em>Relationships (R)</em>, zero <em>Meaning (M)</em>, and false <em>Accomplishment (A)</em>. Learning has been dehumanized into transactional machine interactions.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Q2 -->
+              <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="flex items-start justify-between">
+                  <h4 class="font-bold text-xs text-slate-900 dark:text-white">
+                    <span class="i18n-en">Question 2: How should EdTech designers establish a Human-in-the-Loop model so AI acts as an enabler of self-actualization rather than a tool of dehumanization?</span>
+                    <span class="i18n-id">Pertanyaan 2: Bagaimana intervensi desainer Teknologi Pendidikan dalam mengintegrasikan peran humanis guru (human-in-the-loop) agar AI bertindak sebagai enabler aktualisasi diri?</span>
+                  </h4>
+                  <button onclick="toggleCaseRubric('rubric3_2')" class="text-xs text-teal-600 dark:text-teal-400 font-bold hover:underline shrink-0 ml-2">
+                    <span class="i18n-en">Model Rubric &darr;</span><span class="i18n-id">Kunci Rubrik &darr;</span>
+                  </button>
+                </div>
+                <textarea id="textResponse3_2" placeholder="Propose your human-in-the-loop architecture here / Tuliskan arsitektur human-in-the-loop di sini..." class="w-full text-xs p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500" rows="3"></textarea>
+                <div id="rubric3_2" class="hidden p-3.5 rounded-xl bg-teal-50 dark:bg-teal-950/50 border border-teal-200 dark:border-teal-900 text-xs text-teal-900 dark:text-teal-200 space-y-1">
+                  <strong><span class="i18n-en">Exemplar Rubric Key:</span><span class="i18n-id">Kunci Solusi Model Dosen:</span></strong>
+                  <ul class="list-disc list-inside space-y-1 text-[11px] leading-relaxed">
+                    <li><strong>AI as Cognitive Assistant, Not Instructor:</strong> Delegate diagnostic data crunching to AI, freeing up teacher time for deep Socratic dialogues, emotional counseling, and project mentorship.</li>
+                    <li><strong>Collaborative Synthesis Pauses:</strong> Program the AI to freeze every 3 units and mandate peer collaborative discussions before unlocking next chapters.</li>
+                    <li><strong>Student Reflection Journaling:</strong> Require students to write personal voice reflections on how the lesson applies to their lives, reviewed directly by human mentors.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Workspace Action Bar -->
+          <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <span class="text-slate-400">
+              <span class="i18n-en">Drafts are saved automatically to your current session.</span>
+              <span class="i18n-id">Draf jawaban tersimpan otomatis selama sesi ini.</span>
+            </span>
+            <button onclick="copyGroupAnalysis()" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 font-bold text-white shadow transition flex items-center gap-1.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+              <span class="i18n-en">Copy Group Submission</span>
+              <span class="i18n-id">Salin Jawaban Kelompok</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- SECTION 7: Formative Self-Assessment Quiz -->
+        <section id="quickquiz" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm scroll-mt-20">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 font-bold text-sm">07</span>
+              <div>
+                <span class="text-[11px] font-bold uppercase text-rose-600 dark:text-rose-400 tracking-wider">
+                  <span class="i18n-en">Mastery Check</span>
+                  <span class="i18n-id">Uji Pemahaman Formatif</span>
+                </span>
+                <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                  <span class="i18n-en">Humanistic Concept Mastery Check</span>
+                  <span class="i18n-id">Kuis Penguasaan Konsep Humanistik</span>
+                </h2>
+              </div>
+            </div>
+            <div id="quizScoreBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+              Score: 0 / 3
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Quiz Item 1 -->
+            <div class="quiz-item p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80" data-answered="false">
+              <p class="text-xs font-bold text-slate-900 dark:text-white mb-3">
+                <span class="i18n-en">1. In Abraham Maslow's theory, why does an online learner struggling with severe exam anxiety fail to grasp complex academic content?</span>
+                <span class="i18n-id">1. Dalam teori Maslow, mengapa siswa yang mengalami kecemasan hebat di platform e-learning gagal memahami materi akademik yang rumit?</span>
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <button onclick="handleQuizAnswer(this, 1, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">A. The learner lacks high behavioral conditioned stimulus associations</span>
+                  <span class="i18n-id">A. Siswa kekurangan pembiasaan stimulus-respons behavioristik yang konsisten</span>
+                </button>
+                <button onclick="handleQuizAnswer(this, 1, true)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">B. Deficiency needs (psychological safety) must be met before growth needs can function</span>
+                  <span class="i18n-id">B. Kebutuhan dasar (rasa aman) belum terpenuhi sehingga fungsi kognitif/pertumbuhan terhambat</span>
+                </button>
+                <button onclick="handleQuizAnswer(this, 1, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">C. The working memory phonological loop capacity exceeded Cowan's limit</span>
+                  <span class="i18n-id">C. Kapasitas phonological loop memori kerja telah melampaui batas Cowan</span>
+                </button>
+                <button onclick="handleQuizAnswer(this, 1, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">D. The learner's zone of proximal development was not calculated by the LMS</span>
+                  <span class="i18n-id">D. Zone of proximal development (ZPD) siswa belum dihitung secara algoritmik oleh LMS</span>
+                </button>
+              </div>
+              <div class="quiz-feedback hidden mt-3 p-2.5 rounded-lg text-xs"></div>
+            </div>
+
+            <!-- Quiz Item 2 -->
+            <div class="quiz-item p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80" data-answered="false">
+              <p class="text-xs font-bold text-slate-900 dark:text-white mb-3">
+                <span class="i18n-en">2. What core facilitator attitude is demonstrated by Carl Rogers when an instructor values every student unconditionally, regardless of their background or initial mistakes?</span>
+                <span class="i18n-id">2. Sikap fasilitator apa yang ditunjukkan Carl Rogers ketika seorang pendidik menerima siswa secara utuh tanpa syarat, terlepas dari latar belakang maupun kesalahan awalnya?</span>
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <button onclick="handleQuizAnswer(this, 2, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">A. Behavioral Extinction</span><span class="i18n-id">A. Pemadaman Perilaku (Extinction)</span>
+                </button>
+                <button onclick="handleQuizAnswer(this, 2, true)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">B. Unconditional Positive Regard (Prizing & Trust)</span><span class="i18n-id">B. Unconditional Positive Regard (Penerimaan Tanpa Syarat)</span>
+                </button>
+                <button onclick="handleQuizAnswer(this, 2, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">C. Cognitive Disequilibrium Balancing</span><span class="i18n-id">C. Ekuilibrasi Disonansi Kognitif</span>
+                </button>
+                <button onclick="handleQuizAnswer(this, 2, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">D. Progressive Extraneous Elimination</span><span class="i18n-id">D. Eliminasi Beban Ekstraneus Progresif</span>
+                </button>
+              </div>
+              <div class="quiz-feedback hidden mt-3 p-2.5 rounded-lg text-xs"></div>
+            </div>
+
+            <!-- Quiz Item 3 -->
+            <div class="quiz-item p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80" data-answered="false">
+              <p class="text-xs font-bold text-slate-900 dark:text-white mb-3">
+                <span class="i18n-en">3. According to Arthur Combs, what is the prerequisite condition for information to produce genuine, lasting learning?</span>
+                <span class="i18n-id">3. Menurut Arthur Combs, apa syarat mutlak agar suatu materi pembelajaran dapat menghasilkan belajar yang sejati dan bertahan lama?</span>
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <button onclick="handleQuizAnswer(this, 3, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">A. The material must be tested under high-stakes timed pressure</span>
+                  <span class="i18n-id">A. Materi wajib diuji di bawah tekanan waktu tes yang ketat</span>
+                </button>
+                <button onclick="handleQuizAnswer(this, 3, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">B. The content must follow a rigid algorithmic script</span>
+                  <span class="i18n-id">B. Isi konten harus mengikuti alur skrip algoritmik yang seragam</span>
+                </button>
+                <button onclick="handleQuizAnswer(this, 3, true)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">C. The material must possess deep personal meaning to the student</span>
+                  <span class="i18n-id">C. Materi harus memiliki makna personal (personal meaning) bagi hidup siswa</span>
+                </button>
+                <button onclick="handleQuizAnswer(this, 3, false)" class="quiz-opt p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-left hover:bg-rose-50 dark:hover:bg-slate-800 transition">
+                  <span class="i18n-en">D. The course must be completed exclusively without human intervention</span>
+                  <span class="i18n-id">D. Perkuliahan harus diselesaikan secara otomatis tanpa bantuan guru</span>
+                </button>
+              </div>
+              <div class="quiz-feedback hidden mt-3 p-2.5 rounded-lg text-xs"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 8: References -->
+        <section id="references" class="p-6 sm:p-8 rounded-3xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-3">
+          <h3 class="font-bold text-sm text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+            <span class="i18n-en">Academic References & Foundational Literature</span>
+            <span class="i18n-id">Referensi Literatur Akademik</span>
+          </h3>
+          <ul class="space-y-1.5 list-disc list-inside">
+            <li>Combs, A. W. (1982). <em>A Personal Approach to Teaching: Beliefs That Make a Difference</em>. Allyn & Bacon.</li>
+            <li>Deci, E. L., & Ryan, R. M. (2000). The "what" and "why" of goal pursuits: Human needs and the self-determination of behavior. <em>Psychological Inquiry</em>, 11(4), 227-268.</li>
+            <li>Maslow, A. H. (1970). <em>Motivation and Personality</em> (2nd ed.). Harper & Row.</li>
+            <li>Rogers, C. R. (1969). <em>Freedom to Learn: A View of What Education Might Become</em>. Charles E. Merrill Publishing.</li>
+            <li>Rogers, C. R., & Freiberg, H. J. (1994). <em>Freedom to Learn</em> (3rd ed.). Merrill.</li>
+            <li>Seligman, M. E. (2011). <em>Flourish: A Visionary New Understanding of Happiness and Well-being</em>. Free Press.</li>
+            <li>Vygotsky, L. S. (1978). <em>Mind in Society: The Development of Higher Psychological Processes</em>. Harvard University Press.</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast Notification Box (Strictly avoids window.alert) -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 transform translate-y-32 opacity-0 transition-all duration-300 z-50 p-4 rounded-2xl shadow-xl flex items-center space-x-3 text-xs font-semibold max-w-sm"></div>
+
+  <!-- Client-side Logic Script -->
+  <script>
+    let currentLang = 'en';
+
+    // Switch Language seamlessly
+    function switchLanguage(lang) {
+      currentLang = lang;
+      document.body.classList.remove('lang-en', 'lang-id');
+      document.body.classList.add(`lang-${lang}`);
+
+      const btnEn = document.getElementById('btnLangEn');
+      const btnId = document.getElementById('btnLangId');
+
+      if (lang === 'en') {
+        btnEn.className = 'px-2.5 py-1 rounded-lg bg-rose-600 text-white shadow-sm transition';
+        btnId.className = 'px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition';
+        showToast('Language switched to English', 'info');
+      } else {
+        btnId.className = 'px-2.5 py-1 rounded-lg bg-rose-600 text-white shadow-sm transition';
+        btnEn.className = 'px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition';
+        showToast('Bahasa dialihkan ke Bahasa Indonesia', 'info');
+      }
+
+      localStorage.setItem('preferredHumanisticLang', lang);
+
+      // Re-render language-dependent components
+      inspectMaslowTier(activeMaslowTier);
+      updateRogersAuditor();
+    }
+
+    // Dark/Light Theme Toggle
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    themeToggleBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('humanisticTheme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    if (localStorage.getItem('humanisticTheme') === 'dark' || (!('humanisticTheme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgressBar').style.width = scrolled + '%';
+    });
+
+    // Custom Toast Notification Function (No alert() used!)
+    function showToast(message, type = 'info') {
+      const toast = document.getElementById('toastNotification');
+      toast.className = `fixed bottom-6 right-6 transform transition-all duration-300 z-50 p-4 rounded-2xl shadow-xl flex items-center space-x-3 text-xs font-semibold max-w-sm ${
+        type === 'success' ? 'bg-emerald-600 text-white' : 
+        type === 'error' ? 'bg-rose-600 text-white' : 
+        'bg-slate-900 dark:bg-white text-white dark:text-slate-900'
+      }`;
+      toast.textContent = message;
+      toast.classList.remove('translate-y-32', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-32', 'opacity-0');
+      }, 3200);
+    }
+
+    const maslowTiers = {
+      actualization: {
+        en: {
+          title: "Level 5: Self-Actualization (Puncak Aktualisasi Diri)",
+          category: "Growth Need (Metaneeds)",
+          desc: "Desire to realize one's full unique potential, express authentic creativity, and achieve self-transcendence.",
+          barrier: "Forced conformity to rigid standardized rote tests that ignore diverse talents.",
+          edtech: "Open-ended project-based learning portfolios, learner-directed inquiry, freedom in choosing final artifact modalities."
+        },
+        id: {
+          title: "Level 5: Aktualisasi Diri (Self-Actualization)",
+          category: "Kebutuhan Pertumbuhan (Growth Need)",
+          desc: "Keinginan untuk merealisasikan seluruh potensi unik, mengekspresikan kreativitas otentik, dan berkembang optimal.",
+          barrier: "Penyeragaman kaku yang menuntut semua siswa menghasilkan produk yang sama persis tanpa ruang kreasi.",
+          edtech: "Portofolio terbuka berbasis proyek, inkuiri mandiri yang dipilih siswa, serta kebebasan memilih format asesmen akhir."
+        }
+      },
+      esteem: {
+        en: {
+          title: "Level 4: Esteem Needs (Penghargaan & Efikasi Diri)",
+          category: "Deficiency Need",
+          desc: "Need for dignity, competence recognition, self-respect, and positive evaluation from peers and mentors.",
+          barrier: "Public leaderboard shaming, harsh automated grade markdowns, red-ink penalty marks in LMS.",
+          edtech: "Badge awards celebrating individual growth and perseverance, private formative feedback, constructive peer peer-review protocols."
+        },
+        id: {
+          title: "Level 4: Kebutuhan Penghargaan (Esteem Needs)",
+          category: "Kebutuhan Dasar (Deficiency Need)",
+          desc: "Kebutuhan akan martabat, pengakuan kompetensi, respek diri, dan evaluasi positif dari guru serta teman sebaya.",
+          barrier: "Papan peringkat (leaderboard) yang mempermalukan siswa bernilai rendah, penalti angka merah otomatis di LMS.",
+          edtech: "Pengakuan atas usaha dan pertumbuhan pribadi (bukan hanya nilai akhir), umpan balik konstruktif privat, dan budaya apresiasi."
+        }
+      },
+      belonging: {
+        en: {
+          title: "Level 3: Love & Belonging (Keterikatan Sosial & Komunitas)",
+          category: "Deficiency Need",
+          desc: "Need for emotional connection, peer acceptance, feeling valued in the cohort, and avoiding loneliness.",
+          barrier: "Cold asynchronous e-learning modules with zero human interaction; transactional screen time.",
+          edtech: "Community Social LMS, collaborative virtual whiteboards, student-led study circles, and daily check-in rituals."
+        },
+        id: {
+          title: "Level 3: Kasih Sayang & Keterikatan (Love & Belonging)",
+          category: "Kebutuhan Dasar (Deficiency Need)",
+          desc: "Kebutuhan akan koneksi emosional, penerimaan teman sebaya, rasa menjadi bagian dari kelompok belajar, dan bebas dari isolasi.",
+          barrier: "Modul daring yang dingin tanpa interaksi manusia; belajar soliter yang membosankan dan memicu keterasingan.",
+          edtech: "Komunitas belajar sosial, forum diskusi apresiatif, ruang kolaborasi visual bersama, dan sesi check-in sapaan hangat."
+        }
+      },
+      safety: {
+        en: {
+          title: "Level 2: Safety & Security (Keamanan Psikologis & Lingkungan)",
+          category: "Deficiency Need",
+          desc: "Freedom from fear, threat, intimidation, unpredictable chaos, and aggressive digital surveillance.",
+          barrier: "Invasive proctoring cameras tracking student eyes, sudden unexpected penalties, public failure humiliation.",
+          edtech: "Untimed formative testing, transparent grading rubrics, error-tolerant learning environments, and trust-centered assessments."
+        },
+        id: {
+          title: "Level 2: Rasa Aman & Bebas Ancaman (Safety Needs)",
+          category: "Kebutuhan Dasar (Deficiency Need)",
+          desc: "Bebas dari rasa takut, intimidasi, kekacauan yang tak menentu, serta rasa diawasi secara berlebihan oleh teknologi.",
+          barrier: "Software pengawas kamera yang sangat invasif, ancaman penalti pengurangan nilai mendadak, suasana ujian mencekam.",
+          edtech: "Asesmen formatif tanpa batasan waktu ketat, rubrik penilaian transparan, ruang uji coba ramah kesalahan, dan asesmen berbasis kepercayaan."
+        }
+      },
+      physiological: {
+        en: {
+          title: "Level 1: Physiological Needs (Kebutuhan Fisiologis)",
+          category: "Deficiency Need",
+          desc: "Basic biological necessities: nutrition, hydration, rest, ergonomic posture, and reasonable screen breaks.",
+          barrier: "Marathon 4-hour non-stop video lectures causing severe eye strain, fatigue, and posture exhaustion.",
+          edtech: "Microlearning segments (15-20 min max), built-in eye rest reminders, mobile-responsive offline study modes."
+        },
+        id: {
+          title: "Level 1: Kebutuhan Fisiologis (Physiological Needs)",
+          category: "Kebutuhan Dasar (Deficiency Need)",
+          desc: "Kebutuhan biologis dasar: makanan, air, istirahat cukup, postur tubuh yang nyaman, serta jeda istirahat mata.",
+          barrier: "Kuliah daring 4 jam nonstop tanpa jeda yang memicu kelelahan mata, sakit kepala, dan Zoom fatigue.",
+          edtech: "Segmentasi microlearning (maksimal 15-20 menit per blok), pengingat jeda istirahat berkala, serta mode materi offline ramah kuota."
+        }
+      }
+    };
+
+    let activeMaslowTier = 'actualization';
+
+    function inspectMaslowTier(tierKey) {
+      activeMaslowTier = tierKey;
+      document.querySelectorAll('.maslow-btn').forEach(btn => {
+        btn.className = 'maslow-btn py-2 px-2.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition text-center';
+      });
+      const activeBtn = document.getElementById(`btnMaslow-${tierKey}`);
+      if (activeBtn) {
+        activeBtn.className = 'maslow-btn py-2 px-2.5 rounded-xl text-xs font-bold bg-rose-600 text-white transition text-center shadow-sm';
+      }
+
+      const data = maslowTiers[tierKey][currentLang];
+      const box = document.getElementById('maslowDetailBox');
+      box.innerHTML = `
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-bold text-slate-900 dark:text-white text-sm">${data.title}</span>
+          <span class="px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300 font-bold text-[10px]">${data.category}</span>
+        </div>
+        <p class="text-slate-600 dark:text-slate-300 mb-3">${data.desc}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 border-t border-slate-200 dark:border-slate-700">
+          <div class="p-2.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-300">
+            <strong>${currentLang === 'en' ? '⚠️ Institutional Barrier:' : '⚠️ Hambatan di Kelas:'}</strong> ${data.barrier}
+          </div>
+          <div class="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300">
+            <strong>${currentLang === 'en' ? '💡 Humanizing EdTech Solution:' : '💡 Solusi Tekpen Humanistik:'}</strong> ${data.edtech}
+          </div>
+        </div>
+      `;
+    }
+
+    const sliderGenuineness = document.getElementById('sliderGenuineness');
+    const sliderTrust = document.getElementById('sliderTrust');
+    const sliderEmpathy = document.getElementById('sliderEmpathy');
+
+    function updateRogersAuditor() {
+      const g = parseInt(sliderGenuineness.value, 10);
+      const t = parseInt(sliderTrust.value, 10);
+      const e = parseInt(sliderEmpathy.value, 10);
+
+      document.getElementById('valGenuineness').textContent = `${g} / 5`;
+      document.getElementById('valTrust').textContent = `${t} / 5`;
+      document.getElementById('valEmpathy').textContent = `${e} / 5`;
+
+      const scorePct = Math.round(((g + t + e) / 15) * 100);
+      const badge = document.getElementById('rogersScoreBadge');
+      const feedback = document.getElementById('rogersFeedback');
+
+      if (scorePct >= 80) {
+        badge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300';
+        badge.textContent = `${currentLang === 'en' ? 'Optimal Facilitation' : 'Fasilitasi Optimal'} (${scorePct}%)`;
+        feedback.innerHTML = currentLang === 'en'
+          ? `<strong class="text-emerald-600 dark:text-emerald-400">Exemplary Rogers Climate:</strong> Your instructional stance reflects genuineness and high trust. Students feel psychologically safe to explore, take creative risks, and express authentic personal meaning without fear of punitive failure.`
+          : `<strong class="text-emerald-600 dark:text-emerald-400">Iklim Rogers Sangat Optimal:</strong> Sikap fasilitator menunjukkan keaslian dan kepercayaan tinggi. Mahasiswa merasa aman secara psikologis untuk mengeksplorasi ide berani, berekspresi bebas, dan menginternalisasi makna belajar sejati.`;
+      } else if (scorePct >= 50) {
+        badge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300';
+        badge.textContent = `${currentLang === 'en' ? 'Moderate Safety' : 'Cukup Terbuka'} (${scorePct}%)`;
+        feedback.innerHTML = currentLang === 'en'
+          ? `<strong class="text-amber-600 dark:text-amber-400">Mixed Climate:</strong> Some unconditional trust is present, but students still perceive subtle evaluative threats or rigid requirements that limit full self-expression.`
+          : `<strong class="text-amber-600 dark:text-amber-400">Iklim Cukup Kondusif:</strong> Rasa percaya mulai terbentuk, namun mahasiswa masih merasakan tuntutan kaku atau kekhawatiran dihakimi yang membatasi keterbukaan eksplorasi potensi mereka.`;
+      } else {
+        badge.className = 'text-xs px-3 py-1 rounded-full font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 animate-pulse';
+        badge.textContent = `${currentLang === 'en' ? 'High Threat / Defensive' : 'Iklim Defensif / Mengancam'} (${scorePct}%)`;
+        feedback.innerHTML = currentLang === 'en'
+          ? `<strong class="text-rose-600 dark:text-rose-400">Defensive Learning Climate:</strong> Lack of trust and high judgment force students into defensive compliance. Learning becomes mechanical task completion rather than transformative self-actualization.`
+          : `<strong class="text-rose-600 dark:text-rose-400">Iklim Belajar Defensif:</strong> Rendahnya empati dan tingginya ancaman penghakiman memaksa siswa bersikap defensif. Belajar tereduksi sekadar memenuhi formalitas tugas tanpa sentuhan makna personal.`;
+      }
+    }
+
+    [sliderGenuineness, sliderTrust, sliderEmpathy].forEach(sl => {
+      sl.addEventListener('input', updateRogersAuditor);
+    });
+
+    function filterEdTechMatrix(category) {
+      document.querySelectorAll('.matrix-btn').forEach(btn => {
+        btn.className = 'matrix-btn px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 transition';
+      });
+      event.target.className = 'matrix-btn px-3 py-1 rounded-lg text-xs font-bold bg-rose-600 text-white transition';
+
+      const rows = document.querySelectorAll('.edtech-row');
+      rows.forEach(r => {
+        if (category === 'all' || r.classList.contains(category)) {
+          r.classList.remove('hidden');
+        } else {
+          r.classList.add('hidden');
+        }
+      });
+    }
+
+    let activeCaseGroup = 1;
+
+    function switchCaseGroup(groupNum) {
+      activeCaseGroup = groupNum;
+      [1, 2, 3].forEach(n => {
+        const btn = document.getElementById(`btnCaseGroup${n}`);
+        const box = document.getElementById(`caseBox${n}`);
+        if (n === groupNum) {
+          btn.className = 'case-group-btn py-3 px-4 rounded-2xl text-xs font-bold bg-rose-600 text-white shadow-md transition flex items-center justify-center gap-2';
+          box.classList.remove('hidden');
+        } else {
+          btn.className = 'case-group-btn py-3 px-4 rounded-2xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition flex items-center justify-center gap-2';
+          box.classList.add('hidden');
+        }
+      });
+      showToast(currentLang === 'en' ? `Switched to Group ${groupNum} Workspace` : `Beralih ke Ruang Kerja Kelompok ${groupNum}`, 'info');
+    }
+
+    function toggleCaseRubric(rubricId) {
+      const el = document.getElementById(rubricId);
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    }
+
+    // Robust Clipboard Copy without relying on unreliable iframe navigator.clipboard
+    function copyGroupAnalysis() {
+      const resp1 = document.getElementById(`textResponse${activeCaseGroup}_1`).value.trim();
+      const resp2 = document.getElementById(`textResponse${activeCaseGroup}_2`).value.trim();
+
+      const combinedText = `=== GROUP ${activeCaseGroup} HUMANISTIC EDTECH CASE AUDIT ===\n\n[QUESTION 1 ANALYSIS]:\n${resp1 || '(No response drafted yet)'}\n\n[QUESTION 2 REDESIGN PROPOSAL]:\n${resp2 || '(No response drafted yet)'}\n\nDate: ${new Date().toLocaleDateString()}`;
+
+      const tempArea = document.createElement('textarea');
+      tempArea.value = combinedText;
+      tempArea.style.position = 'fixed';
+      tempArea.style.left = '-9999px';
+      document.body.appendChild(tempArea);
+      tempArea.select();
+
+      try {
+        document.execCommand('copy');
+        showToast(currentLang === 'en' ? 'Group submission copied to clipboard!' : 'Hasil analisis kelompok berhasil disalin ke clipboard!', 'success');
+      } catch (err) {
+        showToast(currentLang === 'en' ? 'Copy shortcut failed. Please copy manually.' : 'Gagal menyalin otomatis. Silakan salin manual.', 'error');
+      } finally {
+        document.body.removeChild(tempArea);
+      }
+    }
+
+    let quizScore = 0;
+
+    function handleQuizAnswer(button, qIndex, isCorrect) {
+      const parentCard = button.closest('.quiz-item');
+      if (parentCard.dataset.answered === 'true') return;
+
+      parentCard.dataset.answered = 'true';
+      const feedbackBox = parentCard.querySelector('.quiz-feedback');
+      const options = parentCard.querySelectorAll('.quiz-opt');
+
+      options.forEach(opt => {
+        opt.disabled = true;
+        opt.classList.add('opacity-60', 'cursor-not-allowed');
+      });
+
+      if (isCorrect) {
+        button.classList.remove('opacity-60');
+        button.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600');
+        feedbackBox.className = 'quiz-feedback mt-3 p-3 rounded-xl text-xs bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 block';
+        feedbackBox.innerHTML = currentLang === 'en'
+          ? `<strong>Correct!</strong> Your humanistic psychology understanding aligns perfectly with foundational literature.`
+          : `<strong>Tepat Sekali!</strong> Analisis psikologi humanistik Anda selaras sempurna dengan prinsip para tokoh utama.`;
+        quizScore++;
+        showToast(currentLang === 'en' ? 'Correct answer!' : 'Jawaban benar!', 'success');
+      } else {
+        button.classList.remove('opacity-60');
+        button.classList.add('bg-rose-500', 'text-white', 'border-rose-600');
+        feedbackBox.className = 'quiz-feedback mt-3 p-3 rounded-xl text-xs bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 text-rose-800 dark:text-rose-300 block';
+        feedbackBox.innerHTML = currentLang === 'en'
+          ? `<strong>Incorrect.</strong> Review the core theorists and humanistic principles in the module above.`
+          : `<strong>Kurang Tepat.</strong> Pelajari kembali uraian pemikiran Maslow, Rogers, dan Combs di bagian modul atas.`;
+        showToast(currentLang === 'en' ? 'Review module section.' : 'Pelajari kembali bagian modul.', 'error');
+      }
+
+      document.getElementById('quizScoreBadge').textContent = `Score: ${quizScore} / 3`;
+    }
+
+    // Initialize module on ready
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferredHumanisticLang') || 'en';
+      switchLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>
