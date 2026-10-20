@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Interaktif Psikologi Pendidikan: Konsep Dasar Kecerdasan</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- MathJax for LaTeX Rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-mono-code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* 3D Card Flip Perspective */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Audio Wave Pulse Animation */
+        @keyframes wavePulse {
+            0%, 100% { height: 6px; }
+            50% { height: 22px; }
+        }
+        .animate-wave-bar-1 { animation: wavePulse 0.8s ease-in-out infinite 0.1s; }
+        .animate-wave-bar-2 { animation: wavePulse 0.8s ease-in-out infinite 0.3s; }
+        .animate-wave-bar-3 { animation: wavePulse 0.8s ease-in-out infinite 0.2s; }
+        .animate-wave-bar-4 { animation: wavePulse 0.8s ease-in-out infinite 0.4s; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-full flex flex-col">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-slate-900 text-white sticky top-0 z-30 shadow-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand & Module Identity -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-violet-600 flex items-center justify-center text-white shadow-lg shadow-violet-500/30 font-bold text-lg">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base sm:text-lg text-white leading-tight">Psikologi Pendidikan</h1>
+                    <p class="text-[11px] text-violet-300 font-medium">Modul: Konsep Dasar Kecerdasan & Pembelajaran</p>
+                </div>
+            </div>
+
+            <!-- Reading & Score Badges -->
+            <div class="flex items-center space-x-3">
+                <div class="hidden md:flex items-center space-x-2 bg-slate-800 text-slate-200 px-3 py-1.5 rounded-full text-xs font-medium border border-slate-700">
+                    <i class="fa-regular fa-clock text-amber-400"></i>
+                    <span>Estimasi: 15 Menit</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-emerald-500/20 text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold border border-emerald-500/30">
+                    <i class="fa-solid fa-award text-emerald-400"></i>
+                    <span id="scoreBadge">Skor Modul: 0 Pts</span>
+                </div>
+            </div>
+        </div>
+        <!-- Progress Bar Line -->
+        <div class="w-full bg-slate-950 h-1">
+            <div id="moduleProgressBar" class="bg-violet-500 h-1 w-1/6 transition-all duration-300"></div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- Module Information Banner -->
+        <div class="bg-gradient-to-r from-slate-900 via-violet-950 to-indigo-950 text-white rounded-2xl p-6 sm:p-8 mb-6 shadow-xl relative overflow-hidden border border-violet-800/40">
+            <div class="absolute -right-12 -bottom-12 w-56 h-56 bg-violet-600/20 rounded-full blur-3xl"></div>
+            
+            <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span class="px-3 py-1 rounded-full bg-violet-500/30 border border-violet-400/30 text-violet-200 text-xs font-semibold backdrop-blur-sm">
+                            <i class="fa-solid fa-graduation-cap mr-1"></i> Program Sarjana (S1) Pendidikan / Psikologi
+                        </span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-medium">
+                            Penyusun: Dosen Senior Psikologi Pendidikan
+                        </span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
+                        Memahami Konsep Dasar Kecerdasan dan Perannya dalam Proses Pembelajaran
+                    </h2>
+                    <p class="text-violet-200 text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
+                        Menganalisis definisi & evolusi teori kecerdasan (Binet, Sternberg, Gardner), mekanisme pemrosesan kognitif dalam belajar, serta implikasi Kurikulum Merdeka bagi ABK dan Siswa CIBI.
+                    </p>
+                </div>
+
+                <div class="flex items-center space-x-3 shrink-0">
+                    <button onclick="toggleAudioNarrator()" class="flex items-center space-x-2 bg-violet-600 hover:bg-violet-500 active:scale-95 text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold shadow-lg shadow-violet-950/50 transition">
+                        <i id="ttsIcon" class="fa-solid fa-volume-high"></i>
+                        <span id="ttsBtnText">Dengarkan Ringkasan</span>
+                    </button>
+                    <button onclick="switchTab('quiz')" class="flex items-center space-x-2 bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-lg shadow-emerald-950/50 transition">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Uji Pemahaman</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Audio Wave Container -->
+            <div id="audioWaveContainer" class="hidden mt-4 pt-3 border-t border-violet-800/50 flex items-center space-x-3">
+                <span class="text-xs text-violet-300 font-medium">Memutar Audio Narasi Rangkuman Modul:</span>
+                <div class="flex items-end space-x-1 h-5">
+                    <div class="w-1 bg-violet-400 rounded-full animate-wave-bar-1"></div>
+                    <div class="w-1 bg-violet-300 rounded-full animate-wave-bar-2"></div>
+                    <div class="w-1 bg-violet-400 rounded-full animate-wave-bar-3"></div>
+                    <div class="w-1 bg-violet-200 rounded-full animate-wave-bar-4"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Horizontal Scrollable Navigation Tabs -->
+        <div class="flex border-b border-slate-200 mb-6 overflow-x-auto space-x-1 sm:space-x-2 pb-1 scrollbar-none">
+            <button onclick="switchTab('cpmk')" id="tab-cpmk" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 whitespace-nowrap bg-violet-600 text-white shadow-sm">
+                <i class="fa-solid fa-bullseye"></i>
+                <span>1. CPMK & Pengantar</span>
+            </button>
+            <button onclick="switchTab('teori')" id="tab-teori" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-brain"></i>
+                <span>2. Teori-Teori Kecerdasan</span>
+            </button>
+            <button onclick="switchTab('proses')" id="tab-proses" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-microchip"></i>
+                <span>3. Pengaruh dalam Belajar</span>
+            </button>
+            <button onclick="switchTab('kurikulum')" id="tab-kurikulum" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-school"></i>
+                <span>4. Kurikulum, ABK & CIBI</span>
+            </button>
+            <button onclick="switchTab('cards')" id="tab-cards" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-clone"></i>
+                <span>5. Flashcard & Mindmap</span>
+            </button>
+            <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <span>6. Kuis Evaluasi</span>
+            </button>
+            <button onclick="switchTab('tutor')" id="tab-tutor" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-violet-700 bg-violet-50 border border-violet-200 hover:bg-violet-100 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-robot"></i>
+                <span>7. AI Tutor & Refleksi</span>
+            </button>
+        </div>
+
+        <!-- Main Content Area Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- Left Main Content Area (8 Columns) -->
+            <div class="lg:col-span-8 space-y-6">
+
+                <!-- TAB 1: CPMK & PENGANTAR MODUL -->
+                <div id="content-cpmk" class="tab-content block space-y-6">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm leading-relaxed text-slate-700 space-y-6">
+                        
+                        <div class="border-b border-slate-100 pb-4 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-violet-600">Capaian Pembelajaran</span>
+                                <h3 class="text-xl font-bold text-slate-900">Capaian Pembelajaran Mata Kuliah (CPMK)</h3>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <button onclick="adjustFontSize(1)" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 font-bold text-xs" title="Perbesar Teks">A+</button>
+                                <button onclick="adjustFontSize(-1)" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 font-bold text-xs" title="Perkecil Teks">A-</button>
+                            </div>
+                        </div>
+
+                        <p class="text-sm">
+                            Modul ini dirancang untuk membekali mahasiswa Calon Pendidik / Psikolog Pendidikan dalam memahami hakikat kecerdasan secara komprehensif, tidak sekadar sebagai angka statis IQ, melainkan sebagai modalitas belajar yang dinamis dan beragam.
+                        </p>
+
+                        <!-- CPMK Cards Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-4 rounded-xl border border-violet-200 bg-violet-50/50 space-y-2">
+                                <div class="w-8 h-8 rounded-lg bg-violet-600 text-white flex items-center justify-center font-bold text-xs">1</div>
+                                <h4 class="font-bold text-violet-950 text-xs">Analisis Teori & Definisi</h4>
+                                <p class="text-[11px] text-slate-600">Menganalisis secara kritis gagasan utama, definisi, dan teori-teori kecerdasan dalam psikologi perkembangan/pendidikan.</p>
+                            </div>
+                            <div class="p-4 rounded-xl border border-indigo-200 bg-indigo-50/50 space-y-2">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-xs">2</div>
+                                <h4 class="font-bold text-indigo-950 text-xs">Evaluasi Variasi Belajar</h4>
+                                <p class="text-[11px] text-slate-600">Mengidentifikasi dan mengevaluasi contoh konkret pengaruh variasi kecerdasan terhadap proses dan hasil belajar siswa.</p>
+                            </div>
+                            <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/50 space-y-2">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">3</div>
+                                <h4 class="font-bold text-emerald-950 text-xs">Implikasi Kurikulum Merdeka</h4>
+                                <p class="text-[11px] text-slate-600">Mengorelasikan implikasi konsep kecerdasan dengan Kurikulum Merdeka bagi ABK dan Cerdas Istimewa Bakat Istimewa (CIBI).</p>
+                            </div>
+                        </div>
+
+                        <!-- Conceptual Overview Highlight Box -->
+                        <div class="bg-slate-900 text-slate-100 p-5 rounded-2xl font-mono-code text-xs leading-relaxed space-y-3">
+                            <div class="text-amber-400 font-bold text-center">[ PERGESERAN PARADIGMA KECERDASAN ]</div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-slate-800 pt-3">
+                                <div class="bg-slate-800/80 p-3 rounded-xl">
+                                    <span class="text-rose-400 font-bold block mb-1">❌ Psikometrik Klasik (Binet/Spearman)</span>
+                                    <p class="text-slate-300 text-[11px]">Kecerdasan adalah kapasitas tunggal ($g$-factor), bersifat kaku, statis, dan diukur terutama oleh kemampuan logis-verbal.</p>
+                                </div>
+                                <div class="bg-slate-800/80 p-3 rounded-xl">
+                                    <span class="text-emerald-400 font-bold block mb-1">✔️ Kognitif Modern (Gardner/Sternberg)</span>
+                                    <p class="text-slate-300 text-[11px]">Kecerdasan bersifat majemuk (multifaceted), adaptif, berpengaruh pada strategi pemrosesan informasi, dan berinteraksi dengan lingkungan.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 2: BAGIAN 1 - TEORI-TEORI KECERDASAN -->
+                <div id="content-teori" class="tab-content hidden space-y-6">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm leading-relaxed text-slate-700 space-y-6">
+                        
+                        <div class="border-b border-slate-100 pb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-violet-600">Bagian 1</span>
+                            <h3 class="text-xl font-bold text-slate-900">Gagasan Utama dan Teori-Teori Kecerdasan</h3>
+                        </div>
+
+                        <div id="materiTextBody" class="space-y-6 text-sm">
+                            
+                            <!-- 1.1 Evolusi Konsep -->
+                            <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50 space-y-3">
+                                <h4 class="font-bold text-slate-900 text-base flex items-center">
+                                    <i class="fa-solid fa-timeline text-violet-600 mr-2"></i>
+                                    1.1 Definisi dan Evolusi Konsep Kecerdasan
+                                </h4>
+                                <ul class="list-disc pl-5 space-y-2 text-slate-700 text-xs sm:text-sm">
+                                    <li>
+                                        <strong>Perspektif Psikometrik Klasik (Alfred Binet & David Wechsler):</strong> Kecerdasan dipahami sebagai kapasitas mental umum (<em>general mental ability</em> / $g$-factor dari Spearman) untuk bernalar, memecahkan masalah, dan belajar dari pengalaman.
+                                        <div class="my-2 p-3 bg-white rounded-xl border border-slate-200 font-mono-code text-xs text-center">
+                                            Formula Klasik IQ: \[IQ = \frac{\text{Mental Age (MA)}}{\text{Chronological Age (CA)}} \times 100\]
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <strong>Perspektif Kognitif Modern:</strong> Kecerdasan bukan sekadar skor tunggal statis, melainkan serangkaian mekanisme pemrosesan informasi, fleksibilitas adaptif, serta kapasitas regulasi diri (<em>self-regulation</em>).
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- 1.2 A: Sternberg Triarchic -->
+                            <div class="p-5 rounded-2xl border border-indigo-100 bg-indigo-50/40 space-y-3">
+                                <h4 class="font-bold text-indigo-950 text-base flex items-center">
+                                    <i class="fa-solid fa-shapes text-indigo-600 mr-2"></i>
+                                    A. Teori Triarchic Kecerdasan (Robert Sternberg)
+                                </h4>
+                                <p class="text-xs text-slate-600">Sternberg membagi kecerdasan menjadi 3 domain utama (<em>Successful Intelligence</em>):</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                                    <div class="bg-white p-3.5 rounded-xl border border-indigo-100 shadow-sm">
+                                        <span class="font-bold text-indigo-700 block mb-1">1. Kecerdasan Analitis</span>
+                                        <p class="text-slate-600">Menganalisis, mengevaluasi, membandingkan, dan menilai (sangat relevan dengan tugas akademis tradisional).</p>
+                                    </div>
+                                    <div class="bg-white p-3.5 rounded-xl border border-indigo-100 shadow-sm">
+                                        <span class="font-bold text-amber-600 block mb-1">2. Kecerdasan Kreatif</span>
+                                        <p class="text-slate-600">Menciptakan, merancang, menemukan, dan merespons situasi baru secara fleksibel.</p>
+                                    </div>
+                                    <div class="bg-white p-3.5 rounded-xl border border-indigo-100 shadow-sm">
+                                        <span class="font-bold text-emerald-600 block mb-1">3. Kecerdasan Praktis</span>
+                                        <p class="text-slate-600">Mengaplikasikan dan menerapkan pengetahuan dalam kehidupan sehari-hari (<em>street smarts</em>).</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 1.2 B: Gardner Multiple Intelligences -->
+                            <div class="p-5 rounded-2xl border border-violet-100 bg-violet-50/40 space-y-3">
+                                <h4 class="font-bold text-violet-950 text-base flex items-center">
+                                    <i class="fa-solid fa-border-all text-violet-600 mr-2"></i>
+                                    B. Teori Kecerdasan Majemuk / Multiple Intelligences (Howard Gardner)
+                                </h4>
+                                <p class="text-xs text-slate-600">Gardner menolak $g$-factor tunggal dan mengusulkan 8 modalitas independen:</p>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+                                    <div class="p-2.5 bg-white rounded-xl border border-violet-100"><i class="fa-solid fa-font text-violet-600 mr-1"></i> <strong>Linguistik:</strong> Makna & urutan kata</div>
+                                    <div class="p-2.5 bg-white rounded-xl border border-violet-100"><i class="fa-solid fa-calculator text-indigo-600 mr-1"></i> <strong>Logis-Matematika:</strong> Penalaran & angka</div>
+                                    <div class="p-2.5 bg-white rounded-xl border border-violet-100"><i class="fa-solid fa-palette text-pink-600 mr-1"></i> <strong>Spasial-Visual:</strong> Manipulasi ruang mental</div>
+                                    <div class="p-2.5 bg-white rounded-xl border border-violet-100"><i class="fa-solid fa-music text-amber-600 mr-1"></i> <strong>Musikal:</strong> Nada, irama, & struktur</div>
+                                    <div class="p-2.5 bg-white rounded-xl border border-violet-100"><i class="fa-solid fa-running text-emerald-600 mr-1"></i> <strong>Kinestetik:</strong> Koordinasi motorik</div>
+                                    <div class="p-2.5 bg-white rounded-xl border border-violet-100"><i class="fa-solid fa-users text-cyan-600 mr-1"></i> <strong>Interpersonal:</strong> Memahami orang lain</div>
+                                    <div class="p-2.5 bg-white rounded-xl border border-violet-100"><i class="fa-solid fa-user-gear text-purple-600 mr-1"></i> <strong>Intrapersonal:</strong> Pemahaman diri emosional</div>
+                                    <div class="p-2.5 bg-white rounded-xl border border-violet-100"><i class="fa-solid fa-leaf text-teal-600 mr-1"></i> <strong>Naturalis:</strong> Peka fenomena alam</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Interactive IQ Formula Calculator Widget -->
+                        <div class="bg-slate-100 rounded-2xl p-5 border border-slate-300 space-y-3">
+                            <h4 class="font-bold text-slate-900 text-sm flex items-center">
+                                <i class="fa-solid fa-calculator text-violet-600 mr-2"></i>
+                                <span>Simulasi Interaktif: Kalkulator Formula Klasik IQ Binet</span>
+                            </h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                                <div>
+                                    <label class="block text-slate-600 mb-1 font-semibold">Usia Mental (Mental Age / MA):</label>
+                                    <input type="number" id="inputMA" value="12" min="1" max="25" oninput="calculateIQ()" class="w-full p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-violet-500 focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-600 mb-1 font-semibold">Usia Kronologis (Chronological Age / CA):</label>
+                                    <input type="number" id="inputCA" value="10" min="1" max="25" oninput="calculateIQ()" class="w-full p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-violet-500 focus:outline-none">
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 flex flex-col items-center justify-center">
+                                    <span class="text-[10px] text-slate-400 font-bold uppercase">Hasil Skor IQ Klasik</span>
+                                    <span id="outputIQScore" class="text-2xl font-extrabold text-violet-600">120</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 3: BAGIAN 2 - PENGARUH KECERDASAN DALAM PROSES BELAJAR -->
+                <div id="content-proses" class="tab-content hidden space-y-6">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm leading-relaxed text-slate-700 space-y-6">
+                        
+                        <div class="border-b border-slate-100 pb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-violet-600">Bagian 2</span>
+                            <h3 class="text-xl font-bold text-slate-900">Pengaruh Kecerdasan dalam Proses Belajar</h3>
+                            <p class="text-xs text-slate-500 mt-1">Kecerdasan berfungsi sebagai prediktor utama bagaimana siswa menerima, memproses, menyimpan, dan mereproduksi pengetahuan.</p>
+                        </div>
+
+                        <!-- Process Diagram -->
+                        <div class="bg-slate-900 text-white p-6 rounded-2xl font-mono-code text-xs space-y-4">
+                            <div class="text-center font-bold text-amber-400 uppercase tracking-wider">[ ALUR MEMORI DAN PEMROSESAN KOGNITIF ]</div>
+                            <div class="flex flex-col md:flex-row items-center justify-between gap-2 text-center">
+                                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 w-full">
+                                    <span class="text-violet-400 font-bold block mb-1">1. Stimulus / Input</span>
+                                    <span class="text-slate-300 text-[10px]">Informasi Baru</span>
+                                </div>
+                                <i class="fa-solid fa-arrow-right text-slate-500 hidden md:block"></i>
+                                <i class="fa-solid fa-arrow-down text-slate-500 md:hidden"></i>
+                                <div class="bg-slate-800 p-3 rounded-xl border border-violet-500/50 w-full shadow-lg shadow-violet-950">
+                                    <span class="text-emerald-400 font-bold block mb-1">2. Pemrosesan & Working Memory</span>
+                                    <span class="text-slate-300 text-[10px]">Dipengaruhi Kapasitas Intelektual</span>
+                                </div>
+                                <i class="fa-solid fa-arrow-right text-slate-500 hidden md:block"></i>
+                                <i class="fa-solid fa-arrow-down text-slate-500 md:hidden"></i>
+                                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 w-full">
+                                    <span class="text-amber-400 font-bold block mb-1">3. Strategi & Transfer</span>
+                                    <span class="text-slate-300 text-[10px]">Metakognisi & Problem Solving</span>
+                                </div>
+                                <i class="fa-solid fa-arrow-right text-slate-500 hidden md:block"></i>
+                                <i class="fa-solid fa-arrow-down text-slate-500 md:hidden"></i>
+                                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 w-full">
+                                    <span class="text-cyan-400 font-bold block mb-1">4. Hasil Belajar</span>
+                                    <span class="text-slate-300 text-[10px]">Masteri Konsep</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3 Mechanisms breakdown -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <h5 class="font-bold text-violet-900 text-sm mb-1"><i class="fa-solid fa-bolt text-amber-500 mr-1"></i> Kecepatan Pemrosesan</h5>
+                                <p class="text-slate-600 leading-relaxed">Siswa dengan IQ kognitif tinggi memiliki efisiensi kognitif lebih cepat dalam mengolah stimulus yang kompleks dan abstrak.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <h5 class="font-bold text-violet-900 text-sm mb-1"><i class="fa-solid fa-memory text-indigo-500 mr-1"></i> Memori Kerja (Working Memory)</h5>
+                                <p class="text-slate-600 leading-relaxed">Ruang kerja mental. Intelektual berkorelasi positif dengan kemampuan memanipulasi beberapa entitas informasi sekaligus.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <h5 class="font-bold text-violet-900 text-sm mb-1"><i class="fa-solid fa-compass text-emerald-500 mr-1"></i> Metakognisi & Strategi</h5>
+                                <p class="text-slate-600 leading-relaxed">Kesadaran belajar. Siswa bernalar tinggi tahu kapan harus merevisi strategi jika menemukan hambatan.</p>
+                            </div>
+                        </div>
+
+                        <!-- Example Table Matrix -->
+                        <div class="border border-slate-200 rounded-xl overflow-hidden">
+                            <div class="bg-slate-900 text-white p-3 font-bold text-xs">
+                                Tabel 2.1: Contoh Konkret Variasi Kecerdasan dalam Kelas
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-xs">
+                                    <thead class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                                        <tr>
+                                            <th class="p-3">Domain / Mata Pelajaran</th>
+                                            <th class="p-3">Contoh Profil Siswa</th>
+                                            <th class="p-3">Implikasi dalam Proses Belajar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 bg-white">
+                                        <tr>
+                                            <td class="p-3 font-bold text-indigo-900">Matematika & Sains</td>
+                                            <td class="p-3">Logis-Matematika & Spasial tinggi</td>
+                                            <td class="p-3">Memahami konsep abstrak (misal: kalkulus / atom 3D) tanpa perlu banyak manipulasi benda fisik.</td>
+                                        </tr>
+                                        <tr class="bg-slate-50/50">
+                                            <td class="p-3 font-bold text-indigo-900">Bahasa & Sastra</td>
+                                            <td class="p-3">Linguistik & Interpersonal unggul</td>
+                                            <td class="p-3">Menyerap tata bahasa cepat, mahir berdebat, menganalisis kiasan literatur, dan memimpin diskusi.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-bold text-indigo-900">Jasmani & Seni</td>
+                                            <td class="p-3">Kinestetik & Musikal menonjol</td>
+                                            <td class="p-3">Cepat menguasai koreografi / gerakan olahraga rumit lewat analisis visual-motorik.</td>
+                                        </tr>
+                                        <tr class="bg-slate-50/50">
+                                            <td class="p-3 font-bold text-indigo-900">Pemecahan Masalah Kompleks</td>
+                                            <td class="p-3">Kecerdasan Kreatif (Sternberg) tinggi</td>
+                                            <td class="p-3">Pada masalah terbuka (open-ended), menghasilkan variasi solusi linier & non-linier yang inovatif.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 4: BAGIAN 3 - KURIKULUM MERDEKA, ABK & CIBI -->
+                <div id="content-kurikulum" class="tab-content hidden space-y-6">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm leading-relaxed text-slate-700 space-y-6">
+                        
+                        <div class="border-b border-slate-100 pb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-violet-600">Bagian 3</span>
+                            <h3 class="text-xl font-bold text-slate-900">Implikasi pada Kurikulum Sekolah di Indonesia (ABK & CIBI)</h3>
+                            <p class="text-xs text-slate-500 mt-1">Transformasi Pendidikan Inklusif & Pembelajaran Berdiferensiasi dalam Kurikulum Merdeka.</p>
+                        </div>
+
+                        <!-- Spectrum Graphic -->
+                        <div class="bg-slate-900 text-white p-6 rounded-2xl text-xs space-y-4">
+                            <div class="text-center font-bold text-amber-400">[ SPEKTRUM KECERDASAN SISWA DI CLASSROOM INKLUSIF ]</div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-slate-800 p-4 rounded-xl border border-rose-500/30 space-y-2">
+                                    <div class="text-rose-400 font-bold text-sm">Anak Berkebutuhan Khusus (ABK)</div>
+                                    <p class="text-slate-300 text-[11px]">Hambatan Intelektual (Tunagrahita) / Disabilitas Belajar Spesifik (Disleksia, Diskalkulia).</p>
+                                    <div class="bg-slate-900 p-2.5 rounded-lg text-emerald-400 font-semibold">
+                                        👉 Pendekatan: Akomodasi & Modifikasi (PPI / IEP, Scaffolding)
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800 p-4 rounded-xl border border-cyan-500/30 space-y-2">
+                                    <div class="text-cyan-400 font-bold text-sm">Anak Luar Biasa / CIBI (Gifted)</div>
+                                    <p class="text-slate-300 text-[11px]">Cerdas Istimewa Bakat Istimewa ($IQ \ge 130$) / Potensi Superior Spesifik.</p>
+                                    <div class="bg-slate-900 p-2.5 rounded-lg text-amber-400 font-semibold">
+                                        👉 Pendekatan: Akselerasi & Pengayaan (Enrichment, Differentiated)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sub-sections 3.1 & 3.2 -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+                            
+                            <!-- ABK Card -->
+                            <div class="p-5 bg-rose-50/50 rounded-2xl border border-rose-100 space-y-3">
+                                <h4 class="font-bold text-rose-950 text-sm flex items-center">
+                                    <i class="fa-solid fa-hands-holding-child text-rose-600 mr-2"></i>
+                                    3.1 Akomodasi untuk ABK
+                                </h4>
+                                <ul class="space-y-2 text-slate-700">
+                                    <li><strong>Program Pembelajaran Individual (PPI/IEP):</strong> Penyusunan modul belajar khusus yang disesuaikan dengan taraf inteligensi & hambatan siswa.</li>
+                                    <li><strong>Modifikasi Isi:</strong> Menurunkan kompleksitas materi ke keterampilan hidup (<em>life skills</em> / <em>functional literacy</em>).</li>
+                                    <li><strong>Modifikasi Proses & Evaluasi:</strong> Penggunaan alat bantu konkret, multi-sensori, dan penilaian berbasis kinerja portofolio.</li>
+                                </ul>
+                            </div>
+
+                            <!-- CIBI Card -->
+                            <div class="p-5 bg-cyan-50/50 rounded-2xl border border-cyan-100 space-y-3">
+                                <h4 class="font-bold text-cyan-950 text-sm flex items-center">
+                                    <i class="fa-solid fa-rocket text-cyan-600 mr-2"></i>
+                                    3.2 Akomodasi untuk CIBI (Gifted)
+                                </h4>
+                                <ul class="space-y-2 text-slate-700">
+                                    <li><strong>Pembelajaran Berdiferensiasi (Differentiated):</strong>
+                                        <ul class="list-disc pl-4 text-[11px] text-slate-600 mt-1">
+                                            <li>Konten: HOTS & konsep lebih mendalam.</li>
+                                            <li>Proses: Project/Problem Based Learning berbasis riset.</li>
+                                            <li>Produk: Karya ilmiah / produk riil masyarakat.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Pengayaan (Enrichment) vs Akselerasi:</strong> Memperdalam materi tanpa lompat kelas agar menjaga kematangan sosial emosional siswa.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <!-- Regulation Note -->
+                        <div class="p-4 bg-slate-100 rounded-xl border border-slate-200 text-xs flex items-start space-x-3">
+                            <i class="fa-solid fa-building-columns text-violet-600 text-base mt-0.5"></i>
+                            <div>
+                                <strong class="text-slate-900 block">Penyelenggaraan Pendidikan Inklusif di Indonesia (Permendikbudristek No. 48 Th 2023):</strong>
+                                <p class="text-slate-600 mt-0.5">Sekolah Inklusi (Sekolah Reguler) menerima ABK dan CIBI untuk belajar bersama siswa neurotipikal, didampingi oleh Guru Pendamping Khusus (GPK) & Resource Center.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 5: FLASHCARDS & MINDMAP INTERAKTIF -->
+                <div id="content-cards" class="tab-content hidden space-y-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Flashcard Hafalan Konsep Kecerdasan</span>
+                            <span id="cardProgress" class="text-xs font-bold bg-violet-100 text-violet-700 px-3 py-1 rounded-full">Kartu 1 / 6</span>
+                        </div>
+
+                        <!-- 3D Flashcard Element -->
+                        <div class="perspective-1000 my-6">
+                            <div id="flashcardElement" onclick="flipCard()" class="relative w-full h-64 sm:h-72 rounded-2xl shadow-lg bg-gradient-to-br from-slate-900 to-violet-950 text-white cursor-pointer transform-style-3d transition-transform duration-500 flex items-center justify-center p-6 text-center select-none border border-violet-800">
+                                <!-- Front Face -->
+                                <div class="absolute inset-0 backface-hidden flex flex-col items-center justify-center p-6">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-violet-300 mb-2">Istilah / Teori</span>
+                                    <h3 id="cardQuestion" class="text-xl sm:text-2xl font-extrabold text-white">Apa itu Factor g Spearman vs Multiple Intelligences Gardner?</h3>
+                                    <p class="text-xs text-violet-300 mt-4"><i class="fa-solid fa-rotate mr-1"></i> Klik kartu untuk membalik & melihat jawaban</p>
+                                </div>
+                                <!-- Back Face -->
+                                <div class="absolute inset-0 backface-hidden rotate-y-180 bg-slate-900 rounded-2xl flex flex-col items-center justify-center p-6 border-2 border-violet-400">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-2">Penjelasan Konsep</span>
+                                    <p id="cardAnswer" class="text-xs sm:text-sm font-medium text-slate-100 leading-relaxed">
+                                        Factor g Spearman memandang kecerdasan sebagai kapasitas umum tunggal, sedangkan Gardner menolak g-factor dan mengusulkan 8 modalitas kecerdasan majemuk yang independen.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Controls -->
+                        <div class="flex items-center justify-between pt-2">
+                            <button onclick="prevCard()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold text-xs transition">
+                                <i class="fa-solid fa-arrow-left mr-1"></i> Sebelum
+                            </button>
+                            <div class="space-x-2">
+                                <button onclick="markCardStatus(false)" class="px-3.5 py-2 bg-rose-100 hover:bg-rose-200 text-rose-700 rounded-xl font-semibold text-xs transition">
+                                    <i class="fa-solid fa-xmark mr-1"></i> Ulangi
+                                </button>
+                                <button onclick="markCardStatus(true)" class="px-3.5 py-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-xl font-semibold text-xs transition">
+                                    <i class="fa-solid fa-check mr-1"></i> Paham (+10 Pts)
+                                </button>
+                            </div>
+                            <button onclick="nextCard()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold text-xs transition">
+                                Lanjut <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Visual Mindmap Interactive Tree -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-slate-900 text-sm mb-4 flex items-center">
+                            <i class="fa-solid fa-sitemap text-violet-600 mr-2"></i> Peta Konsep Kecerdasan dalam Psikologi Pendidikan
+                        </h4>
+                        <div id="mindmapContainer" class="space-y-3">
+                            <!-- Injected dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 6: KUIS INTERAKTIF & ASSESSMEN -->
+                <div id="content-quiz" class="tab-content hidden space-y-6">
+                    <!-- Quiz Card -->
+                    <div id="quizContainer" class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="flex justify-between items-center pb-4 mb-6 border-b border-slate-100">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg">Kuis Evaluasi Pemahaman Modul</h3>
+                                <p class="text-xs text-slate-500">Uji daya tangkap Anda terhadap CPMK Modul Kecerdasan Pembelajaran</p>
+                            </div>
+                            <span id="quizCounter" class="text-xs font-bold bg-violet-100 text-violet-700 px-3 py-1 rounded-full">Soal 1 Dari 4</span>
+                        </div>
+
+                        <h4 id="quizQuestionText" class="text-sm sm:text-base font-bold text-slate-800 mb-6">
+                            Loading pertanyaan...
+                        </h4>
+
+                        <div id="quizOptionsContainer" class="space-y-3 mb-6">
+                            <!-- Options rendered dynamically -->
+                        </div>
+
+                        <div id="quizFeedback" class="hidden p-4 rounded-xl mb-6 text-xs font-medium"></div>
+
+                        <div class="flex justify-between items-center pt-2">
+                            <button id="btnPrevQuiz" onclick="prevQuizQuestion()" class="px-4 py-2 bg-slate-100 text-slate-600 rounded-xl font-semibold text-xs hover:bg-slate-200 disabled:opacity-40">
+                                <i class="fa-solid fa-chevron-left mr-1"></i> Sebelumnya
+                            </button>
+                            <button id="btnNextQuiz" onclick="nextQuizQuestion()" class="px-5 py-2.5 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-bold text-xs shadow-md transition">
+                                Selanjutnya <i class="fa-solid fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Result Summary Card (hidden by default) -->
+                    <div id="quizResultCard" class="hidden bg-white p-8 rounded-2xl border border-slate-200 shadow-lg text-center space-y-4">
+                        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-slate-900">Kuis Selesai!</h3>
+                        <p class="text-slate-600 text-xs">Pencapaian evaluasi modul Psikologi Pendidikan Anda:</p>
+                        <div id="finalQuizScore" class="text-4xl font-extrabold text-violet-600 py-2">100 / 100</div>
+                        <button onclick="restartQuiz()" class="px-5 py-2.5 bg-violet-600 text-white rounded-xl font-bold text-xs">
+                            <i class="fa-solid fa-rotate-right mr-1"></i> Coba Kuis Lagi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TAB 7: AI TUTOR & REFLEKSI DISKUSI -->
+                <div id="content-tutor" class="tab-content hidden space-y-6">
+                    <!-- Reflection Questions Prompt Cards -->
+                    <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-md space-y-4">
+                        <h3 class="font-bold text-sm text-violet-200 flex items-center">
+                            <i class="fa-solid fa-comments text-amber-400 mr-2"></i>
+                            <span>💬 Soal Refleksi & Diskusi Kelas Modul</span>
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div onclick="sendQuickPrompt('Bagaimana mengevaluasi siswa yang lemah di soal cerita matematika tetapi mahir merangkai komponen elektronik & memimpin ekstrakurikuler menggunakan teori Sternberg dan Gardner?')" class="p-3.5 bg-slate-800 hover:bg-slate-700/80 rounded-xl border border-slate-700 cursor-pointer transition space-y-1">
+                                <strong class="text-amber-300 block">Soal 1: Analisis Kasus Siswa</strong>
+                                <p class="text-slate-300 text-[11px]">Siswa lemah cerita MTK tapi mahir perakitan elektronik & memimpin organisasi. Evaluasi Sternberg & Gardner!</p>
+                            </div>
+                            <div onclick="sendQuickPrompt('Apakah sistem Sekolah Inklusi saat ini sudah ideal memfasilitasi anak giftedness (CIBI) dan tunagrahita bersamaan dalam satu kelas reguler? What is the biggest challenge?')" class="p-3.5 bg-slate-800 hover:bg-slate-700/80 rounded-xl border border-slate-700 cursor-pointer transition space-y-1">
+                                <strong class="text-amber-300 block">Soal 2: Kritik Kebijakan Inklusi</strong>
+                                <p class="text-slate-300 text-[11px]">Apakah penggabungan CIBI & Tunagrahita di 1 kelas reguler ideal? Apa tantangan terbesar guru?</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Chat Interface -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col h-[500px]">
+                        <div class="p-4 border-b border-slate-100 bg-slate-900 text-white rounded-t-2xl flex items-center justify-between">
+                            <div class="flex items-center space-x-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-violet-600 flex items-center justify-center text-white font-bold text-xs">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xs">AI Tutor Psikologi Pendidikan</h4>
+                                    <p class="text-[10px] text-violet-300">Asisten pemrosesan teori kecerdasan & studi kasus</p>
+                                </div>
+                            </div>
+                            <span class="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse" title="Online"></span>
+                        </div>
+
+                        <div id="chatHistory" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+                            <div class="flex items-start space-x-2">
+                                <div class="w-7 h-7 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
+                                <div class="bg-slate-100 text-slate-800 p-3 rounded-2xl rounded-tl-none leading-relaxed max-w-[85%]">
+                                    Halo! Saya Asisten AI Dosen Psikologi Pendidikan. Silakan pilih salah satu Soal Refleksi di atas atau ajukan pertanyaan seputar Binet, Sternberg, Gardner, maupun Kurikulum Merdeka! 💡
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-3 border-t border-slate-100 flex items-center space-x-2">
+                            <input type="text" id="userChatInput" onkeypress="if(event.key==='Enter') sendChatMessage()" placeholder="Tuliskan pertanyaan seputar konsep kecerdasan..." class="flex-1 bg-slate-100 text-slate-800 text-xs px-3.5 py-2.5 rounded-xl border-0 focus:ring-2 focus:ring-violet-500 focus:outline-none">
+                            <button onclick="sendChatMessage()" class="w-9 h-9 rounded-xl bg-violet-600 hover:bg-violet-700 text-white flex items-center justify-center transition shrink-0">
+                                <i class="fa-solid fa-paper-plane text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Sidebar Widgets (4 Columns) -->
+            <div class="lg:col-span-4 space-y-6">
+
+                <!-- Module Summary Sidebar Card -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider flex items-center">
+                        <i class="fa-solid fa-bookmark text-violet-600 mr-2"></i>
+                        <span>Pokok Sub-Materi Modul</span>
+                    </h4>
+                    <div class="space-y-2 text-xs text-slate-600">
+                        <div class="p-2.5 bg-slate-50 rounded-xl flex items-center justify-between">
+                            <span>1. Evolusi & Formula IQ</span>
+                            <span class="text-emerald-600 font-bold text-[10px]"><i class="fa-solid fa-check"></i> Selesai</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl flex items-center justify-between">
+                            <span>2. Sternberg Triarchic</span>
+                            <span class="text-violet-600 text-[10px] font-bold">3 Domain</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl flex items-center justify-between">
+                            <span>3. Gardner Multiple Intel.</span>
+                            <span class="text-violet-600 text-[10px] font-bold">8 Modalitas</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl flex items-center justify-between">
+                            <span>4. Working Memory & Speed</span>
+                            <span class="text-violet-600 text-[10px] font-bold">3 Mekanisme</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl flex items-center justify-between">
+                            <span>5. Inklusi ABK & CIBI</span>
+                            <span class="text-violet-600 text-[10px] font-bold">Kurikulum Merdeka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference List Card -->
+                <div class="bg-gradient-to-br from-slate-900 to-violet-950 text-white p-5 rounded-2xl shadow-md space-y-3 text-xs">
+                    <h4 class="font-bold uppercase tracking-wider text-violet-300 flex items-center">
+                        <i class="fa-solid fa-book-bookmark text-amber-400 mr-2"></i>
+                        <span>Daftar Pustaka Acuan</span>
+                    </h4>
+                    <ol class="list-decimal pl-4 space-y-1.5 text-slate-300 text-[11px]">
+                        <li>Gardner, H. (2011). <em>Frames of Mind: Multiple Intelligences</em>.</li>
+                        <li>Santrock, J. W. (2018). <em>Educational Psychology</em> (6th ed.).</li>
+                        <li>Sternberg, R. J. (2020). <em>Cambridge Handbook of Intelligence</em>.</li>
+                        <li>Woolfolk, A. (2019). <em>Educational Psychology</em> (14th ed.).</li>
+                        <li>Kemendikbudristek RI. (2022). <em>Panduan Kurikulum Merdeka</em>.</li>
+                    </ol>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Modul Perkuliahan Psikologi Pendidikan. Dosen Senior Psikologi Pendidikan.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* GLOBAL APPLICATION STATE */
+        let totalScore = 0;
+        let cardIndex = 0;
+        let isCardFlipped = false;
+        let quizIndex = 0;
+        let userAnswers = [];
+
+        /* FLASHCARD DATABASE */
+        const FLASHCARDS = [
+            {
+                q: "Apa perbedaan Formula Klasik IQ Binet vs Perspektif Kognitif Modern?",
+                a: "Binet mengukur IQ statis lewat rasio Mental Age / Chronological Age x 100. Kognitif modern memandang kecerdasan sebagai fleksibilitas pemrosesan informasi, memori kerja, dan regulasi diri."
+            },
+            {
+                q: "Sebutkan 3 domain kecerdasan dalam Teori Triarchic Sternberg!",
+                a: "1. Analitis (menilai & membandingkan), 2. Kreatif (merancang & menemukan situasi baru), 3. Praktis (penerapan nyata / street smarts)."
+            },
+            {
+                q: "Sebutkan 8 kecerdasan majemuk Howard Gardner!",
+                a: "Linguistik, Logis-Matematika, Spasial-Visual, Musikal, Kinestetik-Tubuh, Interpersonal, Intrapersonal, dan Naturalis."
+            },
+            {
+                q: "Bagaimana hubungan Kapasitas Memori Kerja (Working Memory) dengan kecerdasan?",
+                a: "Kapasitas Working Memory bertindak sebagai ruang kerja mental; kecerdasan tinggi berkorelasi dengan kemampuan memanipulasi beberapa entitas informasi kompleks secara bersamaan."
+            },
+            {
+                q: "Apa perbedaan penanganan Kurikulum Merdeka antara siswa ABK dan CIBI?",
+                a: "ABK (Tunagrahita) diberikan Modifikasi PPI/IEP dan Life Skills. CIBI (Gifted) diberikan Pembelajaran Berdiferensiasi (HOTS) serta Pengayaan (Enrichment) / Akselerasi."
+            },
+            {
+                q: "Apa fungsi Guru Pendamping Khusus (GPK) dalam Sekolah Inklusi?",
+                a: "GPK mendampingi guru reguler untuk menyusun PPI, memberikan perlakuan khusus, dan memfasilitasi kebutuhan adaptasi ABK di kelas umum."
+            }
+        ];
+
+        /* QUIZ DATABASE */
+        const QUIZ_QUESTIONS = [
+            {
+                q: "Seorang siswa mampu memecahkan persamaan teori fisika kuantum dengan cepat tanpa perlu alat bantu visual, namun kurang berminat pada diskusi sastra. Menurut Sternberg & Binet, siswa ini memiliki kecerdasan tinggi pada domain...",
+                options: ["Analitis & Logis-Matematika", "Praktis & Kinestetik", "Interpersonal & Naturalis", "Kreatif & Musikal"],
+                correct: 0,
+                explanation: "Kemampuan mengolah penalaran logis abstrak merupakan cerminan Kecerdasan Analitis (Sternberg) dan Logis-Matematika (Gardner)."
+            },
+            {
+                q: "Seorang guru menyusun Program Pembelajaran Individual (PPI) dengan merubah target materi sains menjadi keterampilan fungsional sehari-hari bagi siswa Tunagrahita. Ini merupakan bentuk...",
+                options: ["Diferensiasi Konten HOTS CIBI", "Modifikasi Kurikulum Isi bagi ABK", "Akselerasi Akademik", "Evaluasi Kognitif Klasik"],
+                correct: 1,
+                explanation: "Penyusunan PPI dengan menurunkan kompleksitas materi menjadi functional life skills adalah bentuk Modifikasi Kurikulum bagi ABK."
+            },
+            {
+                q: "Dalam pemrosesan kognitif saat belajar, elemen yang bertindak sebagai 'ruang kerja mental' tempat informasi dimanipulasi secara aktif adalah...",
+                options: ["Sensory Memory", "Working Memory Capacity", "Long Term Memory", "General Factor (g-Factor)"],
+                correct: 1,
+                explanation: "Working Memory bertindak sebagai ruang kerja mental untuk mempertahankan dan memanipulasi informasi baru."
+            },
+            {
+                q: "Strategi memberikan pendalaman materi yang lebih luas dan kompleks tanpa memindahkan siswa CIBI ke jenjang kelas di atasnya disebut...",
+                options: ["Akselerasi Kelas", "Pengayaan (Enrichment)", "Asimilasi Kaku", "Subsumsi Obliteratif"],
+                correct: 1,
+                explanation: "Pengayaan (Enrichment) memperdalam materi pada jenjang kelas yang sama untuk menjaga kematangan sosio-emosional siswa gifted."
+            }
+        ];
+
+        /* MINDMAP DATA */
+        const MINDMAP_DATA = [
+            { title: "Definisi & Evolusi Teori", items: ["Psikometrik Klasik: Binet (IQ = MA/CA x 100), Spearman (g-factor)", "Triarchic Sternberg: Analitis, Kreatif, Praktis", "Multiple Intelligences Gardner: 8 Modalitas Independen"] },
+            { title: "Proses Kognitif Belajar", items: ["Kecepatan Pemrosesan Informasi (Processing Speed)", "Kapasitas Memori Kerja (Working Memory)", "Metakognisi & Regulasi Diri Belajar"] },
+            { title: "Kurikulum Merdeka Inklusi", items: ["ABK (Tunagrahita/Disabilitas): PPI/IEP & Modifikasi Isi/Proses", "CIBI (Gifted IQ >= 130): Diferensiasi (Konten, Proses, Produk) & Pengayaan vs Akselerasi"] }
+        ];
+
+        window.onload = function() {
+            renderFlashcard();
+            renderQuizQuestion();
+            renderMindmap();
+            calculateIQ();
+        };
+
+        /* TAB SWITCHING LOGIC */
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.add('hidden'));
+
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => {
+                b.classList.remove('bg-violet-600', 'text-white', 'shadow-sm');
+                b.classList.add('text-slate-600');
+            });
+
+            const targetContent = document.getElementById(`content-${tabId}`);
+            if (targetContent) targetContent.classList.remove('hidden');
+
+            const targetBtn = document.getElementById(`tab-${tabId}`);
+            if (targetBtn) {
+                targetBtn.classList.add('bg-violet-600', 'text-white', 'shadow-sm');
+                targetBtn.classList.remove('text-slate-600');
+            }
+
+            // Update Header Progress Bar
+            const tabProgressMap = { cpmk: '15%', teori: '35%', proses: '55%', kurikulum: '75%', cards: '85%', quiz: '95%', tutor: '100%' };
+            document.getElementById('moduleProgressBar').style.width = tabProgressMap[tabId] || '20%';
+        }
+
+        /* IQ CALCULATOR LOGIC */
+        function calculateIQ() {
+            const ma = parseFloat(document.getElementById('inputMA').value) || 0;
+            const ca = parseFloat(document.getElementById('inputCA').value) || 1;
+            const iq = Math.round((ma / ca) * 100);
+            document.getElementById('outputIQScore').innerText = iq;
+        }
+
+        /* FLASHCARD ENGINE */
+        function renderFlashcard() {
+            const card = FLASHCARDS[cardIndex];
+            document.getElementById('cardProgress').innerText = `Kartu ${cardIndex + 1} / ${FLASHCARDS.length}`;
+            document.getElementById('cardQuestion').innerText = card.q;
+            document.getElementById('cardAnswer').innerText = card.a;
+            
+            const el = document.getElementById('flashcardElement');
+            el.classList.remove('rotate-y-180');
+            isCardFlipped = false;
+        }
+
+        function flipCard() {
+            const el = document.getElementById('flashcardElement');
+            isCardFlipped = !isCardFlipped;
+            if (isCardFlipped) el.classList.add('rotate-y-180');
+            else el.classList.remove('rotate-y-180');
+        }
+
+        function nextCard() {
+            cardIndex = (cardIndex + 1) % FLASHCARDS.length;
+            renderFlashcard();
+        }
+
+        function prevCard() {
+            cardIndex = (cardIndex - 1 + FLASHCARDS.length) % FLASHCARDS.length;
+            renderFlashcard();
+        }
+
+        function markCardStatus(isMastered) {
+            if (isMastered) {
+                totalScore += 10;
+                updateScoreDisplay();
+                showToast("Bagus! +10 Pts ditambahkan ke Skor Modul");
+            }
+            nextCard();
+        }
+
+        /* MINDMAP RENDERER */
+        function renderMindmap() {
+            const container = document.getElementById('mindmapContainer');
+            container.innerHTML = '';
+            MINDMAP_DATA.forEach((group, idx) => {
+                const box = document.createElement('div');
+                box.className = "p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-2";
+                let listHtml = group.items.map(it => `<li class="flex items-center space-x-2 text-slate-600"><i class="fa-solid fa-circle-dot text-violet-500 text-[8px]"></i><span>${it}</span></li>`).join('');
+                box.innerHTML = `
+                    <div class="font-bold text-slate-800 flex items-center space-x-2">
+                        <span class="w-5 h-5 rounded bg-violet-600 text-white font-bold flex items-center justify-center text-[10px]">${idx + 1}</span>
+                        <span>${group.title}</span>
+                    </div>
+                    <ul class="pl-7 space-y-1">${listHtml}</ul>
+                `;
+                container.appendChild(box);
+            });
+        }
+
+        /* QUIZ ENGINE */
+        function renderQuizQuestion() {
+            if (quizIndex >= QUIZ_QUESTIONS.length) {
+                document.getElementById('quizContainer').classList.add('hidden');
+                document.getElementById('quizResultCard').classList.remove('hidden');
+                
+                let correctCount = 0;
+                userAnswers.forEach((ans, i) => {
+                    if (ans === QUIZ_QUESTIONS[i].correct) correctCount++;
+                });
+                const finalScore = Math.round((correctCount / QUIZ_QUESTIONS.length) * 100);
+                document.getElementById('finalQuizScore').innerText = `${finalScore} / 100`;
+                totalScore += finalScore;
+                updateScoreDisplay();
+                return;
+            }
+
+            document.getElementById('quizContainer').classList.remove('hidden');
+            document.getElementById('quizResultCard').classList.add('hidden');
+
+            const item = QUIZ_QUESTIONS[quizIndex];
+            document.getElementById('quizCounter').innerText = `Soal ${quizIndex + 1} Dari ${QUIZ_QUESTIONS.length}`;
+            document.getElementById('quizQuestionText').innerText = item.q;
+
+            const optsContainer = document.getElementById('quizOptionsContainer');
+            optsContainer.innerHTML = '';
+            const selected = userAnswers[quizIndex];
+
+            item.options.forEach((opt, optIdx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-3.5 rounded-xl border text-xs font-medium transition flex items-center justify-between ${
+                    selected === optIdx ? 'border-violet-600 bg-violet-50 text-violet-900 font-bold' : 'border-slate-200 bg-slate-50/60 hover:bg-slate-100 text-slate-700'
+                }`;
+                btn.onclick = () => { userAnswers[quizIndex] = optIdx; renderQuizQuestion(); };
+                btn.innerHTML = `
+                    <span><strong class="mr-2">${String.fromCharCode(65 + optIdx)}.</strong> ${opt}</span>
+                    ${selected === optIdx ? '<i class="fa-solid fa-circle-check text-violet-600"></i>' : ''}
+                `;
+                optsContainer.appendChild(btn);
+            });
+
+            const feedback = document.getElementById('quizFeedback');
+            if (selected !== undefined) {
+                feedback.classList.remove('hidden');
+                if (selected === item.correct) {
+                    feedback.className = "p-4 rounded-xl mb-6 text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200";
+                    feedback.innerHTML = `<i class="fa-solid fa-check-circle mr-1 text-emerald-600"></i> <strong>Benar!</strong> ${item.explanation}`;
+                } else {
+                    feedback.className = "p-4 rounded-xl mb-6 text-xs font-medium bg-rose-50 text-rose-800 border border-rose-200";
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1 text-rose-600"></i> <strong>Jawaban Kurang Tepat.</strong> Penjelasan: ${item.explanation}`;
+                }
+            } else {
+                feedback.classList.add('hidden');
+            }
+
+            document.getElementById('btnPrevQuiz').disabled = (quizIndex === 0);
+        }
+
+        function nextQuizQuestion() {
+            if (userAnswers[quizIndex] === undefined) {
+                showToast("Pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+            quizIndex++;
+            renderQuizQuestion();
+        }
+
+        function prevQuizQuestion() {
+            if (quizIndex > 0) {
+                quizIndex--;
+                renderQuizQuestion();
+            }
+        }
+
+        function restartQuiz() {
+            quizIndex = 0;
+            userAnswers = [];
+            renderQuizQuestion();
+        }
+
+        /* AI TUTOR & REFLECTION SIMULATOR */
+        function sendChatMessage() {
+            const input = document.getElementById('userChatInput');
+            const prompt = input.value.trim();
+            if (!prompt) return;
+
+            appendMessage('user', prompt);
+            input.value = '';
+
+            const aiBubble = appendMessage('ai', 'Menganalisis konsep kecerdasan...');
+
+            setTimeout(() => {
+                let responseText = "";
+                const pLower = prompt.toLowerCase();
+
+                if (pLower.includes("lemah di soal cerita") || pLower.includes("elektronik") || pLower.includes("soal 1")) {
+                    responseText = "<strong>Analisis Kasus Soal 1:</strong><br>1. <em>Teori Triarchic Sternberg:</em> Siswa ini memiliki Kecerdasan Praktis & Kreatif yang dominan (mahir merangkai alat & memimpin), namun Kecerdasan Analitis akademisnya rendah pada representasi soal cerita MTK.<br>2. <em>Multiple Intelligences Gardner:</em> Memiliki modalitas <strong>Kinestetik, Spasial, dan Interpersonal</strong> yang unggul, sementara domain <strong>Linguistik-Logis</strong> membutuhkan bantuan perancangan media pembelajaran berbasis manipulasi teknis.";
+                } else if (pLower.includes("sekolah inklusi") || pLower.includes("cibi") || pLower.includes("tunagrahita") || pLower.includes("soal 2")) {
+                    responseText = "<strong>Kritik Kebijakan Inklusi Soal 2:</strong><br>Penggabungan ekstrem CIBI (IQ >= 130) dan Tunagrahita dalam 1 ruangan kelas reguler tanpa pendampingan intensif sering mengalami kendala diferensiasi. Tantangan terbesar bagi guru reguler adalah:<br>- Rasio jumlah siswa yang tinggi.<br>- Keterbatasan waktu menyusun PPI bagi ABK sekaligus modul pengayaan HOTS bagi CIBI.<br>- Kebutuhan akan <strong>Guru Pendamping Khusus (GPK)</strong> dan sarana Resource Center yang memadai.";
+                } else {
+                    responseText = `Berdasarkan topik '${prompt}', kecerdasan bukan konstruk tunggal yang membatasi potensi siswa. Dalam Kurikulum Merdeka, guru bertugas memetakan profil ini agar pembelajaran dapat didiferensiasikan sesuai kebutuhan unik peserta didik.`;
+                }
+                aiBubble.innerHTML = responseText;
+            }, 900);
+        }
+
+        function sendQuickPrompt(text) {
+            document.getElementById('userChatInput').value = text;
+            sendChatMessage();
+        }
+
+        function appendMessage(sender, text) {
+            const history = document.getElementById('chatHistory');
+            const wrapper = document.createElement('div');
+            wrapper.className = "flex items-start space-x-2";
+
+            if (sender === 'user') {
+                wrapper.innerHTML = `
+                    <div class="ml-auto bg-violet-600 text-white p-3 rounded-2xl rounded-tr-none text-xs leading-relaxed max-w-[85%] font-medium">
+                        ${text}
+                    </div>
+                `;
+            } else {
+                wrapper.innerHTML = `
+                    <div class="w-7 h-7 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
+                    <div class="bg-slate-100 text-slate-800 p-3 rounded-2xl rounded-tl-none text-xs leading-relaxed max-w-[85%] chat-text-body">
+                        ${text}
+                    </div>
+                `;
+            }
+            history.appendChild(wrapper);
+            history.scrollTop = history.scrollHeight;
+            return wrapper.querySelector('.chat-text-body') || wrapper.firstElementChild;
+        }
+
+        /* WEB SPEECH NARRATOR FALLBACK */
+        function toggleAudioNarrator() {
+            const btnText = document.getElementById('ttsBtnText');
+            const wave = document.getElementById('audioWaveContainer');
+
+            if ('speechSynthesis' in window) {
+                if (window.speechSynthesis.speaking) {
+                    window.speechSynthesis.cancel();
+                    btnText.innerText = "Dengarkan Ringkasan";
+                    wave.classList.add('hidden');
+                } else {
+                    const text = "Modul Perkuliahan Psikologi Pendidikan. Topik: Memahami Konsep Dasar Kecerdasan dan Perannya dalam Proses Pembelajaran. Disusun oleh Dosen Senior Psikologi Pendidikan.";
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'id-ID';
+                    utterance.onend = () => {
+                        btnText.innerText = "Dengarkan Ringkasan";
+                        wave.classList.add('hidden');
+                    };
+                    window.speechSynthesis.speak(utterance);
+                    btnText.innerText = "Menghentikan Audio";
+                    wave.classList.remove('hidden');
+                }
+            } else {
+                showToast("Fitur Audio TTS tidak didukung browser ini.");
+            }
+        }
+
+        /* UTILITY HELPERS */
+        function updateScoreDisplay() {
+            document.getElementById('scoreBadge').innerText = `Skor Modul: ${totalScore} Pts`;
+        }
+
+        function adjustFontSize(delta) {
+            const body = document.getElementById('materiTextBody');
+            const style = window.getComputedStyle(body).fontSize;
+            const currentSize = parseFloat(style);
+            body.style.fontSize = (currentSize + delta) + 'px';
+        }
+
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = "fixed bottom-5 right-5 bg-slate-900 text-white text-xs px-4 py-3 rounded-xl shadow-2xl z-50 transition transform duration-300";
+            toast.innerText = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
