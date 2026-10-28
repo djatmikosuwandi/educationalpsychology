@@ -6,12 +6,14 @@
   <title>Psikologi Pendidikan | Pertemuan 10</title>
   <style>
     :root {
+      /* Palette Warna Utama (Mode Terang Permanen) */
       --site-primary: #244b46;
       --site-on-primary: #ffffff;
-      --site-secondary: #e8b66d;
+      --site-secondary: #c88728; /* Aksen Emas Warm untuk Teks/Tag */
+      --site-secondary-light: #e8b66d;
       --site-on-secondary: #202d2a;
-      --site-background: #f5f4ef;
-      --site-on-background: #183833;
+      --site-background: #f5f4ef; /* Latar Belakang Krem Terang Soft */
+      --site-on-background: #1a2825;
       --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --site-font-heading: Georgia, "Times New Roman", serif;
       --site-heading-scale: 1;
@@ -19,27 +21,13 @@
       --site-radius-scale: 1;
       --site-decoration-opacity: 1;
       
-      /* Warna Utama (Deep Teal Pekat - Kontras Tinggi & Bukan Hitam #000) */
-      --surface: #ffffff;
-      --surface2: #edf1ed;
-      --ink: #183833; 
-      --muted: #4a5d56;
-      --line: #c2cdc7;
-      --shadow: 0 12px 34px rgba(26, 50, 42, 0.08);
-    }
-
-    /* Otomatis Penyesuaian Mode Gelap (Dark Mode) dengan Teks Krem Terang Kontras Tinggi */
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --site-background: #141a18;
-        --site-on-background: #f0eee6;
-        --surface: #1e2624;
-        --surface2: #2a3431;
-        --ink: #f0eee6; /* Krem Terang untuk Kontras Maksimal di Atas Latar Gelap */
-        --muted: #b0c0b8;
-        --line: #3b4843;
-        --shadow: 0 12px 34px rgba(0, 0, 0, 0.3);
-      }
+      /* Elemen Permukaan Light Mode */
+      --surface: #ffffff;        /* Kartu & Sidebar Putih Bersih */
+      --surface2: #eaf0ec;       /* Latar Belakang Komponen/Tag */
+      --ink: #1a2825;            /* Teks Utama Pekat (Bukan Hitam Pekat) */
+      --muted: #4e6059;          /* Teks Sekunder/Penjelas */
+      --line: #d0dad4;           /* Garis Pembatas */
+      --shadow: 0 10px 28px rgba(36, 75, 70, 0.07);
     }
 
     * {
@@ -49,7 +37,7 @@
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 1.5rem;
-      color-scheme: light dark;
+      color-scheme: light; /* Mengunci Tampilan Hanya Mode Terang */
     }
 
     body {
@@ -93,7 +81,7 @@
       letter-spacing: 0.16em;
       font-size: 0.76rem;
       font-weight: 800;
-      color: var(--site-secondary);
+      color: var(--site-secondary-light);
     }
 
     h1, h2, h3 {
@@ -157,7 +145,7 @@
       display: block;
       height: 100%;
       width: 0%;
-      background: var(--site-secondary);
+      background: var(--site-secondary-light);
       transition: width 0.1s ease-out;
     }
 
@@ -207,7 +195,7 @@
     .side a.active {
       background: var(--surface2);
       font-weight: 700;
-      color: var(--site-secondary);
+      color: var(--site-primary);
     }
 
     .content {
@@ -261,12 +249,6 @@
       margin-bottom: 0.65rem;
     }
 
-    @media (prefers-color-scheme: dark) {
-      .tag {
-        color: var(--site-secondary);
-      }
-    }
-
     .callout {
       border-left: 4px solid var(--site-secondary);
       background: var(--surface2);
@@ -294,7 +276,7 @@
 
     .diagram-arrow {
       font-size: 1.4rem;
-      color: var(--site-secondary);
+      color: var(--site-primary);
       line-height: 1;
     }
 
@@ -390,6 +372,7 @@
       border-radius: 10px;
       cursor: pointer;
       color: var(--ink);
+      background: var(--surface);
       transition: background 0.2s;
     }
 
@@ -399,7 +382,7 @@
 
     .option input {
       margin-top: 0.35rem;
-      accent-color: var(--site-secondary);
+      accent-color: var(--site-primary);
       cursor: pointer;
     }
 
@@ -451,24 +434,24 @@
     }
 
     .correct {
-      color: #34a86b;
+      color: #1b7a4b;
       font-weight: 700;
     }
 
     .incorrect {
-      color: #e0604e;
+      color: #c0392b;
       font-weight: 700;
     }
 
-    /* Penyesuaian Text Area dengan Kontras Tinggi & Warna Non-Hitam */
+    /* Textarea Mode Terang Berkontras Tinggi */
     textarea {
       width: 100%;
       min-height: 95px;
-      border: 2px solid var(--line);
+      border: 1.5px solid var(--line);
       border-radius: 10px;
       padding: 0.85rem;
-      background: var(--surface);
-      color: var(--ink);
+      background: #ffffff;
+      color: #1a2825;
       font: inherit;
       font-size: 0.98rem;
       line-height: 1.5;
@@ -478,13 +461,13 @@
 
     textarea:focus-visible {
       outline: none;
-      border-color: var(--site-secondary);
-      box-shadow: 0 0 0 3px rgba(232, 182, 109, 0.25);
+      border-color: var(--site-primary);
+      box-shadow: 0 0 0 3px rgba(36, 75, 70, 0.15);
     }
 
     textarea::placeholder {
       color: var(--muted);
-      opacity: 0.85;
+      opacity: 0.8;
     }
 
     .case-step {
