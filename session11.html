@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psikologi Pendidikan - Modul Motivasi Belajar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            800: '#1e3a8a',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
+        }
+        .tab-btn.active {
+            border-bottom: 3px solid #2563eb;
+            color: #2563eb;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 ease-in-out bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3">
+        <i id="toast-icon" class="fas fa-check-circle text-emerald-400 text-xl"></i>
+        <span id="toast-message" class="text-sm font-medium">Pesan berhasil ditampilkan</span>
+    </div>
+
+    <!-- Header / Banner Dosen Senior -->
+    <header class="gradient-bg text-white shadow-lg relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+            <i class="fas fa-brain text-[280px]"></i>
+        </div>
+        <div class="max-w-7xl mx-mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-2 text-center md:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-blue-500/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-blue-200 border border-blue-400/30">
+                        <i class="fas fa-university"></i>
+                        <span>PROGRAM STUDI PSIKOLOGI & PERGURUAN TINGGI</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+                        Psikologi Pendidikan
+                    </h1>
+                    <p class="text-blue-100 max-w-2xl text-sm sm:text-base">
+                        Modul Perkuliahan Interaktif: <span class="font-semibold text-yellow-300">Memahami Konsep Motivasi dan Perannya dalam Pembelajaran</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar / Tabs -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8 overflow-x-auto no-scrollbar">
+                <button onclick="switchTab('materi')" id="tab-materi" class="tab-btn active py-4 px-2 text-sm font-medium text-slate-600 hover:text-blue-600 whitespace-nowrap flex items-center space-x-2">
+                    <i class="fas fa-book-open"></i>
+                    <span>Modul Perkuliahan</span>
+                </button>
+                <button onclick="switchTab('teori')" id="tab-teori" class="tab-btn py-4 px-2 text-sm font-medium text-slate-600 hover:text-blue-600 whitespace-nowrap flex items-center space-x-2">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Peran & Teori Utama</span>
+                </button>
+                <button onclick="switchTab('kuis')" id="tab-kuis" class="tab-btn py-4 px-2 text-sm font-medium text-slate-600 hover:text-blue-600 whitespace-nowrap flex items-center space-x-2">
+                    <i class="fas fa-vial"></i>
+                    <span>Self-Assessment</span>
+                </button>
+                <button onclick="switchTab('tugas')" id="tab-tugas" class="tab-btn py-4 px-2 text-sm font-medium text-slate-600 hover:text-blue-600 whitespace-nowrap flex items-center space-x-2">
+                    <i class="fas fa-pen-nib"></i>
+                    <span class="relative">
+                        Tugas Individu (Essay)
+                        <span class="absolute -top-2 -right-4 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">Wajib</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow">
+
+        <!-- TAB 1: MATERI PERKULIAHAN -->
+        <section id="section-materi" class="space-y-8">
+            <!-- PENGANTAR DOSEN -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-6 items-start">
+                <div class="p-4 bg-blue-50 text-blue-600 rounded-2xl shrink-0">
+                    <i class="fas fa-quote-left text-3xl"></i>
+                </div>
+                <div class="space-y-3">
+                    <h2 class="text-xl font-bold text-slate-900">Pengantar Perkuliahan dari Pengampu</h2>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        "Selamat datang para mahasiswa dalam perkuliahan Psikologi Pendidikan. Motivasi bukan sekadar pendorong eksternal agar peserta didik mau belajar, melainkan mesin psikologis kompleks yang mengarahkan energi kognitif, mempertahankan minat, dan membentuk ketahanan emosional seseorang saat menghadapi tantangan akademik. Pahami konsep dasarnya agar Anda mampu merancang strategi pembelajaran yang humanis dan transformatif."
+                    </p>
+                </div>
+            </div>
+
+            <!-- KONSEP DASAR MOTIVASI -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Definisi -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 hover:border-blue-300 transition">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold">
+                            1
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Apa itu Motivasi?</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Secara etimologis, motivasi berasal dari kata Latin <em>"movere"</em> yang berarti menggerakkan. Dalam psikologi pendidikan, motivasi didefinisikan sebagai <strong>proses internal yang membangkitkan (arouse), mengarahkan (direct), dan mempertahankan (sustain) perilaku</strong> siswa dari waktu ke waktu menuju suatu tujuan belajar tertentu.
+                    </p>
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-500">
+                        <i class="fas fa-lightbulb text-amber-500 mr-1"></i> Motivasi mencakup komponen biologis, emosional, sosial, dan kognitif yang mengaktifkan perilaku manusia.
+                    </div>
+                </div>
+
+                <!-- Tiga Elemen Utama -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 hover:border-blue-300 transition">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold">
+                            2
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">3 Komponen Inti Motivasi</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-start space-x-2">
+                            <i class="fas fa-play text-emerald-500 mt-1"></i>
+                            <span><strong>Aktivasi (Activation):</strong> Keputusan awal untuk memulai perilaku belajar (misal: mendaftar kelas psikologi).</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fas fa-compass text-blue-500 mt-1"></i>
+                            <span><strong>Arah (Persistence & Direction):</strong> Pemfokusan tenaga ke tujuan tertentu (misal: membaca literatur alih-alih bermain game).</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fas fa-fire text-amber-500 mt-1"></i>
+                            <span><strong>Intensitas (Intensity):</strong> Konsentrasi dan daya usaha yang dicurahkan dalam mengejar tujuan belajar.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- DICHOTOMY: INTRINSIK VS EKSTRINSIK -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900">Klasifikasi Utama: Motivasi Intrinsik vs Ekstrinsik</h3>
+                    <p class="text-sm text-slate-500 mt-1">Penting bagi calon pendidik untuk membedakan sumber dorongan dalam belajar.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Intrinsik -->
+                    <div class="p-5 rounded-xl border border-emerald-200 bg-emerald-50/40 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-md">Internal Origin</span>
+                            <i class="fas fa-heart text-emerald-600 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-emerald-950">Motivasi Intrinsik</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Dorongan belajar yang timbul dari dalam diri individu tanpa memerlukan imbalan luar. Belajar dilakukan demi kepuasan pribadi, rasa ingin tahu (curiosity), dan tantangan intelektual.
+                        </p>
+                        <div class="text-xs font-medium text-emerald-800 bg-white/80 p-3 rounded-lg border border-emerald-100">
+                            <strong>Contoh:</strong> Mahasiswa membaca buku Psikologi karena memang menyukai topik perilaku manusia, bukan karena tuntutan tugas.
+                        </div>
+                    </div>
+
+                    <!-- Ekstrinsik -->
+                    <div class="p-5 rounded-xl border border-amber-200 bg-amber-50/40 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-extrabold uppercase tracking-wider text-amber-700 bg-amber-100 px-2.5 py-1 rounded-md">External Origin</span>
+                            <i class="fas fa-award text-amber-600 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-amber-950">Motivasi Ekstrinsik</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Dorongan belajar yang dipicu oleh faktor di luar diri individu, seperti mengejar nilai A, mendapatkan pujian dosen, meraih beasiswa, atau menghindari sanksi akademik.
+                        </p>
+                        <div class="text-xs font-medium text-amber-800 bg-white/80 p-3 rounded-lg border border-amber-100">
+                            <strong>Contoh:</strong> Siswa belajar keras semalaman karena diiming-imangi hadiah sepeda oleh orang tuanya jika mendapat peringkat pertama.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: TEORI & PERAN MOTIVASI -->
+        <section id="section-teori" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900">Peran Vital Motivasi dalam Proses Pembelajaran</h2>
+                <p class="text-sm text-slate-600 max-w-3xl">
+                    Dalam perspektif psikologi kognitif dan behavioristik, motivasi berfungsi sebagai katalisator utama yang menentukan keberhasilan dan kualitas hasil belajar peserta didik.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-base">1. Directing (Pengarah Goal)</h3>
+                        <p class="text-xs text-slate-600">Mengarahkan perhatian siswa pada aktivitas yang relevan dengan tujuan pembelajaran dan mengabaikan gangguan.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-base">2. Energizing (Pembangkit)</h3>
+                        <p class="text-xs text-slate-600">Meningkatkan jumlah energi kognitif, ketekunan, dan usaha yang dicurahkan siswa saat memecahkan masalah rumit.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                        <div class="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center font-bold text-sm">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-base">3. Sustaining (Ketahanan)</h3>
+                        <p class="text-xs text-slate-600">Menjaga keberlangsungan aktivitas belajar meskipun peserta didik mengalami kegagalan awal atau rasa bosan.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                        <div class="w-8 h-8 rounded-lg bg-amber-600 text-white flex items-center justify-center font-bold text-sm">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-base">4. Deep Processing</h3>
+                        <p class="text-xs text-slate-600">Mendorong pemrosesan kognitif tingkat tinggi (deep learning) daripada sekadar hafalan dangkal (surface learning).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LANDASAN TEORITIS -->
+            <div class="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-md space-y-6">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fas fa-microscope text-blue-400"></i>
+                    Kerangka Teori Psikologi Motivasi Terkemuka
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                    <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 space-y-2">
+                        <div class="text-blue-400 font-semibold text-xs uppercase tracking-wider">Self-Determination Theory (Deci & Ryan)</div>
+                        <h4 class="text-lg font-bold text-white">Teori Penentuan Nasib Sendiri</h4>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Manusia memiliki 3 kebutuhan psikologis dasar agar termotivasi secara intrinsik: <strong>Autonomy</strong> (merasa memiliki kendali), <strong>Competence</strong> (merasa mampu), dan <strong>Relatedness</strong> (merasa terhubung dengan orang lain).
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 space-y-2">
+                        <div class="text-amber-400 font-semibold text-xs uppercase tracking-wider">Bandura's Social Cognitive Theory</div>
+                        <h4 class="text-lg font-bold text-white">Teori Efikasi Diri (Self-Efficacy)</h4>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Keyakinan individu atas kemampuannya sendiri dalam mengorganisasikan dan menyelesaikan tindakan untuk mencapai hasil belajar yang ditentukan. Efikasi tinggi = Motivasi tinggi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: KUIS MANDIRI -->
+        <section id="section-kuis" class="hidden space-y-6">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Self-Assessment Motivasi Belajar</h2>
+                    <p class="text-sm text-slate-500">Uji pemahaman konseptual Anda sebelum mengerjakan tugas essay di lembar tugas.</p>
+                </div>
+
+                <div id="quiz-container" class="space-y-6">
+                    <!-- Q1 -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 space-y-3">
+                        <p class="font-semibold text-slate-800 text-sm">1. Seorang siswa rajin menyelesaikan latihan soal matematika karena merasa penasaran dengan pola solusinya dan merasa puas saat berhasil. Bentuk motivasi apakah ini?</p>
+                        <div class="space-y-2 text-sm">
+                            <label class="flex items-center p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50">
+                                <input type="radio" name="q1" value="A" class="mr-3 text-blue-600"> A. Motivasi Ekstrinsik
+                            </label>
+                            <label class="flex items-center p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50">
+                                <input type="radio" name="q1" value="B" class="mr-3 text-blue-600"> B. Motivasi Intrinsik
+                            </label>
+                            <label class="flex items-center p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50">
+                                <input type="radio" name="q1" value="C" class="mr-3 text-blue-600"> C. Amotivasi
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 space-y-3">
+                        <p class="font-semibold text-slate-800 text-sm">2. Menurut Self-Determination Theory dari Deci & Ryan, tiga kebutuhan dasar psikologis yang melandasi motivasi intrinsik adalah...</p>
+                        <div class="space-y-2 text-sm">
+                            <label class="flex items-center p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50">
+                                <input type="radio" name="q2" value="A" class="mr-3 text-blue-600"> A. Nilai, Pujian, dan Hadiah
+                            </label>
+                            <label class="flex items-center p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50">
+                                <input type="radio" name="q2" value="B" class="mr-3 text-blue-600"> B. Otonomi, Kompetensi, dan Keterhubungan (Relatedness)
+                            </label>
+                            <label class="flex items-center p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-blue-50">
+                                <input type="radio" name="q2" value="C" class="mr-3 text-blue-600"> C. Fisiologis, Keamanan, dan Estetika
+                            </label>
+                        </div>
+                    </div>
+
+                    <button onclick="checkQuiz()" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition flex items-center space-x-2">
+                        <i class="fas fa-check"></i>
+                        <span>Periksa Jawaban Kuis</span>
+                    </button>
+                </div>
+
+                <div id="quiz-result" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium"></div>
+            </div>
+        </section>
+
+        <!-- TAB 4: LEMBAR TUGAS INDIVIDU & DRAFTING EDITOR -->
+        <section id="section-tugas" class="hidden space-y-8">
+            <!-- INSTRUCTION BOX -->
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 sm:p-8 space-y-4 shadow-sm">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500 text-white flex items-center justify-center text-xl font-bold shadow">
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-extrabold text-amber-950">Tugas Individu: Analisis Motivasi Belajar</h2>
+                            <p class="text-xs text-amber-800">Mata Kuliah: Psikologi Pendidikan | Bobot: 15% dari Nilai Akhir</p>
+                        </div>
+                    </div>
+                    <!-- GOOGLE DRIVE LINK BUTTON -->
+                    <a href="https://drive.google.com/drive/folders/1Q7JKhFcwOPQFBN039N3dmnPF4X3m_QoX?usp=sharing" target="_blank" class="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-5 py-3 rounded-xl font-semibold text-sm shadow-md transition transform hover:-translate-y-0.5">
+                        <i class="fab fa-google-drive text-lg text-yellow-300"></i>
+                        <span>Submit Hasil ke Google Drive</span>
+                        <i class="fas fa-external-link-alt text-xs"></i>
+                    </a>
+                </div>
+
+                <hr class="border-amber-200">
+
+                <div class="space-y-2 text-xs sm:text-sm text-amber-900">
+                    <h3 class="font-bold text-amber-950 flex items-center gap-2">
+                        <i class="fas fa-info-circle"></i> PETUNJUK PENGERJAAN TUGAS:
+                    </h3>
+                    <ol class="list-decimal list-inside space-y-1.5 pl-1 leading-relaxed">
+                        <li>Jawablah <strong>3 pertanyaan essay</strong> di bawah ini secara ilmiah, sistematis, dan lugas berdasarkan pembahasan modul.</li>
+                        <li>Gunakan editor interaktif yang telah disediakan di bawah ini untuk menyusun draf jawaban Anda. Draf akan <strong>terdepan/tersimpan otomatis di browser</strong> Anda.</li>
+                        <li>Format berkas yang dikumpulkan: <strong>PDF atau DOCX</strong> dengan penamaan file: <code class="bg-amber-200/60 px-2 py-0.5 rounded font-mono text-xs">Tugas5_NIM_NamaLengkap.pdf</code>.</li>
+                        <li>Setelah selesai mengetik, klik tombol **"Salin Semua Jawaban"** atau **"Unduh Draf Teks"** di bagian bawah, lalu unggah file ke folder Google Drive resmi melalui tombol yang telah disediakan di atas.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ESSAY QUESTIONS & EDITOR -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-8">
+                <div class="flex items-center justify-between border-b pb-4 border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fas fa-edit text-blue-600"></i>
+                        Lembar Kerja / Draft Jawaban Essay
+                    </h3>
+                    <span class="text-xs text-slate-500 font-mono" id="autosave-status">
+                        <i class="fas fa-sync-alt animate-spin text-slate-400 mr-1"></i> Menyimpan Draf...
+                    </span>
+                </div>
+
+                <!-- FORM IDENTITAS MAHASISWA -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Mahasiswa:</label>
+                        <input type="text" id="mhs-nama" oninput="saveDraft()" placeholder="Masukkan Nama Lengkap" class="w-full text-sm px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">NIM / Nomor Induk Mahasiswa:</label>
+                        <input type="text" id="mhs-nim" oninput="saveDraft()" placeholder="Masukkan NIM" class="w-full text-sm px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <!-- SOAL 1 -->
+                <div class="space-y-3">
+                    <div class="p-4 bg-blue-50/70 border border-blue-200 rounded-xl">
+                        <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">Pertanyaan 1</span>
+                        <h4 class="text-base font-bold text-slate-900 mt-1">Jelaskan konsep motivasi!</h4>
+                        <p class="text-xs text-slate-600 mt-1">
+                            <em>Panduan Jawaban: Uraikan definisi psikologis motivasi, asal kata, serta bedakan secara rinci antara motivasi intrinsik dan ekstrinsik beserta contoh konkritnya dalam konteks persekolahan.</em>
+                        </p>
+                    </div>
+                    <textarea id="essay-1" oninput="saveDraft()" rows="6" placeholder="Tuliskan jawaban Soal 1 Anda di sini (minimal 150 kata)..." class="w-full text-sm p-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:outline-none transition font-sans"></textarea>
+                    <div class="flex justify-between items-center text-xs text-slate-400">
+                        <span>Status: <span id="status-1" class="font-semibold text-slate-500">Belum Diisi</span></span>
+                        <span>Jumlah Kata: <strong id="word-count-1">0</strong> kata</span>
+                    </div>
+                </div>
+
+                <!-- SOAL 2 -->
+                <div class="space-y-3">
+                    <div class="p-4 bg-blue-50/70 border border-blue-200 rounded-xl">
+                        <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">Pertanyaan 2</span>
+                        <h4 class="text-base font-bold text-slate-900 mt-1">Menjelaskan contoh-contoh peran motivasi dalam proses belajar.</h4>
+                        <p class="text-xs text-slate-600 mt-1">
+                            <em>Panduan Jawaban: Sebutkan dan jelaskan sedikitnya 4 contoh konkret bagaimana motivasi memengaruhi cara siswa belajar, tingkat ketekunan saat sulit, pemrosesan kognitif, dan pencapaian prestasi akademik.</em>
+                        </p>
+                    </div>
+                    <textarea id="essay-2" oninput="saveDraft()" rows="6" placeholder="Tuliskan jawaban Soal 2 Anda di sini..." class="w-full text-sm p-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:outline-none transition font-sans"></textarea>
+                    <div class="flex justify-between items-center text-xs text-slate-400">
+                        <span>Status: <span id="status-2" class="font-semibold text-slate-500">Belum Diisi</span></span>
+                        <span>Jumlah Kata: <strong id="word-count-2">0</strong> kata</span>
+                    </div>
+                </div>
+
+                <!-- SOAL 3 -->
+                <div class="space-y-3">
+                    <div class="p-4 bg-blue-50/70 border border-blue-200 rounded-xl">
+                        <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">Pertanyaan 3 (Aplikasi & Analisis Kasus)</span>
+                        <h4 class="text-base font-bold text-slate-900 mt-1">
+                            Analisis Kasus: Bagaimana strategi Anda sebagai calon pendidik untuk mengatasi siswa yang mengalami demotivasi (amotivasi) berdasarkan salah satu teori motivasi (misal: Self-Determination Theory atau Model ARCS)?
+                        </h4>
+                        <p class="text-xs text-slate-600 mt-1">
+                            <em>Panduan Jawaban: Berikan analisis studi kasus singkat dan rancang intervensi pembelajaran terstruktur untuk membangkitkan kembali minat belajar siswa tersebut.</em>
+                        </p>
+                    </div>
+                    <textarea id="essay-3" oninput="saveDraft()" rows="6" placeholder="Tuliskan jawaban Soal 3 Anda di sini..." class="w-full text-sm p-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:outline-none transition font-sans"></textarea>
+                    <div class="flex justify-between items-center text-xs text-slate-400">
+                        <span>Status: <span id="status-3" class="font-semibold text-slate-500">Belum Diisi</span></span>
+                        <span>Jumlah Kata: <strong id="word-count-3">0</strong> kata</span>
+                    </div>
+                </div>
+
+                <!-- ACTION BUTTONS -->
+                <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 w-full sm:w-auto">
+                        <button onclick="copyToClipboard()" class="w-full sm:w-auto px-5 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-medium rounded-xl text-sm transition flex items-center justify-center space-x-2">
+                            <i class="fas fa-copy"></i>
+                            <span>Salin Teks Jawaban</span>
+                        </button>
+                        <button onclick="downloadAsTXT()" class="w-full sm:w-auto px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium rounded-xl text-sm transition flex items-center justify-center space-x-2 border border-slate-300">
+                            <i class="fas fa-download"></i>
+                            <span>Unduh (.TXT)</span>
+                        </button>
+                    </div>
+
+                    <a href="https://drive.google.com/drive/folders/1Q7JKhFcwOPQFBN039N3dmnPF4X3m_QoX?usp=sharing" target="_blank" class="w-full sm:w-auto px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm shadow-md transition flex items-center justify-center space-x-2">
+                        <span>Kirim Jawaban ke Google Drive</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+            <div>
+                <p class="font-semibold text-slate-200">Psikologi Pendidikan - Learning Management System</p>
+                <p class="text-slate-500 mt-1">© 2026 Pengampuan Perkuliahan Psikologi Pendidikan. All rights reserved.</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://drive.google.com/drive/folders/1Q7JKhFcwOPQFBN039N3dmnPF4X3m_QoX?usp=sharing" target="_blank" class="hover:text-white transition flex items-center gap-1">
+                    <i class="fab fa-google-drive"></i> Folder Tugas Drive
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Tab Navigation Logic
+        function switchTab(tabName) {
+            const tabs = ['materi', 'teori', 'kuis', 'tugas'];
+            tabs.forEach(t => {
+                const sec = document.getElementById(`section-${t}`);
+                const btn = document.getElementById(`tab-${t}`);
+                if (t === tabName) {
+                    sec.classList.remove('hidden');
+                    btn.classList.add('active');
+                } else {
+                    sec.classList.add('hidden');
+                    btn.classList.remove('active');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Quiz Logic
+        function checkQuiz() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const resultDiv = document.getElementById('quiz-result');
+
+            if (!q1 || !q2) {
+                showToast("Harap pilih semua jawaban kuis terlebih dahulu!", "warning");
+                return;
+            }
+
+            let score = 0;
+            if (q1.value === 'B') score += 50; // Correct: Motivasi Intrinsik
+            if (q2.value === 'B') score += 50; // Correct: Autonomy, Competence, Relatedness
+
+            resultDiv.classList.remove('hidden');
+            if (score === 100) {
+                resultDiv.className = "p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium";
+                resultDiv.innerHTML = `<i class="fas fa-check-circle text-emerald-600 mr-2"></i> <strong>Sempurna! Skor: 100/100</strong>. Pemahaman konseptual Anda sangat mantap. Silakan lanjutkan mengerjakan tugas essay di tab berikutnya.`;
+            } else {
+                resultDiv.className = "p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-sm font-medium";
+                resultDiv.innerHTML = `<i class="fas fa-exclamation-triangle text-amber-600 mr-2"></i> Skor Anda: ${score}/100. Pelajari kembali ringkasan materi di Tab 1 dan Tab 2 sebelum menyelesaikan tugas essay.`;
+            }
+        }
+
+        // Autosave and Word Counter Logic
+        function countWords(str) {
+            return str.trim() ? str.trim().split(/\s+/).length : 0;
+        }
+
+        function saveDraft() {
+            const nama = document.getElementById('mhs-nama').value;
+            const nim = document.getElementById('mhs-nim').value;
+            const essay1 = document.getElementById('essay-1').value;
+            const essay2 = document.getElementById('essay-2').value;
+            const essay3 = document.getElementById('essay-3').value;
+
+            // Save to localStorage
+            const draftData = { nama, nim, essay1, essay2, essay3 };
+            localStorage.setItem('psikologi_motivasi_draft', JSON.stringify(draftData));
+
+            // Update word counts & status
+            updateStatus(1, essay1);
+            updateStatus(2, essay2);
+            updateStatus(3, essay3);
+
+            const statusElem = document.getElementById('autosave-status');
+            statusElem.innerHTML = `<i class="fas fa-check-circle text-emerald-500 mr-1"></i> Tersimpan otomatis`;
+        }
+
+        function updateStatus(num, text) {
+            const words = countWords(text);
+            document.getElementById(`word-count-${num}`).innerText = words;
+            const statusLabel = document.getElementById(`status-${num}`);
+            if (words > 0) {
+                statusLabel.innerText = "Sedang Ditulis";
+                statusLabel.className = "font-semibold text-amber-600";
+            } else {
+                statusLabel.innerText = "Belum Diisi";
+                statusLabel.className = "font-semibold text-slate-500";
+            }
+        }
+
+        function loadDraft() {
+            const saved = localStorage.getItem('psikologi_motivasi_draft');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    document.getElementById('mhs-nama').value = data.nama || '';
+                    document.getElementById('mhs-nim').value = data.nim || '';
+                    document.getElementById('essay-1').value = data.essay1 || '';
+                    document.getElementById('essay-2').value = data.essay2 || '';
+                    document.getElementById('essay-3').value = data.essay3 || '';
+
+                    updateStatus(1, data.essay1 || '');
+                    updateStatus(2, data.essay2 || '');
+                    updateStatus(3, data.essay3 || '');
+                } catch(e) {
+                    console.error("Error loading draft", e);
+                }
+            }
+        }
+
+        // Export Functionalities
+        function formatFullText() {
+            const nama = document.getElementById('mhs-nama').value || '[Nama Belum Diisi]';
+            const nim = document.getElementById('mhs-nim').value || '[NIM Belum Diisi]';
+            const essay1 = document.getElementById('essay-1').value;
+            const essay2 = document.getElementById('essay-2').value;
+            const essay3 = document.getElementById('essay-3').value;
+
+            return `==================================================
+TUGAS INDIVIDU: PSIKOLOGI PENDIDIKAN
+TOPIK: KONSEP MOTIVASI DAN PERANNYA DALAM PEMBELAJARAN
+==================================================
+Nama Mahasiswa : ${nama}
+NIM            : ${nim}
+Tanggal Draf   : ${new Date().toLocaleDateString('id-ID')}
+--------------------------------------------------
+
+SOAL 1:
+Jelaskan konsep motivasi! (Definisi, Dinamika, Intrinsik vs Ekstrinsik)
+
+JAWABAN SOAL 1:
+${essay1 || '(Belum diisi)'}
+
+--------------------------------------------------
+
+SOAL 2:
+Menjelaskan contoh-contoh peran motivasi dalam proses belajar.
+
+JAWABAN SOAL 2:
+${essay2 || '(Belum diisi)'}
+
+--------------------------------------------------
+
+SOAL 3:
+Analisis Kasus & Intervensi Strategi Motivasi Pembelajaran.
+
+JAWABAN SOAL 3:
+${essay3 || '(Belum diisi)'}
+
+==================================================
+`;
+        }
+
+        function copyToClipboard() {
+            const text = formatFullText();
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            showToast("Teks jawaban berhasil disalin ke clipboard!");
+        }
+
+        function downloadAsTXT() {
+            const text = formatFullText();
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const nim = document.getElementById('mhs-nim').value || 'Mahasiswa';
+            const fileName = `Tugas5_Motivasi_${nim}.txt`;
+
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = fileName;
+            link.click();
+            URL.revokeObjectURL(link.href);
+
+            showToast("File draft .TXT berhasil diunduh!");
+        }
+
+        // Custom Toast Notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastMsg.innerText = message;
+            if (type === 'warning') {
+                toastIcon.className = "fas fa-exclamation-triangle text-amber-400 text-xl";
+            } else {
+                toastIcon.className = "fas fa-check-circle text-emerald-400 text-xl";
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        // Initialize on Load
+        window.onload = function() {
+            loadDraft();
+        };
+    </script>
+</body>
+</html>
