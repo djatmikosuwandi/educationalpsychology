@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Perkuliahan: Psikologi Pendidikan - Kecerdasan Luar Biasa & Anak Berbakat</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f3ff',
+                            100: '#e0e7ff',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#1e1b4b',
+                        },
+                        academic: {
+                            gold: '#d97706',
+                            emerald: '#059669',
+                            rose: '#e11d48',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Top Academic Announcement Banner -->
+    <div class="bg-brand-900 text-slate-200 text-xs sm:text-sm py-2 px-4 text-center font-medium border-b border-indigo-900/50">
+        <span class="inline-block bg-brand-600 text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded mr-2">Modul Utama</span>
+        Mata Kuliah: <strong>Psikologi Pendidikan Tinggi</strong> &bull; Topik: Konsep & Layanan Anak Berbakat (Giftedness)
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Brand Title -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-brand-700 text-white flex items-center justify-center font-bold text-xl shadow-md">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-slate-900 text-lg leading-tight">EduPsy Learning Portal</h1>
+                        <p class="text-xs text-slate-500 font-medium">Pengampu: Prof. Dr. Farhan Ramadhan, M.Psi., Psikolog</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs (Desktop) -->
+                <nav class="hidden md:flex space-x-1">
+                    <button onclick="switchTab('modul1')" id="nav-modul1" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-brand-700 bg-brand-50 border border-brand-100">
+                        <i class="fa-solid fa-brain mr-1.5"></i>1. Konsep Kecerdasan
+                    </button>
+                    <button onclick="switchTab('modul2')" id="nav-modul2" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-user-gear mr-1.5"></i>2. Ciri Khas & Identifikasi
+                    </button>
+                    <button onclick="switchTab('modul3')" id="nav-modul3" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-school-flag mr-1.5"></i>3. Layanan Pendidikan
+                    </button>
+                    <button onclick="switchTab('kasus')" id="nav-kasus" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-microscope mr-1.5"></i>Studi Kasus
+                    </button>
+                    <button onclick="switchTab('evaluasi')" id="nav-evaluasi" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-clipboard-check mr-1.5"></i>Evaluasi
+                    </button>
+                    <button onclick="switchTab('tesiq')" id="nav-tesiq" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-vial-circle-check mr-1.5"></i>Tes IQ Singkat
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 p-2 rounded-md border border-slate-200 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 pt-2 pb-4 space-y-1 shadow-lg">
+            <button onclick="switchTab('modul1'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-brain w-6"></i> 1. Konsep Kecerdasan
+            </button>
+            <button onclick="switchTab('modul2'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-user-gear w-6"></i> 2. Ciri Khas & Identifikasi
+            </button>
+            <button onclick="switchTab('modul3'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-school-flag w-6"></i> 3. Layanan Pendidikan
+            </button>
+            <button onclick="switchTab('kasus'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-microscope w-6"></i> Studi Kasus Analisis
+            </button>
+            <button onclick="switchTab('evaluasi'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-clipboard-check w-6"></i> Evaluasi Mandiri
+            </button>
+            <button onclick="switchTab('tesiq'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-vial-circle-check w-6"></i> Tes IQ Singkat (10 Soal)
+            </button>
+        </div>
+    </header>
+
+    <!-- Lecturer Welcome & Course Header -->
+    <section class="bg-gradient-to-r from-brand-900 via-brand-800 to-slate-900 text-white py-10 px-4 sm:px-6 lg:px-8 border-b border-indigo-900">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8 space-y-4">
+                <div class="inline-flex items-center gap-2 bg-indigo-500/20 text-indigo-200 border border-indigo-400/30 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">
+                    <i class="fa-solid fa-book-open"></i> Sesi Kuliah Perkembangan & Inklusi
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+                    Memahami Kecerdasan Luar Biasa, Anak Berbakat (<span class="text-amber-400 italic">Giftedness</span>), dan Pengelolaan Pendidikannya
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
+                    Selamat datang para mahasiswa calon pendidik dan psikolog. Pada modul perkuliahan interaktif ini, kita akan membongkar mitos tradisional tentang IQ tunggal, memahami perkembangan asinkronus anak berbakat, serta membedah strategi diferensiasi pedagogis yang tepat.
+                </p>
+                <!-- Capaian Pembelajaran (CPMK) -->
+                <div class="pt-2 flex flex-wrap gap-4 text-xs font-medium text-slate-300">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-emerald-400"></i> CPMK 1: Analisis Konsep & Teori</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-emerald-400"></i> CPMK 2: Diagnosis Karakteristik</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-emerald-400"></i> CPMK 3: Desain Layanan Khusus</span>
+                </div>
+            </div>
+
+            <!-- Lecturer Card Widget -->
+            <div class="lg:col-span-4 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/15 text-slate-100 shadow-xl">
+                <div class="flex items-center gap-4 border-b border-white/10 pb-4 mb-4">
+                    <img src="https://placehold.co/120x120/312e81/ffffff?text=Lecturer+Prof" alt="Foto Dosen" class="w-14 h-14 rounded-full border-2 border-amber-400 object-cover shadow-md">
+                    <div>
+                        <h3 class="font-bold text-white text-base">Catatan Pengampu Kelas</h3>
+                        <p class="text-xs text-indigo-200">Senior Lecturer Psikologi Pendidikan</p>
+                    </div>
+                </div>
+                <blockquote class="text-xs italic text-slate-200 leading-relaxed mb-3">
+                    "Keberbakatan (Giftedness) bukan sekadar potensi akademis tinggi, melainkan sebuah realitas neurologis dan emosional yang kompleks yang membutuhkan respons pedagogis yang terukur."
+                </blockquote>
+                <div class="text-[11px] text-amber-300 font-semibold flex items-center gap-1">
+                    <i class="fa-solid fa-lightbulb"></i> Tips: Gunakan tab navigasi di atas untuk berpindah sub-materi.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Dynamic Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= MODUL 1: KONSEP KECERDASAN LUAR BIASA ================= -->
+        <div id="content-modul1" class="tab-content space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Sub-Bahasan 01</span>
+                <h2 class="text-2xl font-bold text-slate-900 mt-1">Konsep Kecerdasan Luar Biasa & Keberbakatan (Giftedness)</h2>
+                <p class="text-slate-600 text-sm mt-1">Menggeser Paradigma Monolitik IQ menuju Pemahaman Holistik Multidimensional.</p>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left Narrative Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-4">
+                        <h3 class="font-bold text-lg text-brand-900 flex items-center gap-2">
+                            <i class="fa-solid fa-book-bookmark text-brand-600"></i> Evolusi Definisi Keberbakatan
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Secara historis (abad ke-20), kecerdasan luar biasa diukur hampir sepenuhnya menggunakan skala skor tes IQ tunggal (seperti Stanford-Binet atau Wechsler). Seorang individu dianggap "berbakat" jika memiliki IQ di atas <strong class="text-slate-900">130 (+2 Standar Deviasi)</strong>.
+                        </p>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Namun, psikologi pendidikan modern menyadari kekakuan pandangan tersebut. Kecerdasan luar biasa kini dipahami sebagai **interaksi dinamis antara kemampuan intelek di atas rata-rata, kreativitas tinggi, dan komitmen terhadap tugas**.
+                        </p>
+                    </div>
+
+                    <!-- Comparison Table: Traditional vs Modern -->
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="bg-slate-900 px-5 py-3 text-white font-semibold text-sm flex items-center justify-between">
+                            <span><i class="fa-solid fa-code-compare mr-2 text-amber-400"></i>Perbandingan Paradigma Konseptual</span>
+                        </div>
+                        <div class="p-5 overflow-x-auto">
+                            <table class="w-full text-left text-xs sm:text-sm">
+                                <thead>
+                                    <tr class="border-b border-slate-200 text-slate-700 bg-slate-50">
+                                        <th class="p-3 font-bold">Dimensi</th>
+                                        <th class="p-3 font-bold text-slate-500">Pandangan Tradisional (Psikometrik)</th>
+                                        <th class="p-3 font-bold text-brand-700">Pandangan Kontemporer (Holistik)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    <tr>
+                                        <td class="p-3 font-semibold text-slate-900">Indikator Utama</td>
+                                        <td class="p-3 text-slate-600">Skor IQ tunggal (IQ &gt; 130)</td>
+                                        <td class="p-3 text-slate-700 font-medium">Profil Multidimensi (Bakat, Kreativitas, Motivasi)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-semibold text-slate-900">Sifat Kemampuan</td>
+                                        <td class="p-3 text-slate-600">Statik, bawaan lahir sejak kecil</td>
+                                        <td class="p-3 text-slate-700 font-medium">Dinamis, berkembang melalui fasilitasi lingkungan</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-semibold text-slate-900">Kecerdasan vs Bakat</td>
+                                        <td class="p-3 text-slate-600">Disamakan (Synonymous)</td>
+                                        <td class="p-3 text-slate-700 font-medium">Dibedakan (Potensi Murni vs Talenta Terrealisasi)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Interactive Model: Renzulli Three-Ring Conception -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-gradient-to-br from-indigo-900 to-brand-900 text-white rounded-xl p-6 shadow-md border border-indigo-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-lg text-white">Model 3 Cincin Renzulli</h3>
+                            <span class="text-xs bg-amber-400 text-slate-900 px-2 py-0.5 rounded font-bold">Teori Utama</span>
+                        </div>
+                        <p class="text-xs text-indigo-200 mb-6">
+                            Menurut Joseph Renzulli (1978), kecerdasan luar biasa tercipta akibat persinggungan (*intersection*) tiga domain utama:
+                        </p>
+
+                        <!-- Interactive Visualizer -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-indigo-500/30 text-center space-y-4">
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="highlightRenzulli('ability')" class="renzulli-btn p-3 rounded-lg bg-indigo-800/80 hover:bg-indigo-700 text-xs font-semibold border border-indigo-400/30 transition-all text-center">
+                                    <i class="fa-solid fa-chart-line text-amber-400 block text-lg mb-1"></i>
+                                    Kemampuan Di Atas Rata-rata
+                                </button>
+                                <button onclick="highlightRenzulli('creativity')" class="renzulli-btn p-3 rounded-lg bg-indigo-800/80 hover:bg-indigo-700 text-xs font-semibold border border-indigo-400/30 transition-all text-center">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-emerald-400 block text-lg mb-1"></i>
+                                    Kreativitas Tinggi
+                                </button>
+                                <button onclick="highlightRenzulli('commitment')" class="renzulli-btn p-3 rounded-lg bg-indigo-800/80 hover:bg-indigo-700 text-xs font-semibold border border-indigo-400/30 transition-all text-center">
+                                    <i class="fa-solid fa-fire text-rose-400 block text-lg mb-1"></i>
+                                    Pengikatan Diri (Task Commitment)
+                                </button>
+                            </div>
+
+                            <!-- Dynamic Detail Box -->
+                            <div id="renzulli-detail" class="bg-white/10 p-4 rounded-lg text-left text-xs text-slate-200 border border-white/10">
+                                <span class="font-bold text-amber-300 block mb-1 text-sm"><i class="fa-solid fa-hand-pointer mr-1"></i> Klik komponen di atas</span>
+                                Klik salah satu dari tiga elemen Renzulli untuk membaca penjelasannya secara rinci dari sudut pandang psikometri dan pedagogi.
+                            </div>
+                        </div>
+
+                        <!-- Gagné DMGT Reference -->
+                        <div class="mt-4 pt-4 border-t border-indigo-800 text-xs text-indigo-300">
+                            <strong>Model DMGT (Françoys Gagné):</strong> Membedakan antara <em>Gifts</em> (Bakat Alami) dan <em>Talents</em> (Kahlian Terlatih yang dipengaruhi katalis intrapersonal & lingkungan).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= MODUL 2: CIRI KHAS & IDENTIFIKASI ================= -->
+        <div id="content-modul2" class="tab-content hidden space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Sub-Bahasan 02</span>
+                <h2 class="text-2xl font-bold text-slate-900 mt-1">Ciri-Ciri Khas & Identifikasi Anak Berbakat</h2>
+                <p class="text-slate-600 text-sm mt-1">Memahami Dimensi Kognitif, Sosio-Emosional, Perkembangan Asinkron, dan Fenomena 2E (Twice-Exceptional).</p>
+            </div>
+
+            <!-- Characteristic Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- 1. Karakteristik Kognitif -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-100 text-brand-700 flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">1. Karakteristik Kognitif</h3>
+                    <ul class="text-xs sm:text-sm text-slate-600 space-y-2.5">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-600 text-xs mt-1"></i>
+                            <span><strong>Kecepatan Belajar Tinggi:</strong> Menguasai konsep kompleks dengan pengulangan minimal.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-600 text-xs mt-1"></i>
+                            <span><strong>Metakognisi Canggih:</strong> Mampu memantau dan mengatur proses berfikir mereka sendiri secara sadar.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-600 text-xs mt-1"></i>
+                            <span><strong>Abstraksi Konseptual:</strong> Menyukai persoalan abstrak, filosofis, dan penalaran logis tingkat tinggi.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2. Karakteristik Afektif & Sosio-Emosional -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">2. Sosio-Emosional & Afektif</h3>
+                    <ul class="text-xs sm:text-sm text-slate-600 space-y-2.5">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-amber-600 text-xs mt-1"></i>
+                            <span><strong>Empati & Keadilan Kritis:</strong> Kepekaan tinggi terhadap isu-isu keadilan sosial dan kebenaran moral.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-amber-600 text-xs mt-1"></i>
+                            <span><strong>Perkembangan Asinkronus:</strong> Ketidakseimbangan antara usia kognitif (tinggi) dan usia emosional/motorik (normal).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-amber-600 text-xs mt-1"></i>
+                            <span><strong>Perfeksionisme Akut:</strong> Standar tinggi yang berisiko memicu kecemasan akan kegagalan.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 3. Overexcitabilities (Dabrowski) -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">3. Overexcitability (Dabrowski)</h3>
+                    <p class="text-xs text-slate-500 mb-3">Kepekaan atau kepekaan berlebih (*intensities*) neurologis pada 5 domain:</p>
+                    <div class="flex flex-wrap gap-1.5 text-xs font-medium">
+                        <span class="bg-slate-100 text-slate-800 px-2 py-1 rounded border">Intelektual</span>
+                        <span class="bg-slate-100 text-slate-800 px-2 py-1 rounded border">Emosional</span>
+                        <span class="bg-slate-100 text-slate-800 px-2 py-1 rounded border">Imajinasional</span>
+                        <span class="bg-slate-100 text-slate-800 px-2 py-1 rounded border">Psikomotorik</span>
+                        <span class="bg-slate-100 text-slate-800 px-2 py-1 rounded border">Sensori</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deep Dive Banner: Twice-Exceptional (2E) & Underachievement -->
+            <div class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 border border-slate-800 relative overflow-hidden">
+                <div class="relative z-10 max-w-4xl space-y-4">
+                    <span class="inline-block bg-rose-600 text-white text-xs uppercase font-bold px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-triangle-exclamation mr-1"></i> Fenomena Kritis dalam Identifikasi
+                    </span>
+                    <h3 class="text-xl sm:text-2xl font-bold">Anak Berbakat Ganda / Twice-Exceptional (2E) & Underachievement</h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                        Sering kali terjadi kesalahan diagnosis (*misdiagnosis*) di lapangan. **Anak 2E** adalah anak yang memiliki keberbakatan tinggi (Gifted) sekaligus mengalami gangguan perkembangan/belajar spesifik (seperti ADHD, Autisme/ASD, atau Disleksia).
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
+                            <h4 class="font-bold text-amber-400 text-sm mb-1"><i class="fa-solid fa-mask mr-1.5"></i> Fenomena Masking (Pengolesan)</h4>
+                            <p class="text-xs text-slate-300">Keberbakatan menutupi hambatan belajarnya, atau hambatan belajarnya menyembunyikan potensi kecerdasannya sehingga terlihat seperti siswa rata-rata biasa.</p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
+                            <h4 class="font-bold text-amber-400 text-sm mb-1"><i class="fa-solid fa-arrow-trend-down mr-1.5"></i> Underachievement (Prestasi Rendah)</h4>
+                            <p class="text-xs text-slate-300">Kondisi ketika performa akademis siswa jauh di bawah kapasitas intelektual sebenarnya akibat kebosanan kurikulum, iklim sekolah yang menekan, atau konflik emosional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= MODUL 3: LAYANAN PENDIDIKAN ================= -->
+        <div id="content-modul3" class="tab-content hidden space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Sub-Bahasan 03</span>
+                <h2 class="text-2xl font-bold text-slate-900 mt-1">Penjelasan Layanan Pendidikan Anak Berbakat</h2>
+                <p class="text-slate-600 text-sm mt-1">Strategi Intervensi Pedagosis: Akselerasi, Pengayaan (Enrichment), Pengelompokan, dan Diferensiasi Kurikulum.</p>
+            </div>
+
+            <!-- Interventions Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Strategy 1: Akselerasi -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold px-2.5 py-1 bg-indigo-100 text-indigo-800 rounded-full">Strategi 01</span>
+                            <i class="fa-solid fa-forward-fast text-brand-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-slate-900 mb-2">Akselerasi (Acceleration)</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                            Penyesuaian laju pembelajaran sesuai dengan tingkat kecepatan belajar siswa di mana materi diberikan lebih cepat dibanding usia kronologisnya.
+                        </p>
+                        <div class="bg-slate-50 p-3 rounded-lg text-xs space-y-1.5 border border-slate-200">
+                            <div class="font-semibold text-slate-800"><i class="fa-solid fa-list-check text-brand-600 mr-1"></i> Bentuk Akselerasi:</div>
+                            <p class="text-slate-600">&bull; <strong>Lompat Kelas (Grade-skipping):</strong> Pindah ke tingkatan kelas di atasnya.</p>
+                            <p class="text-slate-600">&bull; <strong>Akselerasi Subjek:</strong> Mengikuti mata pelajaran tertentu (misal: Matematika) di tingkat atasnya.</p>
+                            <p class="text-slate-600">&bull; <strong>Telescoping Curriculum:</strong> Menyelesaikan materi 3 tahun dalam 2 tahun.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 2: Pengayaan (Enrichment) -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full">Strategi 02</span>
+                            <i class="fa-solid fa-layer-group text-emerald-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-slate-900 mb-2">Pengayaan (Enrichment)</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                            Pendalaman dan perluasan materi pembelajaran tanpa memindahkan siswa ke tingkat kelas yang lebih tinggi. Memberikan kesempatan eksplorasi tingkat tinggi.
+                        </p>
+                        <div class="bg-slate-50 p-3 rounded-lg text-xs space-y-1.5 border border-slate-200">
+                            <div class="font-semibold text-slate-800"><i class="fa-solid fa-cubes text-emerald-600 mr-1"></i> Model Renzulli Enrichment Triad:</div>
+                            <p class="text-slate-600">&bull; <strong>Tipe I:</strong> Kegiatan Eksplorasi Umum (mengeposkan minat baru).</p>
+                            <p class="text-slate-600">&bull; <strong>Tipe II:</strong> Pelatihan Proses Kelompok (keterampilan berpikir kritis/kreatif).</p>
+                            <p class="text-slate-600">&bull; <strong>Tipe III:</strong> Investigasi Masalah Nyata (proyek mandiri mirip profesional).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 3: Pengelompokan Khusus (Grouping) -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full">Strategi 03</span>
+                            <i class="fa-solid fa-users-rectangle text-amber-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-slate-900 mb-2">Pengelompokan Kemampuan (Ability Grouping)</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                            Menempatkan siswa berbakat bersama teman sebaya secara intelektual (*intellectual peers*) agar mereka mendapat tantangan yang seimbang.
+                        </p>
+                        <div class="bg-slate-50 p-3 rounded-lg text-xs space-y-1.5 border border-slate-200">
+                            <p class="text-slate-600">&bull; <strong>Kelas Khusus (Self-Contained Class):</strong> Ruang kelas khusus anak berbakat secara penuh.</p>
+                            <p class="text-slate-600">&bull; <strong>Pull-out Program:</strong> Siswa keluar dari kelas reguler beberapa jam per minggu untuk sesi khusus.</p>
+                            <p class="text-slate-600">&bull; <strong>Inklusi Terdiferensiasi:</strong> Tetap di kelas reguler namun dengan tugas diferensiasi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy 4: Kurikulum Berdiferensiasi (Differentiated Instruction) -->
+                <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold px-2.5 py-1 bg-rose-100 text-rose-800 rounded-full">Strategi 04</span>
+                            <i class="fa-solid fa-sliders text-rose-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-slate-900 mb-2">Kurikulum Berdiferensiasi</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                            Modifikasi pembelajaran berdasarkan kesiapan (*readiness*), minat (*interest*), dan profil belajar siswa pada 4 komponen dasar:
+                        </p>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <div class="bg-white p-2 rounded border border-slate-200">
+                                <strong>1. Konten (Content):</strong> Kompleksitas & abstraksi materi lebih tinggi.
+                            </div>
+                            <div class="bg-white p-2 rounded border border-slate-200">
+                                <strong>2. Proses (Process):</strong> Penalaran tingkat tinggi (HOTS - Bloom Analisis/Evaluasi).
+                            </div>
+                            <div class="bg-white p-2 rounded border border-slate-200">
+                                <strong>3. Produk (Product):</strong> Hasil karya orisinal berupa solusi konkret.
+                            </div>
+                            <div class="bg-white p-2 rounded border border-slate-200">
+                                <strong>4. Lingkungan (Environment):</strong> Suasana terbuka, minim tekanan kaku.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecturer Interactive Guide on Acceleration vs Enrichment Debate -->
+            <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-full bg-brand-700 text-white flex-shrink-0 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="font-bold text-brand-900 text-base">Diskusi Reflektif Dosen: Akselerasi vs Pengayaan</h4>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                            "Banyak pendidik khawatir bahwa <em>Akselerasi (Lompat Kelas)</em> akan merusak penyesuaian sosial anak. Namun, riset longitudinal (seperti <em>Study of Mathematically Precocious Youth - SMPY</em>) menunjukkan bahwa jika siswa matang secara emosional, akselerasi sangat efektif dan tidak merugikan sosial-emosional mereka. Kombinasi <strong>Akselerasi Fleksibel + Pengayaan Berdiferensiasi</strong> adalah standar emas (gold standard) layanan inklusi modern."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= STUDI KASUS INTERAKTIF ================= -->
+        <div id="content-kasus" class="tab-content hidden space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Simulasi Praktikum</span>
+                <h2 class="text-2xl font-bold text-slate-900 mt-1">Studi Kasus Analisis Psikopedaogis</h2>
+                <p class="text-slate-600 text-sm mt-1">Analisis skenario kelas nyata dan temukan rekomendasi intervensi sebagai calon ahli pendidikan.</p>
+            </div>
+
+            <!-- Case Study Container -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="bg-slate-900 text-white p-6">
+                    <div class="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-folder-open"></i> Kasus #01 - Profil Siswa Berbakat Ganda (2E)
+                    </div>
+                    <h3 class="text-xl font-bold">Kasus "Bagus" (Kelas 4 SD)</h3>
+                    <p class="text-xs text-slate-300 mt-1">Studi Kasus Pembelajaran & Penyesuaian Perilaku</p>
+                </div>
+
+                <div class="p-6 space-y-6">
+                    <!-- Scenario Narrative -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-700 leading-relaxed space-y-3">
+                        <h4 class="font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-clipboard-list text-brand-600"></i> Deskripsi Observasi Guru:
+                        </h4>
+                        <p>
+                            Bagus (9 tahun) mampu membaca buku ensiklopedia fisika kuantum berbahasa Inggris secara mandiri dan mengingat rumus-rumus sains rumit. Namun, di dalam kelas reguler, ia sering terlihat melamun, enggan mengerjakan tugas menulis tangan (tulisannya sangat tidak rapi), dan acap kali menyela penjelasan guru dengan pertanyaan filosofis yang tidak relevan dengan materi SD.
+                        </p>
+                        <p>
+                            Ketika dipaksa mengerjakan soal latihan matematika sederhana berulang-ulang, Bagus melempar pensilnya dan menangis frustrasi (*tantrum*). Tes IQ menunjukkan skor *Full Scale IQ* 138, namun hasil tes okupasi menunjukkan hambatan integrasi motorik halus (disgrafia ringan).
+                        </p>
+                    </div>
+
+                    <!-- Interactive Questions for Students -->
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-slate-900 text-sm">Pertanyaan Analisis Pembelajaran:</h4>
+
+                        <!-- Accordion Question 1 -->
+                        <div class="border border-slate-200 rounded-lg overflow-hidden">
+                            <button onclick="toggleAccordion('case-q1')" class="w-full text-left p-4 bg-slate-100 hover:bg-slate-200 flex justify-between items-center text-xs sm:text-sm font-semibold text-slate-800">
+                                <span>1. Apakah Bagus tergolong Anak Berbakat? Jelaskan fenomena psikologisnya!</span>
+                                <i id="icon-case-q1" class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                            <div id="case-q1" class="hidden p-4 bg-white text-xs sm:text-sm text-slate-600 border-t border-slate-200 leading-relaxed">
+                                <strong class="text-emerald-700 block mb-1"><i class="fa-solid fa-comment-dots mr-1"></i> Analisis Dosen:</strong>
+                                Ya, Bagus memuat karakteristik <strong>Twice-Exceptional (2E)</strong>. Ia memiliki keberbakatan intelektual tinggi (IQ 138 & pemahaman sains tingkat lanjut) yang berjalan bersamaan dengan disabilitas belajar spesifik (Disgrafia) serta perkembangan asinkronus (kemampuan logika jauh melampaui koordinasi motorik halus dan regulasi emosinya).
+                            </div>
+                        </div>
+
+                        <!-- Accordion Question 2 -->
+                        <div class="border border-slate-200 rounded-lg overflow-hidden">
+                            <button onclick="toggleAccordion('case-q2')" class="w-full text-left p-4 bg-slate-100 hover:bg-slate-200 flex justify-between items-center text-xs sm:text-sm font-semibold text-slate-800">
+                                <span>2. Rencana Layanan Pendidikan (IEP) apa yang paling tepat untuk Bagus?</span>
+                                <i id="icon-case-q2" class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                            <div id="case-q2" class="hidden p-4 bg-white text-xs sm:text-sm text-slate-600 border-t border-slate-200 leading-relaxed">
+                                <strong class="text-emerald-700 block mb-1"><i class="fa-solid fa-comment-dots mr-1"></i> Rekomendasi Layanan Dosen:</strong>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li><strong>Akomodasi Hambatan (Disgrafia):</strong> Izinkan penggunaan laptop/pengetikan suara (*speech-to-text*) untuk ujian tulisan panjang.</li>
+                                    <li><strong>Diferensiasi Konten/Pengayaan:</strong> Berikan proyek riset sains mandiri (Enrichment Triad Type III) daripada lembar kerja latihan paul berulang.</li>
+                                    <li><strong>Dukungan Sosio-Emosional:</strong> Pelatihan koping stres untuk perfeksionisme dan terapi integrasi sensorik-motorik.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= EVALUASI MANDIRI / KUIS ================= -->
+        <div id="content-evaluasi" class="tab-content hidden space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Evaluasi Pemahaman</span>
+                <h2 class="text-2xl font-bold text-slate-900 mt-1">Kuis Formatif Format Interaktif</h2>
+                <p class="text-slate-600 text-sm mt-1">Uji pemahaman Anda terhadap konsep kecerdasan luar biasa dan layanan pendidikannya.</p>
+            </div>
+
+        <!-- ================= TES IQ SINGKAT (10 SOAL) ================= -->
+        <div id="content-tesiq" class="tab-content hidden space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Simulasi Pengukuran Kognitif</span>
+                <h2 class="text-2xl font-bold text-slate-900 mt-1">Tes IQ Singkat: Simulasi Penalaran Kognitif (10 Soal)</h2>
+                <p class="text-slate-600 text-sm mt-1">Latihan mengukur sub-domain kognitif: Penalaran Numerik, Verbal, Spasial, dan Logika Deduktif.</p>
+            </div>
+
+            <!-- Pedagogical Disclaimer Box -->
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-900 flex items-start gap-3">
+                <i class="fa-solid fa-circle-info text-amber-600 text-lg mt-0.5"></i>
+                <div>
+                    <strong class="font-bold block text-sm">Catatan Penting Pengampu Mata Kuliah:</strong>
+                    Tes ini dirancang khusus untuk keperluan praktikum simulasi pembelajaran di kelas Psikologi Pendidikan. Hasil tes ini memberikan gambaran awal pemrosesan penalaran kognitif dan <strong>bukan</strong> instrumen psikometri formal terstandarisasi (seperti WAIS, WISC, atau Stanford-Binet) yang memerlukan supervisi Psikolog berlisensi.
+                </div>
+            </div>
+
+            <!-- IQ Quiz Card -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 max-w-4xl mx-auto space-y-6">
+
+                <div id="iq-test-container" class="space-y-6">
+
+                    <!-- Soal 1: Numerik Pattern -->
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded">Soal 1 &bull; Penalaran Numerik</span>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm sm:text-base">
+                            Perhatikan deret angka berikut: <strong>2, 5, 11, 23, 47, ...</strong> Angka berikutnya yang tepat adalah?
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq1" value="A" class="text-brand-600"> <span>A. 94</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq1" value="B" class="text-brand-600"> <span>B. 95 (Pola: x2 + 1)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq1" value="C" class="text-brand-600"> <span>C. 96</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq1" value="D" class="text-brand-600"> <span>D. 97</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 2: Analogi Verbal -->
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded">Soal 2 &bull; Analogi Verbal</span>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm sm:text-base">
+                            <strong>KUCING : MEONG :: SERIGALA : ...</strong>
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq2" value="A" class="text-brand-600"> <span>A. Menggonggong</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq2" value="B" class="text-brand-600"> <span>B. Meraung</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq2" value="C" class="text-brand-600"> <span>C. Melolong</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq2" value="D" class="text-brand-600"> <span>D. Meringkik</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 3: Logika Waktu/Pekerja -->
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded">Soal 3 &bull; Logika Efisiensi</span>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm sm:text-base">
+                            Jika 3 orang pekerja dapat merakit 3 buah meja dalam waktu 3 hari, berapa hari yang dibutuhkan 6 orang pekerja untuk merakit 6 buah meja?
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq3" value="A" class="text-brand-600"> <span>A. 6 Hari</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq3" value="B" class="text-brand-600"> <span>B. 3 Hari</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq3" value="C" class="text-brand-600"> <span>C. 1,5 Hari</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq3" value="D" class="text-brand-600"> <span>D. 1 Hari</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 4: Silogisme -->
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded">Soal 4 &bull; Penalaran Silogisme</span>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm sm:text-base">
+                            Premis 1: Semua mahasiswa Psikologi mempelajari perilaku.<br>
+                            Premis 2: Semua orang yang mempelajari perilaku memahami emosi manusia.<br>
+                            Kesimpulan yang sah adalah:
+                        </h4>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq4" value="A" class="text-brand-600"> <span>A. Semua mahasiswa Psikologi memahami emosi manusia.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq4" value="B" class="text-brand-600"> <span>B. Sebagian mahasiswa Psikologi tidak memahami emosi manusia.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq4" value="C" class="text-brand-600"> <span>C. Hanya orang yang memahami emosi yang boleh menjadi mahasiswa Psikologi.</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq4" value="D" class="text-brand-600"> <span>D. Tidak dapat ditarik kesimpulan.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 5: Deret Huruf -->
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded">Soal 5 &bull; Deret Alfabet</span>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm sm:text-base">
+                            Perhatikan pola huruf berikut: <strong>A, C, F, J, O, ...</strong> Huruf berikutnya adalah?
+                        </h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs sm:text-sm">
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq5" value="A" class="mr-2"> <span>A. R</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq5" value="B" class="mr-2"> <span>B. S</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq5" value="C" class="mr-2"> <span>C. T</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq5" value="D" class="mr-2"> <span>D. U</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 6: Anomali Objek (Odd One Out) -->
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded">Soal 6 &bull; Klasifikasi Konseptual</span>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm sm:text-base">
+                            Manakah objek astronomi berikut yang secara kategoris <strong>paling berbeda / tidak sejenis</strong> dengan yang lainnya?
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq6" value="A" class="text-brand-600"> <span>A. Merkurius</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq6" value="B" class="text-brand-600"> <span>B. Venus</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq6" value="C" class="text-brand-600"> <span>C. Bulan (Satelit Alami)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq6" value="D" class="text-brand-600"> <span>D. Mars</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 7: Spasial Kubus -->
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded">Soal 7 &bull; Visual-Spasial 3D</span>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm sm:text-base">
+                            Sebuah kubus kayu dicat merah pada seluruh permukaan luarnya, lalu dipotong menjadi 27 kubus kecil sama besar (ukuran 3x3x3). Berapa banyak kubus kecil yang memiliki <strong>tepat 2 sisi</strong> berwarna merah?
+                        </h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs sm:text-sm">
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq7" value="A" class="mr-2"> <span>A. 8 buah</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq7" value="B" class="mr-2"> <span>B. 12 buah</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq7" value="C" class="mr-2"> <span>C. 6 buah</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq7" value="D" class="mr-2"> <span>D. 4 buah</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 8: Aljabar Praktis -->
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded">Soal 8 &bull; Matematika Terapan</span>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm sm:text-base">
+                            Sebuah tali dengan panjang 120 cm dipotong menjadi dua bagian. Potongan A adalah 1/3 dari panjang potongan B. Berapa cm panjang potongan B?
+                        </h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs sm:text-sm">
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq8" value="A" class="mr-2"> <span>A. 30 cm</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq8" value="B" class="mr-2"> <span>B. 60 cm</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq8" value="C" class="mr-2"> <span>C. 90 cm</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq8" value="D" class="mr-2"> <span>D. 80 cm</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 9: Hubungan Asosiasi -->
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded">Soal 9 &bull; Asosiasi Abstrak</span>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm sm:text-base">
+                            <strong>DINGIN : ES :: PANAS : ...</strong>
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq9" value="A" class="text-brand-600"> <span>A. Api</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq9" value="B" class="text-brand-600"> <span>B. Matahari</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq9" value="C" class="text-brand-600"> <span>C. Musim Kemarau</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq9" value="D" class="text-brand-600"> <span>D. Terik</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 10: Pemrosesan Kode -->
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded">Soal 10 &bull; Pemrosesan Kode Simbolik</span>
+                        </div>
+                        <h4 class="font-semibold text-slate-900 text-sm sm:text-base">
+                            Jika nilai A=1, B=2, C=3, dan seterusnya hingga Z=26, berapakah total nilai matematis penjumlahan dari kata <strong>"B A K A T"</strong>?
+                        </h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs sm:text-sm">
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq10" value="A" class="mr-2"> <span>A. 33</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq10" value="B" class="mr-2"> <span>B. 34</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq10" value="C" class="mr-2"> <span>C. 35 (2+1+11+1+20)</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="iq10" value="D" class="mr-2"> <span>D. 36</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button onclick="submitIqTest()" class="w-full bg-brand-700 hover:bg-brand-800 text-white font-bold py-3.5 px-6 rounded-lg transition-colors text-sm shadow-md flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calculator"></i> Hitung Hasil & Analisis Kognitif
+                    </button>
+                </div>
+
+                <!-- Result Score Board -->
+                <div id="iq-test-result" class="hidden space-y-6 p-6 bg-slate-50 rounded-xl border border-slate-200 text-center">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-brand-700 text-amber-400 flex items-center justify-center text-3xl font-bold shadow-lg">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900">Hasil Evaluasi Kognitif Mandiri</h3>
+                        <p id="iq-score-display" class="text-3xl font-black text-brand-700 mt-2"></p>
+                        <p id="iq-range-estimate" class="text-sm font-semibold text-slate-700 mt-1"></p>
+                    </div>
+
+                    <div id="iq-analysis-box" class="text-left text-xs sm:text-sm bg-white p-5 rounded-xl border border-slate-200 space-y-3 leading-relaxed text-slate-700">
+                        <!-- Dynamic Content Generated by JS -->
+                    </div>
+
+                    <button onclick="resetIqTest()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold py-2.5 px-6 rounded-lg transition-colors">
+                        Ulangi Tes IQ Singkat
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 px-4 border-t border-slate-800 text-xs text-center mt-auto">
+        <div class="max-w-7xl mx-auto space-y-3">
+            <p class="font-medium text-slate-300">Modul Pembelajaran Interaktif Psikologi Pendidikan &copy; 2026</p>
+            <p class="text-slate-500">Dirancang untuk Mahasiswa Pendidikan, Psikologi, dan Para Pendidik Profesional.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interaktif -->
+    <script>
+        // Tab Navigation Logic
+        function switchTab(tabId) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            // Reset all nav button styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('text-brand-700', 'bg-brand-50', 'border', 'border-brand-100');
+                btn.classList.add('text-slate-600');
+            });
+
+            // Show target content
+            const targetContent = document.getElementById('content-' + tabId);
+            if(targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+
+            // Highlight active desktop tab
+            const activeNav = document.getElementById('nav-' + tabId);
+            if(activeNav) {
+                activeNav.classList.remove('text-slate-600');
+                activeNav.classList.add('text-brand-700', 'bg-brand-50', 'border', 'border-brand-100');
+            }
+
+            // Scroll smoothly to main container top
+            window.scrollTo({ top: 280, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Dynamic Interactive Renzulli Model Explanations
+        function highlightRenzulli(type) {
+            const detailBox = document.getElementById('renzulli-detail');
+            let content = '';
+
+            if (type === 'ability') {
+                content = `
+                    <span class="font-bold text-amber-300 block mb-1 text-sm"><i class="fa-solid fa-chart-line mr-1"></i> Kemampuan Di Atas Rata-rata (Above Average Ability)</span>
+                    Mencakup dua ranah: <strong>Kemampuan Umum</strong> (seperti penalaran abstrak, pemrosesan informasi cepat, memori kognitif) dan <strong>Kemampuan Spesifik</strong> (bakat khusus dalam matematika, seni visual, atau kepemimpinan). Renzulli menekankan bahwa skor tidak harus berada di 1% teratas, melainkan cukup di kisaran 15-20% teratas jika didukung dua aspek lainnya.
+                `;
+            } else if (type === 'creativity') {
+                content = `
+                    <span class="font-bold text-emerald-300 block mb-1 text-sm"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Kreativitas Tinggi (High Creativity)</span>
+                    Kemampuan menghasilkan gagasan baru (*fluency, flexibility, originality*), keterbukaan terhadap pengalaman baru, keberanian mengambil risiko intelektual, serta kemampuan memikirkan solusi solutif yang non-konvensional terhadap suatu permasalahan.
+                `;
+            } else if (type === 'commitment') {
+                content = `
+                    <span class="font-bold text-rose-300 block mb-1 text-sm"><i class="fa-solid fa-fire mr-1"></i> Pengikatan Diri / Komitmen Tugas (Task Commitment)</span>
+                    Bentuk energi internal atau motivasi intrinsik khusus yang mendorong individu untuk bertekun, bekerja keras, memiliki daya tahan (*grit*), dan mencurahkan waktu berjam-jam untuk memecahkan masalah dalam bidang tertentu yang diminatinya.
+                `;
+            }
+
+            detailBox.innerHTML = content;
+        }
+
+        // Case Study Accordion Toggle
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Interactive Quiz Logic
+        function submitQuiz() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+
+            if (!q1 || !q2 || !q3) {
+                // Inline UI feedback without using alert()
+                const container = document.getElementById('quiz-container');
+                let existingNotice = document.getElementById('quiz-warning');
+                if(!existingNotice) {
+                    const notice = document.createElement('div');
+                    notice.id = 'quiz-warning';
+                    notice.className = 'bg-rose-100 border border-rose-300 text-rose-700 text-xs p-3 rounded-lg flex items-center gap-2';
+                    notice.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Mohon jawab semua pertanyaan kuis sebelum mengirimkan.';
+                    container.prepend(notice);
+                }
+                return;
+            }
+
+            // Remove warning if any
+            const existingNotice = document.getElementById('quiz-warning');
+            if(existingNotice) existingNotice.remove();
+
+            let score = 0;
+            if (q1.value === 'B') score++;
+            if (q2.value === 'A') score++;
+            if (q3.value === 'B') score++;
+
+            document.getElementById('quiz-container').classList.add('hidden');
+            const resultBox = document.getElementById('quiz-result');
+            resultBox.classList.remove('hidden');
+
+            const scoreText = document.getElementById('quiz-score-text');
+            const feedbackText = document.getElementById('quiz-feedback-text');
+
+            scoreText.innerText = `Skor Anda: ${score} / 3`;
+
+            if (score === 3) {
+                feedbackText.innerText = "Sangat Baik! Anda telah memahami dengan sempurna 3 fondasi utama modul: Konsep Renzulli, Perkembangan Asinkronus, dan Strategi Pengayaan (Enrichment).";
+            } else if (score === 2) {
+                feedbackText.innerText = "Bagus! Anda memahami sebagian besar materi. Silakan tinjau kembali sub-materi yang belum tepat.";
+            } else {
+                feedbackText.innerText = "Tetap semangat! Disarankan untuk membaca ulang Modul 1, 2, dan 3 untuk memperkuat pemahaman akademik Anda.";
+            }
+        }
+
+        function resetQuiz() {
+            document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+        }
+
+        // Interactive IQ Test Logic (10 Questions)
+        function submitIqTest() {
+            // Correct keys: 1:B, 2:C, 3:B, 4:A, 5:D, 6:C, 7:B, 8:C, 9:A, 10:C
+            const keys = { iq1:'B', iq2:'C', iq3:'B', iq4:'A', iq5:'D', iq6:'C', iq7:'B', iq8:'C', iq9:'A', iq10:'C' };
+            let correctCount = 0;
+            let answeredCount = 0;
+
+            for(let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="iq${i}"]:checked`);
+                if(selected) {
+                    answeredCount++;
+                    if(selected.value === keys[`iq${i}`]) {
+                        correctCount++;
+                    }
+                }
+            }
+
+            if(answeredCount < 10) {
+                const container = document.getElementById('iq-test-container');
+                let existingNotice = document.getElementById('iq-warning');
+                if(!existingNotice) {
+                    const notice = document.createElement('div');
+                    notice.id = 'iq-warning';
+                    notice.className = 'bg-rose-100 border border-rose-300 text-rose-700 text-xs p-3 rounded-lg flex items-center gap-2 mb-4';
+                    notice.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Harap menjawab seluruh 10 soal tes IQ singkat sebelum menghitung hasil.';
+                    container.prepend(notice);
+                }
+                return;
+            }
+
+            const existingNotice = document.getElementById('iq-warning');
+            if(existingNotice) existingNotice.remove();
+
+            document.getElementById('iq-test-container').classList.add('hidden');
+            const resultBox = document.getElementById('iq-test-result');
+            resultBox.classList.remove('hidden');
+
+            const scoreDisplay = document.getElementById('iq-score-display');
+            const rangeEstimate = document.getElementById('iq-range-estimate');
+            const analysisBox = document.getElementById('iq-analysis-box');
+
+            scoreDisplay.innerText = `${correctCount} / 10 Soal Benar`;
+
+            let estimateText = "";
+            let categoryHTML = "";
+
+            if (correctCount >= 9) {
+                estimateText = "Estimasi Tingkat Kognitif: Di Atas Rata-Rata Tinggi / Potensi Keberbakatan (Gifted Potential)";
+                categoryHTML = `
+                    <p class="font-semibold text-emerald-700"><i class="fa-solid fa-star mr-1"></i> Performa Kognitif Sangat Tinggi:</p>
+                    <p>Anda menunjukkan kecepatan pemrosesan penalaran abstrak, analisis logika silogisme, dan manipulasi visual-spasial 3D yang sangat kuat. Dalam konteks Psikologi Pendidikan, individu dengan profil kognitif ini membutuhkan kurikulum berdiferensiasi serta materi pengayaan tingkat lanjut.</p>
+                `;
+            } else if (correctCount >= 7) {
+                estimateText = "Estimasi Tingkat Kognitif: Di Atas Rata-Rata (Above Average)";
+                categoryHTML = `
+                    <p class="font-semibold text-brand-700"><i class="fa-solid fa-circle-check mr-1"></i> Pemrosesan Kognitif Solid:</p>
+                    <p>Anda memiliki daya nalar logika numerik dan pemahaman hubungan verbal yang baik. Profil ini umumnya sangat adaptif terhadap metode pembelajaran pemecahan masalah (Problem-Based Learning).</p>
+                `;
+            } else if (correctCount >= 5) {
+                estimateText = "Estimasi Tingkat Kognitif: Rata-Rata (Average)";
+                categoryHTML = `
+                    <p class="font-semibold text-amber-700"><i class="fa-solid fa-circle-info mr-1"></i> Kapasitas Kognitif Standar:</p>
+                    <p>Hasil menunjukkan performa yang cukup seimbang. Ingatlah bahwa kecerdasan bersifat multidimensi, di mana faktor kreativitas, kepemimpinan, dan kecerdasan sosio-emosional juga memegang peranan krusial.</p>
+                `;
+            } else {
+                estimateText = "Estimasi Tingkat Kognitif: Membutuhkan Latihan Pemrosesan Lebih Lanjut";
+                categoryHTML = `
+                    <p class="font-semibold text-slate-800"><i class="fa-solid fa-book-open mr-1"></i> Catatan Pembelajaran:</p>
+                    <p>Beberapa soal pola angka dan manipulasi kerangka 3D memerlukan pembiasaan strategi pemecahan masalah kognitif. Anda dapat mempelajari kunci analisis logika pada modul kuliah ini.</p>
+                `;
+            }
+
+            rangeEstimate.innerText = estimateText;
+            analysisBox.innerHTML = categoryHTML;
+        }
+
+        function resetIqTest() {
+            for(let i = 1; i <= 10; i++) {
+                document.querySelectorAll(`input[name="iq${i}"]`).forEach(r => r.checked = false);
+            }
+            document.getElementById('iq-test-result').classList.add('hidden');
+            document.getElementById('iq-test-container').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
