@@ -89,11 +89,8 @@
                     <button onclick="switchTab('kasus')" id="nav-kasus" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
                         <i class="fa-solid fa-microscope mr-1.5"></i>Studi Kasus
                     </button>
-                    <button onclick="switchTab('evaluasi')" id="nav-evaluasi" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
-                        <i class="fa-solid fa-clipboard-check mr-1.5"></i>Evaluasi
-                    </button>
                     <button onclick="switchTab('tesiq')" id="nav-tesiq" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
-                        <i class="fa-solid fa-vial-circle-check mr-1.5"></i>Tes IQ Singkat
+                        <i class="fa-solid fa-vial-circle-check mr-1.5"></i>Tes IQ Singkat (10 Soal)
                     </button>
                 </nav>
 
@@ -119,9 +116,6 @@
             </button>
             <button onclick="switchTab('kasus'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
                 <i class="fa-solid fa-microscope w-6"></i> Studi Kasus Analisis
-            </button>
-            <button onclick="switchTab('evaluasi'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
-                <i class="fa-solid fa-clipboard-check w-6"></i> Evaluasi Mandiri
             </button>
             <button onclick="switchTab('tesiq'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
                 <i class="fa-solid fa-vial-circle-check w-6"></i> Tes IQ Singkat (10 Soal)
@@ -555,14 +549,6 @@
             </div>
         </div>
 
-        <!-- ================= EVALUASI MANDIRI / KUIS ================= -->
-        <div id="content-evaluasi" class="tab-content hidden space-y-8">
-            <div class="border-b border-slate-200 pb-4">
-                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Evaluasi Pemahaman</span>
-                <h2 class="text-2xl font-bold text-slate-900 mt-1">Kuis Formatif Format Interaktif</h2>
-                <p class="text-slate-600 text-sm mt-1">Uji pemahaman Anda terhadap konsep kecerdasan luar biasa dan layanan pendidikannya.</p>
-            </div>
-
         <!-- ================= TES IQ SINGKAT (10 SOAL) ================= -->
         <div id="content-tesiq" class="tab-content hidden space-y-8">
             <div class="border-b border-slate-200 pb-4">
@@ -598,7 +584,7 @@
                                 <input type="radio" name="iq1" value="A" class="text-brand-600"> <span>A. 94</span>
                             </label>
                             <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
-                                <input type="radio" name="iq1" value="B" class="text-brand-600"> <span>B. 95 (Pola: x2 + 1)</span>
+                                <input type="radio" name="iq1" value="B" class="text-brand-600"> <span>B. 95</span>
                             </label>
                             <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
                                 <input type="radio" name="iq1" value="C" class="text-brand-600"> <span>C. 96</span>
@@ -723,7 +709,7 @@
                                 <input type="radio" name="iq6" value="B" class="text-brand-600"> <span>B. Venus</span>
                             </label>
                             <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
-                                <input type="radio" name="iq6" value="C" class="text-brand-600"> <span>C. Bulan (Satelit Alami)</span>
+                                <input type="radio" name="iq6" value="C" class="text-brand-600"> <span>C. Bulan</span>
                             </label>
                             <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
                                 <input type="radio" name="iq6" value="D" class="text-brand-600"> <span>D. Mars</span>
@@ -819,7 +805,7 @@
                                 <input type="radio" name="iq10" value="B" class="mr-2"> <span>B. 34</span>
                             </label>
                             <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
-                                <input type="radio" name="iq10" value="C" class="mr-2"> <span>C. 35 (2+1+11+1+20)</span>
+                                <input type="radio" name="iq10" value="C" class="mr-2"> <span>C. 35</span>
                             </label>
                             <label class="flex items-center justify-center p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer">
                                 <input type="radio" name="iq10" value="D" class="mr-2"> <span>D. 36</span>
@@ -946,59 +932,6 @@
                 content.classList.add('hidden');
                 icon.classList.remove('rotate-180');
             }
-        }
-
-        // Interactive Quiz Logic
-        function submitQuiz() {
-            const q1 = document.querySelector('input[name="q1"]:checked');
-            const q2 = document.querySelector('input[name="q2"]:checked');
-            const q3 = document.querySelector('input[name="q3"]:checked');
-
-            if (!q1 || !q2 || !q3) {
-                // Inline UI feedback without using alert()
-                const container = document.getElementById('quiz-container');
-                let existingNotice = document.getElementById('quiz-warning');
-                if(!existingNotice) {
-                    const notice = document.createElement('div');
-                    notice.id = 'quiz-warning';
-                    notice.className = 'bg-rose-100 border border-rose-300 text-rose-700 text-xs p-3 rounded-lg flex items-center gap-2';
-                    notice.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Mohon jawab semua pertanyaan kuis sebelum mengirimkan.';
-                    container.prepend(notice);
-                }
-                return;
-            }
-
-            // Remove warning if any
-            const existingNotice = document.getElementById('quiz-warning');
-            if(existingNotice) existingNotice.remove();
-
-            let score = 0;
-            if (q1.value === 'B') score++;
-            if (q2.value === 'A') score++;
-            if (q3.value === 'B') score++;
-
-            document.getElementById('quiz-container').classList.add('hidden');
-            const resultBox = document.getElementById('quiz-result');
-            resultBox.classList.remove('hidden');
-
-            const scoreText = document.getElementById('quiz-score-text');
-            const feedbackText = document.getElementById('quiz-feedback-text');
-
-            scoreText.innerText = `Skor Anda: ${score} / 3`;
-
-            if (score === 3) {
-                feedbackText.innerText = "Sangat Baik! Anda telah memahami dengan sempurna 3 fondasi utama modul: Konsep Renzulli, Perkembangan Asinkronus, dan Strategi Pengayaan (Enrichment).";
-            } else if (score === 2) {
-                feedbackText.innerText = "Bagus! Anda memahami sebagian besar materi. Silakan tinjau kembali sub-materi yang belum tepat.";
-            } else {
-                feedbackText.innerText = "Tetap semangat! Disarankan untuk membaca ulang Modul 1, 2, dan 3 untuk memperkuat pemahaman akademik Anda.";
-            }
-        }
-
-        function resetQuiz() {
-            document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
-            document.getElementById('quiz-result').classList.add('hidden');
-            document.getElementById('quiz-container').classList.remove('hidden');
         }
 
         // Interactive IQ Test Logic (10 Questions)
