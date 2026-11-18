@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Perkuliahan: Psikologi Pendidikan - Kesulitan Belajar Akademik</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#1e1b4b',
+                        },
+                        academic: {
+                            gold: '#d97706',
+                            emerald: '#059669',
+                            rose: '#e11d48',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.25s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Top Academic Announcement Banner -->
+    <div class="bg-brand-900 text-slate-200 text-xs sm:text-sm py-2 px-4 text-center font-medium border-b border-indigo-900/50">
+        <span class="inline-block bg-brand-600 text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded mr-2">Modul Perkuliahan</span>
+        Mata Kuliah: <strong>Psikologi Pendidikan</strong> &bull; Topik: Kesulitan Belajar Akademik (<em>Specific Learning Disabilities</em>)
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Brand Title -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-700 text-white flex items-center justify-center font-bold text-xl shadow-md">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-slate-900 text-base sm:text-lg leading-tight">EduPsy Learning Portal</h1>
+                        <p class="text-[11px] sm:text-xs text-slate-500 font-medium">Prof. Dr. Farhan Ramadhan, M.Psi., Psikolog</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs (Desktop) -->
+                <nav class="hidden lg:flex space-x-1" aria-label="Navigasi Modul">
+                    <button onclick="switchTab('konsep')" id="nav-konsep" class="tab-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-brand-700 bg-brand-50 border border-brand-100">
+                        <i class="fa-solid fa-book-open mr-1.5"></i>1. Konsep & Definisi
+                    </button>
+                    <button onclick="switchTab('gejala')" id="nav-gejala" class="tab-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-stethoscope mr-1.5"></i>2. Gejala Klinis
+                    </button>
+                    <button onclick="switchTab('jenis')" id="nav-jenis" class="tab-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-layer-group mr-1.5"></i>3. 7 Bentuk SLD
+                    </button>
+                    <button onclick="switchTab('rti')" id="nav-rti" class="tab-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-stairs mr-1.5"></i>4. Identifikasi (RTI)
+                    </button>
+                    <button onclick="switchTab('kuis')" id="nav-kuis" class="tab-btn px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-clipboard-check mr-1.5"></i>5. Kuis (5 Soal)
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-btn" aria-label="Buka Menu" class="text-slate-600 hover:text-slate-900 p-2.5 rounded-xl border border-slate-200 focus:outline-none">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-2 pb-4 space-y-1 shadow-lg">
+            <button onclick="switchTab('konsep'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-book-open w-6 text-brand-600"></i> 1. Konsep & Definisi Dasar
+            </button>
+            <button onclick="switchTab('gejala'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-stethoscope w-6 text-brand-600"></i> 2. Gejala (Simtomatologi)
+            </button>
+            <button onclick="switchTab('jenis'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-layer-group w-6 text-brand-600"></i> 3. 7 Bentuk & Jenis SLD
+            </button>
+            <button onclick="switchTab('rti'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-stairs w-6 text-brand-600"></i> 4. Kerangka Identifikasi (RTI)
+            </button>
+            <button onclick="switchTab('kuis'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-clipboard-check w-6 text-brand-600"></i> 5. Soal Evaluasi Pemahaman (5 Soal)
+            </button>
+        </div>
+    </header>
+
+    <!-- Lecturer Welcome & Course Hero Header -->
+    <section class="bg-gradient-to-r from-brand-900 via-brand-800 to-slate-900 text-white py-8 sm:py-10 px-4 sm:px-6 lg:px-8 border-b border-indigo-900">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8 space-y-4">
+                <div class="inline-flex items-center gap-2 bg-indigo-500/20 text-indigo-200 border border-indigo-400/30 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">
+                    <i class="fa-solid fa-brain"></i> Psikologi Pendidikan &bull; Diagnostik & Intervensi Belajar
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+                    Memahami &amp; Mengidentifikasi <span class="text-amber-400">Kesulitan Belajar Akademik</span>
+                </h2>
+                <p class="text-slate-300 text-xs sm:text-base leading-relaxed max-w-3xl">
+                    Sub-Topik: Konsep Dasar (Definisi, Gejala, dan 7 Bentuk/Jenis Kesulitan Belajar Spesifik) serta Kerangka Kerja Identifikasi Awal di Sekolah (<em>Response to Intervention</em>).
+                </p>
+
+                <!-- Capaian Pembelajaran Mata Kuliah (CPMK) -->
+                <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-medium text-slate-200">
+                    <div class="flex items-start gap-2 bg-white/5 p-2.5 rounded-xl border border-white/10">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                        <span><strong>CPMK 1:</strong> Menjelaskan definisi &amp; 4 pilar konseptual SLD.</span>
+                    </div>
+                    <div class="flex items-start gap-2 bg-white/5 p-2.5 rounded-xl border border-white/10">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                        <span><strong>CPMK 2:</strong> Membedakan SLD, <em>Slow Learner</em>, ID, &amp; <em>Underachiever</em>.</span>
+                    </div>
+                    <div class="flex items-start gap-2 bg-white/5 p-2.5 rounded-xl border border-white/10">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                        <span><strong>CPMK 3:</strong> Mengidentifikasi gejala kognitif, akademik, &amp; afektif.</span>
+                    </div>
+                    <div class="flex items-start gap-2 bg-white/5 p-2.5 rounded-xl border border-white/10">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                        <span><strong>CPMK 4:</strong> Mengklasifikasikan 7 bentuk kesulitan belajar spesifik.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecturer Quote Widget -->
+            <div class="lg:col-span-4 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/15 text-slate-100 shadow-xl">
+                <div class="flex items-center gap-3.5 border-b border-white/10 pb-3.5 mb-3.5">
+                    <img src="https://placehold.co/120x120/312e81/ffffff?text=Prof+Farhan"
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x120/1e1b4b/f8fafc?text=Dosen';"
+                         alt="Foto Dosen Pengampu"
+                         class="w-12 h-12 rounded-full border-2 border-amber-400 object-cover shadow-md">
+                    <div>
+                        <h3 class="font-bold text-white text-sm sm:text-base">Pengantar Dosen</h3>
+                        <p class="text-xs text-indigo-200">Senior Lecturer Psikologi Pendidikan</p>
+                    </div>
+                </div>
+                <blockquote class="text-xs italic text-slate-200 leading-relaxed mb-3">
+                    "Salah satu kekeliruan paling fatal di ruang kelas adalah melabeli siswa yang kesulitan membaca atau berhitung sebagai anak yang 'malas' atau 'bodoh'. Banyak dari mereka justru memiliki kapasitas kecerdasan rata-rata bahkan di atas rata-rata, namun memiliki cara kerja pemrosesan informasi neurologis yang berbeda."
+                </blockquote>
+                <div class="text-[11px] text-amber-300 font-semibold flex items-center gap-1.5">
+                    <i class="fa-solid fa-compass"></i> Pilih tab materi di atas untuk mulai belajar.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dynamic Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= TAB 1: KONSEP DASAR & DEFINISI ================= -->
+        <div id="content-konsep" class="tab-content animate-fade-in space-y-8">
+            <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Bagian 01</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">Konsep Dasar &amp; Definisi Kesulitan Belajar Akademik</h2>
+                    <p class="text-slate-600 text-sm mt-1">Landasan konseptual <em>Specific Learning Disabilities</em> (SLD) dan pemetaan diagnostik banding.</p>
+                </div>
+            </div>
+
+            <!-- Definisi & 4 Pilar Utama -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Definisi NJCLD & DSM-5 -->
+                <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-5">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-50 text-brand-700 text-xs font-bold">
+                            <i class="fa-solid fa-scale-balanced"></i> Definisi Konseptual
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Apa itu <em>Specific Learning Disabilities</em> (SLD)?</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Dalam literatur Psikologi Pendidikan, hambatan spesifik dalam bidang akademik dikenal secara internasional sebagai <strong><em>Specific Learning Disabilities</em> (SLD)</strong> atau dalam standar diagnostik klinis (DSM-5-TR) disebut <strong><em>Specific Learning Disorder</em></strong>.
+                        </p>
+                        <div class="bg-slate-50 border-l-4 border-brand-600 p-4 rounded-r-xl text-xs sm:text-sm text-slate-700 leading-relaxed">
+                            <strong class="text-brand-900 block mb-1">Menurut NJCLD (<em>National Joint Committee on Learning Disabilities</em>):</strong>
+                            Kesulitan belajar adalah istilah umum yang merujuk pada sekelompok gangguan yang heterogen, yang dimanifestasikan melalui kesulitan-kesulitan nyata dalam perolehan dan penggunaan kemampuan <strong>mendengarkan, berbicara, membaca, menulis, menalar, atau kemampuan matematis</strong>.
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                        <span><i class="fa-solid fa-check text-emerald-600 mr-1"></i> Berbasis bukti neuropsikologis</span>
+                        <span class="font-semibold text-brand-700">IQ Umum &ge; 85</span>
+                    </div>
+                </div>
+
+                <!-- 4 Pilar Utama (Interactive Cards) -->
+                <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-landmark text-amber-600"></i> Empat Pilar Fundamental SLD
+                        </h3>
+                        <span class="text-xs text-slate-500 hidden sm:inline">Klik pilar untuk menyoroti detail</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Pilar 1 -->
+                        <div class="p-4 rounded-xl bg-indigo-50/70 border border-indigo-100 hover:border-indigo-300 transition-all space-y-2">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-7 h-7 rounded-lg bg-brand-700 text-white text-xs font-bold flex items-center justify-center">1</span>
+                                <h4 class="font-bold text-slate-900 text-sm">Basis Neurobiologis</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Bersifat intrinsik pada individu dan diduga kuat disebabkan oleh <strong>disfungsi sistem saraf pusat</strong> yang memengaruhi cara otak menerima, memproses, menyimpan, dan merespons informasi.
+                            </p>
+                        </div>
+
+                        <!-- Pilar 2 -->
+                        <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-100 hover:border-amber-300 transition-all space-y-2">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-7 h-7 rounded-lg bg-amber-600 text-white text-xs font-bold flex items-center justify-center">2</span>
+                                <h4 class="font-bold text-slate-900 text-sm">Adanya Kesenjangan (<em>Discrepancy</em>)</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Terdapat jarak signifikan antara potensi intelektual yang dimiliki (skor kecerdasan umum normal atau di atas rata-rata, <strong>IQ &ge; 85</strong>) dengan prestasi akademik aktual yang dicapai.
+                            </p>
+                        </div>
+
+                        <!-- Pilar 3 -->
+                        <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-100 hover:border-emerald-300 transition-all space-y-2">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white text-xs font-bold flex items-center justify-center">3</span>
+                                <h4 class="font-bold text-slate-900 text-sm">Sifat Sepanjang Hayat (<em>Lifelong</em>)</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Bukanlah penyakit yang "sembuh" total seperti flu, melainkan kondisi neurologis sepanjang rentang kehidupan yang dapat dikelola secara efektif melalui <strong>intervensi pendidikan &amp; strategi kompensasi</strong>.
+                            </p>
+                        </div>
+
+                        <!-- Pilar 4 -->
+                        <div class="p-4 rounded-xl bg-rose-50/70 border border-rose-100 hover:border-rose-300 transition-all space-y-2">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-7 h-7 rounded-lg bg-rose-600 text-white text-xs font-bold flex items-center justify-center">4</span>
+                                <h4 class="font-bold text-slate-900 text-sm">Kriteria Eksklusi</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                <strong>Bukan</strong> disebabkan secara langsung oleh hambatan sensorik (tunanetra/tunarungu), tunagrahita (<em>intellectual disability</em>), gangguan emosional berat, kemiskinan budaya, atau metode mengajar guru yang buruk.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Matriks Perbedaan Istilah yang Sering Tertukar -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="bg-slate-900 px-6 py-4 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h3 class="font-bold text-base flex items-center gap-2">
+                            <i class="fa-solid fa-table-columns text-amber-400"></i> Matriks Diagnosis Banding: Istilah yang Sering Tertukar
+                        </h3>
+                        <p class="text-xs text-slate-300 mt-0.5">Bandingkan profil intelektual, area hambatan, dan akar penyebab keempat kondisi akademik berikut.</p>
+                    </div>
+                    <!-- Interactive Column Highlighter -->
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <button onclick="highlightMatrix('all')" class="matrix-filter-btn px-2.5 py-1 rounded-lg bg-brand-600 text-white font-semibold">Semua</button>
+                        <button onclick="highlightMatrix('sld')" class="matrix-filter-btn px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">SLD</button>
+                        <button onclick="highlightMatrix('slow')" class="matrix-filter-btn px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">Slow Learner</button>
+                        <button onclick="highlightMatrix('id')" class="matrix-filter-btn px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">Intellectual Dis.</button>
+                        <button onclick="highlightMatrix('under')" class="matrix-filter-btn px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200">Underachiever</button>
+                    </div>
+                </div>
+
+                <div class="p-4 sm:p-6 overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left text-xs sm:text-sm border-collapse min-w-[680px]">
+                        <thead>
+                            <tr class="border-b-2 border-slate-200 bg-slate-50 text-slate-800">
+                                <th class="p-3.5 font-bold w-1/5">Aspek Pembeda</th>
+                                <th class="p-3.5 font-bold w-1/5 col-sld text-brand-700 bg-brand-50/60 rounded-tl-lg">Kesulitan Belajar Spesifik (<em>SLD</em>)</th>
+                                <th class="p-3.5 font-bold w-1/5 col-slow">Lamban Belajar (<em>Slow Learner</em>)</th>
+                                <th class="p-3.5 font-bold w-1/5 col-id">Hambatan Intelektual (<em>Intellectual Disability</em>)</th>
+                                <th class="p-3.5 font-bold w-1/5 col-under rounded-tr-lg"><em>Underachiever</em></th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr>
+                                <td class="p-3.5 font-bold text-slate-900 bg-slate-50/50">Kapasitas Intelektual (IQ)</td>
+                                <td class="p-3.5 col-sld font-semibold text-brand-900 bg-brand-50/30">Rata-rata hingga di atas rata-rata (IQ &ge; 85)</td>
+                                <td class="p-3.5 col-slow text-slate-700">Di bawah rata-rata ambang batas (70 &le; IQ &le; 84)</td>
+                                <td class="p-3.5 col-id text-slate-700">Signifikan di bawah rata-rata (IQ &lt; 70)</td>
+                                <td class="p-3.5 col-under text-slate-700">Rata-rata hingga tinggi (IQ &ge; 100)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3.5 font-bold text-slate-900 bg-slate-50/50">Area Hambatan</td>
+                                <td class="p-3.5 col-sld text-slate-800 bg-brand-50/30"><strong>Spesifik</strong> pada 1 atau beberapa bidang akademik (misal: hanya membaca/berhitung)</td>
+                                <td class="p-3.5 col-slow text-slate-700"><strong>Menyeluruh</strong> pada hampir semua mata pelajaran, namun dengan tempo lambat</td>
+                                <td class="p-3.5 col-id text-slate-700"><strong>Global</strong> (mencakup akademik dan perilaku adaptif sehari-hari)</td>
+                                <td class="p-3.5 col-under text-slate-700"><strong>Situasional</strong> (performa rendah pada mata pelajaran tertentu)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3.5 font-bold text-slate-900 bg-slate-50/50">Akar Penyebab</td>
+                                <td class="p-3.5 col-sld text-slate-800 bg-brand-50/30">Disfungsi pemrosesan neurologis spesifik</td>
+                                <td class="p-3.5 col-slow text-slate-700">Keterbatasan kapasitas kognitif umum</td>
+                                <td class="p-3.5 col-id text-slate-700">Keterbatasan fungsi intelektual dan adaptif sejak masa perkembangan</td>
+                                <td class="p-3.5 col-under text-slate-700">Faktor motivasi, emosi, iklim kelas, atau kebosanan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 2: GEJALA (SIMTOMATOLOGI) ================= -->
+        <div id="content-gejala" class="tab-content hidden animate-fade-in space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Bagian 02</span>
+                <h2 class="text-2xl font-bold text-slate-900 mt-1">Gejala-Gejala (<em>Simtomatologi</em>) Kesulitan Belajar Akademik</h2>
+                <p class="text-slate-600 text-sm mt-1">Tanda-tanda peringatan dini yang muncul secara konsisten (minimal bertahan selama <strong>6 bulan</strong> meski telah diberikan bantuan belajar tambahan).</p>
+            </div>
+
+            <!-- 3 Ranah Gejala -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Ranah A: Kognitif -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-100 text-brand-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-indigo-50 text-brand-700">Ranah A</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Gejala Kognitif &amp; Pemrosesan Informasi</h3>
+                        <ul class="space-y-3 text-xs sm:text-sm text-slate-600">
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <strong class="text-slate-900 block mb-0.5"><i class="fa-solid fa-memory text-brand-600 mr-1.5"></i>Defisit Memori Kerja (<em>Working Memory</em>)</strong>
+                                Siswa mudah lupa terhadap instruksi lisan yang terdiri dari beberapa langkah berurutan (misal: <em>"Buka halaman 12, kerjakan nomor 1–5, lalu kumpulkan"</em>).
+                            </li>
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <strong class="text-slate-900 block mb-0.5"><i class="fa-solid fa-wave-square text-brand-600 mr-1.5"></i>Kelemahan Pemrosesan Fonologis / Visual</strong>
+                                Kesulitan mengaitkan simbol huruf dengan bunyinya, atau kesulitan membedakan bentuk geometris dan posisi ruang.
+                            </li>
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <strong class="text-slate-900 block mb-0.5"><i class="fa-solid fa-sitemap text-brand-600 mr-1.5"></i>Gangguan Fungsi Eksekutif (<em>Executive Functioning</em>)</strong>
+                                Kesulitan merencanakan tugas, mengorganisasi catatan, memperkirakan waktu pengerjaan, dan beralih dari satu topik ke topik lain.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ranah B: Performa Akademik -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-file-pen"></i>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-amber-50 text-amber-800">Ranah B</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Gejala Performa Akademik</h3>
+                        <ul class="space-y-3 text-xs sm:text-sm text-slate-600">
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <strong class="text-slate-900 block mb-0.5"><i class="fa-solid fa-shuffle text-amber-600 mr-1.5"></i>Ketidakkonsistenan Hasil</strong>
+                                Pada hari Senin siswa tampak memahami suatu konsep, namun pada hari Selasa ia seolah-olah belum pernah mempelajarinya sama sekali.
+                            </li>
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <strong class="text-slate-900 block mb-0.5"><i class="fa-solid fa-rotate-right text-amber-600 mr-1.5"></i>Kesalahan Teknis yang Berulang</strong>
+                                Melakukan pola kesalahan yang sama secara terus-menerus dalam membaca, mengeja, atau menghitung (misal: selalu tertukar antara simbol <code>+</code> dan <code>&times;</code>).
+                            </li>
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <strong class="text-slate-900 block mb-0.5"><i class="fa-solid fa-comments text-amber-600 mr-1.5"></i>Ketimpangan Kemampuan Lisan vs. Tertulis</strong>
+                                Siswa sangat cerdas, kritis, dan lancar saat berdiskusi lisan di kelas, tetapi menghasilkan tulisan yang sangat pendek, kacau, atau kosong saat ujian tertulis.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ranah C: Perilaku dan Sosio-Emosional -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-heart-crack"></i>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-rose-50 text-rose-700">Ranah C &bull; Sekunder</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">Gejala Perilaku &amp; Sosio-Emosional</h3>
+                        <ul class="space-y-3 text-xs sm:text-sm text-slate-600">
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <strong class="text-slate-900 block mb-0.5"><i class="fa-solid fa-person-walking-arrow-right text-rose-600 mr-1.5"></i>Penghindaran Tugas (<em>Task Avoidance</em>)</strong>
+                                Sering meminta izin ke toilet saat jam membaca/matematika, berpura-pura sakit, atau meraut pensil berulang kali untuk menunda pekerjaan.
+                            </li>
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <strong class="text-slate-900 block mb-0.5"><i class="fa-solid fa-battery-empty text-rose-600 mr-1.5"></i>Ketidakberdayaan yang Dipelajari (<em>Learned Helplessness</em>)</strong>
+                                Keyakinan bahwa sekeras apa pun ia belajar, ia akan tetap gagal, sehingga ia menyerah bahkan sebelum mencoba.
+                            </li>
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                <strong class="text-slate-900 block mb-0.5"><i class="fa-solid fa-masks-theater text-rose-600 mr-1.5"></i>Frustrasi &amp; Masalah Perilaku</strong>
+                                Menutupi rasa malu akibat ketidakmampuan akademiknya dengan menjadi "badut kelas" (<em>class clown</em>) atau bersikap agresif/menentang guru.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Classroom Observation Checklist Simulator -->
+            <div class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-lg">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-400"><i class="fa-solid fa-clipboard-list mr-1"></i> Alat Bantu Simulasi Observasi Guru</span>
+                        <h3 class="text-xl font-bold mt-1">Daftar Periksa Skrining Gejala Awal di Kelas</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-1">Centang indikator perilaku yang teramati secara konsisten (&ge; 6 bulan) pada peserta didik untuk melihat panduan tindak lanjut pedagogis.</p>
+                    </div>
+                    <button onclick="resetChecklist()" class="self-start lg:self-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 transition-colors">
+                        <i class="fa-solid fa-rotate-left mr-1"></i> Reset Checklist
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs sm:text-sm mb-6">
+                    <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistSummary()" class="obs-check mt-1 rounded text-brand-600 focus:ring-0">
+                        <span>Siswa tampak cerdas saat berdiskusi lisan, namun hasil ujian tulis atau tugas membacanya tertinggal jauh.</span>
+                    </label>
+                    <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistSummary()" class="obs-check mt-1 rounded text-brand-600 focus:ring-0">
+                        <span>Sering melupakan instruksi berurutan (2–3 langkah) yang baru saja diucapkan guru.</span>
+                    </label>
+                    <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistSummary()" class="obs-check mt-1 rounded text-brand-600 focus:ring-0">
+                        <span>Melakukan kesalahan teknis berulang pada simbol huruf, angka, atau operasi hitung dasar.</span>
+                    </label>
+                    <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistSummary()" class="obs-check mt-1 rounded text-brand-600 focus:ring-0">
+                        <span>Menunjukkan perilaku penghindaran tugas (sering izin keluar kelas, melamun, atau meraut pensil terus-menerus).</span>
+                    </label>
+                    <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistSummary()" class="obs-check mt-1 rounded text-brand-600 focus:ring-0">
+                        <span>Menunjukkan tanda-tanda <em>learned helplessness</em> ("Saya memang bodoh, Bu, percuma dicoba").</span>
+                    </label>
+                    <label class="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistSummary()" class="obs-check mt-1 rounded text-brand-600 focus:ring-0">
+                        <span>Penguasaan materi tidak konsisten dari hari ke hari meskipun sudah diberikan latihan ulang.</span>
+                    </label>
+                </div>
+
+                <div id="checklist-feedback" class="p-4 rounded-xl bg-brand-900/70 border border-indigo-500/40 text-xs sm:text-sm text-indigo-100">
+                    <strong class="text-amber-300 block mb-1"><i class="fa-solid fa-info-circle mr-1"></i> Status Observasi (0/6 Indikator Terpilih):</strong>
+                    Silakan centang indikator yang teramati untuk mendapatkan rekomendasi langkah skrining RTI.
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 3: 7 BENTUK & JENIS KESULITAN BELAJAR ================= -->
+        <div id="content-jenis" class="tab-content hidden animate-fade-in space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Bagian 03</span>
+                <h2 class="text-2xl font-bold text-slate-900 mt-1">Bentuk dan Jenis Kesulitan Belajar Akademik</h2>
+                <p class="text-slate-600 text-sm mt-1">Taksonomi Kirk &amp; Gallagher (<em>Developmental</em> vs. <em>Academic Learning Disabilities</em>) serta 7 klasifikasi SLD modern.</p>
+            </div>
+
+            <!-- Taksonomi Kirk & Gallagher Banner -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-5 flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-700 text-white flex-shrink-0 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-brand-900 text-sm sm:text-base">1. Kesulitan Belajar Perkembangan (<em>Developmental LD</em>)</h3>
+                        <p class="text-xs sm:text-sm text-slate-700 mt-1 leading-relaxed">
+                            Meliputi gangguan pada prasyarat belajar seperti perhatian (<em>attention</em>), daya ingat (<em>memory</em>), pemrosesan bahasa lisan, persepsi visual/auditori, serta koordinasi motorik dan nonverbal.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex-shrink-0 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-amber-950 text-sm sm:text-base">2. Kesulitan Belajar Akademik (<em>Academic LD</em>)</h3>
+                        <p class="text-xs sm:text-sm text-slate-700 mt-1 leading-relaxed">
+                            Hambatan yang langsung terlihat pada keterampilan skolastik formal di ruang kelas, khususnya membaca, menulis, dan berhitung.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap items-center justify-between gap-3 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm">
+                <span class="text-xs font-bold text-slate-700 px-2"><i class="fa-solid fa-filter text-brand-600 mr-1.5"></i>Filter Klasifikasi (7 Jenis SLD):</span>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterSld('all')" id="btn-sld-all" class="sld-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-brand-700 text-white transition-all">
+                        Semua (7 Jenis)
+                    </button>
+                    <button onclick="filterSld('skolastik')" id="btn-sld-skolastik" class="sld-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+                        Hambatan Skolastik Inti (1–3)
+                    </button>
+                    <button onclick="filterSld('pemrosesan')" id="btn-sld-pemrosesan" class="sld-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+                        Pemrosesan &amp; Nonverbal (4–7)
+                    </button>
+                </div>
+            </div>
+
+            <!-- 7 SLD Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="sld-cards-container">
+
+                <!-- 1. Disleksia -->
+                <div class="sld-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-category="skolastik">
+                    <div class="bg-indigo-900 text-white p-5 flex items-center justify-between">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-300">01 &bull; Skolastik Inti</span>
+                            <h3 class="text-lg font-bold mt-0.5">Disleksia (<em>Dyslexia</em>)</h3>
+                            <p class="text-xs text-indigo-200">Kesulitan Membaca dan Bahasa Tertulis</p>
+                        </div>
+                        <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-xl text-amber-400">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Kesulitan belajar spesifik yang berakar pada <strong>defisit komponen fonologis bahasa</strong>. Kondisi ini <strong>bukan</strong> masalah ketajaman penglihatan mata, melainkan kesulitan otak memproses bunyi bahasa (<em>phonemic awareness</em>) dan menghubungkannya dengan simbol huruf (<em>decoding</em>).
+                        </p>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-2">
+                            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wide"><i class="fa-solid fa-magnifying-glass text-brand-600 mr-1"></i> Ciri-Ciri Spesifik:</h4>
+                            <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+                                <li>Kesulitan mengeja kata-kata baru atau kata yang tidak beraturan.</li>
+                                <li>Membaca dengan sangat lambat, terbata-bata, dan tanpa intonasi yang tepat.</li>
+                                <li>Gejala pembalikan huruf (<em>reversal</em>) seperti <code>b</code> dibaca <code>d</code>, <code>p</code> dibaca <code>q</code>, atau pembalikan urutan huruf (<em>transposition</em>) seperti <code>ibu</code> dibaca <code>ubi</code>.</li>
+                                <li>Penambahan atau penghilangan huruf/suku kata saat membaca nyaring.</li>
+                                <li>Lemahnya pemahaman bacaan (<em>reading comprehension</em>) karena energi kognitif habis terpakai untuk mengeja kata demi kata.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Disgrafia -->
+                <div class="sld-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-category="skolastik">
+                    <div class="bg-indigo-900 text-white p-5 flex items-center justify-between">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-300">02 &bull; Skolastik Inti</span>
+                            <h3 class="text-lg font-bold mt-0.5">Disgrafia (<em>Dysgraphia</em>)</h3>
+                            <p class="text-xs text-indigo-200">Kesulitan Menulis dan Mengeja</p>
+                        </div>
+                        <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-xl text-amber-400">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Gangguan neurologis yang memengaruhi kemampuan mengekspresikan pikiran dalam bentuk tulisan maupun keterampilan mekanis menulis tangan (<strong>grafomotor</strong>) serta mengeja.
+                        </p>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-2">
+                            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wide"><i class="fa-solid fa-magnifying-glass text-brand-600 mr-1"></i> Ciri-Ciri Spesifik:</h4>
+                            <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+                                <li>Cara memegang alat tulis (<em>pencil grip</em>) canggung, terlalu kaku, atau menekan kertas terlalu keras hingga sering sobek.</li>
+                                <li>Ukuran huruf tidak konsisten (campuran huruf kapital dan kecil di tengah kata), spasi antarkata tidak teratur, dan tulisan keluar dari garis buku.</li>
+                                <li>Mudah mengalami kelelahan fisik atau nyeri pada tangan saat menyalin tulisan dari papan tulis.</li>
+                                <li>Kesulitan mengorganisasi ide ke dalam struktur kalimat runtut, tata bahasa lemah, dan minim tanda baca, meskipun ide lisannya sangat cemerlang.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Diskalkulia -->
+                <div class="sld-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-category="skolastik">
+                    <div class="bg-indigo-900 text-white p-5 flex items-center justify-between">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-300">03 &bull; Skolastik Inti</span>
+                            <h3 class="text-lg font-bold mt-0.5">Diskalkulia (<em>Dyscalculia</em>)</h3>
+                            <p class="text-xs text-indigo-200">Kesulitan Berhitung dan Matematika</p>
+                        </div>
+                        <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-xl text-amber-400">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Hambatan spesifik dalam memahami konsep-konsep numerik, kuantitas, hubungan spasial matematis, dan kalkulasi aritmatika.
+                        </p>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-2">
+                            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wide"><i class="fa-solid fa-magnifying-glass text-brand-600 mr-1"></i> Ciri-Ciri Spesifik:</h4>
+                            <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+                                <li>Lemahnya <strong><em>Number Sense</em> (Kepekaan Bilangan):</strong> Sulit memperkirakan kuantitas secara intuitif tanpa menghitung satu per satu.</li>
+                                <li>Kesulitan memahami konsep nilai tempat (<em>place value</em>), seperti membedakan angka <code>12</code>, <code>21</code>, atau <code>102</code>.</li>
+                                <li>Sangat bergantung pada alat bantu konkret (menghitung dengan jari) untuk penjumlahan sederhana bahkan di usia sekolah menengah.</li>
+                                <li>Kebingungan terhadap arah dan urutan langkah penyelesaian soal (<code>+, &minus;, &times;, &divide;</code>), serta sulit menerjemahkan soal cerita menjadi persamaan angka.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Auditory Processing Disorder (APD) -->
+                <div class="sld-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-category="pemrosesan">
+                    <div class="bg-slate-800 text-white p-5 flex items-center justify-between">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-300">04 &bull; Pemrosesan Sensorik-Neurologis</span>
+                            <h3 class="text-lg font-bold mt-0.5">Gangguan Pemrosesan Auditori (<em>APD</em>)</h3>
+                            <p class="text-xs text-slate-300"><em>Auditory Processing Disorder</em></p>
+                        </div>
+                        <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-xl text-emerald-400">
+                            <i class="fa-solid fa-ear-listen"></i>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Kondisi ketika otak mengalami hambatan dalam memproses dan menafsirkan suara yang diterima oleh telinga. Organ pendengaran fisik berfungsi normal, tetapi terjadi ketidaksinkronan antara apa yang didengar telinga dan bagaimana otak memaknai bunyi tersebut.
+                        </p>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-2">
+                            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wide"><i class="fa-solid fa-magnifying-glass text-emerald-600 mr-1"></i> Ciri-Ciri Spesifik:</h4>
+                            <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+                                <li>Kesulitan membedakan kata-kata yang memiliki bunyi hampir mirip (misal: <em>kaki</em> vs. <em>paki</em>, atau <em>tujuh</em> vs. <em>tuju</em>).</li>
+                                <li>Sangat mudah terganggu oleh kebisingan latar belakang (<em>background noise</em>) di kelas sehingga tidak dapat menangkap suara guru dengan jelas.</li>
+                                <li>Sering meminta orang lain mengulang perkataan (sering mengucapkan <em>"Hah?"</em> atau <em>"Apa?"</em>) dan butuh waktu lebih lama merespons pertanyaan lisan.</li>
+                                <li>Kesulitan mengingat dan mengikuti rangkaian instruksi lisan yang panjang.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Visual Processing Disorder (VPD) -->
+                <div class="sld-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-category="pemrosesan">
+                    <div class="bg-slate-800 text-white p-5 flex items-center justify-between">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-300">05 &bull; Pemrosesan Sensorik-Neurologis</span>
+                            <h3 class="text-lg font-bold mt-0.5">Gangguan Pemrosesan Visual (<em>VPD</em>)</h3>
+                            <p class="text-xs text-slate-300"><em>Visual Processing Disorder</em></p>
+                        </div>
+                        <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-xl text-emerald-400">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Hambatan neurologis dalam menafsirkan, mengorganisasi, dan memahami informasi visual yang ditangkap oleh mata. Kondisi ini <strong>bukan</strong> disebabkan oleh gangguan ketajaman penglihatan (seperti rabun jauh/dekat), melainkan cara otak mengolah data visual.
+                        </p>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-2">
+                            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wide"><i class="fa-solid fa-magnifying-glass text-emerald-600 mr-1"></i> Ciri-Ciri Spesifik:</h4>
+                            <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+                                <li>Kesulitan membedakan bentuk, ukuran, warna, atau simbol yang mirip secara visual (misal: huruf <code>m</code> dan <code>n</code>, atau angka <code>6</code> dan <code>9</code>).</li>
+                                <li>Sering kehilangan jejak baris kalimat saat membaca teks panjang atau menyalin tulisan dari papan tulis ke buku catatan.</li>
+                                <li>Lemahnya persepsi ruang (<em>visual-spatial perception</em>), sehingga sering menabrak benda, kesulitan membaca peta, grafik, atau diagram geometri.</li>
+                                <li>Kesulitan membedakan objek utama dari latar belakang yang ramai (<em>figure-ground discrimination</em>), misalnya sulit menemukan satu kata kunci di halaman buku yang penuh tulisan.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Nonverbal Learning Disability (NVLD) -->
+                <div class="sld-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-category="pemrosesan">
+                    <div class="bg-slate-800 text-white p-5 flex items-center justify-between">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-300">06 &bull; Visuospasial &amp; Sosial-Motorik</span>
+                            <h3 class="text-lg font-bold mt-0.5">Kesulitan Belajar Nonverbal (<em>NVLD</em>)</h3>
+                            <p class="text-xs text-slate-300"><em>Nonverbal Learning Disability</em></p>
+                        </div>
+                        <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-xl text-emerald-400">
+                            <i class="fa-solid fa-people-arrows"></i>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Gangguan neurologis yang ditandai dengan kesenjangan tajam antara <strong>kemampuan verbal yang sangat baik</strong> (kosakata luas, daya ingat hafalan kuat) dengan kelemahan signifikan pada pemrosesan visuospasial, koordinasi motorik, serta pemahaman isyarat sosial nonverbal.
+                        </p>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-2">
+                            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wide"><i class="fa-solid fa-magnifying-glass text-emerald-600 mr-1"></i> Ciri-Ciri Spesifik:</h4>
+                            <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+                                <li>Kesulitan memahami bahasa tubuh, ekspresi wajah, nada suara, maupun sarkasme/kiasan dalam interaksi sosial di kelas.</li>
+                                <li>Canggung secara fisik (<em>clumsy</em>), memiliki koordinasi motorik halus dan kasar yang lemah (seperti sulit menggunting, mengikat tali sepatu, atau berolahraga).</li>
+                                <li>Kesulitan memahami konsep abstrak, membaca pola visual, dan melakukan penalaran matematis/geometri tingkat lanjut meskipun kemampuan membacanya lancar.</li>
+                                <li>Cenderung menafsirkan perkataan orang lain secara harfiah (<em>literal</em>) dan mengalami kecemasan ketika menghadapi perubahan rutinitas mendadak.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Language Processing Disorder (LPD) -->
+                <div class="sld-card md:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-category="pemrosesan">
+                    <div class="bg-slate-800 text-white p-5 flex items-center justify-between">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-300">07 &bull; Pemrosesan Bahasa Lisan</span>
+                            <h3 class="text-lg font-bold mt-0.5">Gangguan Pemrosesan Bahasa (<em>LPD</em>)</h3>
+                            <p class="text-xs text-slate-300"><em>Language Processing Disorder</em> (Reseptif &amp; Ekspresif)</p>
+                        </div>
+                        <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-xl text-emerald-400">
+                            <i class="fa-solid fa-comment-dots"></i>
+                        </div>
+                    </div>
+                    <div class="p-5 grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+                        <div class="lg:col-span-5 text-xs sm:text-sm text-slate-600 leading-relaxed space-y-2">
+                            <p>
+                                Subtipe spesifik dari gangguan pemrosesan yang memengaruhi kemampuan otak dalam melekatkan makna pada kelompok bunyi yang membentuk kata, kalimat, dan wacana.
+                            </p>
+                            <p class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200 text-xs text-emerald-950">
+                                <strong>Perbedaan Kunci dengan APD:</strong> Jika APD memengaruhi pemrosesan semua jenis suara, LPD secara khusus menghambat pemrosesan <strong>bahasa lisan (<em>spoken language</em>)</strong>, baik secara reseptif (memahami) maupun ekspresif (mengungkapkan).
+                            </p>
+                        </div>
+                        <div class="lg:col-span-7 bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-2">
+                            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wide"><i class="fa-solid fa-magnifying-glass text-emerald-600 mr-1"></i> Ciri-Ciri Spesifik:</h4>
+                            <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+                                <li>Kesulitan memahami makna percakapan, cerita lisan, atau penjelasan materi kuliah/pelajaran yang disampaikan secara verbal.</li>
+                                <li>Kesulitan menemukan kata yang tepat saat berbicara (<em>word-finding difficulty</em>), sehingga sering menggunakan kata ganti umum seperti <em>"itu"</em>, <em>"anu"</em>, atau <em>"benda itu"</em>.</li>
+                                <li>Struktur kalimat lisan yang terbalik-balik, tidak lengkap, atau sulit dipahami oleh pendengar.</li>
+                                <li>Lemah dalam menangkap humor verbal, peribahasa, maupun pertanyaan terbuka yang menuntut penjelasan lisan terstruktur.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= TAB 4: KERANGKA IDENTIFIKASI (RTI) & REFERENSI ================= -->
+        <div id="content-rti" class="tab-content hidden animate-fade-in space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Bagian 04</span>
+                <h2 class="text-2xl font-bold text-slate-900 mt-1">Kerangka Kerja Identifikasi Awal di Sekolah (<em>Response to Intervention</em>)</h2>
+                <p class="text-slate-600 text-sm mt-1">Pendekatan berjenjang yang sistematis sebelum menetapkan label diagnostik klinis.</p>
+            </div>
+
+            <!-- Ethical Note -->
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 text-xs sm:text-sm text-amber-950">
+                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-lg mt-0.5"></i>
+                <div>
+                    <strong class="font-bold block">Prinsip Etika Profesi Pendidik:</strong>
+                    Sebagai pendidik, kita <strong>tidak boleh</strong> langsung memberikan label diagnostik medis/klinis kepada siswa. Sekolah menggunakan kerangka kerja berjenjang yang disebut <strong><em>Response to Intervention</em> (RTI)</strong> untuk mengidentifikasi dan membantu siswa secara sistematis.
+                </div>
+            </div>
+
+            <!-- Interactive RTI 3-Tier Stepper -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <!-- Left Tier Selector -->
+                <div class="lg:col-span-5 space-y-3">
+                    <button onclick="selectRtiTier(1)" id="rti-btn-1" class="rti-tier-btn w-full text-left p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/70 shadow-sm transition-all flex items-center justify-between">
+                        <div class="flex items-center gap-3.5">
+                            <span class="w-10 h-10 rounded-xl bg-emerald-600 text-white font-bold flex items-center justify-center text-sm">Tier 1</span>
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-sm sm:text-base">Skrining Universal &amp; Kelas Reguler</h3>
+                                <p class="text-xs text-slate-600">Cakupan: Seluruh Siswa (~80–85%)</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-emerald-700"></i>
+                    </button>
+
+                    <button onclick="selectRtiTier(2)" id="rti-btn-2" class="rti-tier-btn w-full text-left p-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 transition-all flex items-center justify-between">
+                        <div class="flex items-center gap-3.5">
+                            <span class="w-10 h-10 rounded-xl bg-amber-500 text-white font-bold flex items-center justify-center text-sm">Tier 2</span>
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-sm sm:text-base">Intervensi Kelompok Kecil Terfokus</h3>
+                                <p class="text-xs text-slate-600">Cakupan: Siswa Berisiko (~10–15%)</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-slate-400"></i>
+                    </button>
+
+                    <button onclick="selectRtiTier(3)" id="rti-btn-3" class="rti-tier-btn w-full text-left p-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 transition-all flex items-center justify-between">
+                        <div class="flex items-center gap-3.5">
+                            <span class="w-10 h-10 rounded-xl bg-rose-600 text-white font-bold flex items-center justify-center text-sm">Tier 3</span>
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-sm sm:text-base">Intervensi Individual &amp; Rujukan Ahli</h3>
+                                <p class="text-xs text-slate-600">Cakupan: Kebutuhan Intensif (~1–5%)</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-slate-400"></i>
+                    </button>
+                </div>
+
+                <!-- Right Tier Detail Box -->
+                <div class="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm min-h-[260px] flex flex-col justify-between">
+                    <div id="rti-detail-content" class="space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
+                            <i class="fa-solid fa-users"></i> Tier 1: Pencegahan Primer &amp; Skrining Universal
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Skrining Universal &amp; Pengajaran Kelas Reguler</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Guru melakukan pemantauan berkala terhadap seluruh siswa menggunakan pembelajaran berbasis bukti (<em>evidence-based instruction</em>). Siswa yang menunjukkan ketertinggalan signifikan ditandai untuk pemantauan lebih ketat.
+                        </p>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-1.5 text-slate-700">
+                            <strong class="text-slate-900 block"><i class="fa-solid fa-check-double text-emerald-600 mr-1"></i> Fokus Tindakan Guru:</strong>
+                            <p>&bull; Memastikan kualitas instruksi kelas reguler sudah optimal dan terdiferensiasi.</p>
+                            <p>&bull; Mencatat data dasar (<em>baseline</em>) kemampuan membaca, menulis, dan berhitung seluruh siswa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daftar Pustaka & Referensi Utama -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                    <i class="fa-solid fa-book text-brand-600"></i> Daftar Pustaka &amp; Referensi Utama Perkuliahan
+                </h3>
+                <ul class="text-xs sm:text-sm text-slate-600 space-y-2 pl-4 list-disc leading-relaxed">
+                    <li>Abdurrahman, M. (2012). <em>Anak Berkesulitan Belajar: Teori, Diagnosis, dan Remediasinya</em>. Jakarta: Rineka Cipta.</li>
+                    <li>American Psychiatric Association. (2022). <em>Diagnostic and Statistical Manual of Mental Disorders</em> (5th ed., text rev.; DSM-5-TR).</li>
+                    <li>Hallahan, D. P., Kauffman, J. M., &amp; Pullen, P. C. (2019). <em>Exceptional Learners: An Introduction to Special Education</em> (14th ed.). Pearson.</li>
+                    <li>Lerner, J. W., &amp; Johns, B. (2015). <em>Learning Disabilities and Related Disabilities: Strategies for Success</em> (13th ed.). Cengage Learning.</li>
+                    <li>Santrock, J. W. (2021). <em>Educational Psychology</em> (7th ed.). McGraw-Hill Education.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= TAB 5: SOAL EVALUASI PEMAHAMAN (5 MULTIPLE CHOICE) ================= -->
+        <div id="content-kuis" class="tab-content hidden animate-fade-in space-y-8">
+            <div class="border-b border-slate-200 pb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Bagian 05</span>
+                <h2 class="text-2xl font-bold text-slate-900 mt-1">Soal Evaluasi Pemahaman (<em>Multiple Choice</em>)</h2>
+                <p class="text-slate-600 text-sm mt-1">Pilihlah satu jawaban yang paling tepat berdasarkan konsep Psikologi Pendidikan yang telah dipelajari!</p>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-8 max-w-4xl mx-auto space-y-6">
+                <!-- Inline Validation Banner (Replaces alert) -->
+                <div id="quiz-validation-banner" class="hidden bg-rose-50 border border-rose-200 text-rose-700 text-xs sm:text-sm p-3.5 rounded-xl flex items-center gap-2.5">
+                    <i class="fa-solid fa-circle-exclamation text-rose-600 text-base"></i>
+                    <span>Harap menjawab seluruh <strong>5 soal pilihan ganda</strong> sebelum memeriksa hasil dan pembahasan dosen.</span>
+                </div>
+
+                <!-- Score Summary Banner (Shown after submit) -->
+                <div id="quiz-score-banner" class="hidden bg-brand-900 text-white p-6 rounded-2xl shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center text-2xl font-extrabold shadow">
+                            <span id="quiz-score-number">0/5</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Hasil Evaluasi Pemahaman Anda</h3>
+                            <p id="quiz-score-desc" class="text-xs sm:text-sm text-indigo-200 mt-0.5"></p>
+                        </div>
+                    </div>
+                    <button onclick="resetQuiz()" class="px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition-colors border border-white/20">
+                        <i class="fa-solid fa-rotate-right mr-1.5"></i> Ulangi Kuis
+                    </button>
+                </div>
+
+                <!-- Questions Container -->
+                <div id="quiz-questions-list" class="space-y-6">
+
+                    <!-- Soal 1 -->
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3" id="q-card-1">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-100 px-2.5 py-1 rounded-lg">Soal 1 &bull; Diagnosis Banding</span>
+                        </div>
+                        <p class="font-semibold text-slate-900 text-xs sm:text-sm leading-relaxed">
+                            1. Seorang siswa kelas 4 SD memiliki skor inteligensi umum (IQ = 108), sangat aktif dan kritis dalam diskusi lisan, namun mengalami hambatan berat dan konsisten dalam memahami konsep bilangan serta kalkulasi aritmatika dasar meski telah mendapat bimbingan reguler. Berdasarkan matriks diagnostik Psikologi Pendidikan, kondisi siswa tersebut paling tepat diklasifikasikan sebagai...
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q1" value="A" class="text-brand-600">
+                                <span>A. <em>Slow Learner</em> (Lamban Belajar)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q1" value="B" class="text-brand-600">
+                                <span>B. <em>Intellectual Disability</em> (Hambatan Intelektual)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q1" value="C" class="text-brand-600">
+                                <span>C. <em>Specific Learning Disability</em> (Kesulitan Belajar Spesifik)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q1" value="D" class="text-brand-600">
+                                <span>D. <em>Underachiever</em> Situasional</span>
+                            </label>
+                        </div>
+                        <div id="exp-1" class="hidden mt-3 p-3.5 rounded-xl text-xs leading-relaxed"></div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3" id="q-card-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-100 px-2.5 py-1 rounded-lg">Soal 2 &bull; Simtomatologi Sekunder</span>
+                        </div>
+                        <p class="font-semibold text-slate-900 text-xs sm:text-sm leading-relaxed">
+                            2. Ketika diberikan lembar kerja membaca nyaring di depan kelas, seorang siswa selalu berpura-pura sakit perut, meminta izin ke toilet, atau meraut pensil berulang kali hingga jam pelajaran berakhir. Dalam kajian simtomatologi kesulitan belajar akademik, perilaku ini merupakan manifestasi gejala sekunder berupa...
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q2" value="A" class="text-brand-600">
+                                <span>A. Defisit memori kerja (<em>working memory</em>)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q2" value="B" class="text-brand-600">
+                                <span>B. Perilaku penghindaran tugas (<em>task avoidance</em>)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q2" value="C" class="text-brand-600">
+                                <span>C. Gangguan fungsi eksekutif (<em>executive functioning</em>)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q2" value="D" class="text-brand-600">
+                                <span>D. Disfungsi pemrosesan fonologis</span>
+                            </label>
+                        </div>
+                        <div id="exp-2" class="hidden mt-3 p-3.5 rounded-xl text-xs leading-relaxed"></div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3" id="q-card-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-100 px-2.5 py-1 rounded-lg">Soal 3 &bull; Etiologi Disleksia</span>
+                        </div>
+                        <p class="font-semibold text-slate-900 text-xs sm:text-sm leading-relaxed">
+                            3. Akar penyebab utama dari Disleksia pada peserta didik bukanlah gangguan pada ketajaman indra penglihatan mata, melainkan adanya defisit neurologis pada komponen...
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q3" value="A" class="text-brand-600">
+                                <span>A. Pemrosesan fonologis dan kesadaran fonemik (<em>phonemic awareness</em>)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q3" value="B" class="text-brand-600">
+                                <span>B. Koordinasi motorik halus (<em>grafomotor</em>)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q3" value="C" class="text-brand-600">
+                                <span>C. Persepsi ruang tiga dimensi (<em>visual-spatial perception</em>)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q3" value="D" class="text-brand-600">
+                                <span>D. Pemahaman isyarat sosial nonverbal</span>
+                            </label>
+                        </div>
+                        <div id="exp-3" class="hidden mt-3 p-3.5 rounded-xl text-xs leading-relaxed"></div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3" id="q-card-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-100 px-2.5 py-1 rounded-lg">Soal 4 &bull; Klasifikasi SLD</span>
+                        </div>
+                        <p class="font-semibold text-slate-900 text-xs sm:text-sm leading-relaxed">
+                            4. Seorang peserta didik memiliki kosakata yang sangat luas, mampu membaca lancar, dan memiliki daya ingat hafalan yang kuat, tetapi ia sangat canggung secara fisik (<em>clumsy</em>), kesulitan membaca grafik geometri, serta gagal memahami ekspresi wajah maupun bahasa tubuh teman sebayanya. Profil ini mencerminkan karakteristik dari...
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q4" value="A" class="text-brand-600">
+                                <span>A. <em>Language Processing Disorder</em> (LPD)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q4" value="B" class="text-brand-600">
+                                <span>B. <em>Auditory Processing Disorder</em> (APD)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q4" value="C" class="text-brand-600">
+                                <span>C. <em>Nonverbal Learning Disability</em> (NVLD)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q4" value="D" class="text-brand-600">
+                                <span>D. <em>Dysgraphia</em> (Disgrafia)</span>
+                            </label>
+                        </div>
+                        <div id="exp-4" class="hidden mt-3 p-3.5 rounded-xl text-xs leading-relaxed"></div>
+                    </div>
+
+                    <!-- Soal 5 -->
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3" id="q-card-5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-700 bg-brand-100 px-2.5 py-1 rounded-lg">Soal 5 &bull; Kerangka Identifikasi RTI</span>
+                        </div>
+                        <p class="font-semibold text-slate-900 text-xs sm:text-sm leading-relaxed">
+                            5. Dalam kerangka kerja identifikasi berjenjang <em>Response to Intervention</em> (RTI) di sekolah, kapan tim pendidik merujuk seorang siswa kepada Psikolog Pendidikan/Klinis untuk menjalani asesmen psikodiagnostik komprehensif?
+                        </p>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q5" value="A" class="text-brand-600">
+                                <span>A. Segera setelah siswa mendapatkan satu kali nilai ujian di bawah KKM pada kelas reguler</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q5" value="B" class="text-brand-600">
+                                <span>B. Apabila siswa tetap tidak menunjukkan kemajuan belajar yang berarti setelah diberikan intervensi kelompok kecil terfokus pada Tier 2</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q5" value="C" class="text-brand-600">
+                                <span>C. Sebelum guru melakukan skrining universal dan penyesuaian metode mengajar pada Tier 1</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition-colors">
+                                <input type="radio" name="q5" value="D" class="text-brand-600">
+                                <span>D. Hanya ketika orang tua siswa meminta surat keterangan medis dari rumah sakit</span>
+                            </label>
+                        </div>
+                        <div id="exp-5" class="hidden mt-3 p-3.5 rounded-xl text-xs leading-relaxed"></div>
+                    </div>
+
+                </div>
+
+                <!-- Submit Quiz Button -->
+                <button id="submit-quiz-btn" onclick="submitQuiz()" class="w-full bg-brand-700 hover:bg-brand-800 text-white font-bold py-3.5 px-6 rounded-xl transition-colors text-sm shadow-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-check-to-slot"></i> Periksa Jawaban &amp; Lihat Pembahasan Dosen
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 px-4 border-t border-slate-800 text-xs text-center mt-auto">
+        <div class="max-w-7xl mx-auto space-y-2">
+            <p class="font-semibold text-slate-200">EduPsy Learning Portal &bull; Mata Kuliah Psikologi Pendidikan</p>
+            <p class="text-slate-500">Materi: Memahami dan Mengidentifikasi Kesulitan Belajar Akademik &bull; Prof. Dr. Farhan Ramadhan, M.Psi., Psikolog</p>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            try {
+                document.querySelectorAll('.tab-content').forEach(el => {
+                    el.classList.add('hidden');
+                });
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('text-brand-700', 'bg-brand-50', 'border', 'border-brand-100');
+                    btn.classList.add('text-slate-600');
+                });
+
+                const target = document.getElementById('content-' + tabId);
+                if (target) {
+                    target.classList.remove('hidden');
+                }
+
+                const activeBtn = document.getElementById('nav-' + tabId);
+                if (activeBtn) {
+                    activeBtn.classList.remove('text-slate-600');
+                    activeBtn.classList.add('text-brand-700', 'bg-brand-50', 'border', 'border-brand-100');
+                }
+
+                window.scrollTo({ top: 240, behavior: 'smooth' });
+            } catch (err) {
+                console.error('Error switching tab:', err);
+            }
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        function toggleMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        // Matrix Column Highlighter (Tab 1)
+        function highlightMatrix(colKey) {
+            const cols = ['sld', 'slow', 'id', 'under'];
+            document.querySelectorAll('.matrix-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white', 'font-semibold');
+                btn.classList.add('bg-slate-800', 'text-slate-200');
+            });
+            event.target.classList.remove('bg-slate-800', 'text-slate-200');
+            event.target.classList.add('bg-brand-600', 'text-white', 'font-semibold');
+
+            cols.forEach(c => {
+                document.querySelectorAll('.col-' + c).forEach(cell => {
+                    if (colKey === 'all' || colKey === c) {
+                        cell.classList.remove('opacity-30');
+                    } else {
+                        cell.classList.add('opacity-30');
+                    }
+                });
+            });
+        }
+
+        // Observation Checklist Updater (Tab 2)
+        function updateChecklistSummary() {
+            const checks = document.querySelectorAll('.obs-check:checked');
+            const count = checks.length;
+            const feedback = document.getElementById('checklist-feedback');
+
+            if (count === 0) {
+                feedback.innerHTML = `
+                    <strong class="text-amber-300 block mb-1"><i class="fa-solid fa-info-circle mr-1"></i> Status Observasi (0/6 Indikator Terpilih):</strong>
+                    Silakan centang indikator yang teramati untuk mendapatkan rekomendasi langkah skrining RTI.
+                `;
+            } else if (count <= 2) {
+                feedback.innerHTML = `
+                    <strong class="text-emerald-300 block mb-1"><i class="fa-solid fa-clipboard-check mr-1"></i> Status Observasi (${count}/6 Indikator Terpilih — Pemantauan Tier 1):</strong>
+                    Lakukan pencatatan sistematis selama proses pembelajaran reguler, berikan instruksi bertahap yang jelas, dan amati apakah gejala bertahan secara konsisten.
+                `;
+            } else {
+                feedback.innerHTML = `
+                    <strong class="text-amber-300 block mb-1"><i class="fa-solid fa-bell mr-1"></i> Status Observasi (${count}/6 Indikator Terpilih — Sinyal Peringatan Signifikan):</strong>
+                    Jika pola ini bertahan &ge; 6 bulan meski pengajaran reguler sudah disesuaikan, pertimbangkan intervensi kelompok kecil terfokus (<strong>RTI Tier 2</strong>) dan koordinasikan dengan tim konselor/psikolog sekolah.
+                `;
+            }
+        }
+
+        function resetChecklist() {
+            document.querySelectorAll('.obs-check').forEach(cb => cb.checked = false);
+            updateChecklistSummary();
+        }
+
+        // Filter 7 SLD Cards (Tab 3)
+        function filterSld(category) {
+            document.querySelectorAll('.sld-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-700', 'text-white', 'font-bold');
+                btn.classList.add('bg-slate-100', 'text-slate-700', 'font-semibold');
+            });
+
+            const activeBtn = document.getElementById('btn-sld-' + category);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-700', 'font-semibold');
+                activeBtn.classList.add('bg-brand-700', 'text-white', 'font-bold');
+            }
+
+            document.querySelectorAll('.sld-card').forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // RTI Stepper (Tab 4)
+        function selectRtiTier(tier) {
+            // Reset button styles
+            [1, 2, 3].forEach(t => {
+                const btn = document.getElementById('rti-btn-' + t);
+                btn.className = 'rti-tier-btn w-full text-left p-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 transition-all flex items-center justify-between';
+            });
+
+            const activeBtn = document.getElementById('rti-btn-' + tier);
+            const detailBox = document.getElementById('rti-detail-content');
+
+            if (tier === 1) {
+                activeBtn.className = 'rti-tier-btn w-full text-left p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/70 shadow-sm transition-all flex items-center justify-between';
+                detailBox.innerHTML = `
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
+                        <i class="fa-solid fa-users"></i> Tier 1: Pencegahan Primer &amp; Skrining Universal
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Skrining Universal &amp; Pengajaran Kelas Reguler</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Guru melakukan pemantauan berkala terhadap seluruh siswa menggunakan pembelajaran berbasis bukti (<em>evidence-based instruction</em>). Siswa yang menunjukkan ketertinggalan signifikan ditandai untuk pemantauan lebih ketat.
+                    </p>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-1.5 text-slate-700">
+                        <strong class="text-slate-900 block"><i class="fa-solid fa-check-double text-emerald-600 mr-1"></i> Fokus Tindakan Guru:</strong>
+                        <p>&bull; Memastikan kualitas instruksi kelas reguler sudah optimal dan terdiferensiasi.</p>
+                        <p>&bull; Mencatat data dasar (<em>baseline</em>) kemampuan membaca, menulis, dan berhitung seluruh siswa.</p>
+                    </div>
+                `;
+            } else if (tier === 2) {
+                activeBtn.className = 'rti-tier-btn w-full text-left p-4 rounded-2xl border-2 border-amber-500 bg-amber-50/70 shadow-sm transition-all flex items-center justify-between';
+                detailBox.innerHTML = `
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">
+                        <i class="fa-solid fa-user-group"></i> Tier 2: Intervensi Sekunder Terfokus
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Intervensi Kelompok Kecil Terfokus</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Siswa yang belum merespons optimal pada Tier 1 diberikan pengajaran remedial intensif dalam kelompok kecil (<strong>3–5 siswa</strong>) selama beberapa minggu. Kemajuan belajar mereka dicatat secara kuantitatif.
+                    </p>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-1.5 text-slate-700">
+                        <strong class="text-slate-900 block"><i class="fa-solid fa-chart-line text-amber-600 mr-1"></i> Fokus Tindakan Guru &amp; Tim Sekolah:</strong>
+                        <p>&bull; Melatih keterampilan spesifik yang tertinggal (misal: kesadaran fonemik atau <em>number sense</em>).</p>
+                        <p>&bull; Memantau grafik respons siswa setiap minggu (<em>progress monitoring</em>) untuk mengevaluasi efektivitas intervensi.</p>
+                    </div>
+                `;
+            } else if (tier === 3) {
+                activeBtn.className = 'rti-tier-btn w-full text-left p-4 rounded-2xl border-2 border-rose-500 bg-rose-50/70 shadow-sm transition-all flex items-center justify-between';
+                detailBox.innerHTML = `
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">
+                        <i class="fa-solid fa-user-doctor"></i> Tier 3: Intervensi Tersier &amp; Rujukan Klinis
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Intervensi Individual Intensif &amp; Rujukan Asesmen Komprehensif</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Jika siswa tetap tidak menunjukkan kemajuan berarti setelah melalui Tier 2, tim sekolah merujuk siswa kepada <strong>Psikolog Pendidikan / Psikolog Klinis</strong> untuk menjalani asesmen psikodiagnostik lengkap (tes inteligensi terstandar, tes prestasi akademik, serta asesmen neuropsikologis) guna menegakkan diagnosis dan menyusun <strong>Program Pembelajaran Individual (PPI / <em>IEP</em>)</strong>.
+                    </p>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-1.5 text-slate-700">
+                        <strong class="text-slate-900 block"><i class="fa-solid fa-file-medical text-rose-600 mr-1"></i> Output Kolaborasi Psikolog &amp; Pendidik:</strong>
+                        <p>&bull; Penegakan profil kekuatan dan kelemahan kognitif-akademik siswa secara akurat.</p>
+                        <p>&bull; Penyusunan akomodasi ujian dan modifikasi instruksional dalam dokumen PPI/IEP.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Quiz Evaluation Logic (Tab 5 - 5 MCQs)
+        const quizData = {
+            q1: {
+                correct: 'C',
+                explanation: '<strong>Jawaban: C.</strong> Terdapat prinsip kesenjangan (<em>discrepancy</em>) yang jelas antara kapasitas intelektual umum yang normal (IQ &ge; 85) dengan hambatan spesifik pada satu bidang akademik (matematika/diskalkulia).'
+            },
+            q2: {
+                correct: 'B',
+                explanation: '<strong>Jawaban: B.</strong> <em>Task avoidance</em> adalah mekanisme pertahanan psikologis sekunder untuk menghindari rasa malu atau kecemasan akibat kegagalan akademik di hadapan teman sebaya.'
+            },
+            q3: {
+                correct: 'A',
+                explanation: '<strong>Jawaban: A.</strong> Disleksia berakar pada kelemahan otak dalam mengolah struktur bunyi bahasa (<em>phonological processing</em>) dan mengaitkannya dengan simbol huruf (<em>decoding</em>).'
+            },
+            q4: {
+                correct: 'C',
+                explanation: '<strong>Jawaban: C.</strong> <em>Nonverbal Learning Disability</em> (NVLD) ditandai oleh kontras tajam antara kekuatan verbal/hafalan dengan kelemahan visuospasial, koordinasi motorik, dan pembacaan isyarat sosial nonverbal.'
+            },
+            q5: {
+                correct: 'B',
+                explanation: '<strong>Jawaban: B.</strong> Rujukan asesmen psikodiagnostik berada pada <strong>Tier 3</strong>, yakni setelah intervensi kelas reguler (Tier 1) dan intervensi kelompok kecil intensif (Tier 2) dievaluasi tidak memberikan kemajuan optimal.'
+            }
+        };
+
+        function submitQuiz() {
+            const validationBanner = document.getElementById('quiz-validation-banner');
+            let answeredCount = 0;
+            let score = 0;
+
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected) {
+                    answeredCount++;
+                }
+            }
+
+            if (answeredCount < 5) {
+                validationBanner.classList.remove('hidden');
+                validationBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            validationBanner.classList.add('hidden');
+
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const expBox = document.getElementById(`exp-${i}`);
+                const qKey = `q${i}`;
+                const isCorrect = selected.value === quizData[qKey].correct;
+
+                if (isCorrect) {
+                    score++;
+                    expBox.className = 'mt-3 p-3.5 rounded-xl text-xs leading-relaxed bg-emerald-50 border border-emerald-200 text-emerald-950 block';
+                    expBox.innerHTML = `<span class="font-bold text-emerald-700 block mb-1"><i class="fa-solid fa-circle-check mr-1"></i> Tepat!</span> ${quizData[qKey].explanation}`;
+                } else {
+                    expBox.className = 'mt-3 p-3.5 rounded-xl text-xs leading-relaxed bg-rose-50 border border-rose-200 text-rose-950 block';
+                    expBox.innerHTML = `<span class="font-bold text-rose-700 block mb-1"><i class="fa-solid fa-circle-xmark mr-1"></i> Jawaban Anda (${selected.value}) kurang tepat.</span> ${quizData[qKey].explanation}`;
+                }
+            }
+
+            const scoreBanner = document.getElementById('quiz-score-banner');
+            const scoreNumber = document.getElementById('quiz-score-number');
+            const scoreDesc = document.getElementById('quiz-score-desc');
+
+            scoreNumber.innerText = `${score}/5`;
+            if (score === 5) {
+                scoreDesc.innerText = 'Sempurna! Anda menguasai seluruh konsep dasar, simtomatologi, klasifikasi SLD, dan kerangka identifikasi RTI.';
+            } else if (score >= 3) {
+                scoreDesc.innerText = 'Cukup baik! Silakan tinjau kembali pembahasan dosen pada butir soal yang masih keliru.';
+            } else {
+                scoreDesc.innerText = 'Mari pelajari kembali modul pada Tab 1 hingga Tab 4, lalu coba ulangi evaluasi ini.';
+            }
+
+            scoreBanner.classList.remove('hidden');
+            document.getElementById('submit-quiz-btn').classList.add('hidden');
+            scoreBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetQuiz() {
+            for (let i = 1; i <= 5; i++) {
+                document.querySelectorAll(`input[name="q${i}"]`).forEach(r => r.checked = false);
+                const expBox = document.getElementById(`exp-${i}`);
+                expBox.classList.add('hidden');
+                expBox.innerHTML = '';
+            }
+            document.getElementById('quiz-score-banner').classList.add('hidden');
+            document.getElementById('quiz-validation-banner').classList.add('hidden');
+            document.getElementById('submit-quiz-btn').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
