@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Psikologi Pendidikan | Kesulitan Belajar akibat Gangguan Perkembangan</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans & Merriweather -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    .font-serif-academic {
+      font-family: 'Merriweather', serif;
+    }
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.28s ease-out;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .pyramid-tier {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .pyramid-tier:hover {
+      transform: scale(1.015);
+    }
+    .pyramid-tier.selected {
+      box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.28);
+    }
+    .apa-hanging {
+      padding-left: 2rem;
+      text-indent: -2rem;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Academic Banner -->
+  <header class="bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 text-white shadow-lg border-b border-teal-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 border border-teal-400/30 text-teal-200 text-xs font-semibold tracking-wide uppercase mb-2">
+            <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+            Mata Kuliah: Psikologi Pendidikan • Modul Perkuliahan
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
+            Kesulitan Belajar akibat Gangguan Perkembangan
+          </h1>
+          <p class="text-slate-300 text-sm sm:text-base mt-1 font-serif-academic italic">
+            Learning Difficulties due to Developmental Disorders: Konsep Dasar, Gejala Klinis, &amp; Studi Kasus
+          </p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-3.5 text-xs sm:text-sm text-slate-200 shrink-0">
+          <div class="font-semibold text-teal-300">Capaian Pembelajaran (CPMK):</div>
+          <ul class="mt-1 space-y-0.5 text-slate-200/90">
+            <li>• Menjelaskan definisi &amp; prinsip fungsi prasyarat</li>
+            <li>• Mengidentifikasi gejala pada 5 domain perkembangan</li>
+            <li>• Menganalisis studi kasus film <em>My Name Is Khan</em></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-slate-950/60 border-t border-white/10 sticky top-0 z-30 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex overflow-x-auto no-scrollbar py-2 gap-1.5 sm:gap-2" role="tablist" aria-label="Navigasi Materi Perkuliahan">
+          <button onclick="switchTab('konsep')" id="tab-btn-konsep" class="nav-btn active whitespace-nowrap px-4 py-2.5 rounded-lg text-sm font-semibold transition-all bg-teal-600 text-white shadow-sm flex items-center gap-2">
+            <span>1. Konsep &amp; Definisi</span>
+          </button>
+          <button onclick="switchTab('gejala')" id="tab-btn-gejala" class="nav-btn whitespace-nowrap px-4 py-2.5 rounded-lg text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-white/10 flex items-center gap-2">
+            <span>2. Gejala &amp; Simulasi Kelas</span>
+          </button>
+          <button onclick="switchTab('jenis')" id="tab-btn-jenis" class="nav-btn whitespace-nowrap px-4 py-2.5 rounded-lg text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-white/10 flex items-center gap-2">
+            <span>3. Bentuk &amp; Jenis (6 Tipe)</span>
+          </button>
+          <button onclick="switchTab('banding')" id="tab-btn-banding" class="nav-btn whitespace-nowrap px-4 py-2.5 rounded-lg text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-white/10 flex items-center gap-2">
+            <span>4. Diagnosis Banding &amp; Pustaka</span>
+          </button>
+          <button onclick="switchTab('tugas')" id="tab-btn-tugas" class="nav-btn whitespace-nowrap px-4 py-2.5 rounded-lg text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-white/10 flex items-center gap-2">
+            <span>5. Tugas Studi Kasus (Esai)</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- ==================== TAB 1: KONSEP & DEFINISI ==================== -->
+    <section id="panel-konsep" class="tab-panel active space-y-8">
+      <!-- Intro Lecturer Note -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xl shrink-0">
+            §1
+          </div>
+          <div class="space-y-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-teal-700">Landasan Teoretis Psikologi Pendidikan</span>
+            <h2 class="text-2xl font-bold text-slate-900">Apa yang Dimaksud Kesulitan Belajar akibat Gangguan Perkembangan?</h2>
+            <p class="text-slate-700 leading-relaxed">
+              Dalam kajian Psikologi Pendidikan—merujuk pada kerangka <em>Developmental Learning Disabilities</em> (Kirk &amp; Chalfant, 1984) serta klasifikasi <em>Neurodevelopmental Disorders</em> dalam DSM-5-TR (American Psychiatric Association, 2022)—pokok bahasan ini mengkaji hambatan belajar yang bersumber dari <strong>keterlambatan, penyimpangan, atau disfungsi pada perkembangan saraf dan fungsi psikologis dasar</strong> sejak masa kanak-kanak awal.
+            </p>
+            <div class="bg-teal-50/80 border-l-4 border-teal-600 p-4 rounded-r-xl text-slate-800 text-sm sm:text-base">
+              <strong>Definisi Konseptual:</strong> Hambatan pada kapasitas neurokognitif, sensorimotor, bahasa, atau regulasi perilaku yang berkembang tidak selaras dengan usia kronologis anak, sehingga mengganggu kesiapan dan kemampuannya dalam menyerap, memproses, serta merespons tuntutan belajar di lingkungan pendidikan.
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Core Pillars -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
+          <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5">
+            <div class="text-teal-700 font-bold text-sm uppercase tracking-wide mb-1">Pilar 1 • Neurodevelopmental</div>
+            <h3 class="font-bold text-slate-900 text-lg mb-2">Disfungsi Perkembangan Saraf</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Berakar pada proses pematangan sistem saraf pusat yang memengaruhi cara otak mengatur perhatian, menyaring rangsangan sensorik, merencanakan gerak, dan mengelola emosi.
+            </p>
+          </div>
+          <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5">
+            <div class="text-indigo-700 font-bold text-sm uppercase tracking-wide mb-1">Pilar 2 • Prerequisite Skills</div>
+            <h3 class="font-bold text-slate-900 text-lg mb-2">Prinsip Fungsi Prasyarat</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Keterampilan akademik (membaca, menulis, berhitung) memerlukan fondasi perkembangan dasar (atensi, memori kerja, bahasa lisan, persepsi). Jika fondasi terganggu, capaian akademik ikut terhambat secara sekunder.
+            </p>
+          </div>
+          <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-5">
+            <div class="text-amber-700 font-bold text-sm uppercase tracking-wide mb-1">Pilar 3 • Early Onset</div>
+            <h3 class="font-bold text-slate-900 text-lg mb-2">Manifestasi Onset Dini</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Gejala sudah muncul sejak periode prasekolah (usia dini), meskipun sering kali baru terdeteksi secara formal ketika anak menghadapi tuntutan struktur dan interaksi kompleks di sekolah dasar.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Prerequisite Pyramid Model -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <div class="mb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-700">Model Visual Interaktif</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-1">Piramida Hierarki Kesiapan Belajar (Klik Setiap Lapisan untuk Analisis)</h3>
+          <p class="text-sm text-slate-600 mt-1">
+            Pahami bagaimana gangguan pada tingkat perkembangan dasar berdampak berantai (<em>cascading effect</em>) terhadap performa akademik di kelas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- Pyramid Visual -->
+          <div class="lg:col-span-7 flex flex-col items-center space-y-2.5 select-none">
+            <button onclick="selectPyramidTier(3)" id="tier-btn-3" class="pyramid-tier w-3/5 sm:w-1/2 py-3.5 px-4 rounded-t-2xl rounded-b-lg bg-amber-100 border-2 border-amber-400 text-amber-950 text-center cursor-pointer">
+              <div class="text-xs font-bold uppercase tracking-wider text-amber-700">Puncak • Output Sekolah</div>
+              <div class="font-extrabold text-sm sm:text-base">3. Keterampilan Akademik Formal</div>
+              <div class="text-xs text-amber-800 mt-0.5">Membaca, Menulis, Berhitung, Pemecahan Masalah</div>
+            </button>
+
+            <button onclick="selectPyramidTier(2)" id="tier-btn-2" class="pyramid-tier w-4/5 sm:w-3/4 py-4 px-5 rounded-xl bg-indigo-100 border-2 border-indigo-400 text-indigo-950 text-center cursor-pointer">
+              <div class="text-xs font-bold uppercase tracking-wider text-indigo-700">Tengah • Jembatan Kesiapan</div>
+              <div class="font-extrabold text-sm sm:text-base">2. Fungsi Psikologis &amp; Kognitif Prasyarat</div>
+              <div class="text-xs text-indigo-800 mt-0.5">Atensi, Memori Kerja, Bahasa Lisan, Regulasi Emosi &amp; Sosial</div>
+            </button>
+
+            <button onclick="selectPyramidTier(1)" id="tier-btn-1" class="pyramid-tier selected w-full py-4 px-6 rounded-xl bg-teal-600 border-2 border-teal-700 text-white text-center cursor-pointer shadow-md">
+              <div class="text-xs font-bold uppercase tracking-wider text-teal-200">Fondasi • Dasar Neurobiologis &amp; Sensorimotor</div>
+              <div class="font-extrabold text-sm sm:text-base">1. Integrasi Sensorik, Persepsi &amp; Koordinasi Motorik</div>
+              <div class="text-xs text-teal-100 mt-0.5">Pematangan Sistem Saraf Pusat, Persepsi Visual-Auditori, Motorik</div>
+            </button>
+          </div>
+
+          <!-- Detail Explanation Box -->
+          <div id="pyramid-detail-card" class="lg:col-span-5 bg-slate-900 text-white rounded-2xl p-6 shadow-md border border-slate-800">
+            <div class="inline-block px-2.5 py-1 rounded bg-teal-500/20 text-teal-300 text-xs font-bold uppercase mb-2" id="tier-badge">
+              Lapisan 1: Fondasi Dasar
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2" id="tier-title">
+              Integrasi Sensorik, Persepsi &amp; Koordinasi Motorik
+            </h4>
+            <p class="text-sm text-slate-300 leading-relaxed mb-4" id="tier-desc">
+              Merupakan fondasi paling awal dalam perkembangan anak. Meliputi kemampuan otak menerima, menyaring, dan mengorganisasi stimulus visual, auditori, taktil, serta merencanakan gerakan motorik halus maupun kasar.
+            </p>
+            <div class="bg-white/10 rounded-xl p-3.5 text-xs text-slate-200 space-y-1.5">
+              <div class="font-bold text-teal-300">Implikasi jika Lapisan Ini Terganggu:</div>
+              <p id="tier-impact">
+                Anak mengalami hipersensitivitas suara kelas, kesulitan menyalin bentuk huruf karena koordinasi mata-tangan belum matang (DCD), atau cepat lelah secara fisik saat duduk mengikuti pelajaran.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: GEJALA & SIMULASI KELAS ==================== -->
+    <section id="panel-gejala" class="tab-panel space-y-8">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-700">Simtomatologi Pedagogis</span>
+        <h2 class="text-2xl font-bold text-slate-900 mt-1">5 Domain Gejala Umum di Ruang Kelas</h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
+          Pendidik tidak menegakkan diagnosis medis, melainkan melakukan <strong>observasi perilaku belajar</strong> secara sistematis pada lima domain perkembangan berikut untuk merancang akomodasi dan rujukan tepat waktu.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
+          <!-- Domain 1 -->
+          <div class="border border-slate-200 rounded-xl p-5 hover:border-teal-400 transition-colors bg-slate-50/50">
+            <div class="w-9 h-9 rounded-lg bg-teal-600 text-white font-bold flex items-center justify-center mb-3">01</div>
+            <h3 class="font-bold text-slate-900 text-base">Atensi &amp; Fungsi Eksekutif</h3>
+            <p class="text-xs text-teal-700 font-semibold mb-2">Attention &amp; Executive Function</p>
+            <ul class="text-sm text-slate-600 space-y-1.5 list-disc pl-4">
+              <li>Mudah teralihkan oleh stimulus visual atau suara ringan di kelas.</li>
+              <li>Kesulitan mempertahankan fokus pada tugas yang menuntut upaya mental berkelanjutan.</li>
+              <li>Sering lupa instruksi berjenjang dan kesulitan mengorganisasi perlengkapan belajar.</li>
+            </ul>
+          </div>
+
+          <!-- Domain 2 -->
+          <div class="border border-slate-200 rounded-xl p-5 hover:border-indigo-400 transition-colors bg-slate-50/50">
+            <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-bold flex items-center justify-center mb-3">02</div>
+            <h3 class="font-bold text-slate-900 text-base">Bahasa &amp; Komunikasi</h3>
+            <p class="text-xs text-indigo-700 font-semibold mb-2">Language &amp; Communication</p>
+            <ul class="text-sm text-slate-600 space-y-1.5 list-disc pl-4">
+              <li>Keterlambatan merangkai kalimat runtut (<em>expressive language</em>).</li>
+              <li>Kesulitan memahami instruksi verbal kompleks atau makna kiasan (<em>receptive language</em>).</li>
+              <li>Hambatan bahasa pragmatis saat berdiskusi atau bergantian bicara.</li>
+            </ul>
+          </div>
+
+          <!-- Domain 3 -->
+          <div class="border border-slate-200 rounded-xl p-5 hover:border-amber-400 transition-colors bg-slate-50/50">
+            <div class="w-9 h-9 rounded-lg bg-amber-600 text-white font-bold flex items-center justify-center mb-3">03</div>
+            <h3 class="font-bold text-slate-900 text-base">Persepsi &amp; Pemrosesan Sensorik</h3>
+            <p class="text-xs text-amber-700 font-semibold mb-2">Perceptual &amp; Sensory Processing</p>
+            <ul class="text-sm text-slate-600 space-y-1.5 list-disc pl-4">
+              <li>Kesulitan membedakan bentuk geometris, arah ruang, atau bunyi fonem secara akurat.</li>
+              <li>Reaksi berlebihan (<em>hipersensitif</em>) terhadap suara bel, lampu terang, atau sentuhan.</li>
+              <li>Atau justru kurang peka (<em>hiposensitif</em>) sehingga terus mencari rangsangan gerak.</li>
+            </ul>
+          </div>
+
+          <!-- Domain 4 -->
+          <div class="border border-slate-200 rounded-xl p-5 hover:border-rose-400 transition-colors bg-slate-50/50">
+            <div class="w-9 h-9 rounded-lg bg-rose-600 text-white font-bold flex items-center justify-center mb-3">04</div>
+            <h3 class="font-bold text-slate-900 text-base">Motorik &amp; Koordinasi</h3>
+            <p class="text-xs text-rose-700 font-semibold mb-2">Motor &amp; Coordination</p>
+            <ul class="text-sm text-slate-600 space-y-1.5 list-disc pl-4">
+              <li>Gerakan tubuh tampak kaku, ceroboh (<em>clumsiness</em>), atau mudah menjatuhkan benda.</li>
+              <li>Kesulitan keterampilan motorik halus (memegang pensil, menggunting, mengancingkan baju).</li>
+              <li>Sangat lambat dan cepat lelah saat menyalin catatan dari papan tulis.</li>
+            </ul>
+          </div>
+
+          <!-- Domain 5 -->
+          <div class="border border-slate-200 rounded-xl p-5 hover:border-purple-400 transition-colors bg-slate-50/50 md:col-span-2 lg:col-span-2">
+            <div class="w-9 h-9 rounded-lg bg-purple-600 text-white font-bold flex items-center justify-center mb-3">05</div>
+            <h3 class="font-bold text-slate-900 text-base">Regulasi Emosi &amp; Interaksi Sosial</h3>
+            <p class="text-xs text-purple-700 font-semibold mb-2">Socio-Emotional Regulation</p>
+            <ul class="text-sm text-slate-600 space-y-1.5 list-disc pl-4">
+              <li>Kesulitan membaca isyarat sosial nonverbal (ekspresi wajah, intonasi suara, bahasa tubuh guru maupun teman).</li>
+              <li>Perilaku impulsif, ledakan emosi, atau <em>meltdown</em> ketika rutinitas atau jadwal kelas berubah mendadak.</li>
+              <li>Kesulitan menjalin kerja sama kelompok atau berempati terhadap sudut pandang orang lain.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Classroom Observation Simulator -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-100 pb-4 mb-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-700">Praktikum Observasi Mahasiswa</span>
+            <h3 class="text-xl font-bold text-slate-900 mt-0.5">Simulasi Daftar Periksa Observasi Perilaku Belajar</h3>
+            <p class="text-sm text-slate-600">Centang indikator yang teramati pada seorang siswa simulasi untuk melihat profil pemetaan domain perkembangannya.</p>
+          </div>
+          <button onclick="resetChecklist()" class="self-start sm:self-auto px-3.5 py-2 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+            Reset Centang
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-7 space-y-3" id="checklist-items">
+            <!-- Populated via JS -->
+          </div>
+
+          <div class="lg:col-span-5 bg-slate-50 border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+            <div>
+              <h4 class="font-bold text-slate-900 text-base mb-1">Profil Pemetaan Sementara</h4>
+              <p class="text-xs text-slate-500 mb-4">Catatan: Instrumen ini berfungsi untuk skrining pedagogis awal, bukan diagnosis klinis.</p>
+              <div id="domain-bars" class="space-y-3">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <div id="observation-feedback" class="mt-6 p-4 rounded-xl bg-teal-50 border border-teal-200 text-xs sm:text-sm text-teal-950 leading-relaxed">
+              Pilih minimal satu indikator perilaku di sebelah kiri untuk melihat analisis pedagogis dan arah rujukan profesional.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: BENTUK & JENIS (6 TIPE) ==================== -->
+    <section id="panel-jenis" class="tab-panel space-y-6">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-teal-700">Taksonomi Gangguan Perkembangan</span>
+            <h2 class="text-2xl font-bold text-slate-900 mt-1">6 Bentuk &amp; Jenis Utama Kesulitan Belajar Perkembangan</h2>
+            <p class="text-sm sm:text-base text-slate-600 mt-1">
+              Klasifikasi berdasarkan domain fungsi neurokognitif dan perkembangan yang mengalami hambatan utama.
+            </p>
+          </div>
+          <!-- Filter Buttons -->
+          <div class="flex flex-wrap gap-1.5">
+            <button onclick="filterDisorders('all')" class="filter-btn active px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-600 text-white" data-filter="all">Semua (6)</button>
+            <button onclick="filterDisorders('regulasi')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200" data-filter="regulasi">Atensi &amp; Sosial</button>
+            <button onclick="filterDisorders('komunikasi')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200" data-filter="komunikasi">Bahasa &amp; Kognitif</button>
+            <button onclick="filterDisorders('sensorimotor')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200" data-filter="sensorimotor">Motorik &amp; Persepsi</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="disorders-grid">
+        <!-- Populated via JS -->
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: DIAGNOSIS BANDING & PUSTAKA ==================== -->
+    <section id="panel-banding" class="tab-panel space-y-8">
+      <!-- Comparison Table -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-indigo-700">Analisis Komparatif</span>
+        <h2 class="text-2xl font-bold text-slate-900 mt-1">Perbandingan: Gangguan Perkembangan vs. Kesulitan Belajar Akademik (SLD)</h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-2 mb-6">
+          Dalam praktik asesmen pendidikan, guru sering keliru menyamakan kedua kategori ini. Tabel berikut memetakan batas konseptual dan implikasi intervensinya.
+        </p>
+
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="bg-slate-900 text-white">
+                <th class="p-4 font-bold w-1/4">Dimensi Perbandingan</th>
+                <th class="p-4 font-bold w-3/8 bg-teal-900/90">Kesulitan Belajar akibat Gangguan Perkembangan</th>
+                <th class="p-4 font-bold w-3/8 bg-indigo-950">Kesulitan Belajar Akademik (<em>Specific Learning Disabilities</em>)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 bg-white">
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-bold text-slate-900">Fokus Utama Hambatan</td>
+                <td class="p-4 text-slate-700">Fungsi perkembangan dasar (atensi, bahasa lisan, motorik, interaksi sosial, memori kerja, regulasi perilaku).</td>
+                <td class="p-4 text-slate-700">Keterampilan skolastik spesifik (membaca/disleksia, menulis/disgrafia, berhitung/diskalkulia).</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-bold text-slate-900">Waktu Terdeteksi</td>
+                <td class="p-4 text-slate-700">Umumnya sudah tampak sejak usia prasekolah / anak usia dini sebelum masuk pendidikan formal.</td>
+                <td class="p-4 text-slate-700">Umumnya mulai teridentifikasi di Sekolah Dasar (SD) ketika tuntutan literasi dan numerasi formal dimulai.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-bold text-slate-900">Cakupan Dampak</td>
+                <td class="p-4 text-slate-700">Pervasif/luas: memengaruhi hampir seluruh mata pelajaran, adaptasi rutinitas, dan relasi sosial di sekolah.</td>
+                <td class="p-4 text-slate-700">Terbatas pada domain akademik tertentu, sementara kemampuan pada bidang lain atau kecerdasan umum tetap rata-rata/tinggi.</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-bold text-slate-900">Pendekatan Intervensi</td>
+                <td class="p-4 text-slate-700">Terapi perkembangan multidisiplin (okupasi, wicara, perilaku), modifikasi lingkungan kelas, dan dukungan fungsi eksekutif.</td>
+                <td class="p-4 text-slate-700">Remedial pengajaran multisensorik spesifik (mis. Orton-Gillingham), akomodasi alat bantu belajar, dan strategi kognitif akademik.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Mini Interactive Vignette Classifier -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-700">Latihan Penalaran Klinis-Pedagogis</span>
+        <h3 class="text-xl font-bold text-slate-900 mt-1">Uji Ketepatan Pemetaan Awal (3 Vinyet Kelas)</h3>
+        <p class="text-sm text-slate-600 mb-5">Tentukan apakah profil siswa berikut lebih mengarah pada <strong>Gangguan Perkembangan</strong> atau <strong>Kesulitan Belajar Akademik Spesifik (SLD)</strong>.</p>
+
+        <div class="space-y-4" id="vignette-container">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+
+      <!-- Academic References (APA 7th Edition) -->
+      <div class="bg-slate-900 text-slate-300 rounded-2xl p-6 sm:p-8">
+        <h3 class="text-white font-bold text-lg mb-4">Daftar Pustaka Modul (Format APA 7th Edition)</h3>
+        <div class="space-y-3 text-xs sm:text-sm font-serif-academic leading-relaxed">
+          <p class="apa-hanging">American Psychiatric Association. (2022). <em>Diagnostic and statistical manual of mental disorders</em> (5th ed., text rev.). https://doi.org/10.1176/appi.books.9780890425787</p>
+          <p class="apa-hanging">Friend, M., &amp; Bursuck, W. D. (2019). <em>Including students with special needs: A practical guide for classroom teachers</em> (8th ed.). Pearson.</p>
+          <p class="apa-hanging">Hallahan, D. P., Kauffman, J. M., &amp; Pullen, P. C. (2019). <em>Exceptional learners: An introduction to special education</em> (14th ed.). Pearson.</p>
+          <p class="apa-hanging">Kirk, S. A., &amp; Chalfant, J. C. (1984). <em>Academic and developmental learning disabilities</em>. Love Publishing Company.</p>
+          <p class="apa-hanging">Lerner, J. W., &amp; Johns, B. H. (2015). <em>Learning disabilities and related disabilities: Strategies for success</em> (13th ed.). Cengage Learning.</p>
+          <p class="apa-hanging">Mesibov, G. B., Shea, V., &amp; Schopler, E. (2005). <em>The TEACCH approach to autism spectrum disorders</em>. Springer. https://doi.org/10.1007/978-0-306-48647-0</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 5: TUGAS STUDI KASUS FILM MY NAME IS KHAN (ESAI) ==================== -->
+    <section id="panel-tugas" class="tab-panel space-y-8">
+      <!-- Case Study Header & Film Context -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-teal-700">Penugasan Analisis Kasus • Gangguan Perkembangan</span>
+            <h2 class="text-2xl font-bold text-slate-900 mt-1">Tugas Studi Kasus: Film <em>My Name Is Khan</em> (2010)</h2>
+            <p class="text-sm text-slate-600 mt-1">
+              Analisis Psikologi Pendidikan mengenai kesulitan belajar akibat gangguan perkembangan dengan ketentuan jawaban esai <strong>maksimal 150 kata</strong> per butir soal.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 shrink-0">
+            <button onclick="toggleAllModelAnswers(true)" class="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm transition">
+              Tampilkan Semua Pembahasan Dosen
+            </button>
+            <button onclick="toggleAllModelAnswers(false)" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition">
+              Sembunyikan Pembahasan
+            </button>
+          </div>
+        </div>
+
+        <!-- Film Case Brief -->
+        <div class="mt-6 bg-slate-900 text-slate-200 rounded-2xl p-5 sm:p-6 border border-slate-800 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-4 bg-gradient-to-br from-teal-900/80 to-slate-800 rounded-xl p-5 border border-teal-500/30 space-y-2">
+            <div class="inline-block px-2.5 py-0.5 rounded bg-teal-500/20 text-teal-300 text-[11px] font-bold uppercase">
+              Profil Subjek Studi Kasus
+            </div>
+            <h3 class="text-lg font-extrabold text-white">Rizwan Khan</h3>
+            <p class="text-xs text-teal-200 font-medium">Film: <em>My Name Is Khan</em> (Sutradara: Karan Johar, 2010)</p>
+            <ul class="text-xs text-slate-300 space-y-1 pt-2 border-t border-white/10">
+              <li>• <strong>Klasifikasi Klinis:</strong> Sindrom Asperger / <em>Autism Spectrum Disorder</em> (ASD)</li>
+              <li>• <strong>Hambatan Inti:</strong> Komunikasi sosial nonverbal, bahasa pragmatis, &amp; hipersensitivitas sensorik</li>
+              <li>• <strong>Kekuatan Kognitif:</strong> Memori asosiatif kuat &amp; kecerdasan mekanis-teknis</li>
+            </ul>
+          </div>
+          <div class="lg:col-span-8 space-y-3 text-xs sm:text-sm leading-relaxed text-slate-300">
+            <h4 class="text-white font-bold text-base">Konteks Observasi Psikopedagogis dalam Film:</h4>
+            <p>
+              Sejak masa kanak-kanak di Borivali, Mumbai, Rizwan Khan menunjukkan pola perilaku belajar yang berbeda dari teman sebayanya. Di ruang kelas reguler, ia mengalami kesulitan beradaptasi akibat hipersensitivitas terhadap suara bising, cahaya menyilaukan, dan sentuhan fisik, serta kecenderungan memaknai ucapan secara harfiah (<em>literal</em>). Akibatnya, lingkungan sekolah konvensional gagal memfasilitasi proses belajarnya.
+            </p>
+            <p>
+              Namun, ketika ibunya (Razia) memberikan pendampingan belajar individual secara terstruktur, tenang, dan berbasis media konkret, Rizwan mampu menguasai konsep secara mendalam serta menunjukkan bakat luar biasa dalam memperbaiki berbagai peralatan mekanik dan elektronik.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Essay Questions & Model Answers (Max 150 Words Each) -->
+      <div id="essay-questions-container" class="space-y-6">
+        <!-- Populated via JS -->
+      </div>
+
+      <!-- APA 7th Edition Reference List -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <div class="flex items-center gap-2.5 border-b border-slate-100 pb-4 mb-5">
+          <div class="w-9 h-9 rounded-lg bg-indigo-100 text-indigo-800 flex items-center justify-center font-bold text-sm">
+            APA
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-700">Sitasi &amp; Rujukan Akademik</span>
+            <h3 class="text-xl font-bold text-slate-900">Daftar Pustaka (Format APA 7th Edition)</h3>
+          </div>
+        </div>
+
+        <div class="space-y-3.5 text-xs sm:text-sm text-slate-700 font-serif-academic leading-relaxed">
+          <p class="apa-hanging">
+            American Psychiatric Association. (2022). <em>Diagnostic and statistical manual of mental disorders</em> (5th ed., text rev.). https://doi.org/10.1176/appi.books.9780890425787
+          </p>
+          <p class="apa-hanging">
+            Friend, M., &amp; Bursuck, W. D. (2019). <em>Including students with special needs: A practical guide for classroom teachers</em> (8th ed.). Pearson.
+          </p>
+          <p class="apa-hanging">
+            Hallahan, D. P., Kauffman, J. M., &amp; Pullen, P. C. (2019). <em>Exceptional learners: An introduction to special education</em> (14th ed.). Pearson.
+          </p>
+          <p class="apa-hanging">
+            Johar, K. (Director). (2010). <em>My name is Khan</em> [Film]. Dharma Productions; Red Chillies Entertainment; Fox Star Studios.
+          </p>
+          <p class="apa-hanging">
+            Kirk, S. A., &amp; Chalfant, J. C. (1984). <em>Academic and developmental learning disabilities</em>. Love Publishing Company.
+          </p>
+          <p class="apa-hanging">
+            Mesibov, G. B., Shea, V., &amp; Schopler, E. (2005). <em>The TEACCH approach to autism spectrum disorders</em>. Springer. https://doi.org/10.1007/978-0-306-48647-0
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+      <div>
+        <span class="font-semibold text-slate-200">Portal Pembelajaran Psikologi Pendidikan</span> — Modul Kesulitan Belajar akibat Gangguan Perkembangan
+      </div>
+      <div>
+        Disusun untuk Perkuliahan Program Sarjana Kependidikan &amp; Psikologi
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ==================== NAVIGATION LOGIC ====================
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-teal-600', 'text-white', 'shadow-sm');
+        btn.classList.add('text-slate-300', 'hover:text-white', 'hover:bg-white/10');
+      });
+
+      const activePanel = document.getElementById('panel-' + tabId);
+      const activeBtn = document.getElementById('tab-btn-' + tabId);
+      if (activePanel) activePanel.classList.add('active');
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-teal-600', 'text-white', 'shadow-sm');
+        activeBtn.classList.remove('text-slate-300', 'hover:text-white', 'hover:bg-white/10');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ==================== TAB 1: PYRAMID INTERACTION ====================
+    const pyramidData = {
+      1: {
+        badge: "Lapisan 1: Fondasi Dasar",
+        title: "Integrasi Sensorik, Persepsi & Koordinasi Motorik",
+        desc: "Merupakan fondasi paling awal dalam perkembangan anak. Meliputi kemampuan otak menerima, menyaring, dan mengorganisasi stimulus visual, auditori, taktil, serta merencanakan gerakan motorik halus maupun kasar.",
+        impact: "Anak mengalami hipersensitivitas suara kelas, kesulitan menyalin bentuk huruf karena koordinasi mata-tangan belum matang (DCD), atau cepat lelah secara fisik saat duduk mengikuti pelajaran."
+      },
+      2: {
+        badge: "Lapisan 2: Jembatan Kesiapan Belajar",
+        title: "Fungsi Psikologis & Kognitif Prasyarat",
+        desc: "Mencakup pemusatan perhatian (atensi), memori kerja (working memory), pemerolehan bahasa lisan (reseptif-ekspresif), serta kemampuan regulasi emosi dan membaca isyarat sosial.",
+        impact: "Siswa sulit mengikuti instruksi guru yang panjang (karena kapasitas working memory penuh), gagal memahami bacaan karena kosakata lisan terbatas, atau impulsif saat bekerja kelompok."
+      },
+      3: {
+        badge: "Lapisan 3: Puncak Capaian Skolastik",
+        title: "Keterampilan Akademik Formal",
+        desc: "Output belajar yang diukur secara formal di sekolah: kelancaran dan pemahaman membaca, ekspresi menulis, penalaran matematis, serta pemecahan masalah kompleks lintas mata pelajaran.",
+        impact: "Kegagalan atau keterlambatan pada lapisan ini sering tampak di rapor sebagai nilai rendah. Tanpa memahami lapisan 1 dan 2, guru berisiko memberi latihan soal berulang tanpa menyentuh akar hambatan perkembangan."
+      }
+    };
+
+    function selectPyramidTier(tier) {
+      [1, 2, 3].forEach(t => {
+        const btn = document.getElementById('tier-btn-' + t);
+        btn.classList.remove('selected', 'bg-teal-600', 'text-white', 'border-teal-700', 'shadow-md');
+        if (t === 1) {
+          btn.classList.add('bg-teal-100', 'border-teal-400', 'text-teal-950');
+          btn.querySelector('div:nth-child(1)').className = 'text-xs font-bold uppercase tracking-wider text-teal-700';
+          btn.querySelector('div:nth-child(3)').className = 'text-xs text-teal-800 mt-0.5';
+        } else if (t === 2) {
+          btn.classList.add('bg-indigo-100', 'border-indigo-400', 'text-indigo-950');
+          btn.querySelector('div:nth-child(1)').className = 'text-xs font-bold uppercase tracking-wider text-indigo-700';
+          btn.querySelector('div:nth-child(3)').className = 'text-xs text-indigo-800 mt-0.5';
+        } else {
+          btn.classList.add('bg-amber-100', 'border-amber-400', 'text-amber-950');
+          btn.querySelector('div:nth-child(1)').className = 'text-xs font-bold uppercase tracking-wider text-amber-700';
+          btn.querySelector('div:nth-child(3)').className = 'text-xs text-amber-800 mt-0.5';
+        }
+      });
+
+      const activeBtn = document.getElementById('tier-btn-' + tier);
+      activeBtn.classList.remove('bg-teal-100', 'border-teal-400', 'text-teal-950', 'bg-indigo-100', 'border-indigo-400', 'text-indigo-950', 'bg-amber-100', 'border-amber-400', 'text-amber-950');
+      activeBtn.classList.add('selected', 'bg-teal-600', 'border-teal-700', 'text-white', 'shadow-md');
+      activeBtn.querySelector('div:nth-child(1)').className = 'text-xs font-bold uppercase tracking-wider text-teal-200';
+      activeBtn.querySelector('div:nth-child(3)').className = 'text-xs text-teal-100 mt-0.5';
+
+      const data = pyramidData[tier];
+      document.getElementById('tier-badge').textContent = data.badge;
+      document.getElementById('tier-title').textContent = data.title;
+      document.getElementById('tier-desc').textContent = data.desc;
+      document.getElementById('tier-impact').textContent = data.impact;
+    }
+
+    // ==================== TAB 2: OBSERVATION CHECKLIST SIMULATOR ====================
+    const observationIndicators = [
+      { id: 'obs1', domain: 'Atensi & Eksekutif', text: 'Sering gagal menyelesaikan tugas tepat waktu karena mudah teralihkan stimulus kecil di sekitar kelas.' },
+      { id: 'obs2', domain: 'Atensi & Eksekutif', text: 'Kesulitan mengingat instruksi guru yang terdiri lebih dari dua langkah berurutan.' },
+      { id: 'obs3', domain: 'Bahasa & Komunikasi', text: 'Kesulitan memahami pertanyaan terbuka atau instruksi lisan yang menggunakan kalimat majemuk.' },
+      { id: 'obs4', domain: 'Bahasa & Komunikasi', text: 'Kosakata lisan terbatas dan sering kesulitan menyusun kalimat saat diminta menceritakan kembali isi bacaan.' },
+      { id: 'obs5', domain: 'Persepsi & Sensorik', text: 'Menutup telinga atau gelisah ekstrem saat suasana kelas sedikit bising atau lampu terlalu terang.' },
+      { id: 'obs6', domain: 'Motorik & Koordinasi', text: 'Cara memegang pensil tampak kaku, tulisan sangat lambat, dan sering menjatuhkan alat tulis.' },
+      { id: 'obs7', domain: 'Emosi & Sosial', text: 'Mengalami ledakan emosi (meltdown) apabila jadwal pelajaran atau tata letak tempat duduk berubah mendadak.' },
+      { id: 'obs8', domain: 'Emosi & Sosial', text: 'Sulit memahami ekspresi wajah teman atau aturan giliran bicara dalam diskusi kelompok.' }
+    ];
+
+    const domainNames = [
+      { name: 'Atensi & Eksekutif', max: 2, color: 'bg-teal-600' },
+      { name: 'Bahasa & Komunikasi', max: 2, color: 'bg-indigo-600' },
+      { name: 'Persepsi & Sensorik', max: 1, color: 'bg-amber-500' },
+      { name: 'Motorik & Koordinasi', max: 1, color: 'bg-rose-500' },
+      { name: 'Emosi & Sosial', max: 2, color: 'bg-purple-600' }
+    ];
+
+    function renderChecklist() {
+      const container = document.getElementById('checklist-items');
+      container.innerHTML = observationIndicators.map(item => `
+        <label class="flex items-start gap-3 p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+          <input type="checkbox" value="${item.domain}" onchange="updateObservationProfile()" class="obs-checkbox mt-1 w-4 h-4 text-teal-600 rounded border-slate-300 focus:ring-teal-500">
+          <div class="text-sm">
+            <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-200/80 text-slate-700 mb-1">${item.domain}</span>
+            <p class="text-slate-700 leading-snug">${item.text}</p>
+          </div>
+        </label>
+      `).join('');
+      updateObservationProfile();
+    }
+
+    function updateObservationProfile() {
+      const checked = Array.from(document.querySelectorAll('.obs-checkbox:checked')).map(cb => cb.value);
+      const counts = {};
+      domainNames.forEach(d => counts[d.name] = 0);
+      checked.forEach(dom => { if (counts[dom] !== undefined) counts[dom]++; });
+
+      const barsContainer = document.getElementById('domain-bars');
+      barsContainer.innerHTML = domainNames.map(d => {
+        const pct = Math.round((counts[d.name] / d.max) * 100);
+        return `
+          <div>
+            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+              <span>${d.name}</span>
+              <span>${counts[d.name]}/${d.max} indikator</span>
+            </div>
+            <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+              <div class="${d.color} h-full transition-all duration-300" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const feedback = document.getElementById('observation-feedback');
+      if (checked.length === 0) {
+        feedback.innerHTML = 'Pilih minimal satu indikator perilaku di sebelah kiri untuk melihat analisis pedagogis dan arah rujukan profesional.';
+        return;
+      }
+
+      const dominant = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+      feedback.innerHTML = `
+        <strong>Hasil Pemetaan Awal (${checked.length} indikator teramati):</strong><br>
+        Domain paling menonjol saat ini adalah <strong>${dominant[0]}</strong>. Guru disarankan mencatat frekuensi serta konteks kemunculan perilaku selama 2 minggu, memberikan akomodasi struktur tugas visual/bertahap, serta berkolaborasi dengan konselor sekolah atau psikolog perkembangan bila hambatan menetap.
+      `;
+    }
+
+    function resetChecklist() {
+      document.querySelectorAll('.obs-checkbox').forEach(cb => cb.checked = false);
+      updateObservationProfile();
+    }
+
+    // ==================== TAB 3: 6 DISORDER TYPES ====================
+    const disordersData = [
+      {
+        id: 'adhd',
+        category: 'regulasi',
+        badge: 'Regulasi Atensi & Perilaku',
+        title: '1. Attention-Deficit/Hyperactivity Disorder (ADHD)',
+        subtitle: 'Gangguan Pemusatan Perhatian dan Hiperaktivitas',
+        characteristics: 'Pola persisten dari inatensi (sulit fokus, ceroboh, mudah lupa), hiperaktivitas (gelisah, sulit duduk tenang), dan impulsivitas (menjawab sebelum pertanyaan selesai, sulit menunggu giliran).',
+        impact: 'Siswa sering memiliki kapasitas intelektual normal atau tinggi, namun capaian akademiknya rendah karena gagal menyelesaikan tugas tepat waktu dan melewatkan detail soal.',
+        strategy: 'Pecah tugas panjang menjadi unit pendek (chunking), tempatkan duduk jauh dari distraksi pintu/jendela, gunakan pengingat visual waktu, serta berikan jeda gerak terstruktur.'
+      },
+      {
+        id: 'asd',
+        category: 'regulasi',
+        badge: 'Komunikasi Sosial & Fleksibilitas',
+        title: '2. Autism Spectrum Disorder (ASD)',
+        subtitle: 'Gangguan Spektrum Autisme',
+        characteristics: 'Hambatan menetap pada komunikasi sosial dan interaksi timbal balik, disertai pola perilaku, minat, atau aktivitas yang terbatas dan berulang (restrictive & repetitive behaviors).',
+        impact: 'Kesulitan memahami materi abstrak atau metaforis, hambatan dalam kerja kelompok tanpa peran jelas, serta kecemasan tinggi saat terjadi perubahan jadwal kelas mendadak.',
+        strategy: 'Gunakan jadwal visual (visual schedule) yang prediktif, berikan instruksi eksplisit dan harfiah, sediakan sudut tenang (calm corner) saat overstimulasi sensorik, dan manfaatkan minat khusus siswa.'
+      },
+      {
+        id: 'dcd',
+        category: 'sensorimotor',
+        badge: 'Koordinasi Motorik',
+        title: '3. Developmental Coordination Disorder (DCD / Dispraksia)',
+        subtitle: 'Gangguan Perkembangan Koordinasi',
+        characteristics: 'Gangguan pada perencanaan dan eksekusi gerak motorik halus maupun kasar yang berada jauh di bawah ekspektasi usia kronologisnya.',
+        impact: 'Kelelahan ekstrem saat menulis tangan dalam durasi lama, tulisan sangat lambat dan sulit terbaca, serta kesulitan dalam pelajaran praktik (olahraga, seni rupa, praktikum laboratorium).',
+        strategy: 'Berikan perpanjangan waktu ujian tertulis, izinkan penggunaan alat bantu ketik/laptop untuk catatan panjang, gunakan pencil grip ergonomis, dan evaluasi penguasaan konsep secara lisan.'
+      },
+      {
+        id: 'dld',
+        category: 'komunikasi',
+        badge: 'Bahasa Lisan & Wacana',
+        title: '4. Developmental Language & Communication Disorders',
+        subtitle: 'Gangguan Bahasa dan Komunikasi Perkembangan',
+        characteristics: 'Hambatan persisten dalam pemerolehan dan penggunaan bahasa lisan, baik pada aspek kosakata, struktur tata bahasa, maupun wacana (discourse), tanpa gangguan pendengaran atau disabilitas intelektual.',
+        impact: 'Kesulitan mengikuti ceramah guru, hambatan dalam membaca pemahaman (reading comprehension), serta kesulitan menuangkan gagasan ke dalam karangan tertulis.',
+        strategy: 'Sampaikan instruksi dengan kalimat pendek dan jelas, lengkapi penjelasan verbal dengan bagan/gambar konkret, ajarkan kosakata kunci sebelum pelajaran dimulai (pre-teaching vocabulary).'
+      },
+      {
+        id: 'idd',
+        category: 'komunikasi',
+        badge: 'Fungsi Intelektual & Adaptif',
+        title: '5. Intellectual Developmental Disorder (IDD)',
+        subtitle: 'Disabilitas Intelektual',
+        characteristics: 'Keterbatasan signifikan baik pada fungsi intelektual umum (penalaran, pemecahan masalah, berpikir abstrak) maupun perilaku adaptif (keterampilan konseptual, sosial, dan praktis sehari-hari).',
+        impact: 'Membutuhkan modifikasi kurikulum secara menyeluruh, kecepatan pemrosesan informasi lebih lambat, serta memerlukan pengulangan dan bimbingan bertahap.',
+        strategy: 'Terapkan pembelajaran berbasis benda konkret, analisis tugas langkah demi langkah (task analysis), penguatan positif segera, serta integrasi keterampilan fungsional dan bina diri.'
+      },
+      {
+        id: 'perceptual',
+        category: 'sensorimotor',
+        badge: 'Memori Kerja & Persepsi',
+        title: '6. Perceptual & Memory Processing Deficits',
+        subtitle: 'Gangguan Persepsi dan Memori Perkembangan',
+        characteristics: 'Disfungsi pada kemampuan otak mengorganisasi informasi sensorik (visual-spasial maupun auditori) serta keterbatasan kapasitas working memory dalam menahan informasi sementara.',
+        impact: 'Siswa cepat melupakan langkah penyelesaian soal matematika di tengah pengerjaan atau tertukar mengenali simbol dan pola visual meskipun ketajaman mata dan telinga normal.',
+        strategy: 'Sediakan kartu rumus/langkah kerja di meja siswa (external memory aids), hindari mendikte catatan panjang tanpa salinan tertulis, dan gunakan kode warna untuk membedakan konsep.'
+      }
+    ];
+
+    function renderDisorders(filter = 'all') {
+      const grid = document.getElementById('disorders-grid');
+      const filtered = filter === 'all' ? disordersData : disordersData.filter(d => d.category === filter);
+      grid.innerHTML = filtered.map(d => `
+        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <span class="inline-block px-2.5 py-1 rounded-md bg-teal-50 text-teal-800 border border-teal-200 text-xs font-bold mb-3">
+              ${d.badge}
+            </span>
+            <h3 class="text-lg font-extrabold text-slate-900 leading-snug">${d.title}</h3>
+            <p class="text-xs font-semibold text-slate-500 mb-4">${d.subtitle}</p>
+
+            <div class="space-y-3 text-sm">
+              <div>
+                <span class="font-bold text-slate-800">Karakteristik Utama:</span>
+                <p class="text-slate-600 mt-0.5 leading-relaxed">${d.characteristics}</p>
+              </div>
+              <div>
+                <span class="font-bold text-slate-800">Dampak pada Proses Belajar:</span>
+                <p class="text-slate-600 mt-0.5 leading-relaxed">${d.impact}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-slate-100">
+            <button onclick="toggleStrategy('${d.id}')" class="w-full flex items-center justify-between text-left text-xs font-bold uppercase tracking-wider text-indigo-700 hover:text-indigo-900 py-1">
+              <span>Lihat Strategi Akomodasi Kelas</span>
+              <span id="icon-${d.id}" class="text-base">+</span>
+            </button>
+            <div id="strat-${d.id}" class="hidden mt-2.5 p-3.5 rounded-xl bg-indigo-50/80 border border-indigo-100 text-xs sm:text-sm text-indigo-950 leading-relaxed">
+              ${d.strategy}
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function filterDisorders(cat) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-teal-600', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-700');
+      });
+      const active = document.querySelector(`.filter-btn[data-filter="${cat}"]`);
+      if (active) {
+        active.classList.add('active', 'bg-teal-600', 'text-white');
+        active.classList.remove('bg-slate-100', 'text-slate-700');
+      }
+      renderDisorders(cat);
+    }
+
+    function toggleStrategy(id) {
+      const box = document.getElementById('strat-' + id);
+      const icon = document.getElementById('icon-' + id);
+      if (box.classList.contains('hidden')) {
+        box.classList.remove('hidden');
+        icon.textContent = '−';
+      } else {
+        box.classList.add('hidden');
+        icon.textContent = '+';
+      }
+    }
+
+    // ==================== TAB 4: VIGNETTES ====================
+    const vignettes = [
+      {
+        id: 'v1',
+        caseText: 'Kasus A: Raka (8 tahun) sangat cerdas dalam berhitung mental dan berdiskusi lisan, namun ia tidak mampu mengeja kata sederhana dengan akurat dan sering membalik huruf b/d saat membaca teks.',
+        correct: 'SLD',
+        explanation: 'Tepat! Ini mengarah pada Kesulitan Belajar Akademik Spesifik (Disleksia), karena hambatan terisolasi pada dekoding fonologis sementara fungsi bahasa lisan dan penalaran umumnya baik.'
+      },
+      {
+        id: 'v2',
+        caseText: 'Kasus B: Nadia (7 tahun) sejak TK sudah terlihat sangat sensitif terhadap suara bising, selalu panik jika urutan pelajaran berubah, dan kesulitan menangkap maksud kiasan maupun ekspresi wajah teman di semua mata pelajaran.',
+        correct: 'DEV',
+        explanation: 'Tepat! Ini mengarah pada Kesulitan Belajar akibat Gangguan Perkembangan (profil spektrum autisme/ASD), karena hambatan muncul sejak usia dini dan memengaruhi komunikasi sosial serta regulasi sensorik secara luas.'
+      },
+      {
+        id: 'v3',
+        caseText: 'Kasus C: Dimas (9 tahun) sering meninggalkan kursi saat pelajaran berlangsung, menjawab pertanyaan guru sebelum selesai dibacakan, dan lupa mengerjakan setengah bagian soal di halaman belakang di hampir semua mata pelajaran.',
+        correct: 'DEV',
+        explanation: 'Tepat! Pola inatensi, hiperaktivitas, dan impulsivitas lintas situasi ini merupakan ciri khas gangguan perkembangan regulasi atensi/eksekutif (ADHD) yang berdampak sekunder ke seluruh pelajaran.'
+      }
+    ];
+
+    function renderVignettes() {
+      const container = document.getElementById('vignette-container');
+      container.innerHTML = vignettes.map(v => `
+        <div class="p-4 sm:p-5 rounded-xl border border-slate-200 bg-slate-50/70">
+          <p class="text-sm text-slate-800 font-medium leading-relaxed mb-3">${v.caseText}</p>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="checkVignette('${v.id}', 'DEV')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white border border-teal-300 text-teal-800 hover:bg-teal-600 hover:text-white transition">
+              Gangguan Perkembangan
+            </button>
+            <button onclick="checkVignette('${v.id}', 'SLD')" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white border border-indigo-300 text-indigo-800 hover:bg-indigo-600 hover:text-white transition">
+              Kesulitan Belajar Akademik (SLD)
+            </button>
+          </div>
+          <div id="v-feedback-${v.id}" class="hidden mt-3 p-3 rounded-lg text-xs sm:text-sm leading-relaxed"></div>
+        </div>
+      `).join('');
+    }
+
+    function checkVignette(id, choice) {
+      const item = vignettes.find(v => v.id === id);
+      const fb = document.getElementById('v-feedback-' + id);
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-900', 'border-emerald-200', 'bg-amber-50', 'text-amber-900', 'border-amber-200');
+      fb.classList.add('border');
+      if (choice === item.correct) {
+        fb.classList.add('bg-emerald-50', 'text-emerald-900', 'border-emerald-200');
+        fb.innerHTML = '<strong>Analisis Sesuai:</strong> ' + item.explanation;
+      } else {
+        fb.classList.add('bg-amber-50', 'text-amber-900', 'border-amber-200');
+        fb.innerHTML = '<strong>Perlu Ditinjau Kembali:</strong> ' + item.explanation;
+      }
+    }
+
+    // ==================== TAB 5: TUGAS STUDI KASUS FILM MY NAME IS KHAN (3 ESSAY) ====================
+    const essayTasks = [
+      {
+        id: 'essay1',
+        number: 'Pertanyaan 1 • Identifikasi Klinis & Simtomatologi',
+        question: 'Berdasarkan film My Name Is Khan (2010), identifikasi jenis gangguan perkembangan yang dialami tokoh utama (Rizwan Khan) menurut klasifikasi DSM-5-TR, serta jelaskan tiga gejala khasnya yang memengaruhi proses belajar dan interaksi sosialnya di lingkungan pendidikan!',
+        modelAnswer: 'Tokoh Rizwan Khan dalam film <em>My Name Is Khan</em> (2010) merepresentasikan individu dengan Sindrom Asperger, yang dalam DSM-5-TR diklasifikasikan ke dalam <em>Autism Spectrum Disorder</em> (ASD) tanpa hambatan intelektual maupun bahasa struktural (American Psychiatric Association, 2022). Tiga gejala khas yang memengaruhi proses belajarnya meliputi: pertama, <strong>hambatan komunikasi sosial dan pemahaman pragmatis</strong>, ditunjukkan melalui penghindaran kontak mata serta pemaknaan bahasa secara harfiah (<em>literal</em>), sehingga ia kesulitan memahami metafora atau instruksi ambigu. Kedua, <strong>hipersensitivitas sensorik</strong>, seperti reaksi panik (<em>meltdown</em>) terhadap suara bising, cahaya menyilaukan, warna tertentu, dan sentuhan fisik yang mengganggu konsentrasi di kelas konvensional. Ketiga, <strong>pola perilaku repetitif dan keterikatan pada rutinitas kaku</strong>, yang membuatnya cemas saat menghadapi perubahan mendadak, meskipun ia memiliki kemampuan memori dan pemecahan masalah mekanis yang luar biasa.',
+        wordCount: 120
+      },
+      {
+        id: 'essay2',
+        number: 'Pertanyaan 2 • Analisis Lingkungan Belajar & Fungsi Prasyarat',
+        question: 'Analisislah mengapa Rizwan mengalami kegagalan adaptasi di sekolah reguler pada masa kecilnya, namun mampu menguasai keterampilan teknis yang kompleks ketika dibimbing secara personal oleh ibunya (Razia) menggunakan perspektif Psikologi Pendidikan!',
+        modelAnswer: 'Dalam perspektif Psikologi Pendidikan, kegagalan Rizwan di sekolah reguler bukan disebabkan oleh rendahnya kapasitas intelektual, melainkan ketidaksesuaian antara lingkungan belajar tradisional dengan profil perkembangan neurokognitifnya (Hallahan et al., 2019). Kelas reguler yang bising, instruksi verbal abstrak, dan tuntutan interaksi sosial timbal balik memicu beban sensorik berlebih (<em>sensory overload</em>) serta kecemasan, sehingga fungsi kognitif prasyaratnya terhambat. Sebaliknya, pendekatan individual yang diterapkan ibunya selaras dengan prinsip <em>scaffolding</em> dan pembelajaran terstruktur (Mesibov et al., 2005). Ibunya menciptakan lingkungan yang tenang, menggunakan media visual konkret, memberikan instruksi lugas tanpa kiasan, serta menyalurkan minat khusus Rizwan pada mekanika. Ketika hambatan sensorik dan kecemasan sosial diminimalkan, potensi intelektual serta daya ingat asosiatif Rizwan berkembang optimal.',
+        wordCount: 109
+      },
+      {
+        id: 'essay3',
+        number: 'Pertanyaan 3 • Desain Intervensi & Akomodasi Pendidikan Inklusif',
+        question: 'Sebagai calon pendidik atau praktisi Psikologi Pendidikan, rancanglah strategi intervensi dan akomodasi pembelajaran di kelas inklusif bagi peserta didik dengan profil seperti Rizwan Khan agar hak belajar dan potensi akademiknya terfasilitasi secara optimal!',
+        modelAnswer: 'Untuk memfasilitasi peserta didik dengan profil <em>Autism Spectrum Disorder</em> seperti Rizwan Khan di kelas inklusif, pendidik perlu merancang Program Pembelajaran Individual (PPI) berbasis pendekatan <em>Universal Design for Learning</em> (UDL) dan dukungan perilaku positif (Friend &amp; Bursuck, 2019). Pertama, <strong>modifikasi lingkungan fisik dan sensorik</strong>, dengan menyediakan tempat duduk jauh dari sumber kebisingan serta sudut tenang (<em>calm corner</em>) untuk mencegah <em>meltdown</em>. Kedua, <strong>strukturisasi visual dan rutinitas prediktif</strong>, menggunakan jadwal bergambar (<em>visual schedule</em>) dan pemberitahuan awal sebelum transisi aktivitas. Ketiga, <strong>komunikasi instruksional eksplisit</strong>, menyampaikan arahan secara singkat, konkret, dan menghindari bahasa metaforis. Keempat, <strong>pembelajaran berbasis kekuatan (<em>strength-based learning</em>)</strong>, mengintegrasikan minat khusus siswa ke dalam proyek akademik serta melatih keterampilan sosial melalui <em>social stories</em> dan pendampingan teman sebaya (<em>peer-mediated intervention</em>).',
+        wordCount: 116
+      }
+    ];
+
+    function renderEssayTasks() {
+      const container = document.getElementById('essay-questions-container');
+      container.innerHTML = essayTasks.map((task, index) => `
+        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="inline-block px-3 py-1 rounded-lg bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold">
+              ${task.number}
+            </span>
+            <span class="text-xs font-semibold text-slate-500">
+              Ketentuan Panjang Jawaban: Maksimal 150 Kata
+            </span>
+          </div>
+
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 leading-relaxed">
+            ${index + 1}. ${task.question}
+          </h3>
+
+          <!-- Student Draft Workspace -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-xs">
+              <label for="student-input-${task.id}" class="font-semibold text-slate-700">
+                Lembar Jawaban Mahasiswa (Latihan Menulis Ringkas):
+              </label>
+              <span id="word-counter-${task.id}" class="font-bold text-slate-600">
+                0 / 150 kata
+              </span>
+            </div>
+            <textarea
+              id="student-input-${task.id}"
+              rows="4"
+              oninput="updateWordCounter('${task.id}')"
+              placeholder="Tuliskan analisis akademik Anda di sini (maksimal 150 kata)..."
+              class="w-full rounded-xl border border-slate-300 p-3.5 text-sm text-slate-800 focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 outline-none transition"
+            ></textarea>
+            <p id="word-warning-${task.id}" class="hidden text-xs font-semibold text-rose-600">
+              Peringatan: Jawaban Anda melebihi batas maksimal 150 kata. Ringkas kalimat agar sesuai ketentuan tugas.
+            </p>
+          </div>
+
+          <!-- Toggle Lecturer Model Answer -->
+          <div class="pt-2 border-t border-slate-100">
+            <button
+              onclick="toggleModelAnswer('${task.id}')"
+              id="btn-model-${task.id}"
+              class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 text-xs font-bold transition"
+            >
+              <span>Lihat Kunci Jawaban &amp; Pembahasan Dosen (≤ 150 Kata)</span>
+              <span id="arrow-model-${task.id}">▼</span>
+            </button>
+
+            <div id="model-box-${task.id}" class="hidden mt-4 p-5 rounded-xl bg-slate-50 border-l-4 border-teal-600 space-y-2.5">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-teal-800">
+                  Jawaban Model Dosen (Referensi Akademik)
+                </span>
+                <span class="px-2.5 py-0.5 rounded-full bg-teal-100 text-teal-900 text-[11px] font-bold">
+                  Jumlah Kata: ${task.wordCount} / 150 kata
+                </span>
+              </div>
+              <p class="text-sm text-slate-800 leading-relaxed">
+                ${task.modelAnswer}
+              </p>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function updateWordCounter(taskId) {
+      const textarea = document.getElementById('student-input-' + taskId);
+      const counter = document.getElementById('word-counter-' + taskId);
+      const warning = document.getElementById('word-warning-' + taskId);
+
+      const text = textarea.value.trim();
+      const words = text === '' ? 0 : text.split(/\s+/).length;
+
+      counter.textContent = `${words} / 150 kata`;
+      if (words > 150) {
+        counter.classList.remove('text-slate-600', 'text-teal-700');
+        counter.classList.add('text-rose-600');
+        warning.classList.remove('hidden');
+      } else if (words > 0) {
+        counter.classList.remove('text-slate-600', 'text-rose-600');
+        counter.classList.add('text-teal-700');
+        warning.classList.add('hidden');
+      } else {
+        counter.classList.remove('text-teal-700', 'text-rose-600');
+        counter.classList.add('text-slate-600');
+        warning.classList.add('hidden');
+      }
+    }
+
+    function toggleModelAnswer(taskId) {
+      const box = document.getElementById('model-box-' + taskId);
+      const arrow = document.getElementById('arrow-model-' + taskId);
+      if (box.classList.contains('hidden')) {
+        box.classList.remove('hidden');
+        arrow.textContent = '▲';
+      } else {
+        box.classList.add('hidden');
+        arrow.textContent = '▼';
+      }
+    }
+
+    function toggleAllModelAnswers(show) {
+      essayTasks.forEach(task => {
+        const box = document.getElementById('model-box-' + task.id);
+        const arrow = document.getElementById('arrow-model-' + task.id);
+        if (show) {
+          box.classList.remove('hidden');
+          arrow.textContent = '▲';
+        } else {
+          box.classList.add('hidden');
+          arrow.textContent = '▼';
+        }
+      });
+    }
+
+    // Initialize all interactive modules
+    document.addEventListener('DOMContentLoaded', () => {
+      renderChecklist();
+      renderDisorders('all');
+      renderVignettes();
+      renderEssayTasks();
+    });
+  </script>
+</body>
+</html>
